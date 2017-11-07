@@ -1,0 +1,7 @@
+version: "Apple Swift version 4.0 (swiftlang-900.0.65 clang-900.0.37)"
+options: "21a63f1250abc8ce9f1bb0474b9e0a01"
+build_time: [1510015360, 466339000]
+inputs:
+  "/Users/student/Desktop/Sun Switch/Sun Switch/GameScene.swift": [1510015352, 0]
+  "/Users/student/Desktop/Sun Switch/Sun Switch/GameViewController.swift": [1510015352, 0]
+  "/Users/student/Desktop/Sun Switch/Sun Switch/AppDelegate.swift": [1510015352, 0]
