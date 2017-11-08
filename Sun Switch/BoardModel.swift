@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+class BoardModel {
+    
+    init () {
+        
+    }
+}
