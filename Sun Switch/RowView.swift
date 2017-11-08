@@ -1,10 +1,9 @@
 //
-//  BoardModel.swift
+//  RowView.swift
 //  Sun Switch
 //
-//  Created by Maurice Baldain on 11/7/17.
+//  Created by student on 11/8/17.
 //  Copyright © 2017 student. All rights reserved.
 //
 
 import Foundation
-

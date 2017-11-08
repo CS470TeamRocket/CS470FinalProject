@@ -3,6 +3,7 @@
 <plist version="1.0">
 <array>
 	<string>GameplayKit</string>
+	<string>Foundation</string>
 	<string>SpriteKit</string>
 	<string>Sun</string>
 	<string>UIKit</string>
