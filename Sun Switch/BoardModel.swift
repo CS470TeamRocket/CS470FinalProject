@@ -11,11 +11,11 @@ import Foundation
 class BoardModel: NSObject {
 	private let rows: Int = 5 // Number of starting Rows. The number of columns is determined in the RowModel
 	private var currentRows : Int = 5 // Current number of rows. This cannot exceed rows
-	private var board : [RowModel]()
+	private var board : [RowModel] = [RowModel]()
 	private var diff : Int
-	private var validPieces : [PieceModel]()	//The roster of available pieces. This is based
+	private var validPieces : [PieceModel] = [PieceModel]()	//The roster of available pieces. This is based
 												//on the current level.
-	func init(difficulty: Int) {
+	init(difficulty: Int) {
 		diff = (difficulty <= 0 ) ? 1 : difficulty
 		super.init()
 		generatePieces(startLevel: diff)
@@ -31,7 +31,7 @@ class BoardModel: NSObject {
 		//Later: Differentiate build based on starting levels
 		//This is used to create a new board, based on starting level.
 		
-		for i in 0..<rows {
+		for _ in 0..<rows {
 			board.append(createRow()) 
 		}
 		
@@ -40,9 +40,8 @@ class BoardModel: NSObject {
 	func newPiece() -> PieceModel{
 		//This should hopefully create a new piece based off the type chosen at random.
 		
-		let index = arc4random_uniform(validPieces.count)
-		let piece_type: PieceModel.Type = validPieces[index].self
-		return piece_type.init()
+		let index = Int(arc4random_uniform(UInt32(validPieces.count)))
+        return type(of: validPieces[index].self).init(rowNum: 1, colNum: 1)
 	}
 	
 	func advanceLevel() {
@@ -63,6 +62,13 @@ class BoardModel: NSObject {
 	
 	func createRow() -> RowModel{
 		let row = RowModel()
-		row.populate(pieceList: validPieces)
+		for i
 		return row
+    }
+    func missingRows() -> Int {
+        if(currentRows < rows) {
+            return rows - currentRows
+        }
+    }
+    
 }

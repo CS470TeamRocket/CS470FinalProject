@@ -1,0 +1,11 @@
+version: "Apple Swift version 4.0 (swiftlang-900.0.65.2 clang-900.0.37)"
+options: "bee03e17ed41fe2cc99ab0492f50393c"
+build_time: [1510180211, 413980000]
+inputs:
+  "/Users/student/Desktop/CS470FinalProject/Sun Switch/GameScene.swift": [1510178052, 0]
+  "/Users/student/Desktop/CS470FinalProject/Sun Switch/GameModel.swift": !dirty [1510180211, 0]
+  "/Users/student/Desktop/CS470FinalProject/Sun Switch/PieceModel.swift": [1510180094, 0]
+  "/Users/student/Desktop/CS470FinalProject/Sun Switch/RowModel.swift": [1510179166, 0]
+  "/Users/student/Desktop/CS470FinalProject/Sun Switch/GameViewController.swift": [1510178052, 0]
+  "/Users/student/Desktop/CS470FinalProject/Sun Switch/BoardModel.swift": !dirty [1510180159, 0]
+  "/Users/student/Desktop/CS470FinalProject/Sun Switch/AppDelegate.swift": [1510178052, 0]

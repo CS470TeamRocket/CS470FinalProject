@@ -1,0 +1,269 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "GameModel"
+provides-nominal:
+- "10Sun_Switch9GameModelC"
+provides-member:
+- ["10Sun_Switch9GameModelC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "*"
+- !private "+="
+- !private "-"
+- !private ">"
+- !private ">="
+- "AssignmentPrecedence"
+- "BoardModel"
+- "GameModel"
+- "Int"
+- "NSObject"
+- !private "StringLiteralType"
+- "TimeInterval"
+depends-member:
+- !private ["s19BinaryFloatingPointP", "init"]
+- !private ["10Sun_Switch10BoardModelC", "advanceLevel"]
+- !private ["10Sun_Switch10BoardModelC", "init"]
+- !private ["10Sun_Switch10BoardModelC", "missingRows"]
+- !private ["10Sun_Switch10BoardModelC", "restoreRow"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["s7CVarArgP", "BoardModel"]
+- !private ["s7CVarArgP", "TimeInterval"]
+- !private ["s7CVarArgP", "advanceLevel"]
+- !private ["s7CVarArgP", "board"]
+- !private ["s7CVarArgP", "getNextGoal"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "level"]
+- !private ["s7CVarArgP", "missingRows"]
+- !private ["s7CVarArgP", "nextGoal"]
+- !private ["s7CVarArgP", "resetTimer"]
+- !private ["s7CVarArgP", "restoreRow"]
+- !private ["s7CVarArgP", "score"]
+- !private ["s7CVarArgP", "streak"]
+- !private ["s7CVarArgP", "timeLeft"]
+- ["s7CVarArgP", ""]
+- !private ["s10ComparableP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "BoardModel"]
+- !private ["s28CustomDebugStringConvertibleP", "TimeInterval"]
+- !private ["s28CustomDebugStringConvertibleP", "advanceLevel"]
+- !private ["s28CustomDebugStringConvertibleP", "board"]
+- !private ["s28CustomDebugStringConvertibleP", "getNextGoal"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "level"]
+- !private ["s28CustomDebugStringConvertibleP", "missingRows"]
+- !private ["s28CustomDebugStringConvertibleP", "nextGoal"]
+- !private ["s28CustomDebugStringConvertibleP", "resetTimer"]
+- !private ["s28CustomDebugStringConvertibleP", "restoreRow"]
+- !private ["s28CustomDebugStringConvertibleP", "score"]
+- !private ["s28CustomDebugStringConvertibleP", "streak"]
+- !private ["s28CustomDebugStringConvertibleP", "timeLeft"]
+- ["s28CustomDebugStringConvertibleP", ""]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s23CustomStringConvertibleP", "BoardModel"]
+- !private ["s23CustomStringConvertibleP", "TimeInterval"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "advanceLevel"]
+- !private ["s23CustomStringConvertibleP", "board"]
+- !private ["s23CustomStringConvertibleP", "getNextGoal"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "level"]
+- !private ["s23CustomStringConvertibleP", "missingRows"]
+- !private ["s23CustomStringConvertibleP", "nextGoal"]
+- !private ["s23CustomStringConvertibleP", "resetTimer"]
+- !private ["s23CustomStringConvertibleP", "restoreRow"]
+- !private ["s23CustomStringConvertibleP", "score"]
+- !private ["s23CustomStringConvertibleP", "streak"]
+- !private ["s23CustomStringConvertibleP", "timeLeft"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9DecodableP", "init"]
+- !private ["Sd", "init"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "init"]
+- !private ["s9EquatableP", "BoardModel"]
+- !private ["s9EquatableP", "TimeInterval"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- !private ["s9EquatableP", "advanceLevel"]
+- !private ["s9EquatableP", "board"]
+- !private ["s9EquatableP", "getNextGoal"]
+- !private ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "level"]
+- !private ["s9EquatableP", "missingRows"]
+- !private ["s9EquatableP", "nextGoal"]
+- !private ["s9EquatableP", "resetTimer"]
+- !private ["s9EquatableP", "restoreRow"]
+- !private ["s9EquatableP", "score"]
+- !private ["s9EquatableP", "streak"]
+- !private ["s9EquatableP", "timeLeft"]
+- ["s9EquatableP", ""]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s25ExpressibleByFloatLiteralP", "init"]
+- !private ["s27ExpressibleByIntegerLiteralP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["s13FloatingPointP", "init"]
+- ["10Sun_Switch9GameModelC", "BoardModel"]
+- ["10Sun_Switch9GameModelC", "Int"]
+- ["10Sun_Switch9GameModelC", "TimeInterval"]
+- ["10Sun_Switch9GameModelC", "advanceLevel"]
+- !private ["10Sun_Switch9GameModelC", "board"]
+- ["10Sun_Switch9GameModelC", "deinit"]
+- ["10Sun_Switch9GameModelC", "getNextGoal"]
+- ["10Sun_Switch9GameModelC", "init"]
+- !private ["10Sun_Switch9GameModelC", "level"]
+- !private ["10Sun_Switch9GameModelC", "nextGoal"]
+- ["10Sun_Switch9GameModelC", "resetTimer"]
+- ["10Sun_Switch9GameModelC", "restoreRow"]
+- !private ["10Sun_Switch9GameModelC", "score"]
+- !private ["10Sun_Switch9GameModelC", "streak"]
+- !private ["10Sun_Switch9GameModelC", "timeLeft"]
+- !private ["s8HashableP", "BoardModel"]
+- !private ["s8HashableP", "TimeInterval"]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- !private ["s8HashableP", "advanceLevel"]
+- !private ["s8HashableP", "board"]
+- !private ["s8HashableP", "getNextGoal"]
+- !private ["s8HashableP", "init"]
+- !private ["s8HashableP", "level"]
+- !private ["s8HashableP", "missingRows"]
+- !private ["s8HashableP", "nextGoal"]
+- !private ["s8HashableP", "resetTimer"]
+- !private ["s8HashableP", "restoreRow"]
+- !private ["s8HashableP", "score"]
+- !private ["s8HashableP", "streak"]
+- !private ["s8HashableP", "timeLeft"]
+- ["s8HashableP", ""]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- ["So8NSObjectC", "BoardModel"]
+- ["So8NSObjectC", "Int"]
+- ["So8NSObjectC", "TimeInterval"]
+- ["So8NSObjectC", "advanceLevel"]
+- ["So8NSObjectC", "board"]
+- ["So8NSObjectC", "getNextGoal"]
+- ["So8NSObjectC", "init"]
+- ["So8NSObjectC", "level"]
+- !private ["So8NSObjectC", "missingRows"]
+- ["So8NSObjectC", "nextGoal"]
+- ["So8NSObjectC", "resetTimer"]
+- ["So8NSObjectC", "restoreRow"]
+- ["So8NSObjectC", "score"]
+- ["So8NSObjectC", "streak"]
+- ["So8NSObjectC", "timeLeft"]
+- ["So8NSObjectC", ""]
+- !private ["So16NSObjectProtocolP", "BoardModel"]
+- !private ["So16NSObjectProtocolP", "TimeInterval"]
+- !private ["So16NSObjectProtocolP", "advanceLevel"]
+- !private ["So16NSObjectProtocolP", "board"]
+- !private ["So16NSObjectProtocolP", "getNextGoal"]
+- !private ["So16NSObjectProtocolP", "init"]
+- !private ["So16NSObjectProtocolP", "level"]
+- !private ["So16NSObjectProtocolP", "missingRows"]
+- !private ["So16NSObjectProtocolP", "nextGoal"]
+- !private ["So16NSObjectProtocolP", "resetTimer"]
+- !private ["So16NSObjectProtocolP", "restoreRow"]
+- !private ["So16NSObjectProtocolP", "score"]
+- !private ["So16NSObjectProtocolP", "streak"]
+- !private ["So16NSObjectProtocolP", "timeLeft"]
+- ["So16NSObjectProtocolP", ""]
+- !private ["s7NumericP", "init"]
+- !private ["s13SignedNumericP", "init"]
+- !private ["s12StaticStringV", "init"]
+- !private ["s10StrideableP", "init"]
+- !private ["s15_CVarArgAlignedP", "init"]
+- !private ["s22_CVarArgPassedAsDoubleP", "init"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s33_ExpressibleByBuiltinFloatLiteralP", "init"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "BoardModel"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "TimeInterval"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "advanceLevel"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "board"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "getNextGoal"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "level"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "missingRows"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "nextGoal"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "resetTimer"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "restoreRow"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "score"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "streak"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "timeLeft"]
+- ["10Foundation27_KeyValueCodingAndObservingP", ""]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s11_StrideableP", "init"]
+depends-nominal:
+- !private "s19BinaryFloatingPointP"
+- !private "10Sun_Switch10BoardModelC"
+- !private "Sb"
+- "s7CVarArgP"
+- !private "s10ComparableP"
+- "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
+- !private "Sd"
+- !private "s9EncodableP"
+- "s9EquatableP"
+- !private "s27ExpressibleByBooleanLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s25ExpressibleByFloatLiteralP"
+- !private "s27ExpressibleByIntegerLiteralP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "s13FloatingPointP"
+- "10Sun_Switch9GameModelC"
+- "s8HashableP"
+- !private "s25LosslessStringConvertibleP"
+- "So8NSObjectC"
+- "So16NSObjectProtocolP"
+- !private "s7NumericP"
+- !private "s13SignedNumericP"
+- !private "s12StaticStringV"
+- !private "s10StrideableP"
+- !private "s15_CVarArgAlignedP"
+- !private "s22_CVarArgPassedAsDoubleP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s33_ExpressibleByBuiltinFloatLiteralP"
+- !private "s35_ExpressibleByBuiltinIntegerLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s11_StrideableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ModelIO.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/simd.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Metal.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/GLKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SceneKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SpriteKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/GameplayKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/GameplayKit.framework/Headers/GameplayKit.apinotes"
+interface-hash: "0c828c55462d4ce9895ac4fddadbe61d"

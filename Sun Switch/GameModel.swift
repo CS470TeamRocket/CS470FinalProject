@@ -12,20 +12,21 @@ class GameModel: NSObject {
 	private var board : BoardModel!
 	private var level : Int	//The current level of difficulty, integer from 1 to an arbitrary amount
 	private var score : Int
-	private var nextGoal: Int
-	private var streak: Int
-	private var timeLeft : TimeInterval
+	private var nextGoal: Int = 1000
+	private var streak: Int = 0
+	private var timeLeft : TimeInterval = 0
 	
-	func init(start: Int) {
+	init(start: Int) {
 		level = start
 		score = 0
-		super.init()
-		nextGoal = getNextGoal(current: start)
-		board = BoardModel(start)
+        super.init()
+		getNextGoal(current: start)
+        board = BoardModel(difficulty: start)
 		resetTimer()
+        
 	}
 	
-	func getNextGoal(current: Int) {
+	func getNextGoal(current: Int){
 		nextGoal = current * 1000
 		if( score >= nextGoal) {
 			advanceLevel() 
@@ -36,7 +37,7 @@ class GameModel: NSObject {
 		let streakRestore: Int = 3
 		level += 1
 		board.advanceLevel()
-		getNextGoal()
+        getNextGoal(current: level)
 		
 		resetTimer()
 		
@@ -59,7 +60,7 @@ class GameModel: NSObject {
 			timeLeft = minTimer
 		}
 		else {
-			timeLeft = maxTimer - ( (level - 1) * 30)
+			timeLeft = maxTimer - TimeInterval( (level - 1) * 30)
 		}
 		
 		//Re-initialize the actual timer.
