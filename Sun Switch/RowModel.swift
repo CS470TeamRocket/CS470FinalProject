@@ -18,11 +18,12 @@ class RowModel :NSObject {
         columns = col
         isLast = last
     }
+
+    func setLast(val : Bool) {
+        isLast = val
+    }
     
-    func populate(pieceList: [PieceModel]) {
-        for i in 0 ..< columns {
-            let piece : PieceModel = 
-            pieces.append(PieceModel())
-        }
+    func addPiece(piece: PieceModel) {
+        pieces.append(piece)
     }
 }

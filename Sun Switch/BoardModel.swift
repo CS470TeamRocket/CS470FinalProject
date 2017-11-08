@@ -11,6 +11,7 @@ import Foundation
 class BoardModel: NSObject {
 	private let rows: Int = 5 // Number of starting Rows. The number of columns is determined in the RowModel
 	private var currentRows : Int = 5 // Current number of rows. This cannot exceed rows
+    private var columns : Int = 8
 	private var board : [RowModel] = [RowModel]()
 	private var diff : Int
 	private var validPieces : [PieceModel] = [PieceModel]()	//The roster of available pieces. This is based
@@ -31,8 +32,9 @@ class BoardModel: NSObject {
 		//Later: Differentiate build based on starting levels
 		//This is used to create a new board, based on starting level.
 		
-		for _ in 0..<rows {
-			board.append(createRow()) 
+		for i in 0 ..< rows {
+            let isLast = (i == rows - 1 ) ? true : false
+            board.append(createRow(count: i, isLast: isLast))
 		}
 		
 	}
@@ -54,21 +56,25 @@ class BoardModel: NSObject {
 	}
 	
 	func restoreRow() {
-		let row = createRow()
+        board.last!.setLast(val: false)
+        let row = createRow(count: currentRows + 1, isLast: true)
 		board.append(row)
 		currentRows += 1
 		//Any other cleanup we might need.
 	}
 	
-	func createRow() -> RowModel{
-		let row = RowModel()
-		for i
+    func createRow(count: Int, isLast: Bool) -> RowModel{
+        let row = RowModel(row: count, col: columns, last: isLast)
+        for _ in 0 ..< columns {
+            row.addPiece(piece: newPiece())
+        }
 		return row
     }
     func missingRows() -> Int {
         if(currentRows < rows) {
             return rows - currentRows
         }
+        return 0
     }
     
 }
