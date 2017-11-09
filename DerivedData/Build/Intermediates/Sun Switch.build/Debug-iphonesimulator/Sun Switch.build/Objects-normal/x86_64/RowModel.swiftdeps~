@@ -7,7 +7,6 @@ provides-member:
 - ["10Sun_Switch8RowModelC", ""]
 provides-dynamic-lookup:
 depends-top-level:
-- !private "..<"
 - "AssignmentPrecedence"
 - "Bool"
 - "BooleanLiteralType"
@@ -77,12 +76,13 @@ depends-member:
 - ["So8NSObjectC", "Bool"]
 - ["So8NSObjectC", "Int"]
 - ["So8NSObjectC", "PieceModel"]
+- ["So8NSObjectC", "addPiece"]
 - ["So8NSObjectC", "columns"]
 - ["So8NSObjectC", "index"]
 - ["So8NSObjectC", "init"]
 - ["So8NSObjectC", "isLast"]
 - ["So8NSObjectC", "pieces"]
-- ["So8NSObjectC", "populate"]
+- ["So8NSObjectC", "setLast"]
 - ["So8NSObjectC", ""]
 - ["So16NSObjectProtocolP", "PieceModel"]
 - !private ["So16NSObjectProtocolP", "columns"]
@@ -91,7 +91,6 @@ depends-member:
 - !private ["So16NSObjectProtocolP", "isLast"]
 - !private ["So16NSObjectProtocolP", "pieces"]
 - ["So16NSObjectProtocolP", ""]
-- ["10Sun_Switch10PieceModelC", "init"]
 - !private ["s22RandomAccessCollectionP", "append"]
 - ["s22RandomAccessCollectionP", "init"]
 - !private ["s26RangeReplaceableCollectionP", "append"]
@@ -99,13 +98,14 @@ depends-member:
 - ["10Sun_Switch8RowModelC", "Bool"]
 - ["10Sun_Switch8RowModelC", "Int"]
 - ["10Sun_Switch8RowModelC", "PieceModel"]
+- ["10Sun_Switch8RowModelC", "addPiece"]
 - !private ["10Sun_Switch8RowModelC", "columns"]
 - ["10Sun_Switch8RowModelC", "deinit"]
 - !private ["10Sun_Switch8RowModelC", "index"]
 - ["10Sun_Switch8RowModelC", "init"]
 - !private ["10Sun_Switch8RowModelC", "isLast"]
 - !private ["10Sun_Switch8RowModelC", "pieces"]
-- ["10Sun_Switch8RowModelC", "populate"]
+- ["10Sun_Switch8RowModelC", "setLast"]
 - !private ["s8SequenceP", "append"]
 - ["s8SequenceP", "init"]
 - !private ["s12StaticStringV", "init"]
@@ -156,7 +156,6 @@ depends-nominal:
 - "s17MutableCollectionP"
 - "So8NSObjectC"
 - "So16NSObjectProtocolP"
-- "10Sun_Switch10PieceModelC"
 - "s22RandomAccessCollectionP"
 - "s26RangeReplaceableCollectionP"
 - "10Sun_Switch8RowModelC"
@@ -201,4 +200,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/GameplayKit.framework/Headers/GameplayKit.apinotes"
-interface-hash: "2eea923a39bae279aa71931dfd78cf0b"
+interface-hash: "4bdaa9fad7ca3b0ade5414211a39f9c9"

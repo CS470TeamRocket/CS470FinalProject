@@ -14,7 +14,7 @@ class BoardModel: NSObject {
     private var columns : Int = 8
 	private var board : [RowModel] = [RowModel]()
 	private var diff : Int
-	private var validPieces : [PieceModel] = [PieceModel]()	//The roster of available pieces. This is based
+	private var validPieces : [pieceType] = [pieceType]()	//The roster of available pieces. This is based
 												//on the current level.
 	init(difficulty: Int) {
 		diff = (difficulty <= 0 ) ? 1 : difficulty
@@ -26,7 +26,9 @@ class BoardModel: NSObject {
 	func generatePieces(startLevel: Int) {
 		//This uses the difficulty level to select a number of piece types to add to the
 		//roster of available pieces. This will be pretty hard-coded, unfortunately.
-		
+        validPieces.append(pieceType.Planet)
+        validPieces.append(pieceType.Moon)
+        validPieces.append(pieceType.Star)
 	}
 	func generateBoard(startLevel: Int) {
 		//Later: Differentiate build based on starting levels
@@ -43,7 +45,7 @@ class BoardModel: NSObject {
 		//This should hopefully create a new piece based off the type chosen at random.
 		
 		let index = Int(arc4random_uniform(UInt32(validPieces.count)))
-        return type(of: validPieces[index].self).init(rowNum: 1, colNum: 1)
+        return PieceModel(type: validPieces[index])
 	}
 	
 	func advanceLevel() {
@@ -75,6 +77,10 @@ class BoardModel: NSObject {
             return rows - currentRows
         }
         return 0
+    }
+    
+    func printBoard() {
+        print(board)
     }
     
 }
