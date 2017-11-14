@@ -69,6 +69,8 @@ class GameModel: NSObject {
 	func restoreRow() {
 		board.restoreRow()
 	}
-
+    func printBoard() {
+        board.printBoard()
+    }
 
 }

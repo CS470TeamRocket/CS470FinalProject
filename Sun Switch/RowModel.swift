@@ -26,4 +26,13 @@ class RowModel :NSObject {
     func addPiece(piece: PieceModel) {
         pieces.append(piece)
     }
+    
+    func printRow() {
+        var output : String = "[ "
+        for i in 0 ..< columns {
+            output += "\(pieces[i].getTextIcon()) "
+        }
+        output += "]"
+        print(output)
+    }
 }

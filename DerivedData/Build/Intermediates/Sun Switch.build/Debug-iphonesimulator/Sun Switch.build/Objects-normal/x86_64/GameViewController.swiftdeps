@@ -25,7 +25,6 @@ depends-top-level:
 - !private "UIDevice"
 - "UIInterfaceOrientationMask"
 - "UIViewController"
-- !private "print"
 depends-member:
 - !private ["s23BidirectionalCollectionP", "init"]
 - !private ["Sb", "_getBuiltinLogicValue"]
@@ -41,7 +40,7 @@ depends-member:
 - !private ["s7CVarArgP", "ignoresSiblingOrder"]
 - !private ["s7CVarArgP", "init"]
 - !private ["s7CVarArgP", "presentScene"]
-- !private ["s7CVarArgP", "print"]
+- !private ["s7CVarArgP", "printBoard"]
 - !private ["s7CVarArgP", "scaleMode"]
 - !private ["s7CVarArgP", "showsFPS"]
 - !private ["s7CVarArgP", "showsNodeCount"]
@@ -59,7 +58,7 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "ignoresSiblingOrder"]
 - !private ["s28CustomDebugStringConvertibleP", "init"]
 - !private ["s28CustomDebugStringConvertibleP", "presentScene"]
-- !private ["s28CustomDebugStringConvertibleP", "print"]
+- !private ["s28CustomDebugStringConvertibleP", "printBoard"]
 - !private ["s28CustomDebugStringConvertibleP", "scaleMode"]
 - !private ["s28CustomDebugStringConvertibleP", "showsFPS"]
 - !private ["s28CustomDebugStringConvertibleP", "showsNodeCount"]
@@ -80,7 +79,7 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "ignoresSiblingOrder"]
 - !private ["s23CustomStringConvertibleP", "init"]
 - !private ["s23CustomStringConvertibleP", "presentScene"]
-- !private ["s23CustomStringConvertibleP", "print"]
+- !private ["s23CustomStringConvertibleP", "printBoard"]
 - !private ["s23CustomStringConvertibleP", "scaleMode"]
 - !private ["s23CustomStringConvertibleP", "showsFPS"]
 - !private ["s23CustomStringConvertibleP", "showsNodeCount"]
@@ -105,7 +104,7 @@ depends-member:
 - !private ["s9EquatableP", "init"]
 - !private ["s9EquatableP", "phone"]
 - !private ["s9EquatableP", "presentScene"]
-- !private ["s9EquatableP", "print"]
+- !private ["s9EquatableP", "printBoard"]
 - !private ["s9EquatableP", "scaleMode"]
 - !private ["s9EquatableP", "showsFPS"]
 - !private ["s9EquatableP", "showsNodeCount"]
@@ -122,6 +121,7 @@ depends-member:
 - !private ["So19GKSceneRootNodeTypeP", "init"]
 - !private ["So19GKSceneRootNodeTypeP", "scaleMode"]
 - !private ["10Sun_Switch9GameModelC", "init"]
+- !private ["10Sun_Switch9GameModelC", "printBoard"]
 - ["10Sun_Switch18GameViewControllerC", "Bool"]
 - !private ["10Sun_Switch18GameViewControllerC", "GameModel"]
 - !private ["10Sun_Switch18GameViewControllerC", "SKScene"]
@@ -132,7 +132,6 @@ depends-member:
 - ["10Sun_Switch18GameViewControllerC", "didReceiveMemoryWarning"]
 - ["10Sun_Switch18GameViewControllerC", "init"]
 - ["10Sun_Switch18GameViewControllerC", "prefersStatusBarHidden"]
-- !private ["10Sun_Switch18GameViewControllerC", "print"]
 - ["10Sun_Switch18GameViewControllerC", "shouldAutorotate"]
 - ["10Sun_Switch18GameViewControllerC", "supportedInterfaceOrientations"]
 - !private ["10Sun_Switch18GameViewControllerC", "view"]
@@ -148,7 +147,7 @@ depends-member:
 - !private ["s8HashableP", "init"]
 - !private ["s8HashableP", "phone"]
 - !private ["s8HashableP", "presentScene"]
-- !private ["s8HashableP", "print"]
+- !private ["s8HashableP", "printBoard"]
 - !private ["s8HashableP", "scaleMode"]
 - !private ["s8HashableP", "showsFPS"]
 - !private ["s8HashableP", "showsNodeCount"]
@@ -166,7 +165,6 @@ depends-member:
 - !private ["So8NSCodingP", "ignoresSiblingOrder"]
 - !private ["So8NSCodingP", "init"]
 - !private ["So8NSCodingP", "presentScene"]
-- !private ["So8NSCodingP", "print"]
 - !private ["So8NSCodingP", "scaleMode"]
 - !private ["So8NSCodingP", "showsFPS"]
 - !private ["So8NSCodingP", "showsNodeCount"]
@@ -180,7 +178,6 @@ depends-member:
 - !private ["So26NSExtensionRequestHandlingP", "UIDevice"]
 - !private ["So26NSExtensionRequestHandlingP", "didReceiveMemoryWarning"]
 - !private ["So26NSExtensionRequestHandlingP", "init"]
-- !private ["So26NSExtensionRequestHandlingP", "print"]
 - !private ["So26NSExtensionRequestHandlingP", "view"]
 - !private ["So26NSExtensionRequestHandlingP", "viewDidLoad"]
 - ["So26NSExtensionRequestHandlingP", ""]
@@ -199,7 +196,7 @@ depends-member:
 - ["So8NSObjectC", "init"]
 - ["So8NSObjectC", "prefersStatusBarHidden"]
 - !private ["So8NSObjectC", "presentScene"]
-- !private ["So8NSObjectC", "print"]
+- !private ["So8NSObjectC", "printBoard"]
 - !private ["So8NSObjectC", "scaleMode"]
 - ["So8NSObjectC", "shouldAutorotate"]
 - !private ["So8NSObjectC", "showsFPS"]
@@ -216,7 +213,7 @@ depends-member:
 - !private ["So16NSObjectProtocolP", "ignoresSiblingOrder"]
 - !private ["So16NSObjectProtocolP", "init"]
 - !private ["So16NSObjectProtocolP", "presentScene"]
-- !private ["So16NSObjectProtocolP", "print"]
+- !private ["So16NSObjectProtocolP", "printBoard"]
 - !private ["So16NSObjectProtocolP", "scaleMode"]
 - !private ["So16NSObjectProtocolP", "showsFPS"]
 - !private ["So16NSObjectProtocolP", "showsNodeCount"]
@@ -268,7 +265,6 @@ depends-member:
 - !private ["So21UIAppearanceContainerP", "ignoresSiblingOrder"]
 - !private ["So21UIAppearanceContainerP", "init"]
 - !private ["So21UIAppearanceContainerP", "presentScene"]
-- !private ["So21UIAppearanceContainerP", "print"]
 - !private ["So21UIAppearanceContainerP", "showsFPS"]
 - !private ["So21UIAppearanceContainerP", "showsNodeCount"]
 - !private ["So21UIAppearanceContainerP", "view"]
@@ -279,7 +275,6 @@ depends-member:
 - !private ["So18UIContentContainerP", "UIDevice"]
 - !private ["So18UIContentContainerP", "didReceiveMemoryWarning"]
 - !private ["So18UIContentContainerP", "init"]
-- !private ["So18UIContentContainerP", "print"]
 - !private ["So18UIContentContainerP", "view"]
 - !private ["So18UIContentContainerP", "viewDidLoad"]
 - ["So18UIContentContainerP", ""]
@@ -300,7 +295,6 @@ depends-member:
 - !private ["So18UIFocusEnvironmentP", "ignoresSiblingOrder"]
 - !private ["So18UIFocusEnvironmentP", "init"]
 - !private ["So18UIFocusEnvironmentP", "presentScene"]
-- !private ["So18UIFocusEnvironmentP", "print"]
 - !private ["So18UIFocusEnvironmentP", "scaleMode"]
 - !private ["So18UIFocusEnvironmentP", "showsFPS"]
 - !private ["So18UIFocusEnvironmentP", "showsNodeCount"]
@@ -322,7 +316,6 @@ depends-member:
 - !private ["So30UIPasteConfigurationSupportingP", "ignoresSiblingOrder"]
 - !private ["So30UIPasteConfigurationSupportingP", "init"]
 - !private ["So30UIPasteConfigurationSupportingP", "presentScene"]
-- !private ["So30UIPasteConfigurationSupportingP", "print"]
 - !private ["So30UIPasteConfigurationSupportingP", "scaleMode"]
 - !private ["So30UIPasteConfigurationSupportingP", "showsFPS"]
 - !private ["So30UIPasteConfigurationSupportingP", "showsNodeCount"]
@@ -340,7 +333,6 @@ depends-member:
 - ["So11UIResponderC", "init"]
 - ["So11UIResponderC", "prefersStatusBarHidden"]
 - !private ["So11UIResponderC", "presentScene"]
-- !private ["So11UIResponderC", "print"]
 - !private ["So11UIResponderC", "scaleMode"]
 - ["So11UIResponderC", "shouldAutorotate"]
 - !private ["So11UIResponderC", "showsFPS"]
@@ -355,7 +347,6 @@ depends-member:
 - !private ["So30UIResponderStandardEditActionsP", "ignoresSiblingOrder"]
 - !private ["So30UIResponderStandardEditActionsP", "init"]
 - !private ["So30UIResponderStandardEditActionsP", "presentScene"]
-- !private ["So30UIResponderStandardEditActionsP", "print"]
 - !private ["So30UIResponderStandardEditActionsP", "scaleMode"]
 - !private ["So30UIResponderStandardEditActionsP", "showsFPS"]
 - !private ["So30UIResponderStandardEditActionsP", "showsNodeCount"]
@@ -367,7 +358,6 @@ depends-member:
 - !private ["So16UIStateRestoringP", "UIDevice"]
 - !private ["So16UIStateRestoringP", "didReceiveMemoryWarning"]
 - !private ["So16UIStateRestoringP", "init"]
-- !private ["So16UIStateRestoringP", "print"]
 - !private ["So16UIStateRestoringP", "view"]
 - !private ["So16UIStateRestoringP", "viewDidLoad"]
 - ["So16UIStateRestoringP", ""]
@@ -378,7 +368,6 @@ depends-member:
 - !private ["So18UITraitEnvironmentP", "ignoresSiblingOrder"]
 - !private ["So18UITraitEnvironmentP", "init"]
 - !private ["So18UITraitEnvironmentP", "presentScene"]
-- !private ["So18UITraitEnvironmentP", "print"]
 - !private ["So18UITraitEnvironmentP", "showsFPS"]
 - !private ["So18UITraitEnvironmentP", "showsNodeCount"]
 - !private ["So18UITraitEnvironmentP", "view"]
@@ -398,7 +387,6 @@ depends-member:
 - ["So16UIViewControllerC", "didReceiveMemoryWarning"]
 - ["So16UIViewControllerC", "init"]
 - ["So16UIViewControllerC", "prefersStatusBarHidden"]
-- !private ["So16UIViewControllerC", "print"]
 - ["So16UIViewControllerC", "shouldAutorotate"]
 - ["So16UIViewControllerC", "supportedInterfaceOrientations"]
 - !private ["So16UIViewControllerC", "view"]
@@ -426,7 +414,7 @@ depends-member:
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "ignoresSiblingOrder"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "presentScene"]
-- !private ["10Foundation27_KeyValueCodingAndObservingP", "print"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "printBoard"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "scaleMode"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "showsFPS"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "showsNodeCount"]
@@ -543,8 +531,16 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/GameplayKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/ModelIO.framework/Headers/ModelIO.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/usr/include/Darwin.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/GLKit.framework/Headers/GLKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/SceneKit.framework/Headers/SceneKit.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/GameplayKit.framework/Headers/GameplayKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
 interface-hash: "e0e875eb555702c01bb8e004ee17c6a9"

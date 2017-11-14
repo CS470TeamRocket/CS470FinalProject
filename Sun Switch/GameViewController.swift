@@ -15,7 +15,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let game = GameModel(start: 1)
-        print(game)
+        game.printBoard()
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {

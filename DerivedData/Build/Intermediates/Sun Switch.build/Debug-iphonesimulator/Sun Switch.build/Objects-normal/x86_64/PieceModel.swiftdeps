@@ -15,21 +15,27 @@ depends-top-level:
 - "Int"
 - "NSObject"
 - "PieceModel"
+- "String"
 - !private "StringLiteralType"
+- !private "UnicodeScalarType"
 - "pieceType"
 depends-member:
+- !private ["s23BidirectionalCollectionP", "init"]
 - !private ["s13BinaryIntegerP", "hashValue"]
 - !private ["s7CVarArgP", "hashValue"]
 - !private ["s7CVarArgP", "init"]
 - !private ["s7CVarArgP", "myType"]
 - ["s7CVarArgP", "pieceType"]
 - ["s7CVarArgP", ""]
+- !private ["s10CollectionP", "init"]
 - !private ["s10ComparableP", "hashValue"]
+- !private ["s10ComparableP", "init"]
 - !private ["s28CustomDebugStringConvertibleP", "init"]
 - !private ["s28CustomDebugStringConvertibleP", "myType"]
 - ["s28CustomDebugStringConvertibleP", "pieceType"]
 - ["s28CustomDebugStringConvertibleP", ""]
 - !private ["s29CustomPlaygroundQuickLookableP", "hashValue"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
 - !private ["s17CustomReflectableP", "hashValue"]
 - !private ["s17CustomReflectableP", "init"]
 - !private ["s23CustomStringConvertibleP", "hashValue"]
@@ -38,8 +44,12 @@ depends-member:
 - ["s23CustomStringConvertibleP", "pieceType"]
 - ["s23CustomStringConvertibleP", ""]
 - !private ["s9DecodableP", "hashValue"]
+- !private ["s9DecodableP", "init"]
 - !private ["s9EncodableP", "hashValue"]
+- !private ["s9EncodableP", "init"]
+- ["s9EquatableP", "Moon"]
 - ["s9EquatableP", "Planet"]
+- ["s9EquatableP", "Star"]
 - ["s9EquatableP", "hashValue"]
 - !private ["s9EquatableP", "init"]
 - !private ["s9EquatableP", "myType"]
@@ -50,7 +60,9 @@ depends-member:
 - !private ["s26ExpressibleByStringLiteralP", "init"]
 - !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
 - !private ["s17FixedWidthIntegerP", "hashValue"]
+- ["s8HashableP", "Moon"]
 - ["s8HashableP", "Planet"]
+- ["s8HashableP", "Star"]
 - ["s8HashableP", "hashValue"]
 - !private ["s8HashableP", "init"]
 - !private ["s8HashableP", "myType"]
@@ -58,9 +70,18 @@ depends-member:
 - ["s8HashableP", ""]
 - !private ["Si", "hashValue"]
 - !private ["s25LosslessStringConvertibleP", "hashValue"]
+- !private ["s25LosslessStringConvertibleP", "init"]
 - !private ["s10MirrorPathP", "hashValue"]
+- !private ["s10MirrorPathP", "init"]
+- !private ["So8NSCodingP", "init"]
+- !private ["So9NSCopyingP", "init"]
+- !private ["So21NSItemProviderReadingP", "init"]
+- !private ["So21NSItemProviderWritingP", "init"]
+- !private ["So16NSMutableCopyingP", "init"]
 - ["So8NSObjectC", "Int"]
+- ["So8NSObjectC", "String"]
 - ["So8NSObjectC", "appearanceLevel"]
+- ["So8NSObjectC", "getTextIcon"]
 - ["So8NSObjectC", "init"]
 - ["So8NSObjectC", "myType"]
 - ["So8NSObjectC", "pieceType"]
@@ -69,28 +90,47 @@ depends-member:
 - !private ["So16NSObjectProtocolP", "myType"]
 - ["So16NSObjectProtocolP", "pieceType"]
 - ["So16NSObjectProtocolP", ""]
+- !private ["So14NSSecureCodingP", "init"]
+- !private ["So8NSStringC", "init"]
 - !private ["s7NumericP", "hashValue"]
 - ["10Sun_Switch10PieceModelC", "Int"]
+- ["10Sun_Switch10PieceModelC", "String"]
 - !private ["10Sun_Switch10PieceModelC", "appearanceLevel"]
 - ["10Sun_Switch10PieceModelC", "deinit"]
+- ["10Sun_Switch10PieceModelC", "getTextIcon"]
 - ["10Sun_Switch10PieceModelC", "init"]
 - !private ["10Sun_Switch10PieceModelC", "myType"]
 - ["10Sun_Switch10PieceModelC", "pieceType"]
+- !private ["s26RangeReplaceableCollectionP", "init"]
+- !private ["s8SequenceP", "init"]
 - !private ["s13SignedIntegerP", "hashValue"]
 - !private ["s13SignedNumericP", "hashValue"]
 - !private ["s12StaticStringV", "init"]
 - !private ["s10StrideableP", "hashValue"]
+- !private ["SS", "init"]
+- !private ["s14StringProtocolP", "init"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "init"]
+- !private ["s23_BidirectionalIndexableP", "init"]
 - !private ["s18_BitwiseOperationsP", "hashValue"]
 - !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
 - !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "hashValue"]
 - !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
 - !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s33_ExpressibleByStringInterpolationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s10_IndexableP", "init"]
+- !private ["s14_IndexableBaseP", "init"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "myType"]
 - ["10Foundation27_KeyValueCodingAndObservingP", "pieceType"]
 - ["10Foundation27_KeyValueCodingAndObservingP", ""]
 - !private ["s21_ObjectiveCBridgeableP", "hashValue"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s26_RangeReplaceableIndexableP", "init"]
 - !private ["s11_StrideableP", "hashValue"]
+- !private ["s16_SwiftStringViewP", "init"]
 - ["10Sun_Switch9pieceTypeO", "Moon"]
 - ["10Sun_Switch9pieceTypeO", "Planet"]
 - ["10Sun_Switch9pieceTypeO", "Star"]
@@ -98,8 +138,10 @@ depends-member:
 - ["10Sun_Switch9pieceTypeO", "deinit"]
 - ["10Sun_Switch9pieceTypeO", "hashValue"]
 depends-nominal:
+- !private "s23BidirectionalCollectionP"
 - !private "s13BinaryIntegerP"
 - "s7CVarArgP"
+- !private "s10CollectionP"
 - !private "s10ComparableP"
 - "s28CustomDebugStringConvertibleP"
 - !private "s29CustomPlaygroundQuickLookableP"
@@ -117,22 +159,43 @@ depends-nominal:
 - !private "Si"
 - !private "s25LosslessStringConvertibleP"
 - !private "s10MirrorPathP"
+- !private "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
+- !private "So16NSMutableCopyingP"
 - "So8NSObjectC"
 - "So16NSObjectProtocolP"
+- !private "So14NSSecureCodingP"
+- !private "So8NSStringC"
 - !private "s7NumericP"
 - "10Sun_Switch10PieceModelC"
+- !private "s26RangeReplaceableCollectionP"
+- !private "s8SequenceP"
 - !private "s13SignedIntegerP"
 - !private "s13SignedNumericP"
 - !private "s12StaticStringV"
 - !private "s10StrideableP"
+- !private "SS"
+- !private "s14StringProtocolP"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "s23_BidirectionalIndexableP"
 - !private "s18_BitwiseOperationsP"
 - !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
 - !private "s35_ExpressibleByBuiltinIntegerLiteralP"
 - !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s39_ExpressibleByBuiltinUTF16StringLiteralP"
 - !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s33_ExpressibleByStringInterpolationP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "s10_IndexableP"
+- !private "s14_IndexableBaseP"
 - "10Foundation27_KeyValueCodingAndObservingP"
 - !private "s21_ObjectiveCBridgeableP"
+- !private "s26_RangeReplaceableIndexableP"
 - !private "s11_StrideableP"
+- !private "s16_SwiftStringViewP"
 - "10Sun_Switch9pieceTypeO"
 depends-dynamic-lookup:
 depends-external:
@@ -156,8 +219,16 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/GameplayKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/ModelIO.framework/Headers/ModelIO.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/usr/include/Darwin.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/GLKit.framework/Headers/GLKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/SceneKit.framework/Headers/SceneKit.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/GameplayKit.framework/Headers/GameplayKit.apinotes"
-interface-hash: "25865fa91d61893e5e224034848fe6b5"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "cf67e4879941267c5d7e1c07e5b8ceb3"

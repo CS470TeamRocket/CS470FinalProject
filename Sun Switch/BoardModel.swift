@@ -9,8 +9,8 @@
 import Foundation
 
 class BoardModel: NSObject {
-	private let rows: Int = 5 // Number of starting Rows. The number of columns is determined in the RowModel
-	private var currentRows : Int = 5 // Current number of rows. This cannot exceed rows
+	private let rows: Int = 8 // Number of starting Rows. The number of columns is determined in the RowModel
+	private var currentRows : Int = 8 // Current number of rows. This cannot exceed rows
     private var columns : Int = 8
 	private var board : [RowModel] = [RowModel]()
 	private var diff : Int
@@ -80,7 +80,9 @@ class BoardModel: NSObject {
     }
     
     func printBoard() {
-        print(board)
+        for i in 0 ..< rows {
+            board[i].printRow()
+        }
     }
     
 }

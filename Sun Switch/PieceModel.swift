@@ -25,5 +25,18 @@ class PieceModel : NSObject {
         myType = type
         super.init()
     }
+    func getTextIcon() ->String {
+        switch(myType) {
+        case pieceType.Planet:
+            return "P"
+        case pieceType.Moon:
+            return "M"
+        case pieceType.Star:
+            return "S"
+        }
+    }
+    func getType() ->pieceType {
+        return myType
+    }
     
 }
