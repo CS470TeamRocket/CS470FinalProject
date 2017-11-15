@@ -7,6 +7,15 @@
 //
 
 import Foundation
+enum direction {
+	case .left
+	case .right
+	case .up
+	case .down
+}
+
+typealias BoardIndex = (row: Int, col: Int)
+typealias Move = (Int, Int, direction)
 
 class BoardModel: NSObject {
 	private let rows: Int = 8 // Number of starting Rows. The number of columns is determined in the RowModel
@@ -84,5 +93,97 @@ class BoardModel: NSObject {
             board[i].printRow()
         }
     }
-    
-}
+    func rotateRow(row: Int, dir: direction )-> Bool{
+		if(row < rows) {
+			board[row].rotate(dir)
+			return true
+		}
+		else {
+			return false
+		}
+	}
+	
+	func checkAll() {
+		let matched = [BoardIndex]()
+		for i in 0 ..< rows {
+			for j in 0 ..< columns {
+				if(checkMatch((i, j))) {
+					matched.append((i,j))
+				}
+			}
+		}
+	}
+	
+	func getPiece(index: BoardIndex) {
+		return board[index.row].getPiece(index.col)
+	}
+	
+	func checkMatch(index: BoardIndex)->Bool {
+		return scanVert(index) >= 3 || scanHoriz(index) >= 3
+	}
+	
+	func scanVert(index: BoardIndex) -> Int {
+		let row = index.row 
+		let col = index.col
+		var matchSize = 1
+		var piece = getPiece(index)
+		var matched = true
+		var i = 1
+		//Check above
+		while(row-i >= 0 && matched) {
+			if(piece.isMatching(getPiece((row-i, col)))) {
+				matchSize += 1
+			} else {
+				matched = false
+			}
+			i += 1
+		}
+		
+		//Check below 
+		i = 1
+		matched = true
+		while(row+i < rows && matched) {
+			if(piece.isMatching(getPiece((row+i, col)))) {
+				matchSize +=1
+			} else {
+				matched = false
+			}
+			i += 1
+		}
+			
+		return (matchSize >= 3) ? matchSize : 0
+	}
+	
+	func scanHoriz(index: BoardIndex) -> Int {
+		let row = index.row 
+		let col = index.col
+		var matchSize = 1
+		var piece = getPiece(index)
+		var matched = true
+		var i = 1
+		//Check left
+		while(col-i >= 0 && matched) {
+			if(piece.isMatching(getPiece((row, col-i)))) {
+				matchSize += 1
+			} else {
+				matched = false
+			}
+			i += 1
+		}
+		
+		//Check below 
+		i = 1
+		matched = true
+		while(col+i < columns && matched) {
+			if(piece.isMatching(getPiece((row, col+i)))) {
+				matchSize +=1
+			} else {
+				matched = false
+			}
+			i += 1
+		}
+			
+		return (matchSize >= 3) ? matchSize : 0
+	}
+	
+}	

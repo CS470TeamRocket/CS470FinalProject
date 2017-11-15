@@ -26,6 +26,10 @@ class RowModel :NSObject {
     func addPiece(piece: PieceModel) {
         pieces.append(piece)
     }
+	
+	func getPiece(col: Int) {
+		return pieces[col]
+	}
     
     func printRow() {
         var output : String = "[ "
@@ -35,4 +39,13 @@ class RowModel :NSObject {
         output += "]"
         print(output)
     }
+	
+	func rotate(dir: direction){
+		if(dir == direction.left) {
+			pieces.append(pieces.removeFirst())
+		}
+		else {
+			pieces.insert(pieces.removeLast(), at: 0)
+		}
+	}
 }

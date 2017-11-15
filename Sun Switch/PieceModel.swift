@@ -38,5 +38,9 @@ class PieceModel : NSObject {
     func getType() ->pieceType {
         return myType
     }
+	
+	func isMatching(other: PieceModel) ->Bool {
+		return myType == other.getType()
+	}
     
 }
