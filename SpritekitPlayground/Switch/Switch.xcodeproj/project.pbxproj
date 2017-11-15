@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F9825641FBCE9970051F2AC /* AbilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9825631FBCE9970051F2AC /* AbilityView.swift */; };
+		3F9825671FBCEB440051F2AC /* AbilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9825661FBCEB440051F2AC /* AbilityModel.swift */; };
+		3F98256A1FBCF5FE0051F2AC /* TimeStopAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9825691FBCF5FE0051F2AC /* TimeStopAbility.swift */; };
 		AE806CAB1FB320B4007784F6 /* CharChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE806CAA1FB320B4007784F6 /* CharChoice.swift */; };
 		AE806CAD1FB322CB007784F6 /* CharView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE806CAC1FB322CB007784F6 /* CharView.swift */; };
 		AE806CAF1FB3B1B6007784F6 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE806CAE1FB3B1B6007784F6 /* GameViewController.swift */; };
@@ -29,6 +32,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F9825631FBCE9970051F2AC /* AbilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbilityView.swift; sourceTree = "<group>"; };
+		3F9825661FBCEB440051F2AC /* AbilityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbilityModel.swift; sourceTree = "<group>"; };
+		3F9825691FBCF5FE0051F2AC /* TimeStopAbility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStopAbility.swift; sourceTree = "<group>"; };
 		AE53D0F31FB18C470074CBDE /* Switch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Switch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE806CAA1FB320B4007784F6 /* CharChoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharChoice.swift; sourceTree = "<group>"; };
 		AE806CAC1FB322CB007784F6 /* CharView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharView.swift; sourceTree = "<group>"; };
@@ -62,6 +68,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F9825651FBCEB1D0051F2AC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3F9825661FBCEB440051F2AC /* AbilityModel.swift */,
+				3F9825681FBCF5D80051F2AC /* Abilities */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		3F9825681FBCF5D80051F2AC /* Abilities */ = {
+			isa = PBXGroup;
+			children = (
+				3F9825691FBCF5FE0051F2AC /* TimeStopAbility.swift */,
+			);
+			name = Abilities;
+			sourceTree = "<group>";
+		};
 		AE53D0EA1FB18C470074CBDE = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +104,7 @@
 		AEFA19A61FB190890029E28C /* Switch */ = {
 			isa = PBXGroup;
 			children = (
+				3F9825651FBCEB1D0051F2AC /* Models */,
 				AEFA1A2B1FB313460029E28C /* Gifs */,
 				AEFA1A1D1FB2F5610029E28C /* Designs */,
 				AEFA1A2A1FB313100029E28C /* GameScene */,
@@ -108,6 +132,7 @@
 			children = (
 				AEFA1A271FB312D40029E28C /* CharacterView.swift */,
 				AE806CAC1FB322CB007784F6 /* CharView.swift */,
+				3F9825631FBCE9970051F2AC /* AbilityView.swift */,
 			);
 			name = SubViews;
 			sourceTree = "<group>";
@@ -236,7 +261,10 @@
 				AEFA1A2E1FB314CD0029E28C /* CharacterViewController.swift in Sources */,
 				AEFA1A181FB2DC1A0029E28C /* HomeViewController.swift in Sources */,
 				AEFA1A161FB2DABD0029E28C /* Swift+Gif.swift in Sources */,
+				3F9825641FBCE9970051F2AC /* AbilityView.swift in Sources */,
+				3F9825671FBCEB440051F2AC /* AbilityModel.swift in Sources */,
 				AEFA1A251FB308770029E28C /* SettingsViewController.swift in Sources */,
+				3F98256A1FBCF5FE0051F2AC /* TimeStopAbility.swift in Sources */,
 				AEFA19B81FB190890029E28C /* GameScene.swift in Sources */,
 				AEFA19B31FB190890029E28C /* AppDelegate.swift in Sources */,
 				AEFA1A281FB312D40029E28C /* CharacterView.swift in Sources */,

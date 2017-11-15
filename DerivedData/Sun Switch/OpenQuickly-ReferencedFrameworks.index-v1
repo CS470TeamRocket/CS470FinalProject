@@ -3,10 +3,10 @@
 <plist version="1.0">
 <array>
 	<string>GameplayKit</string>
-	<string>Foundation</string>
+	<string>XCTest</string>
 	<string>SpriteKit</string>
 	<string>Sun</string>
 	<string>UIKit</string>
-	<string>XCTest</string>
+	<string>Foundation</string>
 </array>
 </plist>
