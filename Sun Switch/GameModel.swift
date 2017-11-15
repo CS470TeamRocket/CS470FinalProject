@@ -48,6 +48,10 @@ class GameModel: NSObject {
 			}
 		}
 	}
+    
+    func makeMove(move: Move) -> Bool{
+        return board.makeMove(move: move)
+    }
 	
 	func resetTimer() {
 	//Set the timer based on the current level.

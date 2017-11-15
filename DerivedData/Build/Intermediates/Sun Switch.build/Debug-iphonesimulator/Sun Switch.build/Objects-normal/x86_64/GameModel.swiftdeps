@@ -14,8 +14,10 @@ depends-top-level:
 - !private ">="
 - "AssignmentPrecedence"
 - "BoardModel"
+- "Bool"
 - "GameModel"
 - "Int"
+- "Move"
 - "NSObject"
 - !private "StringLiteralType"
 - "TimeInterval"
@@ -23,6 +25,7 @@ depends-member:
 - !private ["s19BinaryFloatingPointP", "init"]
 - !private ["10Sun_Switch10BoardModelC", "advanceLevel"]
 - !private ["10Sun_Switch10BoardModelC", "init"]
+- !private ["10Sun_Switch10BoardModelC", "makeMove"]
 - !private ["10Sun_Switch10BoardModelC", "missingRows"]
 - !private ["10Sun_Switch10BoardModelC", "printBoard"]
 - !private ["10Sun_Switch10BoardModelC", "restoreRow"]
@@ -34,6 +37,7 @@ depends-member:
 - !private ["s7CVarArgP", "getNextGoal"]
 - !private ["s7CVarArgP", "init"]
 - !private ["s7CVarArgP", "level"]
+- !private ["s7CVarArgP", "makeMove"]
 - !private ["s7CVarArgP", "missingRows"]
 - !private ["s7CVarArgP", "nextGoal"]
 - !private ["s7CVarArgP", "printBoard"]
@@ -51,6 +55,7 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "getNextGoal"]
 - !private ["s28CustomDebugStringConvertibleP", "init"]
 - !private ["s28CustomDebugStringConvertibleP", "level"]
+- !private ["s28CustomDebugStringConvertibleP", "makeMove"]
 - !private ["s28CustomDebugStringConvertibleP", "missingRows"]
 - !private ["s28CustomDebugStringConvertibleP", "nextGoal"]
 - !private ["s28CustomDebugStringConvertibleP", "printBoard"]
@@ -72,6 +77,7 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "getNextGoal"]
 - !private ["s23CustomStringConvertibleP", "init"]
 - !private ["s23CustomStringConvertibleP", "level"]
+- !private ["s23CustomStringConvertibleP", "makeMove"]
 - !private ["s23CustomStringConvertibleP", "missingRows"]
 - !private ["s23CustomStringConvertibleP", "nextGoal"]
 - !private ["s23CustomStringConvertibleP", "printBoard"]
@@ -94,6 +100,7 @@ depends-member:
 - !private ["s9EquatableP", "getNextGoal"]
 - !private ["s9EquatableP", "init"]
 - !private ["s9EquatableP", "level"]
+- !private ["s9EquatableP", "makeMove"]
 - !private ["s9EquatableP", "missingRows"]
 - !private ["s9EquatableP", "nextGoal"]
 - !private ["s9EquatableP", "printBoard"]
@@ -111,7 +118,9 @@ depends-member:
 - !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
 - !private ["s13FloatingPointP", "init"]
 - ["10Sun_Switch9GameModelC", "BoardModel"]
+- ["10Sun_Switch9GameModelC", "Bool"]
 - ["10Sun_Switch9GameModelC", "Int"]
+- ["10Sun_Switch9GameModelC", "Move"]
 - ["10Sun_Switch9GameModelC", "TimeInterval"]
 - ["10Sun_Switch9GameModelC", "advanceLevel"]
 - !private ["10Sun_Switch9GameModelC", "board"]
@@ -119,6 +128,7 @@ depends-member:
 - ["10Sun_Switch9GameModelC", "getNextGoal"]
 - ["10Sun_Switch9GameModelC", "init"]
 - !private ["10Sun_Switch9GameModelC", "level"]
+- ["10Sun_Switch9GameModelC", "makeMove"]
 - !private ["10Sun_Switch9GameModelC", "nextGoal"]
 - ["10Sun_Switch9GameModelC", "printBoard"]
 - ["10Sun_Switch9GameModelC", "resetTimer"]
@@ -134,6 +144,7 @@ depends-member:
 - !private ["s8HashableP", "getNextGoal"]
 - !private ["s8HashableP", "init"]
 - !private ["s8HashableP", "level"]
+- !private ["s8HashableP", "makeMove"]
 - !private ["s8HashableP", "missingRows"]
 - !private ["s8HashableP", "nextGoal"]
 - !private ["s8HashableP", "printBoard"]
@@ -146,13 +157,16 @@ depends-member:
 - !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
 - !private ["s25LosslessStringConvertibleP", "init"]
 - ["So8NSObjectC", "BoardModel"]
+- ["So8NSObjectC", "Bool"]
 - ["So8NSObjectC", "Int"]
+- ["So8NSObjectC", "Move"]
 - ["So8NSObjectC", "TimeInterval"]
 - ["So8NSObjectC", "advanceLevel"]
 - ["So8NSObjectC", "board"]
 - ["So8NSObjectC", "getNextGoal"]
 - ["So8NSObjectC", "init"]
 - ["So8NSObjectC", "level"]
+- ["So8NSObjectC", "makeMove"]
 - !private ["So8NSObjectC", "missingRows"]
 - ["So8NSObjectC", "nextGoal"]
 - ["So8NSObjectC", "printBoard"]
@@ -169,6 +183,7 @@ depends-member:
 - !private ["So16NSObjectProtocolP", "getNextGoal"]
 - !private ["So16NSObjectProtocolP", "init"]
 - !private ["So16NSObjectProtocolP", "level"]
+- !private ["So16NSObjectProtocolP", "makeMove"]
 - !private ["So16NSObjectProtocolP", "missingRows"]
 - !private ["So16NSObjectProtocolP", "nextGoal"]
 - !private ["So16NSObjectProtocolP", "printBoard"]
@@ -197,6 +212,7 @@ depends-member:
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "getNextGoal"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "level"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "makeMove"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "missingRows"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "nextGoal"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "printBoard"]
@@ -284,4 +300,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/SceneKit.framework/Headers/SceneKit.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/GameplayKit.framework/Headers/GameplayKit.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
-interface-hash: "59187ceef91407f504a1dc438e259cf3"
+interface-hash: "c52468aacda70edd83165b6a4cda1d6d"

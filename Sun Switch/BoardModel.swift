@@ -8,14 +8,14 @@
 
 import Foundation
 enum direction {
-	case .left
-	case .right
-	case .up
-	case .down
+	case left
+	case right
+	case up
+	case down
 }
 
 typealias BoardIndex = (row: Int, col: Int)
-typealias Move = (Int, Int, direction)
+typealias Move = (index: BoardIndex, dir: direction)
 
 class BoardModel: NSObject {
 	private let rows: Int = 8 // Number of starting Rows. The number of columns is determined in the RowModel
@@ -30,6 +30,11 @@ class BoardModel: NSObject {
 		super.init()
 		generatePieces(startLevel: diff)
 		generateBoard(startLevel: diff)
+        let matchList = checkAll()
+        for i in 0 ..< matchList.count {
+            print(matchList[i])
+        }
+        update()
 	}
 	
 	func generatePieces(startLevel: Int) {
@@ -53,9 +58,9 @@ class BoardModel: NSObject {
 	func newPiece() -> PieceModel{
 		//This should hopefully create a new piece based off the type chosen at random.
 		
-		let index = Int(arc4random_uniform(UInt32(validPieces.count)))
-        return PieceModel(type: validPieces[index])
+        return PieceModel(valid: validPieces)
 	}
+    
 	
 	func advanceLevel() {
 		//Advance board level.
@@ -95,7 +100,7 @@ class BoardModel: NSObject {
     }
     func rotateRow(row: Int, dir: direction )-> Bool{
 		if(row < rows) {
-			board[row].rotate(dir)
+            board[row].rotate(dir: dir)
 			return true
 		}
 		else {
@@ -103,35 +108,36 @@ class BoardModel: NSObject {
 		}
 	}
 	
-	func checkAll() {
-		let matched = [BoardIndex]()
+	func checkAll() -> [BoardIndex]{
+		var matched = [BoardIndex]()
 		for i in 0 ..< rows {
 			for j in 0 ..< columns {
-				if(checkMatch((i, j))) {
+                if(checkMatch(index: (i, j))) {
 					matched.append((i,j))
 				}
 			}
 		}
+        return matched
 	}
 	
-	func getPiece(index: BoardIndex) {
-		return board[index.row].getPiece(index.col)
+	func getPiece(index: BoardIndex) -> PieceModel {
+        return board[index.row].getPiece(col: index.col)
 	}
 	
 	func checkMatch(index: BoardIndex)->Bool {
-		return scanVert(index) >= 3 || scanHoriz(index) >= 3
+        return scanVert(index: index) >= 3 || scanHoriz(index: index) >= 3
 	}
 	
 	func scanVert(index: BoardIndex) -> Int {
 		let row = index.row 
 		let col = index.col
 		var matchSize = 1
-		var piece = getPiece(index)
+        let piece = getPiece(index: index)
 		var matched = true
 		var i = 1
 		//Check above
 		while(row-i >= 0 && matched) {
-			if(piece.isMatching(getPiece((row-i, col)))) {
+            if(piece.isMatching(other: getPiece(index: (row-i, col)))) {
 				matchSize += 1
 			} else {
 				matched = false
@@ -143,8 +149,8 @@ class BoardModel: NSObject {
 		i = 1
 		matched = true
 		while(row+i < rows && matched) {
-			if(piece.isMatching(getPiece((row+i, col)))) {
-				matchSize +=1
+            if(piece.isMatching(other: getPiece(index: (row+i, col)))) {
+				matchSize += 1
 			} else {
 				matched = false
 			}
@@ -153,17 +159,63 @@ class BoardModel: NSObject {
 			
 		return (matchSize >= 3) ? matchSize : 0
 	}
-	
+    
+    func makeMove(move: Move) ->Bool {
+        if(checkMove(move: move)) {
+            swap(move: move)
+            update()
+            return true
+        }
+        return false
+    }
+    
+    func update() {
+        while(checkAll().count > 0) {
+            clearPieces(list: checkAll())
+        }
+    }
+    
+    func checkMove(move: Move) -> Bool {
+        let newIndex = swap(move: move)
+        let isMatch = checkMatch(index:move.index) || checkMatch(index: newIndex)
+        swap(move: move)
+        return isMatch
+    }
+    
+    func swap(move: Move) -> BoardIndex {
+        var offsetX = move.index.col
+        var offsetY = move.index.row
+        switch (move.dir) {
+        case direction.up:
+            offsetY = -1
+        case direction.down:
+            offsetY = 1
+        case direction.left:
+            offsetX = -1
+        case direction.right:
+            offsetX = 1
+        }
+        
+        getPiece(index: move.index).swap(new: getPiece(index: (offsetY, offsetX)))
+        return (offsetY, offsetX)
+    }
+    func clearPieces(list: [BoardIndex]) {
+        for idx in list {
+            let piece = getPiece(index: idx)
+            piece.clear()
+            piece.genType(valid: validPieces)
+        }
+    }
 	func scanHoriz(index: BoardIndex) -> Int {
 		let row = index.row 
 		let col = index.col
 		var matchSize = 1
-		var piece = getPiece(index)
+        let piece = getPiece(index: index)
 		var matched = true
 		var i = 1
 		//Check left
 		while(col-i >= 0 && matched) {
-			if(piece.isMatching(getPiece((row, col-i)))) {
+            if(piece.isMatching(other: getPiece(index: (row, col-i)))) {
 				matchSize += 1
 			} else {
 				matched = false
@@ -175,8 +227,8 @@ class BoardModel: NSObject {
 		i = 1
 		matched = true
 		while(col+i < columns && matched) {
-			if(piece.isMatching(getPiece((row, col+i)))) {
-				matchSize +=1
+            if(piece.isMatching(other: getPiece(index: (row, col+i)))) {
+				matchSize += 1
 			} else {
 				matched = false
 			}
