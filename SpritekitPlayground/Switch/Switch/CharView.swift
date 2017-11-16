@@ -10,24 +10,18 @@ import UIKit
 
 class CharView: UIView {
     let img: UIImage!
-    let name: String!
-    let ability: String!
-    let desc: String!
+    let model: CharacterModel!
     
-    init(frame: CGRect, image: UIImage, name: String, ability: String, desc: String) {
-        self.img = image
-        self.name = name
-        self.ability = ability
-        self.desc = desc
+    init(frame: CGRect, model: CharacterModel) {
+        self.img = UIImage(named: model.getImg())
+        self.model = model
         super.init(frame: frame)
         self.layer.cornerRadius = 10
     }
     
     required init(coder decoder: NSCoder) {
         self.img = nil
-        self.name = nil
-        self.ability = nil
-        self.desc = nil
+        self.model = nil
         super.init(coder: decoder)!
     }
     /*

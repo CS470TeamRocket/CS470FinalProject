@@ -10,9 +10,9 @@ import Foundation
 
 class AbilityModel {
     var image: String! = nil
-    var name: String! = nil
-    var desc: String! = nil
-    var level: Int! = nil
+    var name: String! = "default name"
+    var desc: String! = "default description"
+    var level: Int! = 1
     
     init() {
         

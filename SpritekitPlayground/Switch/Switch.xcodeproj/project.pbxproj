@@ -10,6 +10,7 @@
 		3F9825641FBCE9970051F2AC /* AbilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9825631FBCE9970051F2AC /* AbilityView.swift */; };
 		3F9825671FBCEB440051F2AC /* AbilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9825661FBCEB440051F2AC /* AbilityModel.swift */; };
 		3F98256A1FBCF5FE0051F2AC /* TimeStopAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9825691FBCF5FE0051F2AC /* TimeStopAbility.swift */; };
+		3F98256C1FBD07680051F2AC /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98256B1FBD07680051F2AC /* CharacterModel.swift */; };
 		AE806CAB1FB320B4007784F6 /* CharChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE806CAA1FB320B4007784F6 /* CharChoice.swift */; };
 		AE806CAD1FB322CB007784F6 /* CharView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE806CAC1FB322CB007784F6 /* CharView.swift */; };
 		AE806CAF1FB3B1B6007784F6 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE806CAE1FB3B1B6007784F6 /* GameViewController.swift */; };
@@ -22,10 +23,7 @@
 		AEFA19BA1FB190890029E28C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEFA19B11FB190890029E28C /* Info.plist */; };
 		AEFA1A161FB2DABD0029E28C /* Swift+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFA1A151FB2DABD0029E28C /* Swift+Gif.swift */; };
 		AEFA1A181FB2DC1A0029E28C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFA1A171FB2DC1A0029E28C /* HomeViewController.swift */; };
-		AEFA1A1C1FB2DE6B0029E28C /* sun_title.gif in Resources */ = {isa = PBXBuildFile; fileRef = AEFA1A1B1FB2DE6B0029E28C /* sun_title.gif */; };
 		AEFA1A1F1FB2F5A60029E28C /* settingsPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFA1A1E1FB2F5A60029E28C /* settingsPopUp.swift */; };
-		AEFA1A221FB2FD340029E28C /* s1.gif in Resources */ = {isa = PBXBuildFile; fileRef = AEFA1A201FB2FD340029E28C /* s1.gif */; };
-		AEFA1A231FB2FD340029E28C /* s2.gif in Resources */ = {isa = PBXBuildFile; fileRef = AEFA1A211FB2FD340029E28C /* s2.gif */; };
 		AEFA1A251FB308770029E28C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFA1A241FB308770029E28C /* SettingsViewController.swift */; };
 		AEFA1A281FB312D40029E28C /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFA1A271FB312D40029E28C /* CharacterView.swift */; };
 		AEFA1A2E1FB314CD0029E28C /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFA1A2D1FB314CD0029E28C /* CharacterViewController.swift */; };
@@ -35,6 +33,7 @@
 		3F9825631FBCE9970051F2AC /* AbilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbilityView.swift; sourceTree = "<group>"; };
 		3F9825661FBCEB440051F2AC /* AbilityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbilityModel.swift; sourceTree = "<group>"; };
 		3F9825691FBCF5FE0051F2AC /* TimeStopAbility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStopAbility.swift; sourceTree = "<group>"; };
+		3F98256B1FBD07680051F2AC /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
 		AE53D0F31FB18C470074CBDE /* Switch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Switch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE806CAA1FB320B4007784F6 /* CharChoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharChoice.swift; sourceTree = "<group>"; };
 		AE806CAC1FB322CB007784F6 /* CharView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharView.swift; sourceTree = "<group>"; };
@@ -48,10 +47,7 @@
 		AEFA19B11FB190890029E28C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEFA1A151FB2DABD0029E28C /* Swift+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Swift+Gif.swift"; sourceTree = "<group>"; };
 		AEFA1A171FB2DC1A0029E28C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		AEFA1A1B1FB2DE6B0029E28C /* sun_title.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = sun_title.gif; path = ../../sun_title.gif; sourceTree = "<group>"; };
 		AEFA1A1E1FB2F5A60029E28C /* settingsPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingsPopUp.swift; sourceTree = "<group>"; };
-		AEFA1A201FB2FD340029E28C /* s1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = s1.gif; path = "../../space pics/s1.gif"; sourceTree = "<group>"; };
-		AEFA1A211FB2FD340029E28C /* s2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = s2.gif; path = "../../space pics/s2.gif"; sourceTree = "<group>"; };
 		AEFA1A241FB308770029E28C /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AEFA1A271FB312D40029E28C /* CharacterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 		AEFA1A2D1FB314CD0029E28C /* CharacterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				3F9825661FBCEB440051F2AC /* AbilityModel.swift */,
+				3F98256B1FBD07680051F2AC /* CharacterModel.swift */,
 				3F9825681FBCF5D80051F2AC /* Abilities */,
 			);
 			name = Models;
@@ -161,9 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				AEFA1A151FB2DABD0029E28C /* Swift+Gif.swift */,
-				AEFA1A201FB2FD340029E28C /* s1.gif */,
-				AEFA1A211FB2FD340029E28C /* s2.gif */,
-				AEFA1A1B1FB2DE6B0029E28C /* sun_title.gif */,
 			);
 			name = Gifs;
 			sourceTree = "<group>";
@@ -238,14 +232,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEFA1A1C1FB2DE6B0029E28C /* sun_title.gif in Resources */,
 				AEFA19B51FB190890029E28C /* LaunchScreen.storyboard in Resources */,
 				AEFA19B71FB190890029E28C /* GameScene.sks in Resources */,
 				AEFA19BA1FB190890029E28C /* Info.plist in Resources */,
-				AEFA1A221FB2FD340029E28C /* s1.gif in Resources */,
 				AEFA19B41FB190890029E28C /* Assets.xcassets in Resources */,
 				AEFA19B61FB190890029E28C /* Main.storyboard in Resources */,
-				AEFA1A231FB2FD340029E28C /* s2.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +253,7 @@
 				AEFA1A181FB2DC1A0029E28C /* HomeViewController.swift in Sources */,
 				AEFA1A161FB2DABD0029E28C /* Swift+Gif.swift in Sources */,
 				3F9825641FBCE9970051F2AC /* AbilityView.swift in Sources */,
+				3F98256C1FBD07680051F2AC /* CharacterModel.swift in Sources */,
 				3F9825671FBCEB440051F2AC /* AbilityModel.swift in Sources */,
 				AEFA1A251FB308770029E28C /* SettingsViewController.swift in Sources */,
 				3F98256A1FBCF5FE0051F2AC /* TimeStopAbility.swift in Sources */,

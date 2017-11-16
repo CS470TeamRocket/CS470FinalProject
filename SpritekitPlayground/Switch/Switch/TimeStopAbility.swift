@@ -9,7 +9,7 @@
 import Foundation
 
 class TimeStopAbility: AbilityModel {
-    init() {
+    override init() {
         super.init()
         image = "placeHolder"
         name = "TimeWarp"
@@ -17,12 +17,12 @@ class TimeStopAbility: AbilityModel {
         level = 1
     }
     
-    func doAbility() {
+    override func doAbility() {
         super.doAbility()
     }
     
-    func serialize() -> String {
-        a = super.serialize()
+    override func serialize() -> String {
+        let a = super.serialize()
         //add that this is a TimeStopAbility, and any other information
         return a
     }
