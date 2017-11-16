@@ -35,6 +35,10 @@ class CharacterViewController: UIViewController {
         print(bigImg)
         print(mainScrollView.contentSize)
     }
+    
+    func loadCharacterViews() {
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
