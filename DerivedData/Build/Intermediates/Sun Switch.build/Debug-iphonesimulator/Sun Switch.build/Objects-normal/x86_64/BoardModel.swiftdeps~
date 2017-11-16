@@ -12,10 +12,12 @@ provides-member:
 - ["10Sun_Switch10BoardModelC", ""]
 provides-dynamic-lookup:
 depends-top-level:
+- !private "!"
 - !private "&&"
 - !private "+"
 - !private "+="
 - !private "-"
+- !private "-="
 - !private "..<"
 - !private "<"
 - !private "<="
@@ -91,6 +93,7 @@ depends-member:
 - ["10Sun_Switch10BoardModelC", "scanVert"]
 - ["10Sun_Switch10BoardModelC", "swap"]
 - ["10Sun_Switch10BoardModelC", "update"]
+- ["10Sun_Switch10BoardModelC", "updateColumn"]
 - !private ["10Sun_Switch10BoardModelC", "validPieces"]
 - !private ["Sb", "_getBuiltinLogicValue"]
 - !private ["s7CVarArgP", "BoardIndex"]
@@ -115,11 +118,13 @@ depends-member:
 - !private ["s7CVarArgP", "getPiece"]
 - !private ["s7CVarArgP", "hashValue"]
 - ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "isEmpty"]
 - !private ["s7CVarArgP", "isMatching"]
 - !private ["s7CVarArgP", "last"]
 - !private ["s7CVarArgP", "newPiece"]
 - ["s7CVarArgP", "pieceType"]
 - !private ["s7CVarArgP", "print"]
+- !private ["s7CVarArgP", "printBoard"]
 - !private ["s7CVarArgP", "printRow"]
 - !private ["s7CVarArgP", "rotate"]
 - !private ["s7CVarArgP", "rows"]
@@ -129,6 +134,7 @@ depends-member:
 - !private ["s7CVarArgP", "subscript"]
 - !private ["s7CVarArgP", "swap"]
 - !private ["s7CVarArgP", "update"]
+- !private ["s7CVarArgP", "updateColumn"]
 - !private ["s7CVarArgP", "validPieces"]
 - ["s7CVarArgP", ""]
 - !private ["s10CollectionP", "append"]
@@ -140,6 +146,7 @@ depends-member:
 - !private ["s10CollectionP", "rotate"]
 - !private ["s10CollectionP", "subscript"]
 - !private ["s10ComparableP", "hashValue"]
+- !private ["s10ComparableP", "init"]
 - !private ["s28CustomDebugStringConvertibleP", "BoardIndex"]
 - !private ["s28CustomDebugStringConvertibleP", "PieceModel"]
 - ["s28CustomDebugStringConvertibleP", "RowModel"]
@@ -161,11 +168,13 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "generatePieces"]
 - !private ["s28CustomDebugStringConvertibleP", "getPiece"]
 - ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "isEmpty"]
 - !private ["s28CustomDebugStringConvertibleP", "isMatching"]
 - !private ["s28CustomDebugStringConvertibleP", "last"]
 - !private ["s28CustomDebugStringConvertibleP", "newPiece"]
 - ["s28CustomDebugStringConvertibleP", "pieceType"]
 - !private ["s28CustomDebugStringConvertibleP", "print"]
+- !private ["s28CustomDebugStringConvertibleP", "printBoard"]
 - !private ["s28CustomDebugStringConvertibleP", "printRow"]
 - !private ["s28CustomDebugStringConvertibleP", "rotate"]
 - !private ["s28CustomDebugStringConvertibleP", "rows"]
@@ -175,10 +184,12 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "subscript"]
 - !private ["s28CustomDebugStringConvertibleP", "swap"]
 - !private ["s28CustomDebugStringConvertibleP", "update"]
+- !private ["s28CustomDebugStringConvertibleP", "updateColumn"]
 - !private ["s28CustomDebugStringConvertibleP", "validPieces"]
 - ["s28CustomDebugStringConvertibleP", ""]
 - !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
 - !private ["s29CustomPlaygroundQuickLookableP", "hashValue"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
 - !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
 - !private ["s17CustomReflectableP", "append"]
 - !private ["s17CustomReflectableP", "count"]
@@ -212,11 +223,13 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "getPiece"]
 - !private ["s23CustomStringConvertibleP", "hashValue"]
 - ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "isEmpty"]
 - !private ["s23CustomStringConvertibleP", "isMatching"]
 - !private ["s23CustomStringConvertibleP", "last"]
 - !private ["s23CustomStringConvertibleP", "newPiece"]
 - ["s23CustomStringConvertibleP", "pieceType"]
 - !private ["s23CustomStringConvertibleP", "print"]
+- !private ["s23CustomStringConvertibleP", "printBoard"]
 - !private ["s23CustomStringConvertibleP", "printRow"]
 - !private ["s23CustomStringConvertibleP", "rotate"]
 - !private ["s23CustomStringConvertibleP", "rows"]
@@ -226,6 +239,7 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "subscript"]
 - !private ["s23CustomStringConvertibleP", "swap"]
 - !private ["s23CustomStringConvertibleP", "update"]
+- !private ["s23CustomStringConvertibleP", "updateColumn"]
 - !private ["s23CustomStringConvertibleP", "validPieces"]
 - ["s23CustomStringConvertibleP", ""]
 - !private ["s9DecodableP", "_getBuiltinLogicValue"]
@@ -243,11 +257,9 @@ depends-member:
 - !private ["s9EncodableP", "last"]
 - !private ["s9EncodableP", "subscript"]
 - !private ["s9EquatableP", "BoardIndex"]
-- !private ["s9EquatableP", "Moon"]
+- !private ["s9EquatableP", "Empty"]
 - !private ["s9EquatableP", "PieceModel"]
-- !private ["s9EquatableP", "Planet"]
 - ["s9EquatableP", "RowModel"]
-- !private ["s9EquatableP", "Star"]
 - !private ["s9EquatableP", "_getBuiltinLogicValue"]
 - !private ["s9EquatableP", "addPiece"]
 - !private ["s9EquatableP", "board"]
@@ -267,11 +279,13 @@ depends-member:
 - !private ["s9EquatableP", "getPiece"]
 - ["s9EquatableP", "hashValue"]
 - !private ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "isEmpty"]
 - !private ["s9EquatableP", "isMatching"]
 - ["s9EquatableP", "left"]
 - !private ["s9EquatableP", "newPiece"]
 - ["s9EquatableP", "pieceType"]
 - !private ["s9EquatableP", "print"]
+- !private ["s9EquatableP", "printBoard"]
 - !private ["s9EquatableP", "printRow"]
 - ["s9EquatableP", "right"]
 - !private ["s9EquatableP", "rotate"]
@@ -282,6 +296,7 @@ depends-member:
 - !private ["s9EquatableP", "swap"]
 - ["s9EquatableP", "up"]
 - !private ["s9EquatableP", "update"]
+- !private ["s9EquatableP", "updateColumn"]
 - !private ["s9EquatableP", "validPieces"]
 - ["s9EquatableP", ""]
 - !private ["s25ExpressibleByArrayLiteralP", "append"]
@@ -299,11 +314,9 @@ depends-member:
 - !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
 - !private ["s17FixedWidthIntegerP", "hashValue"]
 - !private ["s8HashableP", "BoardIndex"]
-- !private ["s8HashableP", "Moon"]
+- !private ["s8HashableP", "Empty"]
 - !private ["s8HashableP", "PieceModel"]
-- !private ["s8HashableP", "Planet"]
 - ["s8HashableP", "RowModel"]
-- !private ["s8HashableP", "Star"]
 - !private ["s8HashableP", "_getBuiltinLogicValue"]
 - !private ["s8HashableP", "addPiece"]
 - !private ["s8HashableP", "board"]
@@ -323,11 +336,13 @@ depends-member:
 - !private ["s8HashableP", "getPiece"]
 - ["s8HashableP", "hashValue"]
 - !private ["s8HashableP", "init"]
+- !private ["s8HashableP", "isEmpty"]
 - !private ["s8HashableP", "isMatching"]
 - ["s8HashableP", "left"]
 - !private ["s8HashableP", "newPiece"]
 - ["s8HashableP", "pieceType"]
 - !private ["s8HashableP", "print"]
+- !private ["s8HashableP", "printBoard"]
 - !private ["s8HashableP", "printRow"]
 - ["s8HashableP", "right"]
 - !private ["s8HashableP", "rotate"]
@@ -338,12 +353,15 @@ depends-member:
 - !private ["s8HashableP", "swap"]
 - ["s8HashableP", "up"]
 - !private ["s8HashableP", "update"]
+- !private ["s8HashableP", "updateColumn"]
 - !private ["s8HashableP", "validPieces"]
 - ["s8HashableP", ""]
 - !private ["Si", "hashValue"]
 - !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
 - !private ["s25LosslessStringConvertibleP", "hashValue"]
+- !private ["s25LosslessStringConvertibleP", "init"]
 - !private ["s10MirrorPathP", "hashValue"]
+- !private ["s10MirrorPathP", "init"]
 - !private ["s17MutableCollectionP", "append"]
 - !private ["s17MutableCollectionP", "count"]
 - !private ["s17MutableCollectionP", "getPiece"]
@@ -352,6 +370,11 @@ depends-member:
 - !private ["s17MutableCollectionP", "printRow"]
 - !private ["s17MutableCollectionP", "rotate"]
 - !private ["s17MutableCollectionP", "subscript"]
+- !private ["So8NSCodingP", "init"]
+- !private ["So9NSCopyingP", "init"]
+- !private ["So21NSItemProviderReadingP", "init"]
+- !private ["So21NSItemProviderWritingP", "init"]
+- !private ["So16NSMutableCopyingP", "init"]
 - ["So8NSObjectC", "BoardIndex"]
 - ["So8NSObjectC", "Bool"]
 - ["So8NSObjectC", "Int"]
@@ -376,6 +399,7 @@ depends-member:
 - ["So8NSObjectC", "generatePieces"]
 - ["So8NSObjectC", "getPiece"]
 - ["So8NSObjectC", "init"]
+- !private ["So8NSObjectC", "isEmpty"]
 - !private ["So8NSObjectC", "isMatching"]
 - ["So8NSObjectC", "makeMove"]
 - ["So8NSObjectC", "missingRows"]
@@ -393,6 +417,7 @@ depends-member:
 - !private ["So8NSObjectC", "setLast"]
 - ["So8NSObjectC", "swap"]
 - ["So8NSObjectC", "update"]
+- ["So8NSObjectC", "updateColumn"]
 - ["So8NSObjectC", "validPieces"]
 - ["So8NSObjectC", ""]
 - !private ["So16NSObjectProtocolP", "BoardIndex"]
@@ -414,10 +439,12 @@ depends-member:
 - !private ["So16NSObjectProtocolP", "generatePieces"]
 - !private ["So16NSObjectProtocolP", "getPiece"]
 - !private ["So16NSObjectProtocolP", "init"]
+- !private ["So16NSObjectProtocolP", "isEmpty"]
 - !private ["So16NSObjectProtocolP", "isMatching"]
 - !private ["So16NSObjectProtocolP", "newPiece"]
 - ["So16NSObjectProtocolP", "pieceType"]
 - !private ["So16NSObjectProtocolP", "print"]
+- !private ["So16NSObjectProtocolP", "printBoard"]
 - !private ["So16NSObjectProtocolP", "printRow"]
 - !private ["So16NSObjectProtocolP", "rotate"]
 - !private ["So16NSObjectProtocolP", "rows"]
@@ -426,12 +453,16 @@ depends-member:
 - !private ["So16NSObjectProtocolP", "setLast"]
 - !private ["So16NSObjectProtocolP", "swap"]
 - !private ["So16NSObjectProtocolP", "update"]
+- !private ["So16NSObjectProtocolP", "updateColumn"]
 - !private ["So16NSObjectProtocolP", "validPieces"]
 - ["So16NSObjectProtocolP", ""]
+- !private ["So14NSSecureCodingP", "init"]
+- !private ["So8NSStringC", "init"]
 - !private ["s7NumericP", "hashValue"]
 - !private ["10Sun_Switch10PieceModelC", "clear"]
 - !private ["10Sun_Switch10PieceModelC", "genType"]
 - !private ["10Sun_Switch10PieceModelC", "init"]
+- !private ["10Sun_Switch10PieceModelC", "isEmpty"]
 - !private ["10Sun_Switch10PieceModelC", "isMatching"]
 - !private ["10Sun_Switch10PieceModelC", "swap"]
 - !private ["s22RandomAccessCollectionP", "append"]
@@ -468,6 +499,10 @@ depends-member:
 - !private ["s13SignedNumericP", "hashValue"]
 - !private ["s12StaticStringV", "init"]
 - !private ["s10StrideableP", "hashValue"]
+- !private ["SS", "init"]
+- !private ["s14StringProtocolP", "init"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "init"]
 - !private ["s14_ArrayProtocolP", "append"]
 - !private ["s14_ArrayProtocolP", "count"]
 - !private ["s14_ArrayProtocolP", "getPiece"]
@@ -497,7 +532,10 @@ depends-member:
 - !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
 - !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "hashValue"]
 - !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
 - !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s33_ExpressibleByStringInterpolationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
 - !private ["s10_IndexableP", "append"]
 - !private ["s10_IndexableP", "count"]
 - !private ["s10_IndexableP", "getPiece"]
@@ -533,10 +571,12 @@ depends-member:
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "generatePieces"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "getPiece"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "isEmpty"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "isMatching"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "newPiece"]
 - ["10Foundation27_KeyValueCodingAndObservingP", "pieceType"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "print"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "printBoard"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "printRow"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "rotate"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "rows"]
@@ -545,6 +585,7 @@ depends-member:
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "setLast"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "swap"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "update"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "updateColumn"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "validPieces"]
 - ["10Foundation27_KeyValueCodingAndObservingP", ""]
 - !private ["s17_MutableIndexableP", "append"]
@@ -579,6 +620,7 @@ depends-member:
 - !private ["s26_RangeReplaceableIndexableP", "rotate"]
 - !private ["s26_RangeReplaceableIndexableP", "subscript"]
 - !private ["s11_StrideableP", "hashValue"]
+- !private ["s16_SwiftStringViewP", "init"]
 - ["10Sun_Switch9directionO", "__derived_enum_equals"]
 - ["10Sun_Switch9directionO", "deinit"]
 - ["10Sun_Switch9directionO", "down"]
@@ -586,9 +628,8 @@ depends-member:
 - ["10Sun_Switch9directionO", "left"]
 - ["10Sun_Switch9directionO", "right"]
 - ["10Sun_Switch9directionO", "up"]
-- !private ["10Sun_Switch9pieceTypeO", "Moon"]
-- !private ["10Sun_Switch9pieceTypeO", "Planet"]
-- !private ["10Sun_Switch9pieceTypeO", "Star"]
+- !private ["10Sun_Switch9pieceTypeO", "Empty"]
+- !private ["10Sun_Switch9pieceTypeO", "validPieces"]
 depends-nominal:
 - "Sa"
 - !private "s10ArraySliceV"
@@ -618,8 +659,15 @@ depends-nominal:
 - !private "s25LosslessStringConvertibleP"
 - !private "s10MirrorPathP"
 - "s17MutableCollectionP"
+- !private "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
+- !private "So16NSMutableCopyingP"
 - "So8NSObjectC"
 - "So16NSObjectProtocolP"
+- !private "So14NSSecureCodingP"
+- !private "So8NSStringC"
 - !private "s7NumericP"
 - !private "10Sun_Switch10PieceModelC"
 - "s22RandomAccessCollectionP"
@@ -630,6 +678,10 @@ depends-nominal:
 - !private "s13SignedNumericP"
 - !private "s12StaticStringV"
 - !private "s10StrideableP"
+- !private "SS"
+- !private "s14StringProtocolP"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
 - "s14_ArrayProtocolP"
 - "s23_BidirectionalIndexableP"
 - !private "s18_BitwiseOperationsP"
@@ -638,7 +690,10 @@ depends-nominal:
 - !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
 - !private "s35_ExpressibleByBuiltinIntegerLiteralP"
 - !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s39_ExpressibleByBuiltinUTF16StringLiteralP"
 - !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s33_ExpressibleByStringInterpolationP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
 - "s10_IndexableP"
 - "s14_IndexableBaseP"
 - "10Foundation27_KeyValueCodingAndObservingP"
@@ -647,6 +702,7 @@ depends-nominal:
 - "s22_RandomAccessIndexableP"
 - "s26_RangeReplaceableIndexableP"
 - !private "s11_StrideableP"
+- !private "s16_SwiftStringViewP"
 - "10Sun_Switch9directionO"
 - !private "10Sun_Switch9pieceTypeO"
 depends-dynamic-lookup:
@@ -683,4 +739,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/SceneKit.framework/Headers/SceneKit.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/GameplayKit.framework/Headers/GameplayKit.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
-interface-hash: "118c1a633a728c251da6d8fec2404a7a"
+interface-hash: "785f98757ce6e25de42a0e893c366745"
