@@ -6,7 +6,7 @@
 //  Copyright © 2017 CodeMunkeys. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class CharacterModel {
     let img: String!
@@ -21,8 +21,8 @@ class CharacterModel {
         self.desc = desc
     }
     
-    func getImg() -> String {
-        return img
+    func getImg() -> UIImage? {
+        return UIImage(named: img)
     }
     
     func getName() -> String {
