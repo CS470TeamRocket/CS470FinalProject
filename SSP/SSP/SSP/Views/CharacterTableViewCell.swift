@@ -1,34 +1,36 @@
 //
-//  CharacterCellView.swift
+//  CharacterTableViewCell.swift
 //  SSP
 //
-//  Created by student on 11/17/17.
+//  Created by student on 11/20/17.
 //  Copyright © 2017 CodeMunkeys. All rights reserved.
 //
 
 import UIKit
 
-class CharacterCellView: UITableViewCell {
-    
+class CharacterTableViewCell: UITableViewCell {
     @IBOutlet weak var cellImage: UIImageView!
-    @IBOutlet weak var cellLabel: UILabel!
-    
-    
+    @IBOutlet weak var cellDesc: UITextView!
+    @IBOutlet weak var cellTitle: UITextView!
+    //Stored to be passed to game
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
+
         // Configure the view for the selected state
     }
     
     func useCharacter(_ char: CharacterModel) {
         if let cImage = char.getImg()  {
-            cellImage.image = cImage
+            self.cellImage.image = cImage
         }
-        cellLabel.text = char.getName()
+        self.cellTitle.text = char.getName()
+        self.cellDesc.text = char.getDesc()
     }
+
 }

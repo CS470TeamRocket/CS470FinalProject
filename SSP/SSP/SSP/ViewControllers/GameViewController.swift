@@ -12,6 +12,7 @@ import GameplayKit
 
 class GameViewController: UIViewController {
     @IBOutlet weak var titl: UIImageView!
+    var character: CharacterModel! = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,5 +63,10 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    public func setCharacterForThisView(character: CharacterModel) {
+        self.character = character
+        print("Game started with character as \(character.getName())")
     }
 }
