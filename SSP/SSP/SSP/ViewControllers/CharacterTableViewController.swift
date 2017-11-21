@@ -12,17 +12,18 @@ class CharacterTableViewController: UITableViewController {
     var data: [CharacterModel] = []
     
     override func viewDidLoad() {
+        print("running viewDidLoad()")
         super.viewDidLoad()
         //Dummy information is loaded below
-        data.append(CharacterModel(img: "Person1", name: "person 1", ability: AbilityModel(),desc: "this is person 1's description"))
-        data.append(CharacterModel(img: "Person2", name: "person 2", ability: AbilityModel(),desc: "this is person 2's description"))
-        data.append(CharacterModel(img: "Person3", name: "person 3", ability: AbilityModel(),desc: "this is person 3's description"))
+        data.append(CharacterModel(img: "TempImages/Person1.jpg", name: "person 1", ability: AbilityModel(),desc: "this is person 1's description"))
+        data.append(CharacterModel(img: "TempImages/Person2.png", name: "person 2", ability: AbilityModel(),desc: "this is person 2's description"))
+        data.append(CharacterModel(img: "TempImages/Person3.jpg", name: "person 3", ability: AbilityModel(),desc: "this is person 3's description"))
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        self.tableView.reloadData()
+        // self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
