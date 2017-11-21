@@ -79,6 +79,15 @@ class BoardModel: NSObject {
 		//Any other cleanup we might need.
 	}
 	
+    func removeRow() {
+        if(currentRows <= 1) {
+            print("Error in removal!")
+            return
+        }
+        board.removeLast()
+        board.last!.setLast(val: true)
+        currentRows -= 1
+    }
     func createRow(count: Int, isLast: Bool) -> RowModel{
         let row = RowModel(row: count, col: columns, last: isLast)
         for _ in 0 ..< columns {
@@ -93,8 +102,12 @@ class BoardModel: NSObject {
         return 0
     }
     
+    func rowsLeft() -> Int {
+        return currentRows
+    }
+    
     func printBoard() {
-        for i in 0 ..< rows {
+        for i in 0 ..< currentRows {
             board[i].printRow()
         }
     }

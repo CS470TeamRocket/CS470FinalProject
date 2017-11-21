@@ -14,8 +14,12 @@ class GameModel: NSObject {
 	private var score : Int
 	private var nextGoal: Int = 1000
 	private var streak: Int = 0
-	private var timeLeft : TimeInterval = 0
-	
+	private var timeLeft : TimeInterval = 90
+    private var timer : Timer = Timer()
+    private var totalTime : Int = 0
+    private var currTime : Int = 0
+    
+
 	init(start: Int) {
 		level = start
 		score = 0
@@ -38,9 +42,9 @@ class GameModel: NSObject {
 		level += 1
 		board.advanceLevel()
         getNextGoal(current: level)
-		
-		resetTimer()
-		
+		timeLeft = getNextTime()
+		currTime = 0
+		streak += 1
 		//Check current "restore row" count. If enough, we restore a new row.
 		if(streak >= streakRestore) {
 			if( board.missingRows() > 0) {
@@ -53,20 +57,24 @@ class GameModel: NSObject {
         return board.makeMove(move: move)
     }
 	
+    func getNextTime() -> TimeInterval {
+        let cap: Int = 3
+        let maxTimer : TimeInterval = 10
+        let minTimer : TimeInterval = 5
+        if(level >= cap) {
+            return minTimer
+        }
+        else {
+            return maxTimer - TimeInterval(1 * (level - 1))
+        }
+    }
+    
 	func resetTimer() {
 	//Set the timer based on the current level.
 	//Timer starts at a large amount and decreases each level, capping at a yet undetermined amount.
-	
-		let cap: Int = 10
-		let maxTimer : TimeInterval = 300
-		let minTimer : TimeInterval = 30
-		if( level >= cap) {
-			timeLeft = minTimer
-		}
-		else {
-			timeLeft = maxTimer - TimeInterval( (level - 1) * 30)
-		}
-		
+        timeLeft = getNextTime()
+        print("Setting timer!")
+        timer = Timer.scheduledTimer(timeInterval: TimeInterval(1), target: self, selector: (#selector(timeTick)), userInfo: nil, repeats: true)
 		//Re-initialize the actual timer.
 	}
 	
@@ -75,6 +83,33 @@ class GameModel: NSObject {
 	}
     func printBoard() {
         board.printBoard()
+        print("")
     }
+    
+    @objc func timeTick() {
+        totalTime += 1
+        currTime += 1
+        if(currTime >= Int(timeLeft)) {
+            currTime = 0
+            timeUp()
+        }
+    }
+    
+    func timeUp() {
+        if(board.rowsLeft() <= 1){
+            gameOver()
+        }else {
+            streak = 0
+            board.removeRow()
+            printBoard()
+        }
+        
+    }
+    
+    func gameOver() {
+        print("Game Over! You lasted \(totalTime) seconds!")
+        timer.invalidate()
+    }
+    
 
 }

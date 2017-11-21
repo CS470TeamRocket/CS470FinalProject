@@ -212,6 +212,7 @@ SWIFT_CLASS("_TtC10Sun_Switch10BoardModel")
 
 SWIFT_CLASS("_TtC10Sun_Switch9GameModel")
 @interface GameModel : NSObject
+- (void)timeTick;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
