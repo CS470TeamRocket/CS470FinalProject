@@ -11,9 +11,16 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let game = GameModel(start: 3)
+        game.printBoard()
+        game.advanceLevel()
+        for i in 0 ..< 5 {
+            print(game.makeMove(move: ((4,i), direction.down)))
+            game.printBoard()
+        }
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
@@ -33,7 +40,7 @@ class GameViewController: UIViewController {
     }
 
     override var shouldAutorotate: Bool {
-        return true
+        return false
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
