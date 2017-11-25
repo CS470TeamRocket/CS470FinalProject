@@ -1,40 +1,26 @@
 //
-//  CharacterTableViewController.swift
+//  AbilityStoreTableViewController.swift
 //  SSP
 //
-//  Created by student on 11/20/17.
+//  Created by student on 11/24/17.
 //  Copyright © 2017 CodeMunkeys. All rights reserved.
 //
 
 import UIKit
 
-class CharacterTableViewController: UITableViewController {
-    var data: [CharacterModel] = []
-    
+class AbilityStoreTableViewController: UITableViewController {
+    var abilities: [AbilityModel] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        //generating Dummy information is loaded below
-        for i in 1...13 {
-            switch i%3{
-                
-            case 0:
-                data.append(CharacterModel(img: "Person1.jpg", name: "person \(i)", ability: AbilityModel(),desc: "this is person \(i)'s description"))
-            case 1:
-                data.append(CharacterModel(img: "Person2.png", name: "person \(i)", ability:
-                    AbilityModel(),desc: "this is person \(i)'s description"))
-            case 2:
-                data.append(CharacterModel(img: "Person3.jpeg", name: "person \(i)", ability: AbilityModel(),desc: "this is person \(i)'s description"))
-            default:
-                data.append(CharacterModel(img: "Person1.jpg", name: "person \(i)", ability: AbilityModel(),desc: "this is person \(i)'s description"))
-                
-            }
-        }
+        //Generating dummy data
+        abilities.append(TimeStopAbility())
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        // self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,17 +37,15 @@ class CharacterTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return data.count
+        return abilities.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier", for: indexPath) as! CharacterTableViewCell
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AbilityCell", for: indexPath) as! AbilityStoreTableViewCell
+
         // Configure the cell...
-        cell.useCharacter(data[indexPath.row])
-        
+        cell.useAbility(ability: abilities[indexPath.row])
         return cell
     }
     
@@ -101,21 +85,14 @@ class CharacterTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "StartGameWithCharacter" {
-            let cell = sender as! CharacterTableViewCell
-            if let indexPath = tableView.indexPath(for: cell) {
-                let destination = segue.destination as! GameViewController
-                destination.setCharacterForThisView(character: data[indexPath.row])
-            }
-        }
     }
-    
+    */
 
 }

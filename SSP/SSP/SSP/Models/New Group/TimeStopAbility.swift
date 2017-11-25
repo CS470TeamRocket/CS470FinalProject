@@ -11,10 +11,9 @@ import Foundation
 class TimeStopAbility: AbilityModel {
     override init() {
         super.init()
-        image = "Person2.png" //Placeholder
+        image = "placeHolder"
         name = "TimeWarp"
         desc = "Time is at your beck and call! Stop it in its tracks using the trace flow backimeter"
-        cost = 100
         level = 1
     }
     
@@ -22,4 +21,9 @@ class TimeStopAbility: AbilityModel {
         super.doAbility()
     }
     
+    override func serialize() -> String {
+        let a = super.serialize()
+        //add that this is a TimeStopAbility, and any other information
+        return a
+    }
 }

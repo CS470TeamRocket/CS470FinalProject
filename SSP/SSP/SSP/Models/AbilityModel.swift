@@ -6,12 +6,13 @@
 //  Copyright © 2017 CodeMunkeys. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class AbilityModel {
     var image: String! = nil
     var name: String! = "default name"
     var desc: String! = "default description"
+    var cost: Int! = 0
     var level: Int! = 1
     
     init() {
@@ -22,8 +23,8 @@ class AbilityModel {
         
     }
     
-    func getImage() -> String {
-        return image
+    func getImg() -> UIImage? {
+        return UIImage(named: image)
     }
     
     func getName() -> String {
@@ -38,11 +39,11 @@ class AbilityModel {
         return level
     }
     
-    func setLevel(level: Int){
-        self.level = level
+    func getCost() -> Int {
+        return cost
     }
     
-    func serialize() -> String {
-        return "" //Should put all core info into a string
+    func setLevel(level: Int){
+        self.level = level
     }
 }
