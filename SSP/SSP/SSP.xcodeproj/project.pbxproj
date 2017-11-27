@@ -17,6 +17,7 @@
 		3F3F19581FC387CA00BA4D84 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3F19571FC387CA00BA4D84 /* CharacterTableViewCell.swift */; };
 		3F7996521FBFDD6200ABAC9B /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7996501FBFDD6200ABAC9B /* CharacterModel.swift */; };
 		3F7996531FBFDD6200ABAC9B /* AbilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7996511FBFDD6200ABAC9B /* AbilityModel.swift */; };
+		3F85152B1FCBA0CE00C93301 /* UserDataHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F85152A1FCBA0CE00C93301 /* UserDataHolder.swift */; };
 		AE806D571FBD1151007784F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE806D3E1FBD1151007784F6 /* AppDelegate.swift */; };
 		AE806D581FBD1151007784F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE806D3F1FBD1151007784F6 /* Assets.xcassets */; };
 		AE806D591FBD1151007784F6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AE806D431FBD1151007784F6 /* GameScene.sks */; };
@@ -49,6 +50,7 @@
 		3F3F19571FC387CA00BA4D84 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		3F7996501FBFDD6200ABAC9B /* CharacterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
 		3F7996511FBFDD6200ABAC9B /* AbilityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbilityModel.swift; sourceTree = "<group>"; };
+		3F85152A1FCBA0CE00C93301 /* UserDataHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataHolder.swift; sourceTree = "<group>"; };
 		AE806D231FBD10D4007784F6 /* SSP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE806D381FBD10D4007784F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE806D3E1FBD1151007784F6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,8 +90,7 @@
 			children = (
 				3F08CBCA1FC9155000EF2D36 /* TimeStopAbility.swift */,
 			);
-			name = Abilities;
-			path = "New Group";
+			path = Abilities;
 			sourceTree = "<group>";
 		};
 		3F2303BF1FBFE40A004FF058 /* TempImages */ = {
@@ -99,8 +100,15 @@
 				3F08CBBD1FC9060D00EF2D36 /* Person2.png */,
 				3F08CBBF1FC9060D00EF2D36 /* Person3.jpeg */,
 			);
-			name = TempImages;
-			path = "New Group";
+			path = TempImages;
+			sourceTree = "<group>";
+		};
+		3F8515291FCBA09500C93301 /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				3F85152A1FCBA0CE00C93301 /* UserDataHolder.swift */,
+			);
+			path = Singletons;
 			sourceTree = "<group>";
 		};
 		AE806D1A1FBD10D4007784F6 = {
@@ -122,6 +130,7 @@
 		AE806D251FBD10D4007784F6 /* SSP */ = {
 			isa = PBXGroup;
 			children = (
+				3F8515291FCBA09500C93301 /* Singletons */,
 				3F2303BF1FBFE40A004FF058 /* TempImages */,
 				AE806D3E1FBD1151007784F6 /* AppDelegate.swift */,
 				AE806D3F1FBD1151007784F6 /* Assets.xcassets */,
@@ -297,6 +306,7 @@
 				AE806D5F1FBD1151007784F6 /* BoardModel.swift in Sources */,
 				AE806D661FBD1151007784F6 /* SettingsViewController.swift in Sources */,
 				3F08CBC61FC9112000EF2D36 /* AbilityStoreTableViewController.swift in Sources */,
+				3F85152B1FCBA0CE00C93301 /* UserDataHolder.swift in Sources */,
 				AE806D611FBD1151007784F6 /* PieceModel.swift in Sources */,
 				AE806D641FBD1151007784F6 /* GameViewController.swift in Sources */,
 				3F7996521FBFDD6200ABAC9B /* CharacterModel.swift in Sources */,

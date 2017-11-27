@@ -14,7 +14,7 @@ class AbilityStoreTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //Generating dummy data
-        abilities.append(TimeStopAbility())
+        abilities = UserDataHolder.shared.getAbilities()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

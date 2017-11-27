@@ -13,22 +13,8 @@ class CharacterTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //generating Dummy information is loaded below
-        for i in 1...13 {
-            switch i%3{
-                
-            case 0:
-                data.append(CharacterModel(img: "Person1.jpg", name: "person \(i)", ability: AbilityModel(),desc: "this is person \(i)'s description"))
-            case 1:
-                data.append(CharacterModel(img: "Person2.png", name: "person \(i)", ability:
-                    AbilityModel(),desc: "this is person \(i)'s description"))
-            case 2:
-                data.append(CharacterModel(img: "Person3.jpeg", name: "person \(i)", ability: AbilityModel(),desc: "this is person \(i)'s description"))
-            default:
-                data.append(CharacterModel(img: "Person1.jpg", name: "person \(i)", ability: AbilityModel(),desc: "this is person \(i)'s description"))
-                
-            }
-        }
+        //grab info from singleton
+        data = UserDataHolder.shared.getCharacters()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
