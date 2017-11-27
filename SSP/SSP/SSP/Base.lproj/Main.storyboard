@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -149,7 +149,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Spaceship" translatesAutoresizingMaskIntoConstraints="NO" id="c34-Lj-26U">
-                                            <rect key="frame" x="8" y="18" width="85" height="85"/>
+                                            <rect key="frame" x="25" y="40" width="85" height="85"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <accessibility key="accessibilityConfiguration">
                                                 <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
@@ -167,7 +167,27 @@
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Name Of Character" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqO-rv-Yr0">
-                                            <rect key="frame" x="124" y="-4" width="240" height="37"/>
+                                            <rect key="frame" x="25" y="0.0" width="138" height="37"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" notEnabled="YES"/>
+                                            </accessibility>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Name Of Ability" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukp-NF-QqJ">
+                                            <rect key="frame" x="234" y="0.0" width="130" height="37"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" notEnabled="YES"/>
+                                            </accessibility>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Ability:" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ii6-QY-n2g">
+                                            <rect key="frame" x="171" y="0.0" width="55" height="37"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <accessibility key="accessibilityConfiguration">
@@ -182,6 +202,7 @@
                                     <outlet property="cellDesc" destination="ZPb-3I-h7e" id="bv8-8L-1Hd"/>
                                     <outlet property="cellImage" destination="c34-Lj-26U" id="41b-md-Kpl"/>
                                     <outlet property="cellTitle" destination="mqO-rv-Yr0" id="5Um-R3-Zz2"/>
+                                    <outlet property="characterAbilityName" destination="ukp-NF-QqJ" id="jUI-cT-KrM"/>
                                     <segue destination="BV1-FR-VrT" kind="show" identifier="StartGameWithCharacter" id="fJM-Ih-8gH"/>
                                 </connections>
                             </tableViewCell>

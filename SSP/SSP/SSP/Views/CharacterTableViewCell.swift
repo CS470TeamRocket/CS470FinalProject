@@ -12,6 +12,7 @@ class CharacterTableViewCell: UITableViewCell {
     @IBOutlet weak var cellImage: UIImageView!
     @IBOutlet weak var cellDesc: UITextView!
     @IBOutlet weak var cellTitle: UITextView!
+    @IBOutlet weak var characterAbilityName: UITextView!
     //Stored to be passed to game
 
     override func awakeFromNib() {
@@ -31,6 +32,7 @@ class CharacterTableViewCell: UITableViewCell {
         }
         self.cellTitle.text = char.getName()
         self.cellDesc.text = char.getDesc()
+        self.characterAbilityName.text = char.getAbility().getName()
     }
 
 }

@@ -18,6 +18,8 @@
 		3F7996521FBFDD6200ABAC9B /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7996501FBFDD6200ABAC9B /* CharacterModel.swift */; };
 		3F7996531FBFDD6200ABAC9B /* AbilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7996511FBFDD6200ABAC9B /* AbilityModel.swift */; };
 		3F85152B1FCBA0CE00C93301 /* UserDataHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F85152A1FCBA0CE00C93301 /* UserDataHolder.swift */; };
+		3FBDE2451FCCBE30000CD987 /* PointBoostAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBDE2441FCCBE30000CD987 /* PointBoostAbility.swift */; };
+		3FBDE2471FCCBE56000CD987 /* TeleportAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBDE2461FCCBE56000CD987 /* TeleportAbility.swift */; };
 		AE806D571FBD1151007784F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE806D3E1FBD1151007784F6 /* AppDelegate.swift */; };
 		AE806D581FBD1151007784F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE806D3F1FBD1151007784F6 /* Assets.xcassets */; };
 		AE806D591FBD1151007784F6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AE806D431FBD1151007784F6 /* GameScene.sks */; };
@@ -51,6 +53,8 @@
 		3F7996501FBFDD6200ABAC9B /* CharacterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
 		3F7996511FBFDD6200ABAC9B /* AbilityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbilityModel.swift; sourceTree = "<group>"; };
 		3F85152A1FCBA0CE00C93301 /* UserDataHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataHolder.swift; sourceTree = "<group>"; };
+		3FBDE2441FCCBE30000CD987 /* PointBoostAbility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointBoostAbility.swift; sourceTree = "<group>"; };
+		3FBDE2461FCCBE56000CD987 /* TeleportAbility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeleportAbility.swift; sourceTree = "<group>"; };
 		AE806D231FBD10D4007784F6 /* SSP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE806D381FBD10D4007784F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE806D3E1FBD1151007784F6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				3F08CBCA1FC9155000EF2D36 /* TimeStopAbility.swift */,
+				3FBDE2441FCCBE30000CD987 /* PointBoostAbility.swift */,
+				3FBDE2461FCCBE56000CD987 /* TeleportAbility.swift */,
 			);
 			path = Abilities;
 			sourceTree = "<group>";
@@ -314,8 +320,10 @@
 				AE806D651FBD1151007784F6 /* HomeViewController.swift in Sources */,
 				AE806D5A1FBD1151007784F6 /* GameScene.swift in Sources */,
 				3F3F19581FC387CA00BA4D84 /* CharacterTableViewCell.swift in Sources */,
+				3FBDE2451FCCBE30000CD987 /* PointBoostAbility.swift in Sources */,
 				AE806D5E1FBD1151007784F6 /* Swift+Gif.swift in Sources */,
 				3F7996531FBFDD6200ABAC9B /* AbilityModel.swift in Sources */,
+				3FBDE2471FCCBE56000CD987 /* TeleportAbility.swift in Sources */,
 				AE806D571FBD1151007784F6 /* AppDelegate.swift in Sources */,
 				AE806D721FBD123B007784F6 /* settingsPopUp.swift in Sources */,
 				3F08CBC41FC910F700EF2D36 /* AbilityStoreTableViewCell.swift in Sources */,
