@@ -11,7 +11,38 @@ enum pieceType {
     case Planet
     case Moon
     case Star
+    case Satellite
+    case Rocket
+    case Comet
     case Empty //Empty case must ALWAYS be last.
+    
+    func validPieces(level: Int) -> [pieceType] {
+        var pieceList = [pieceType]()
+        switch(level) {
+        case (10...Int.max) :
+        
+            fallthrough
+        case (8...9) :
+            
+            fallthrough
+        
+        case (6...7):
+            pieceList.append(pieceType.Comet)
+            fallthrough
+            
+        case (4...5):
+            pieceList.append(pieceType.Rocket)
+            fallthrough
+        case (2...3):
+            pieceList.append(pieceType.Satellite)
+            fallthrough
+        default:
+            pieceList.append(pieceType.Planet)
+            pieceList.append(pieceType.Star)
+            pieceList.append(pieceType.Moon)
+        }
+        return pieceList
+    }
 }
 
 class PieceModel : NSObject {
@@ -33,6 +64,12 @@ class PieceModel : NSObject {
             return "M"
         case pieceType.Star:
             return "S"
+        case pieceType.Satellite:
+            return "T"
+        case pieceType.Rocket:
+            return "R"
+        case pieceType.Comet:
+            return "C"
         case pieceType.Empty:
             return " "
         }
@@ -57,6 +94,10 @@ class PieceModel : NSObject {
         }
 		return myType == other.getType()
 	}
+    
+    func isEmpty() -> Bool {
+        return myType == pieceType.Empty
+    }
     
     func genType(valid: [pieceType]) {
         let index = Int(arc4random_uniform(UInt32(valid.count)))

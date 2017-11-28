@@ -28,8 +28,8 @@ class BoardModel: NSObject {
 	init(difficulty: Int) {
 		diff = (difficulty <= 0 ) ? 1 : difficulty
 		super.init()
-		generatePieces(startLevel: diff)
-		generateBoard(startLevel: diff)
+		generatePieces()
+		generateBoard()
         let matchList = checkAll()
         for i in 0 ..< matchList.count {
             print(matchList[i])
@@ -37,14 +37,13 @@ class BoardModel: NSObject {
         update()
 	}
 	
-	func generatePieces(startLevel: Int) {
+	func generatePieces() {
 		//This uses the difficulty level to select a number of piece types to add to the
 		//roster of available pieces. This will be pretty hard-coded, unfortunately.
-        validPieces.append(pieceType.Planet)
-        validPieces.append(pieceType.Moon)
-        validPieces.append(pieceType.Star)
+        validPieces = pieceType.Empty.validPieces(level: diff)
 	}
-	func generateBoard(startLevel: Int) {
+    
+	func generateBoard() {
 		//Later: Differentiate build based on starting levels
 		//This is used to create a new board, based on starting level.
 		
@@ -54,7 +53,10 @@ class BoardModel: NSObject {
 		}
 		
 	}
-	
+    func getBoard() ->[RowModel] {
+        return board
+    }
+    
 	func newPiece() -> PieceModel{
 		//This should hopefully create a new piece based off the type chosen at random.
 		
@@ -68,6 +70,7 @@ class BoardModel: NSObject {
 		//negative pieces (unbreakable blocks, etc)
 		
 		diff += 1
+        generatePieces()
 		
 	}
 	
@@ -78,7 +81,18 @@ class BoardModel: NSObject {
 		currentRows += 1
 		//Any other cleanup we might need.
 	}
-	
+    
+    
+    func removeRow() {
+        //Removes the row from the board, occurs only when the sun expands.
+        if(currentRows <= 1) {
+            print("Error in removal!")
+            return
+        }
+        board.removeLast()
+        board.last!.setLast(val: true)
+        currentRows -= 1
+    }
     func createRow(count: Int, isLast: Bool) -> RowModel{
         let row = RowModel(row: count, col: columns, last: isLast)
         for _ in 0 ..< columns {
@@ -93,8 +107,12 @@ class BoardModel: NSObject {
         return 0
     }
     
+    func rowsLeft() -> Int {
+        return currentRows
+    }
+    
     func printBoard() {
-        for i in 0 ..< rows {
+        for i in 0 ..< currentRows {
             board[i].printRow()
         }
     }
@@ -182,6 +200,39 @@ class BoardModel: NSObject {
         return isMatch
     }
     
+    func updateColumn(col: Int) {
+        var i = rows-1
+        var j = rows-2
+        while(i >= 0) {
+            let piece = getPiece(index:(i, col))
+
+            if (piece.isEmpty()) {
+                var filled : Bool = false
+                
+                while(j >= 0 && !filled ) {
+                    let replace = getPiece(index: (j, col))
+                    if !replace.isEmpty() {
+                        piece.swap(new: replace)
+                        filled = true
+                    }
+                    j -= 1
+                }
+                
+                if (!filled) {
+                    piece.genType(valid: validPieces)
+                }
+                
+            }
+            
+            i -= 1
+            if(j >= i) {
+                j = i - 1
+            }
+            
+        }
+    }
+    
+    
     func swap(move: Move) -> BoardIndex {
         var offsetX = move.index.col
         var offsetY = move.index.row
@@ -203,7 +254,11 @@ class BoardModel: NSObject {
         for idx in list {
             let piece = getPiece(index: idx)
             piece.clear()
-            piece.genType(valid: validPieces)
+        }
+        for i in 0 ..< columns {
+            //printBoard()
+            //print("")
+            updateColumn(col: i)
         }
     }
 	func scanHoriz(index: BoardIndex) -> Int {
