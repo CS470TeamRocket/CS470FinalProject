@@ -36,7 +36,7 @@ class BoardModel: NSObject {
         }
         update()
 	}
-	
+    
 	func generatePieces() {
 		//This uses the difficulty level to select a number of piece types to add to the
 		//roster of available pieces. This will be pretty hard-coded, unfortunately.
@@ -57,6 +57,7 @@ class BoardModel: NSObject {
         return board
     }
     
+
 	func newPiece() -> PieceModel{
 		//This should hopefully create a new piece based off the type chosen at random.
 		
@@ -110,7 +111,9 @@ class BoardModel: NSObject {
     func rowsLeft() -> Int {
         return currentRows
     }
-    
+    func numColumns() -> Int {
+        return columns
+    }
     func printBoard() {
         for i in 0 ..< currentRows {
             board[i].printRow()
@@ -255,12 +258,12 @@ class BoardModel: NSObject {
             let piece = getPiece(index: idx)
             piece.clear()
         }
+        printBoard()
         for i in 0 ..< columns {
-            //printBoard()
-            //print("")
             updateColumn(col: i)
         }
     }
+    
 	func scanHoriz(index: BoardIndex) -> Int {
 		let row = index.row 
 		let col = index.col

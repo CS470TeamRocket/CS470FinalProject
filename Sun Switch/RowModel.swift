@@ -48,7 +48,7 @@ class RowModel :NSObject {
 			pieces.insert(pieces.removeLast(), at: 0)
 		}
 	}
-    
+
     func changePiece(col: Int, other: PieceModel) {
         pieces[col].swap(new: other)
     }
