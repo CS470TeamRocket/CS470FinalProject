@@ -18,9 +18,11 @@ class GameModel: NSObject {
     private var timer : Timer = Timer()
     private var totalTime : Int = 0
     private var currTime : Int = 0
+    private var scene: GameScene
     
 
-	init(start: Int) {
+    init(start: Int, view: GameScene) {
+        scene = view
 		level = start
 		score = 0
         super.init()
@@ -86,13 +88,23 @@ class GameModel: NSObject {
         print("")
     }
     
+    func displayBoard(display: GameScene) {
+        //GameScene.createSprites(board.getBoard())
+    }
+    
     @objc func timeTick() {
         totalTime += 1
         currTime += 1
+        updateTimeBar( timePercent: (timeLeft - Double(currTime)) / timeLeft )
         if(currTime >= Int(timeLeft)) {
             currTime = 0
             timeUp()
         }
+    }
+    
+    func updateTimeBar(timePercent: Double) {
+        //This will be used to update the graphic bar representing the time left for each round.
+        //Takes a double representing a percentage of the bar that should be filled.
     }
     
     func timeUp() {
@@ -103,7 +115,6 @@ class GameModel: NSObject {
             board.removeRow()
             printBoard()
         }
-        
     }
     
     func gameOver() {
@@ -111,5 +122,4 @@ class GameModel: NSObject {
         timer.invalidate()
     }
     
-
 }

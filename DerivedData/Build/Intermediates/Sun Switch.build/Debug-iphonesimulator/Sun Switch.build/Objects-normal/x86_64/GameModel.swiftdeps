@@ -11,6 +11,7 @@ depends-top-level:
 - !private "*"
 - !private "+="
 - !private "-"
+- !private "/"
 - !private "<="
 - !private ">"
 - !private ">="
@@ -18,7 +19,9 @@ depends-top-level:
 - "BoardModel"
 - "Bool"
 - !private "BooleanLiteralType"
+- "Double"
 - "GameModel"
+- "GameScene"
 - "Int"
 - "Move"
 - "NSObject"
@@ -40,6 +43,7 @@ depends-member:
 - !private ["10Sun_Switch10BoardModelC", "rowsLeft"]
 - !private ["Sb", "_getBuiltinLogicValue"]
 - !private ["s7CVarArgP", "BoardModel"]
+- !private ["s7CVarArgP", "Double"]
 - !private ["s7CVarArgP", "Int"]
 - !private ["s7CVarArgP", "TimeInterval"]
 - ["s7CVarArgP", "Timer"]
@@ -61,6 +65,7 @@ depends-member:
 - !private ["s7CVarArgP", "resetTimer"]
 - !private ["s7CVarArgP", "restoreRow"]
 - !private ["s7CVarArgP", "rowsLeft"]
+- !private ["s7CVarArgP", "scene"]
 - !private ["s7CVarArgP", "scheduledTimer"]
 - !private ["s7CVarArgP", "score"]
 - !private ["s7CVarArgP", "streak"]
@@ -69,10 +74,12 @@ depends-member:
 - !private ["s7CVarArgP", "timeUp"]
 - !private ["s7CVarArgP", "timer"]
 - !private ["s7CVarArgP", "totalTime"]
+- !private ["s7CVarArgP", "updateTimeBar"]
 - ["s7CVarArgP", ""]
 - !private ["s10CollectionP", "init"]
 - !private ["s10ComparableP", "init"]
 - !private ["s28CustomDebugStringConvertibleP", "BoardModel"]
+- !private ["s28CustomDebugStringConvertibleP", "Double"]
 - !private ["s28CustomDebugStringConvertibleP", "Int"]
 - !private ["s28CustomDebugStringConvertibleP", "TimeInterval"]
 - ["s28CustomDebugStringConvertibleP", "Timer"]
@@ -94,6 +101,7 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "resetTimer"]
 - !private ["s28CustomDebugStringConvertibleP", "restoreRow"]
 - !private ["s28CustomDebugStringConvertibleP", "rowsLeft"]
+- !private ["s28CustomDebugStringConvertibleP", "scene"]
 - !private ["s28CustomDebugStringConvertibleP", "scheduledTimer"]
 - !private ["s28CustomDebugStringConvertibleP", "score"]
 - !private ["s28CustomDebugStringConvertibleP", "streak"]
@@ -102,12 +110,14 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "timeUp"]
 - !private ["s28CustomDebugStringConvertibleP", "timer"]
 - !private ["s28CustomDebugStringConvertibleP", "totalTime"]
+- !private ["s28CustomDebugStringConvertibleP", "updateTimeBar"]
 - ["s28CustomDebugStringConvertibleP", ""]
 - !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
 - !private ["s29CustomPlaygroundQuickLookableP", "init"]
 - !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
 - !private ["s17CustomReflectableP", "init"]
 - !private ["s23CustomStringConvertibleP", "BoardModel"]
+- !private ["s23CustomStringConvertibleP", "Double"]
 - !private ["s23CustomStringConvertibleP", "Int"]
 - !private ["s23CustomStringConvertibleP", "TimeInterval"]
 - ["s23CustomStringConvertibleP", "Timer"]
@@ -130,6 +140,7 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "resetTimer"]
 - !private ["s23CustomStringConvertibleP", "restoreRow"]
 - !private ["s23CustomStringConvertibleP", "rowsLeft"]
+- !private ["s23CustomStringConvertibleP", "scene"]
 - !private ["s23CustomStringConvertibleP", "scheduledTimer"]
 - !private ["s23CustomStringConvertibleP", "score"]
 - !private ["s23CustomStringConvertibleP", "streak"]
@@ -138,6 +149,7 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "timeUp"]
 - !private ["s23CustomStringConvertibleP", "timer"]
 - !private ["s23CustomStringConvertibleP", "totalTime"]
+- !private ["s23CustomStringConvertibleP", "updateTimeBar"]
 - ["s23CustomStringConvertibleP", ""]
 - !private ["s9DecodableP", "_getBuiltinLogicValue"]
 - !private ["s9DecodableP", "init"]
@@ -145,6 +157,7 @@ depends-member:
 - !private ["s9EncodableP", "_getBuiltinLogicValue"]
 - !private ["s9EncodableP", "init"]
 - !private ["s9EquatableP", "BoardModel"]
+- !private ["s9EquatableP", "Double"]
 - !private ["s9EquatableP", "Int"]
 - !private ["s9EquatableP", "TimeInterval"]
 - ["s9EquatableP", "Timer"]
@@ -167,6 +180,7 @@ depends-member:
 - !private ["s9EquatableP", "resetTimer"]
 - !private ["s9EquatableP", "restoreRow"]
 - !private ["s9EquatableP", "rowsLeft"]
+- !private ["s9EquatableP", "scene"]
 - !private ["s9EquatableP", "scheduledTimer"]
 - !private ["s9EquatableP", "score"]
 - !private ["s9EquatableP", "streak"]
@@ -175,6 +189,7 @@ depends-member:
 - !private ["s9EquatableP", "timeUp"]
 - !private ["s9EquatableP", "timer"]
 - !private ["s9EquatableP", "totalTime"]
+- !private ["s9EquatableP", "updateTimeBar"]
 - ["s9EquatableP", ""]
 - !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
 - !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
@@ -186,6 +201,8 @@ depends-member:
 - !private ["s13FloatingPointP", "init"]
 - ["10Sun_Switch9GameModelC", "BoardModel"]
 - ["10Sun_Switch9GameModelC", "Bool"]
+- ["10Sun_Switch9GameModelC", "Double"]
+- ["10Sun_Switch9GameModelC", "GameScene"]
 - ["10Sun_Switch9GameModelC", "Int"]
 - ["10Sun_Switch9GameModelC", "Move"]
 - ["10Sun_Switch9GameModelC", "TimeInterval"]
@@ -194,6 +211,7 @@ depends-member:
 - !private ["10Sun_Switch9GameModelC", "board"]
 - !private ["10Sun_Switch9GameModelC", "currTime"]
 - ["10Sun_Switch9GameModelC", "deinit"]
+- ["10Sun_Switch9GameModelC", "displayBoard"]
 - ["10Sun_Switch9GameModelC", "gameOver"]
 - ["10Sun_Switch9GameModelC", "getNextGoal"]
 - ["10Sun_Switch9GameModelC", "getNextTime"]
@@ -205,6 +223,7 @@ depends-member:
 - ["10Sun_Switch9GameModelC", "printBoard"]
 - ["10Sun_Switch9GameModelC", "resetTimer"]
 - ["10Sun_Switch9GameModelC", "restoreRow"]
+- !private ["10Sun_Switch9GameModelC", "scene"]
 - !private ["10Sun_Switch9GameModelC", "score"]
 - !private ["10Sun_Switch9GameModelC", "streak"]
 - !private ["10Sun_Switch9GameModelC", "timeLeft"]
@@ -212,7 +231,9 @@ depends-member:
 - ["10Sun_Switch9GameModelC", "timeUp"]
 - !private ["10Sun_Switch9GameModelC", "timer"]
 - !private ["10Sun_Switch9GameModelC", "totalTime"]
+- ["10Sun_Switch9GameModelC", "updateTimeBar"]
 - !private ["s8HashableP", "BoardModel"]
+- !private ["s8HashableP", "Double"]
 - !private ["s8HashableP", "Int"]
 - !private ["s8HashableP", "TimeInterval"]
 - ["s8HashableP", "Timer"]
@@ -235,6 +256,7 @@ depends-member:
 - !private ["s8HashableP", "resetTimer"]
 - !private ["s8HashableP", "restoreRow"]
 - !private ["s8HashableP", "rowsLeft"]
+- !private ["s8HashableP", "scene"]
 - !private ["s8HashableP", "scheduledTimer"]
 - !private ["s8HashableP", "score"]
 - !private ["s8HashableP", "streak"]
@@ -243,6 +265,7 @@ depends-member:
 - !private ["s8HashableP", "timeUp"]
 - !private ["s8HashableP", "timer"]
 - !private ["s8HashableP", "totalTime"]
+- !private ["s8HashableP", "updateTimeBar"]
 - ["s8HashableP", ""]
 - !private ["Si", "init"]
 - !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
@@ -255,6 +278,8 @@ depends-member:
 - !private ["So16NSMutableCopyingP", "init"]
 - ["So8NSObjectC", "BoardModel"]
 - ["So8NSObjectC", "Bool"]
+- ["So8NSObjectC", "Double"]
+- ["So8NSObjectC", "GameScene"]
 - ["So8NSObjectC", "Int"]
 - ["So8NSObjectC", "Move"]
 - ["So8NSObjectC", "TimeInterval"]
@@ -262,6 +287,7 @@ depends-member:
 - ["So8NSObjectC", "advanceLevel"]
 - ["So8NSObjectC", "board"]
 - ["So8NSObjectC", "currTime"]
+- ["So8NSObjectC", "displayBoard"]
 - ["So8NSObjectC", "gameOver"]
 - ["So8NSObjectC", "getNextGoal"]
 - ["So8NSObjectC", "getNextTime"]
@@ -277,6 +303,7 @@ depends-member:
 - ["So8NSObjectC", "resetTimer"]
 - ["So8NSObjectC", "restoreRow"]
 - !private ["So8NSObjectC", "rowsLeft"]
+- ["So8NSObjectC", "scene"]
 - !private ["So8NSObjectC", "scheduledTimer"]
 - ["So8NSObjectC", "score"]
 - ["So8NSObjectC", "streak"]
@@ -285,8 +312,10 @@ depends-member:
 - ["So8NSObjectC", "timeUp"]
 - ["So8NSObjectC", "timer"]
 - ["So8NSObjectC", "totalTime"]
+- ["So8NSObjectC", "updateTimeBar"]
 - ["So8NSObjectC", ""]
 - !private ["So16NSObjectProtocolP", "BoardModel"]
+- !private ["So16NSObjectProtocolP", "Double"]
 - !private ["So16NSObjectProtocolP", "Int"]
 - !private ["So16NSObjectProtocolP", "TimeInterval"]
 - ["So16NSObjectProtocolP", "Timer"]
@@ -308,6 +337,7 @@ depends-member:
 - !private ["So16NSObjectProtocolP", "resetTimer"]
 - !private ["So16NSObjectProtocolP", "restoreRow"]
 - !private ["So16NSObjectProtocolP", "rowsLeft"]
+- !private ["So16NSObjectProtocolP", "scene"]
 - !private ["So16NSObjectProtocolP", "scheduledTimer"]
 - !private ["So16NSObjectProtocolP", "score"]
 - !private ["So16NSObjectProtocolP", "streak"]
@@ -316,6 +346,7 @@ depends-member:
 - !private ["So16NSObjectProtocolP", "timeUp"]
 - !private ["So16NSObjectProtocolP", "timer"]
 - !private ["So16NSObjectProtocolP", "totalTime"]
+- !private ["So16NSObjectProtocolP", "updateTimeBar"]
 - ["So16NSObjectProtocolP", ""]
 - !private ["So14NSSecureCodingP", "init"]
 - !private ["So8NSStringC", "init"]
@@ -349,6 +380,7 @@ depends-member:
 - !private ["s10_IndexableP", "init"]
 - !private ["s14_IndexableBaseP", "init"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "BoardModel"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "Double"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "Int"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "TimeInterval"]
 - ["10Foundation27_KeyValueCodingAndObservingP", "Timer"]
@@ -370,6 +402,7 @@ depends-member:
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "resetTimer"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "restoreRow"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "rowsLeft"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "scene"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "scheduledTimer"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "score"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "streak"]
@@ -378,6 +411,7 @@ depends-member:
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "timeUp"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "timer"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "totalTime"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "updateTimeBar"]
 - ["10Foundation27_KeyValueCodingAndObservingP", ""]
 - !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
 - !private ["s21_ObjectiveCBridgeableP", "init"]
@@ -489,4 +523,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/SceneKit.framework/Headers/SceneKit.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/GameplayKit.framework/Headers/GameplayKit.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
-interface-hash: "6a069bf192dda7a4ddacc44aa44d93e1"
+interface-hash: "226c3494b99bcf180737792c969094bd"

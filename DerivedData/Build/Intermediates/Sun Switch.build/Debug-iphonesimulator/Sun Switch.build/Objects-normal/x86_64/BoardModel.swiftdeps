@@ -80,6 +80,7 @@ depends-member:
 - ["10Sun_Switch10BoardModelC", "direction"]
 - ["10Sun_Switch10BoardModelC", "generateBoard"]
 - ["10Sun_Switch10BoardModelC", "generatePieces"]
+- ["10Sun_Switch10BoardModelC", "getBoard"]
 - ["10Sun_Switch10BoardModelC", "getPiece"]
 - ["10Sun_Switch10BoardModelC", "init"]
 - ["10Sun_Switch10BoardModelC", "makeMove"]
@@ -405,6 +406,7 @@ depends-member:
 - !private ["So8NSObjectC", "genType"]
 - ["So8NSObjectC", "generateBoard"]
 - ["So8NSObjectC", "generatePieces"]
+- ["So8NSObjectC", "getBoard"]
 - ["So8NSObjectC", "getPiece"]
 - ["So8NSObjectC", "init"]
 - !private ["So8NSObjectC", "isEmpty"]
@@ -759,4 +761,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/SceneKit.framework/Headers/SceneKit.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/GameplayKit.framework/Headers/GameplayKit.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
-interface-hash: "4e5b62112785df03c73f732eb6bbf365"
+interface-hash: "d14fb1eeb8c05da7d452256e6f5c3700"

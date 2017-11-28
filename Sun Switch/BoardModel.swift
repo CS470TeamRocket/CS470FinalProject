@@ -53,7 +53,10 @@ class BoardModel: NSObject {
 		}
 		
 	}
-	
+    func getBoard() ->[RowModel] {
+        return board
+    }
+    
 	func newPiece() -> PieceModel{
 		//This should hopefully create a new piece based off the type chosen at random.
 		
@@ -78,8 +81,10 @@ class BoardModel: NSObject {
 		currentRows += 1
 		//Any other cleanup we might need.
 	}
-	
+    
+    
     func removeRow() {
+        //Removes the row from the board, occurs only when the sun expands.
         if(currentRows <= 1) {
             print("Error in removal!")
             return
