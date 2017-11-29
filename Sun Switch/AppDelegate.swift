@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  Sun Switch
+//  Switch
 //
-//  Created by student on 11/6/17.
-//  Copyright © 2017 student. All rights reserved.
+//  Created by Maurice Baldain on 11/6/17.
+//  Copyright © 2017 CodeMunkeys. All rights reserved.
 //
 
 import UIKit
