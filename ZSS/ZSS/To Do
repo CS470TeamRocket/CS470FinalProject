@@ -1,0 +1,26 @@
+TO DO:
+- Check for movement vertical/horizontal - M +
+- generation without matches - M +
+- replace form top - M +
+- particle effects - M ->
+- meters/bars - M ?
+- sun growth - M +
+- row loss - M +
+- row recreation - M +
+- characters/abilities - B (Set up basic characters, associate (unimplemented) abilities)
+- match detection/removal
+- point system
+- shop
+- images/art
+    - ViewController
+    - unlockables/upgrades - B (characters)
+    - in-app currency(s)
+- leaderboard
+- achievements
+- sounds/music - B
+- game over screen
+-
+
+TO LOOK AT
+- CoreData
+- UserDefaults
