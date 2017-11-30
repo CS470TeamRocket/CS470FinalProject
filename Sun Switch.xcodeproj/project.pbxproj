@@ -7,16 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F6363401FB138F800A9D3C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F63633F1FB138F800A9D3C7 /* AppDelegate.swift */; };
-		3F6363421FB138F800A9D3C7 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3F6363411FB138F800A9D3C7 /* GameScene.sks */; };
 		3F6363441FB138F800A9D3C7 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3F6363431FB138F800A9D3C7 /* Actions.sks */; };
-		3F6363461FB138F800A9D3C7 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6363451FB138F800A9D3C7 /* GameScene.swift */; };
-		3F6363481FB138F800A9D3C7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6363471FB138F800A9D3C7 /* GameViewController.swift */; };
-		3F63634B1FB138F800A9D3C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F6363491FB138F800A9D3C7 /* Main.storyboard */; };
-		3F63634D1FB138F800A9D3C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F63634C1FB138F800A9D3C7 /* Assets.xcassets */; };
-		3F6363501FB138F800A9D3C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F63634E1FB138F800A9D3C7 /* LaunchScreen.storyboard */; };
 		3F63635B1FB138F800A9D3C7 /* Sun_SwitchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F63635A1FB138F800A9D3C7 /* Sun_SwitchTests.swift */; };
 		3F6363661FB138F800A9D3C7 /* Sun_SwitchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6363651FB138F800A9D3C7 /* Sun_SwitchUITests.swift */; };
+<<<<<<< HEAD
 		3F98CB101FCF96FA00106D1A /* AbilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98CB0E1FCF96FA00106D1A /* AbilityModel.swift */; };
 		3F98CB111FCF96FA00106D1A /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98CB0F1FCF96FA00106D1A /* CharacterModel.swift */; };
 		3F98CB151FCF970300106D1A /* TimeStopAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98CB121FCF970300106D1A /* TimeStopAbility.swift */; };
@@ -26,6 +20,31 @@
 		AEFA1A101FB2ADFB0029E28C /* BoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFA1A0F1FB2ADFB0029E28C /* BoardModel.swift */; };
 		AEFA1A121FB2AE0D0029E28C /* PieceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFA1A111FB2AE0D0029E28C /* PieceModel.swift */; };
 		AEFA1A141FB2AE280029E28C /* RowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFA1A131FB2AE280029E28C /* RowModel.swift */; };
+=======
+		AE1F0E7A1FCF94CE008FD26B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E6C1FCF94CE008FD26B /* Assets.xcassets */; };
+		AE1F0E7B1FCF94CE008FD26B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E6E1FCF94CE008FD26B /* LaunchScreen.storyboard */; };
+		AE1F0E7C1FCF94CE008FD26B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E701FCF94CE008FD26B /* Main.storyboard */; };
+		AE1F0E7D1FCF94CE008FD26B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E731FCF94CE008FD26B /* GameScene.sks */; };
+		AE1F0E7E1FCF94CE008FD26B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0E741FCF94CE008FD26B /* GameScene.swift */; };
+		AE1F0E7F1FCF94CE008FD26B /* BoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0E761FCF94CE008FD26B /* BoardModel.swift */; };
+		AE1F0E801FCF94CE008FD26B /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0E771FCF94CE008FD26B /* GameModel.swift */; };
+		AE1F0E811FCF94CE008FD26B /* PieceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0E781FCF94CE008FD26B /* PieceModel.swift */; };
+		AE1F0E821FCF94CE008FD26B /* RowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0E791FCF94CE008FD26B /* RowModel.swift */; };
+		AE1F0E951FCF94DE008FD26B /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0E841FCF94DE008FD26B /* CharacterViewController.swift */; };
+		AE1F0E961FCF94DE008FD26B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0E851FCF94DE008FD26B /* GameViewController.swift */; };
+		AE1F0E971FCF94DE008FD26B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0E861FCF94DE008FD26B /* HomeViewController.swift */; };
+		AE1F0E981FCF94DE008FD26B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0E871FCF94DE008FD26B /* SettingsViewController.swift */; };
+		AE1F0E991FCF94DE008FD26B /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0E891FCF94DE008FD26B /* CharacterView.swift */; };
+		AE1F0E9A1FCF94DE008FD26B /* CharView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0E8A1FCF94DE008FD26B /* CharView.swift */; };
+		AE1F0E9B1FCF94DE008FD26B /* CharChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0E8C1FCF94DE008FD26B /* CharChoice.swift */; };
+		AE1F0E9C1FCF94DE008FD26B /* settingsPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0E8D1FCF94DE008FD26B /* settingsPopUp.swift */; };
+		AE1F0E9D1FCF94DE008FD26B /* s1.gif in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E8F1FCF94DE008FD26B /* s1.gif */; };
+		AE1F0E9E1FCF94DE008FD26B /* s2.gif in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E901FCF94DE008FD26B /* s2.gif */; };
+		AE1F0E9F1FCF94DE008FD26B /* sun_title.gif in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E911FCF94DE008FD26B /* sun_title.gif */; };
+		AE1F0EA01FCF94DE008FD26B /* Swift+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0E921FCF94DE008FD26B /* Swift+Gif.swift */; };
+		AE1F0EA11FCF94DE008FD26B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0E931FCF94DE008FD26B /* AppDelegate.swift */; };
+		AE1F0EA21FCF94DE008FD26B /* To Do in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E941FCF94DE008FD26B /* To Do */; };
+>>>>>>> Zach
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,14 +66,7 @@
 
 /* Begin PBXFileReference section */
 		3F63633C1FB138F800A9D3C7 /* Sun Switch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sun Switch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F63633F1FB138F800A9D3C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3F6363411FB138F800A9D3C7 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		3F6363431FB138F800A9D3C7 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		3F6363451FB138F800A9D3C7 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		3F6363471FB138F800A9D3C7 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		3F63634A1FB138F800A9D3C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3F63634C1FB138F800A9D3C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3F63634F1FB138F800A9D3C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F6363511FB138F800A9D3C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F6363561FB138F800A9D3C7 /* Sun SwitchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sun SwitchTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F63635A1FB138F800A9D3C7 /* Sun_SwitchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sun_SwitchTests.swift; sourceTree = "<group>"; };
@@ -62,6 +74,7 @@
 		3F6363611FB138F800A9D3C7 /* Sun SwitchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sun SwitchUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F6363651FB138F800A9D3C7 /* Sun_SwitchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sun_SwitchUITests.swift; sourceTree = "<group>"; };
 		3F6363671FB138F800A9D3C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		3F98CB0E1FCF96FA00106D1A /* AbilityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbilityModel.swift; sourceTree = "<group>"; };
 		3F98CB0F1FCF96FA00106D1A /* CharacterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
 		3F98CB121FCF970300106D1A /* TimeStopAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeStopAbility.swift; sourceTree = "<group>"; };
@@ -71,6 +84,31 @@
 		AEFA1A0F1FB2ADFB0029E28C /* BoardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardModel.swift; sourceTree = "<group>"; };
 		AEFA1A111FB2AE0D0029E28C /* PieceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieceModel.swift; sourceTree = "<group>"; };
 		AEFA1A131FB2AE280029E28C /* RowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowModel.swift; sourceTree = "<group>"; };
+=======
+		AE1F0E6C1FCF94CE008FD26B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AE1F0E6F1FCF94CE008FD26B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AE1F0E711FCF94CE008FD26B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		AE1F0E731FCF94CE008FD26B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		AE1F0E741FCF94CE008FD26B /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		AE1F0E761FCF94CE008FD26B /* BoardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardModel.swift; sourceTree = "<group>"; };
+		AE1F0E771FCF94CE008FD26B /* GameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		AE1F0E781FCF94CE008FD26B /* PieceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieceModel.swift; sourceTree = "<group>"; };
+		AE1F0E791FCF94CE008FD26B /* RowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowModel.swift; sourceTree = "<group>"; };
+		AE1F0E841FCF94DE008FD26B /* CharacterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
+		AE1F0E851FCF94DE008FD26B /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		AE1F0E861FCF94DE008FD26B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		AE1F0E871FCF94DE008FD26B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		AE1F0E891FCF94DE008FD26B /* CharacterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
+		AE1F0E8A1FCF94DE008FD26B /* CharView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharView.swift; sourceTree = "<group>"; };
+		AE1F0E8C1FCF94DE008FD26B /* CharChoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharChoice.swift; sourceTree = "<group>"; };
+		AE1F0E8D1FCF94DE008FD26B /* settingsPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingsPopUp.swift; sourceTree = "<group>"; };
+		AE1F0E8F1FCF94DE008FD26B /* s1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = s1.gif; sourceTree = "<group>"; };
+		AE1F0E901FCF94DE008FD26B /* s2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = s2.gif; sourceTree = "<group>"; };
+		AE1F0E911FCF94DE008FD26B /* sun_title.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sun_title.gif; sourceTree = "<group>"; };
+		AE1F0E921FCF94DE008FD26B /* Swift+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Swift+Gif.swift"; sourceTree = "<group>"; };
+		AE1F0E931FCF94DE008FD26B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AE1F0E941FCF94DE008FD26B /* To Do */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "To Do"; sourceTree = "<group>"; };
+>>>>>>> Zach
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,20 +159,25 @@
 		3F63633E1FB138F800A9D3C7 /* Sun Switch */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				3F98CB0C1FCF96AD00106D1A /* Models */,
 				3F63633F1FB138F800A9D3C7 /* AppDelegate.swift */,
 				3F6363471FB138F800A9D3C7 /* GameViewController.swift */,
 				3F6363411FB138F800A9D3C7 /* GameScene.sks */,
+=======
+				AE1F0E831FCF94DE008FD26B /* ViewControllers */,
+				AE1F0E881FCF94DE008FD26B /* Views */,
+				AE1F0E8B1FCF94DE008FD26B /* Designs */,
+				AE1F0E8E1FCF94DE008FD26B /* Gifs */,
+				AE1F0E931FCF94DE008FD26B /* AppDelegate.swift */,
+				AE1F0E941FCF94DE008FD26B /* To Do */,
+				AE1F0E6C1FCF94CE008FD26B /* Assets.xcassets */,
+				AE1F0E6D1FCF94CE008FD26B /* Base.lproj */,
+				AE1F0E721FCF94CE008FD26B /* GameScene */,
+				AE1F0E751FCF94CE008FD26B /* Models */,
+>>>>>>> Zach
 				3F6363431FB138F800A9D3C7 /* Actions.sks */,
-				3F6363451FB138F800A9D3C7 /* GameScene.swift */,
-				3F6363491FB138F800A9D3C7 /* Main.storyboard */,
-				3F63634C1FB138F800A9D3C7 /* Assets.xcassets */,
-				3F63634E1FB138F800A9D3C7 /* LaunchScreen.storyboard */,
 				3F6363511FB138F800A9D3C7 /* Info.plist */,
-				AEFA1A0D1FB2ADE40029E28C /* GameModel.swift */,
-				AEFA1A0F1FB2ADFB0029E28C /* BoardModel.swift */,
-				AEFA1A111FB2AE0D0029E28C /* PieceModel.swift */,
-				AEFA1A131FB2AE280029E28C /* RowModel.swift */,
 			);
 			path = "Sun Switch";
 			sourceTree = "<group>";
@@ -157,16 +200,45 @@
 			path = "Sun SwitchUITests";
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		3F98CB0C1FCF96AD00106D1A /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				3F98CB0E1FCF96FA00106D1A /* AbilityModel.swift */,
 				3F98CB0F1FCF96FA00106D1A /* CharacterModel.swift */,
 				3F98CB0D1FCF96D400106D1A /* Abilities */,
+=======
+		AE1F0E6D1FCF94CE008FD26B /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				AE1F0E6E1FCF94CE008FD26B /* LaunchScreen.storyboard */,
+				AE1F0E701FCF94CE008FD26B /* Main.storyboard */,
+			);
+			path = Base.lproj;
+			sourceTree = "<group>";
+		};
+		AE1F0E721FCF94CE008FD26B /* GameScene */ = {
+			isa = PBXGroup;
+			children = (
+				AE1F0E731FCF94CE008FD26B /* GameScene.sks */,
+				AE1F0E741FCF94CE008FD26B /* GameScene.swift */,
+			);
+			path = GameScene;
+			sourceTree = "<group>";
+		};
+		AE1F0E751FCF94CE008FD26B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AE1F0E761FCF94CE008FD26B /* BoardModel.swift */,
+				AE1F0E771FCF94CE008FD26B /* GameModel.swift */,
+				AE1F0E781FCF94CE008FD26B /* PieceModel.swift */,
+				AE1F0E791FCF94CE008FD26B /* RowModel.swift */,
+>>>>>>> Zach
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		3F98CB0D1FCF96D400106D1A /* Abilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +247,46 @@
 				3F98CB121FCF970300106D1A /* TimeStopAbility.swift */,
 			);
 			path = Abilities;
+=======
+		AE1F0E831FCF94DE008FD26B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AE1F0E841FCF94DE008FD26B /* CharacterViewController.swift */,
+				AE1F0E851FCF94DE008FD26B /* GameViewController.swift */,
+				AE1F0E861FCF94DE008FD26B /* HomeViewController.swift */,
+				AE1F0E871FCF94DE008FD26B /* SettingsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AE1F0E881FCF94DE008FD26B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AE1F0E891FCF94DE008FD26B /* CharacterView.swift */,
+				AE1F0E8A1FCF94DE008FD26B /* CharView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AE1F0E8B1FCF94DE008FD26B /* Designs */ = {
+			isa = PBXGroup;
+			children = (
+				AE1F0E8C1FCF94DE008FD26B /* CharChoice.swift */,
+				AE1F0E8D1FCF94DE008FD26B /* settingsPopUp.swift */,
+			);
+			path = Designs;
+			sourceTree = "<group>";
+		};
+		AE1F0E8E1FCF94DE008FD26B /* Gifs */ = {
+			isa = PBXGroup;
+			children = (
+				AE1F0E8F1FCF94DE008FD26B /* s1.gif */,
+				AE1F0E901FCF94DE008FD26B /* s2.gif */,
+				AE1F0E911FCF94DE008FD26B /* sun_title.gif */,
+				AE1F0E921FCF94DE008FD26B /* Swift+Gif.swift */,
+			);
+			path = Gifs;
+>>>>>>> Zach
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,11 +396,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F63634B1FB138F800A9D3C7 /* Main.storyboard in Resources */,
-				3F6363421FB138F800A9D3C7 /* GameScene.sks in Resources */,
-				3F63634D1FB138F800A9D3C7 /* Assets.xcassets in Resources */,
-				3F6363501FB138F800A9D3C7 /* LaunchScreen.storyboard in Resources */,
+				AE1F0EA21FCF94DE008FD26B /* To Do in Resources */,
+				AE1F0E9F1FCF94DE008FD26B /* sun_title.gif in Resources */,
+				AE1F0E9D1FCF94DE008FD26B /* s1.gif in Resources */,
+				AE1F0E9E1FCF94DE008FD26B /* s2.gif in Resources */,
+				AE1F0E7B1FCF94CE008FD26B /* LaunchScreen.storyboard in Resources */,
+				AE1F0E7D1FCF94CE008FD26B /* GameScene.sks in Resources */,
+				AE1F0E7A1FCF94CE008FD26B /* Assets.xcassets in Resources */,
 				3F6363441FB138F800A9D3C7 /* Actions.sks in Resources */,
+				AE1F0E7C1FCF94CE008FD26B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +429,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				3F98CB161FCF970300106D1A /* TeleportAbility.swift in Sources */,
 				3F98CB171FCF970300106D1A /* PointBoostAbility.swift in Sources */,
 				3F6363461FB138F800A9D3C7 /* GameScene.swift in Sources */,
@@ -325,6 +442,23 @@
 				AEFA1A101FB2ADFB0029E28C /* BoardModel.swift in Sources */,
 				3F6363401FB138F800A9D3C7 /* AppDelegate.swift in Sources */,
 				3F98CB151FCF970300106D1A /* TimeStopAbility.swift in Sources */,
+=======
+				AE1F0E961FCF94DE008FD26B /* GameViewController.swift in Sources */,
+				AE1F0E9A1FCF94DE008FD26B /* CharView.swift in Sources */,
+				AE1F0E951FCF94DE008FD26B /* CharacterViewController.swift in Sources */,
+				AE1F0EA11FCF94DE008FD26B /* AppDelegate.swift in Sources */,
+				AE1F0E991FCF94DE008FD26B /* CharacterView.swift in Sources */,
+				AE1F0EA01FCF94DE008FD26B /* Swift+Gif.swift in Sources */,
+				AE1F0E9B1FCF94DE008FD26B /* CharChoice.swift in Sources */,
+				AE1F0E7F1FCF94CE008FD26B /* BoardModel.swift in Sources */,
+				AE1F0E971FCF94DE008FD26B /* HomeViewController.swift in Sources */,
+				AE1F0E7E1FCF94CE008FD26B /* GameScene.swift in Sources */,
+				AE1F0E9C1FCF94DE008FD26B /* settingsPopUp.swift in Sources */,
+				AE1F0E811FCF94CE008FD26B /* PieceModel.swift in Sources */,
+				AE1F0E821FCF94CE008FD26B /* RowModel.swift in Sources */,
+				AE1F0E801FCF94CE008FD26B /* GameModel.swift in Sources */,
+				AE1F0E981FCF94DE008FD26B /* SettingsViewController.swift in Sources */,
+>>>>>>> Zach
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,20 +494,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3F6363491FB138F800A9D3C7 /* Main.storyboard */ = {
+		AE1F0E6E1FCF94CE008FD26B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				3F63634A1FB138F800A9D3C7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		3F63634E1FB138F800A9D3C7 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3F63634F1FB138F800A9D3C7 /* Base */,
+				AE1F0E6F1FCF94CE008FD26B /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		AE1F0E701FCF94CE008FD26B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE1F0E711FCF94CE008FD26B /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -433,6 +567,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -482,6 +617,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -492,10 +628,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Sun Switch/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "myapp.Sun-Switch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -506,10 +643,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Sun Switch/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "myapp.Sun-Switch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -521,10 +659,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Sun SwitchTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "myapp.Sun-SwitchTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sun Switch.app/Sun Switch";
 			};
@@ -537,10 +676,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Sun SwitchTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "myapp.Sun-SwitchTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sun Switch.app/Sun Switch";
 			};
@@ -552,10 +692,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Sun SwitchUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "myapp.Sun-SwitchUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Sun Switch";
 			};
@@ -567,10 +708,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Sun SwitchUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "myapp.Sun-SwitchUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Sun Switch";
 			};
