@@ -19,6 +19,7 @@ class GameModel: NSObject {
     private var totalTime : Int = 0
     private var currTime : Int = 0
     private var scene: GameScene
+
     
 
     init(start: Int, view: GameScene) {
@@ -60,18 +61,18 @@ class GameModel: NSObject {
     }
 	
     func getNextTime() -> TimeInterval {
-        let cap: Int = 3
-        let maxTimer : TimeInterval = 10
-        let minTimer : TimeInterval = 5
+        let cap: Int = 10
+        let maxTimer : TimeInterval = 30
+        let minTimer : TimeInterval = 10
         if(level >= cap) {
             return minTimer
         }
         else {
-            return maxTimer - TimeInterval(1 * (level - 1))
+            return maxTimer - TimeInterval(2 * (level - 1))
         }
     }
     
-	func resetTimer() {
+	@objc func  resetTimer() {
 	//Set the timer based on the current level.
 	//Timer starts at a large amount and decreases each level, capping at a yet undetermined amount.
         timeLeft = getNextTime()
@@ -80,6 +81,11 @@ class GameModel: NSObject {
 		//Re-initialize the actual timer.
 	}
 	
+    func stopTime(delay: Int){
+        timer.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: TimeInterval(delay), target: self, selector: (#selector(resetTimer)), userInfo: nil, repeats: false)
+    }
+    
 	func restoreRow() {
 		board.restoreRow()
 	}
@@ -88,7 +94,7 @@ class GameModel: NSObject {
         print("")
     }
     
-    func displayBoard(display: GameScene) {
+    func displayBoard() {
         //GameScene.createSprites(board.getBoard())
     }
     
@@ -113,10 +119,53 @@ class GameModel: NSObject {
         }else {
             streak = 0
             board.removeRow()
+            stopTime(delay: 3)
             printBoard()
         }
     }
+    func indexRow(row: Int) -> [BoardIndex] {
+        var list = [BoardIndex]()
+        for i in 0 ..< board.numColumns() {
+            list.append( (row: row, col: i))
+        }
+        return list
+    }
     
+    func indexColumn(col: Int) -> [BoardIndex] {
+        var list = [BoardIndex]()
+        for i in 0 ..< board.rowsLeft() {
+            list.append( (row: i, col: col))
+            list.append(contentsOf: list)
+        }
+
+        return list
+    }
+    
+    func indexAdjacent(idx: BoardIndex, cardinalOnly: Bool, dist: Int) -> [BoardIndex]{
+        var list = [BoardIndex]()
+        
+        let minX = idx.col - dist < 0 ? 0 : idx.col - dist
+        let maxX = idx.col + dist >= board.numColumns() ? board.numColumns() - 1 : idx.col + dist
+        
+        let minY = idx.row - dist < 0 ? 0 : idx.row - dist
+        let maxY = idx.row + dist >= board.rowsLeft() ? board.rowsLeft() - 1: idx.row + dist
+        
+        for i in minX ... maxX {
+            for j in minY ... maxY {
+                if(!cardinalOnly || (i == idx.col || j == idx.row) ) {
+                    list.append((row: j, col: i))
+                }
+            }
+        }
+        return list
+    }
+    
+    func bomb(idx: BoardIndex, size: Int) {
+        board.clearPieces(list: indexAdjacent(idx: idx, cardinalOnly: false, dist: size))
+    }
+    
+
+
     func gameOver() {
         print("Game Over! You lasted \(totalTime) seconds!")
         timer.invalidate()

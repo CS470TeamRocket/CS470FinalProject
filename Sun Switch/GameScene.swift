@@ -22,6 +22,7 @@ class GameScene: SKScene {
             print(game.makeMove(move: ((4,i), direction.down)))
             game.printBoard()
         }
+        game.bomb(idx: (row: 5, col: 5), size: 1)
         // Get label node from scene and store it for use later
         self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
         if let label = self.label {
