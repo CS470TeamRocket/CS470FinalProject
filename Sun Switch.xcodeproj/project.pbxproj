@@ -10,17 +10,6 @@
 		3F6363441FB138F800A9D3C7 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3F6363431FB138F800A9D3C7 /* Actions.sks */; };
 		3F63635B1FB138F800A9D3C7 /* Sun_SwitchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F63635A1FB138F800A9D3C7 /* Sun_SwitchTests.swift */; };
 		3F6363661FB138F800A9D3C7 /* Sun_SwitchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6363651FB138F800A9D3C7 /* Sun_SwitchUITests.swift */; };
-<<<<<<< HEAD
-		3F98CB101FCF96FA00106D1A /* AbilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98CB0E1FCF96FA00106D1A /* AbilityModel.swift */; };
-		3F98CB111FCF96FA00106D1A /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98CB0F1FCF96FA00106D1A /* CharacterModel.swift */; };
-		3F98CB151FCF970300106D1A /* TimeStopAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98CB121FCF970300106D1A /* TimeStopAbility.swift */; };
-		3F98CB161FCF970300106D1A /* TeleportAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98CB131FCF970300106D1A /* TeleportAbility.swift */; };
-		3F98CB171FCF970300106D1A /* PointBoostAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98CB141FCF970300106D1A /* PointBoostAbility.swift */; };
-		AEFA1A0E1FB2ADE40029E28C /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFA1A0D1FB2ADE40029E28C /* GameModel.swift */; };
-		AEFA1A101FB2ADFB0029E28C /* BoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFA1A0F1FB2ADFB0029E28C /* BoardModel.swift */; };
-		AEFA1A121FB2AE0D0029E28C /* PieceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFA1A111FB2AE0D0029E28C /* PieceModel.swift */; };
-		AEFA1A141FB2AE280029E28C /* RowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFA1A131FB2AE280029E28C /* RowModel.swift */; };
-=======
 		AE1F0E7A1FCF94CE008FD26B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E6C1FCF94CE008FD26B /* Assets.xcassets */; };
 		AE1F0E7B1FCF94CE008FD26B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E6E1FCF94CE008FD26B /* LaunchScreen.storyboard */; };
 		AE1F0E7C1FCF94CE008FD26B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E701FCF94CE008FD26B /* Main.storyboard */; };
@@ -44,7 +33,6 @@
 		AE1F0EA01FCF94DE008FD26B /* Swift+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0E921FCF94DE008FD26B /* Swift+Gif.swift */; };
 		AE1F0EA11FCF94DE008FD26B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0E931FCF94DE008FD26B /* AppDelegate.swift */; };
 		AE1F0EA21FCF94DE008FD26B /* To Do in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E941FCF94DE008FD26B /* To Do */; };
->>>>>>> Zach
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,17 +62,6 @@
 		3F6363611FB138F800A9D3C7 /* Sun SwitchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sun SwitchUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F6363651FB138F800A9D3C7 /* Sun_SwitchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sun_SwitchUITests.swift; sourceTree = "<group>"; };
 		3F6363671FB138F800A9D3C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		3F98CB0E1FCF96FA00106D1A /* AbilityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbilityModel.swift; sourceTree = "<group>"; };
-		3F98CB0F1FCF96FA00106D1A /* CharacterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
-		3F98CB121FCF970300106D1A /* TimeStopAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeStopAbility.swift; sourceTree = "<group>"; };
-		3F98CB131FCF970300106D1A /* TeleportAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeleportAbility.swift; sourceTree = "<group>"; };
-		3F98CB141FCF970300106D1A /* PointBoostAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointBoostAbility.swift; sourceTree = "<group>"; };
-		AEFA1A0D1FB2ADE40029E28C /* GameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
-		AEFA1A0F1FB2ADFB0029E28C /* BoardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardModel.swift; sourceTree = "<group>"; };
-		AEFA1A111FB2AE0D0029E28C /* PieceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieceModel.swift; sourceTree = "<group>"; };
-		AEFA1A131FB2AE280029E28C /* RowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowModel.swift; sourceTree = "<group>"; };
-=======
 		AE1F0E6C1FCF94CE008FD26B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE1F0E6F1FCF94CE008FD26B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE1F0E711FCF94CE008FD26B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
@@ -108,7 +85,6 @@
 		AE1F0E921FCF94DE008FD26B /* Swift+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Swift+Gif.swift"; sourceTree = "<group>"; };
 		AE1F0E931FCF94DE008FD26B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE1F0E941FCF94DE008FD26B /* To Do */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "To Do"; sourceTree = "<group>"; };
->>>>>>> Zach
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,12 +135,6 @@
 		3F63633E1FB138F800A9D3C7 /* Sun Switch */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				3F98CB0C1FCF96AD00106D1A /* Models */,
-				3F63633F1FB138F800A9D3C7 /* AppDelegate.swift */,
-				3F6363471FB138F800A9D3C7 /* GameViewController.swift */,
-				3F6363411FB138F800A9D3C7 /* GameScene.sks */,
-=======
 				AE1F0E831FCF94DE008FD26B /* ViewControllers */,
 				AE1F0E881FCF94DE008FD26B /* Views */,
 				AE1F0E8B1FCF94DE008FD26B /* Designs */,
@@ -175,7 +145,6 @@
 				AE1F0E6D1FCF94CE008FD26B /* Base.lproj */,
 				AE1F0E721FCF94CE008FD26B /* GameScene */,
 				AE1F0E751FCF94CE008FD26B /* Models */,
->>>>>>> Zach
 				3F6363431FB138F800A9D3C7 /* Actions.sks */,
 				3F6363511FB138F800A9D3C7 /* Info.plist */,
 			);
@@ -200,14 +169,6 @@
 			path = "Sun SwitchUITests";
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
-		3F98CB0C1FCF96AD00106D1A /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				3F98CB0E1FCF96FA00106D1A /* AbilityModel.swift */,
-				3F98CB0F1FCF96FA00106D1A /* CharacterModel.swift */,
-				3F98CB0D1FCF96D400106D1A /* Abilities */,
-=======
 		AE1F0E6D1FCF94CE008FD26B /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,21 +194,10 @@
 				AE1F0E771FCF94CE008FD26B /* GameModel.swift */,
 				AE1F0E781FCF94CE008FD26B /* PieceModel.swift */,
 				AE1F0E791FCF94CE008FD26B /* RowModel.swift */,
->>>>>>> Zach
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
-		3F98CB0D1FCF96D400106D1A /* Abilities */ = {
-			isa = PBXGroup;
-			children = (
-				3F98CB141FCF970300106D1A /* PointBoostAbility.swift */,
-				3F98CB131FCF970300106D1A /* TeleportAbility.swift */,
-				3F98CB121FCF970300106D1A /* TimeStopAbility.swift */,
-			);
-			path = Abilities;
-=======
 		AE1F0E831FCF94DE008FD26B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,7 +236,6 @@
 				AE1F0E921FCF94DE008FD26B /* Swift+Gif.swift */,
 			);
 			path = Gifs;
->>>>>>> Zach
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,20 +378,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
-				3F98CB161FCF970300106D1A /* TeleportAbility.swift in Sources */,
-				3F98CB171FCF970300106D1A /* PointBoostAbility.swift in Sources */,
-				3F6363461FB138F800A9D3C7 /* GameScene.swift in Sources */,
-				AEFA1A0E1FB2ADE40029E28C /* GameModel.swift in Sources */,
-				AEFA1A121FB2AE0D0029E28C /* PieceModel.swift in Sources */,
-				AEFA1A141FB2AE280029E28C /* RowModel.swift in Sources */,
-				3F98CB101FCF96FA00106D1A /* AbilityModel.swift in Sources */,
-				3F6363481FB138F800A9D3C7 /* GameViewController.swift in Sources */,
-				3F98CB111FCF96FA00106D1A /* CharacterModel.swift in Sources */,
-				AEFA1A101FB2ADFB0029E28C /* BoardModel.swift in Sources */,
-				3F6363401FB138F800A9D3C7 /* AppDelegate.swift in Sources */,
-				3F98CB151FCF970300106D1A /* TimeStopAbility.swift in Sources */,
-=======
 				AE1F0E961FCF94DE008FD26B /* GameViewController.swift in Sources */,
 				AE1F0E9A1FCF94DE008FD26B /* CharView.swift in Sources */,
 				AE1F0E951FCF94DE008FD26B /* CharacterViewController.swift in Sources */,
@@ -458,7 +393,6 @@
 				AE1F0E821FCF94CE008FD26B /* RowModel.swift in Sources */,
 				AE1F0E801FCF94CE008FD26B /* GameModel.swift in Sources */,
 				AE1F0E981FCF94DE008FD26B /* SettingsViewController.swift in Sources */,
->>>>>>> Zach
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
