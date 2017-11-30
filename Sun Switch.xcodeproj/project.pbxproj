@@ -17,6 +17,11 @@
 		3F6363501FB138F800A9D3C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F63634E1FB138F800A9D3C7 /* LaunchScreen.storyboard */; };
 		3F63635B1FB138F800A9D3C7 /* Sun_SwitchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F63635A1FB138F800A9D3C7 /* Sun_SwitchTests.swift */; };
 		3F6363661FB138F800A9D3C7 /* Sun_SwitchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6363651FB138F800A9D3C7 /* Sun_SwitchUITests.swift */; };
+		3F98CB101FCF96FA00106D1A /* AbilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98CB0E1FCF96FA00106D1A /* AbilityModel.swift */; };
+		3F98CB111FCF96FA00106D1A /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98CB0F1FCF96FA00106D1A /* CharacterModel.swift */; };
+		3F98CB151FCF970300106D1A /* TimeStopAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98CB121FCF970300106D1A /* TimeStopAbility.swift */; };
+		3F98CB161FCF970300106D1A /* TeleportAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98CB131FCF970300106D1A /* TeleportAbility.swift */; };
+		3F98CB171FCF970300106D1A /* PointBoostAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98CB141FCF970300106D1A /* PointBoostAbility.swift */; };
 		AEFA1A0E1FB2ADE40029E28C /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFA1A0D1FB2ADE40029E28C /* GameModel.swift */; };
 		AEFA1A101FB2ADFB0029E28C /* BoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFA1A0F1FB2ADFB0029E28C /* BoardModel.swift */; };
 		AEFA1A121FB2AE0D0029E28C /* PieceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFA1A111FB2AE0D0029E28C /* PieceModel.swift */; };
@@ -57,6 +62,11 @@
 		3F6363611FB138F800A9D3C7 /* Sun SwitchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sun SwitchUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F6363651FB138F800A9D3C7 /* Sun_SwitchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sun_SwitchUITests.swift; sourceTree = "<group>"; };
 		3F6363671FB138F800A9D3C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F98CB0E1FCF96FA00106D1A /* AbilityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbilityModel.swift; sourceTree = "<group>"; };
+		3F98CB0F1FCF96FA00106D1A /* CharacterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
+		3F98CB121FCF970300106D1A /* TimeStopAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeStopAbility.swift; sourceTree = "<group>"; };
+		3F98CB131FCF970300106D1A /* TeleportAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeleportAbility.swift; sourceTree = "<group>"; };
+		3F98CB141FCF970300106D1A /* PointBoostAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointBoostAbility.swift; sourceTree = "<group>"; };
 		AEFA1A0D1FB2ADE40029E28C /* GameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		AEFA1A0F1FB2ADFB0029E28C /* BoardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardModel.swift; sourceTree = "<group>"; };
 		AEFA1A111FB2AE0D0029E28C /* PieceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieceModel.swift; sourceTree = "<group>"; };
@@ -111,6 +121,7 @@
 		3F63633E1FB138F800A9D3C7 /* Sun Switch */ = {
 			isa = PBXGroup;
 			children = (
+				3F98CB0C1FCF96AD00106D1A /* Models */,
 				3F63633F1FB138F800A9D3C7 /* AppDelegate.swift */,
 				3F6363471FB138F800A9D3C7 /* GameViewController.swift */,
 				3F6363411FB138F800A9D3C7 /* GameScene.sks */,
@@ -144,6 +155,26 @@
 				3F6363671FB138F800A9D3C7 /* Info.plist */,
 			);
 			path = "Sun SwitchUITests";
+			sourceTree = "<group>";
+		};
+		3F98CB0C1FCF96AD00106D1A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3F98CB0E1FCF96FA00106D1A /* AbilityModel.swift */,
+				3F98CB0F1FCF96FA00106D1A /* CharacterModel.swift */,
+				3F98CB0D1FCF96D400106D1A /* Abilities */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3F98CB0D1FCF96D400106D1A /* Abilities */ = {
+			isa = PBXGroup;
+			children = (
+				3F98CB141FCF970300106D1A /* PointBoostAbility.swift */,
+				3F98CB131FCF970300106D1A /* TeleportAbility.swift */,
+				3F98CB121FCF970300106D1A /* TimeStopAbility.swift */,
+			);
+			path = Abilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,13 +313,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F98CB161FCF970300106D1A /* TeleportAbility.swift in Sources */,
+				3F98CB171FCF970300106D1A /* PointBoostAbility.swift in Sources */,
 				3F6363461FB138F800A9D3C7 /* GameScene.swift in Sources */,
 				AEFA1A0E1FB2ADE40029E28C /* GameModel.swift in Sources */,
 				AEFA1A121FB2AE0D0029E28C /* PieceModel.swift in Sources */,
 				AEFA1A141FB2AE280029E28C /* RowModel.swift in Sources */,
+				3F98CB101FCF96FA00106D1A /* AbilityModel.swift in Sources */,
 				3F6363481FB138F800A9D3C7 /* GameViewController.swift in Sources */,
+				3F98CB111FCF96FA00106D1A /* CharacterModel.swift in Sources */,
 				AEFA1A101FB2ADFB0029E28C /* BoardModel.swift in Sources */,
 				3F6363401FB138F800A9D3C7 /* AppDelegate.swift in Sources */,
+				3F98CB151FCF970300106D1A /* TimeStopAbility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
