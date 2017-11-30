@@ -15,6 +15,13 @@ enum direction {
     case right
     case up
     case down
+    func opposite() ->direction {
+        if(self == direction.left) {
+            return direction.right
+        }
+        return direction.left
+    }
+    
 }
 
 typealias BoardIndex = (row: Int, col: Int)
@@ -119,10 +126,18 @@ class BoardModel: NSObject {
         }
     }
     
-    func rotateRow(row: Int, dir: direction )-> Bool{
+    func rotateRow(row: Int, amount: Int, dir: direction )-> Bool{
         if(row < rows) {
-            board[row].rotate(dir: dir)
-            return true
+            board[row].rotate(dir: dir, amount: amount)
+            if( checkAll().count > 0 ) {
+                print("Match detected!")
+                return true
+            }
+            else {
+                print("No match!")
+                board[row].rotate(dir: dir.opposite(), amount: amount)
+                return false
+            }
         }
         else {
             return false

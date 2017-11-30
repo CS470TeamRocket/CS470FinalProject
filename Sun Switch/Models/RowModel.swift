@@ -39,12 +39,14 @@ class RowModel :NSObject {
         print(output)
     }
     
-    func rotate(dir: direction){
-        if(dir == direction.left) {
-            pieces.append(pieces.removeFirst())
-        }
-        else {
-            pieces.insert(pieces.removeLast(), at: 0)
+    func rotate(dir: direction, amount: Int){
+        for _ in 0 ..< amount {
+            if(dir == direction.left) {
+                pieces.append(pieces.removeFirst())
+            }
+            else {
+                pieces.insert(pieces.removeLast(), at: 0)
+            }
         }
     }
     

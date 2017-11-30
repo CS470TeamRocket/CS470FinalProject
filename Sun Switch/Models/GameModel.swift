@@ -67,6 +67,12 @@ class GameModel: NSObject {
         return board.makeMove(move: move)
     }
     
+    func rotateRow(row: Int, amount: Int, dir: direction)->Bool {
+        let out = board.rotateRow(row: row, amount: amount, dir: dir)
+        printBoard()
+        return out
+    }
+    
     func getNextTime() -> TimeInterval {
         let cap: Int = 3
         let maxTimer : TimeInterval = 10
@@ -92,7 +98,7 @@ class GameModel: NSObject {
         board.restoreRow()
     }
     func printBoard() {
-        //board.printBoard()
+        board.printBoard()
         print("")
     }
     
