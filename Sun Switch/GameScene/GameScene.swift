@@ -24,6 +24,7 @@ class GameScene: SKScene {
     var oldArrows = [[AModel]]()
     var points: [String] = ["3000", "4000", "5000"]
     
+    
     let helperSprite = SKSpriteNode(imageNamed:"moon")
     var curSprite: (SKSpriteNode, CGPoint, Int, Int)!
     var curRow: Int!
@@ -33,6 +34,7 @@ class GameScene: SKScene {
     var curArrow: AModel!
     var holding: Bool = false
     var started: Bool = false
+    var canMove: Bool = false
     var sun1: PModel!
     var sun2: PModel!
     var sun3: PModel!
@@ -88,6 +90,7 @@ class GameScene: SKScene {
         createOtherSprites()
         bottom = sprites.count - 1
         started = true
+        canMove = true
     }
     
     func getImageName(piece: PieceModel) -> String {
@@ -315,7 +318,7 @@ class GameScene: SKScene {
         // Removes row with action
         //print("Bottom should be:", bottom)
         if bottom > 1 {
-            game.board.removeRow()
+            //game.board.removeRow()
             var count = 0
             for s in sprites[bottom] {
                 print("Deleting sprite at:", bottom, count, s.position)
@@ -335,13 +338,13 @@ class GameScene: SKScene {
         }
     }
     
-    func recreateBottomRow() {
+    func recreateBottomRow(newRow: RowModel) {
         print(bottom, "<", maxRows)
         if bottom < maxRows-1 {
-            game.restoreRow()
+            //game.restoreRow()
             print("Bottom is currently:", bottom)
             for r in 0..<sprites[0].count {
-                let piece = game.board.getBoard()[bottom+1].getPiece(col: r)
+                let piece = newRow.getPiece(col: r)
                 TempRow.append(piece)
                 var sprite: SKSpriteNode
                 let center = centers[bottom+1][r]
@@ -445,7 +448,9 @@ class GameScene: SKScene {
         // Called When the screen is first touched
         // print("TOUCHES BEGAN")
         // Just hide them
-        
+        if(!canMove) {
+            return
+        }
         for touch in touches {
             let location = touch.location(in: self)
             if self.sun1.sprite.contains(location) {
@@ -455,7 +460,7 @@ class GameScene: SKScene {
                 //print(bottom)
             }
             else if self.sun2.sprite.contains(location) {
-                recreateBottomRow()
+                game.restoreRow()
                 //print(bottom)
             }
             else if self.sun3.sprite.contains(location) {
@@ -503,6 +508,10 @@ class GameScene: SKScene {
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if(!canMove) {
+            snapAllBack()
+            return
+        }
         for touch in touches {
             let location = touch.location(in: self)
             if curArrow != nil {
@@ -644,6 +653,10 @@ class GameScene: SKScene {
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if(!canMove) {
+            snapAllBack()
+            return
+        }
         //print("TOUCHES ENDED")
         showArrows()
         for touch in touches {
@@ -703,6 +716,19 @@ class GameScene: SKScene {
         //game.board.getPiece(index: (r,c)).swap(new: game.board.getPiece(index: (r2,c2)))
     }
  
+    func enableMove() {
+        canMove = true
+    }
+    
+    func disableMove() {
+        canMove = false
+        curSprite = nil
+        otherSprite = nil
+        curArrow = nil
+        lastDirection = nil
+        lastIdx = nil
+        holding = false
+    }
     override func update(_ currentTime: TimeInterval) {
         
     }

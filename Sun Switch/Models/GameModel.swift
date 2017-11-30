@@ -64,6 +64,9 @@ class GameModel: NSObject {
     }
     
     func makeMove(move: Move) -> Bool{
+        if(move.index.row >= board.rowsLeft()) {
+            return false
+        }
         return board.makeMove(move: move)
     }
     
@@ -75,23 +78,28 @@ class GameModel: NSObject {
     
     func getNextTime() -> TimeInterval {
         let cap: Int = 3
-        let maxTimer : TimeInterval = 10
+        let maxTimer : TimeInterval = 30
         let minTimer : TimeInterval = 5
         if(level >= cap) {
             return minTimer
         }
         else {
-            return maxTimer - TimeInterval(1 * (level - 1))
+            return maxTimer - TimeInterval(2 * (level - 1))
         }
     }
     
-    func resetTimer() {
+    @objc func  resetTimer() {
         //Set the timer based on the current level.
         //Timer starts at a large amount and decreases each level, capping at a yet undetermined amount.
         timeLeft = getNextTime()
         print("Setting timer!")
         timer = Timer.scheduledTimer(timeInterval: TimeInterval(1), target: self, selector: (#selector(timeTick)), userInfo: nil, repeats: true)
         //Re-initialize the actual timer.
+    }
+    
+    func stopTime(delay: Int){
+        timer.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: TimeInterval(delay), target: self, selector: (#selector(resetTimer)), userInfo: nil, repeats: false)
     }
     
     func restoreRow() {
@@ -117,16 +125,53 @@ class GameModel: NSObject {
         }
     }
     
+    func updateTimeBar(timePercent: Double) {
+        //This will be used to update the graphic bar representing the time left for each round.
+        //Takes a double representing a percentage of the bar that should be filled.
+    }
+    
     func timeUp() {
         if(board.rowsLeft() <= 1){
             gameOver()
         }else {
             streak = 0
-            //board.removeRow()
+            board.removeRow()
             //scene.removeBottomRow()
-            //printBoard()
+            printBoard()
         }
         
+    }
+    func indexColumn(col: Int) -> [BoardIndex] {
+        var list = [BoardIndex]()
+        for i in 0 ..< board.rowsLeft() {
+            list.append( (row: i, col: col))
+            list.append(contentsOf: list)
+        }
+        
+        return list
+    }
+    
+    func indexAdjacent(idx: BoardIndex, cardinalOnly: Bool, dist: Int) -> [BoardIndex]{
+        var list = [BoardIndex]()
+        
+        let minX = idx.col - dist < 0 ? 0 : idx.col - dist
+        let maxX = idx.col + dist >= board.numColumns() ? board.numColumns() - 1 : idx.col + dist
+        
+        let minY = idx.row - dist < 0 ? 0 : idx.row - dist
+        let maxY = idx.row + dist >= board.rowsLeft() ? board.rowsLeft() - 1: idx.row + dist
+        
+        for i in minX ... maxX {
+            for j in minY ... maxY {
+                if(!cardinalOnly || (i == idx.col || j == idx.row) ) {
+                    list.append((row: j, col: i))
+                }
+            }
+        }
+        return list
+    }
+    
+    func bomb(idx: BoardIndex, size: Int) {
+        board.clearPieces(list: indexAdjacent(idx: idx, cardinalOnly: false, dist: size))
     }
     
     func gameOver() {

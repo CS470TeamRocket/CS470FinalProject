@@ -88,6 +88,7 @@ class BoardModel: NSObject {
         let row = createRow(count: currentRows + 1, isLast: true)
         board.append(row)
         currentRows += 1
+        scene.recreateBottomRow(newRow: row)
         //Any other cleanup we might need.
     }
     
@@ -96,9 +97,12 @@ class BoardModel: NSObject {
             print("Error in removal!")
             return
         }
+        scene.disableMove()
         board.removeLast()
         board.last!.setLast(val: true)
+        scene.removeBottomRow()
         currentRows -= 1
+        scene.enableMove()
     }
     
     func createRow(count: Int, isLast: Bool) -> RowModel{
@@ -120,6 +124,9 @@ class BoardModel: NSObject {
         return currentRows
     }
     
+    func numColumns() -> Int {
+        return columns
+    }
     func printBoard() {
         for i in 0 ..< currentRows {
             board[i].printRow()
@@ -147,7 +154,7 @@ class BoardModel: NSObject {
     
     func checkAll() -> [BoardIndex]{
         var matched = [BoardIndex]()
-        for i in 0 ..< rows {
+        for i in 0 ..< currentRows {
             for j in 0 ..< columns {
                 if(checkMatch(index: (i, j))) {
                     matched.append((i,j))
@@ -185,7 +192,7 @@ class BoardModel: NSObject {
         //Check below
         i = 1
         matched = true
-        while(row+i < rows && matched) {
+        while(row+i < currentRows && matched) {
             if(piece.isMatching(other: getPiece(index: (row+i, col)))) {
                 matchSize += 1
             } else {
@@ -222,8 +229,8 @@ class BoardModel: NSObject {
     
     func updateColumn(col: Int) {
         //var actions: [SKAction] = []
-        var i = rows-1
-        var j = rows-2
+        var i = currentRows-1
+        var j = currentRows-2
         while(i >= 0) {
             let piece = getPiece(index:(i, col))
             
