@@ -94,9 +94,15 @@ class GameModel: NSObject {
         //Re-initialize the actual timer.
     }
     
+    func stopTime(delay: Int){
+        timer.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: TimeInterval(delay), target: self, selector: (#selector(resetTimer)), userInfo: nil, repeats: false)
+    }
+    
     func restoreRow() {
         board.restoreRow()
     }
+    
     func printBoard() {
         board.printBoard()
         print("")
@@ -104,6 +110,11 @@ class GameModel: NSObject {
     
     func displayBoard() {
         scene.makeBoard(board: board.getBoard())
+    }
+    
+    func updateTimeBar(timePercent: Double) {
+        //This will be used to update the graphic bar representing the time left for each round.
+        //Takes a double representing a percentage of the bar that should be filled.
     }
     
     @objc func timeTick() {
@@ -127,6 +138,47 @@ class GameModel: NSObject {
             //printBoard()
         }
         
+    }
+    
+    func indexRow(row: Int) -> [BoardIndex] {
+        var list = [BoardIndex]()
+        for i in 0 ..< board.numColumns() {
+            list.append( (row: row, col: i))
+        }
+        return list
+    }
+    
+    func indexColumn(col: Int) -> [BoardIndex] {
+        var list = [BoardIndex]()
+        for i in 0 ..< board.rowsLeft() {
+            list.append( (row: i, col: col))
+            list.append(contentsOf: list)
+        }
+        
+        return list
+    }
+    
+    func indexAdjacent(idx: BoardIndex, cardinalOnly: Bool, dist: Int) -> [BoardIndex]{
+        var list = [BoardIndex]()
+        
+        let minX = idx.col - dist < 0 ? 0 : idx.col - dist
+        let maxX = idx.col + dist >= board.numColumns() ? board.numColumns() - 1 : idx.col + dist
+        
+        let minY = idx.row - dist < 0 ? 0 : idx.row - dist
+        let maxY = idx.row + dist >= board.rowsLeft() ? board.rowsLeft() - 1: idx.row + dist
+        
+        for i in minX ... maxX {
+            for j in minY ... maxY {
+                if(!cardinalOnly || (i == idx.col || j == idx.row) ) {
+                    list.append((row: j, col: i))
+                }
+            }
+        }
+        return list
+    }
+    
+    func bomb(idx: BoardIndex, size: Int) {
+        board.clearPieces(list: indexAdjacent(idx: idx, cardinalOnly: false, dist: size))
     }
     
     func gameOver() {
