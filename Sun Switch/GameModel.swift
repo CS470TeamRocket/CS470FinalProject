@@ -60,6 +60,10 @@ class GameModel: NSObject {
         return board.makeMove(move: move)
     }
 	
+    func rotateRow(row: Int, dir: direction) ->Bool {
+        return board.rotateRow(row: row, dir: dir)
+    }
+    
     func getNextTime() -> TimeInterval {
         let cap: Int = 10
         let maxTimer : TimeInterval = 30
