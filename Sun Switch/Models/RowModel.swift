@@ -5,7 +5,6 @@
 //  Created by Maurice Baldain on 11/7/17.
 //  Copyright © 2017 student. All rights reserved.
 //
-
 import Foundation
 
 class RowModel :NSObject {
@@ -18,7 +17,7 @@ class RowModel :NSObject {
         columns = col
         isLast = last
     }
-
+    
     func setLast(val : Bool) {
         isLast = val
     }
@@ -26,10 +25,10 @@ class RowModel :NSObject {
     func addPiece(piece: PieceModel) {
         pieces.append(piece)
     }
-	
-	func getPiece(col: Int) ->PieceModel {
-		return pieces[col]
-	}
+    
+    func getPiece(col: Int) ->PieceModel {
+        return pieces[col]
+    }
     
     func printRow() {
         var output : String = "[ "
@@ -39,17 +38,24 @@ class RowModel :NSObject {
         output += "]"
         print(output)
     }
-	
-	func rotate(dir: direction){
-		if(dir == direction.left) {
-			pieces.append(pieces.removeFirst())
-		}
-		else {
-			pieces.insert(pieces.removeLast(), at: 0)
-		}
-	}
-
+    
+    func rotate(dir: direction){
+        if(dir == direction.left) {
+            pieces.append(pieces.removeFirst())
+        }
+        else {
+            pieces.insert(pieces.removeLast(), at: 0)
+        }
+    }
+    
     func changePiece(col: Int, other: PieceModel) {
         pieces[col].swap(new: other)
     }
+    
+    func length() -> Int {
+        return columns
+    }
 }
+ 
+ 
+ 

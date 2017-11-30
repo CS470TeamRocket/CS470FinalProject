@@ -1,16 +1,32 @@
 //
 //  PieceModel.swift
-//  Sun Switch
+//  Switch Personal
 //
-//  Created by Maurice Baldain on 11/7/17.
-//  Copyright © 2017 student. All rights reserved.
+//  Created by Maurice Baldain on 11/15/17.
+//  Copyright © 2017 CodeMunkeys. All rights reserved.
 //
 
 import Foundation
+import SpriteKit
+
+struct PModel {
+    let row: Int
+    let column: Int
+    var imgIdx: Int
+    let originalCenter: CGPoint
+    var sprite : SKSpriteNode
+}
+
+struct AModel {
+    let row: Int
+    let originalCenter: CGPoint
+    let sprite : SKSpriteNode
+}
+
 enum pieceType {
     case Planet
     case Moon
-    case Star
+    case Alien
     case Satellite
     case Rocket
     case Comet
@@ -20,12 +36,12 @@ enum pieceType {
         var pieceList = [pieceType]()
         switch(level) {
         case (10...Int.max) :
-        
+            
             fallthrough
         case (8...9) :
             
             fallthrough
-        
+            
         case (6...7):
             pieceList.append(pieceType.Comet)
             fallthrough
@@ -34,11 +50,11 @@ enum pieceType {
             pieceList.append(pieceType.Rocket)
             fallthrough
         case (2...3):
-            pieceList.append(pieceType.Satellite)
+            pieceList.append(pieceType.Alien)
             fallthrough
         default:
             pieceList.append(pieceType.Planet)
-            pieceList.append(pieceType.Star)
+            pieceList.append(pieceType.Satellite)
             pieceList.append(pieceType.Moon)
         }
         return pieceList
@@ -51,8 +67,8 @@ class PieceModel : NSObject {
     //private var column: Int //Index for column
     private var myType : pieceType = pieceType.Empty
     required init(valid: [pieceType] /*rowNum: Int, colNum: Int*/) {
-        //row = rowNum
-       // column = colNum
+         //row = rowNum
+         //column = colNum
         super.init()
         genType(valid: valid)
     }
@@ -62,10 +78,10 @@ class PieceModel : NSObject {
             return "P"
         case pieceType.Moon:
             return "M"
-        case pieceType.Star:
-            return "S"
+        case pieceType.Alien:
+            return "A"
         case pieceType.Satellite:
-            return "T"
+            return "S"
         case pieceType.Rocket:
             return "R"
         case pieceType.Comet:
@@ -77,7 +93,7 @@ class PieceModel : NSObject {
     func getType() ->pieceType {
         return myType
     }
-	
+    
     func clear() {
         myType = pieceType.Empty
     }
@@ -88,12 +104,12 @@ class PieceModel : NSObject {
         new.myType = val
     }
     
-	func isMatching(other: PieceModel) ->Bool {
+    func isMatching(other: PieceModel) ->Bool {
         if(myType == pieceType.Empty || other.getType() == pieceType.Empty) {
             return false
         }
-		return myType == other.getType()
-	}
+        return myType == other.getType()
+    }
     
     func isEmpty() -> Bool {
         return myType == pieceType.Empty
@@ -105,3 +121,32 @@ class PieceModel : NSObject {
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// You're welcome.
