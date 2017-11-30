@@ -131,6 +131,7 @@ class BoardModel: NSObject {
             board[row].rotate(dir: dir, amount: amount)
             if( checkAll().count > 0 ) {
                 print("Match detected!")
+                update()
                 return true
             }
             else {
@@ -198,7 +199,7 @@ class BoardModel: NSObject {
     
     func makeMove(move: Move) -> Bool {
         if(checkMove(move: move)) {
-            print("Hey! That's a match!!")
+            //print("Hey! That's a match!!")
             _ = swap(move: move)
             update()
             return true
