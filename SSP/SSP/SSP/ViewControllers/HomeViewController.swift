@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         SUN.loadGif(name: "s1")
         SWITCH.loadGif(name: "s2")
+        
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -29,6 +30,7 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     
 }
