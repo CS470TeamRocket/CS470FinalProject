@@ -67,7 +67,13 @@ class GameModel: NSObject {
         if(move.index.row >= board.rowsLeft()) {
             return false
         }
-        return board.makeMove(move: move)
+        let out = board.makeMove(move: move)
+        
+        if(out && board.missingRows() > 0) {
+            restoreRow()
+        }
+        
+        return out
     }
     
     func rotateRow(row: Int, amount: Int, dir: direction)->Bool {
@@ -178,6 +184,7 @@ class GameModel: NSObject {
         print("Game Over! You lasted \(totalTime) seconds!")
         timer.invalidate()
     }
+    
     
     
 }

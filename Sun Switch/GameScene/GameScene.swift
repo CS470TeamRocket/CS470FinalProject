@@ -8,6 +8,8 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
+
 
 class GameScene: SKScene {
     
@@ -43,16 +45,25 @@ class GameScene: SKScene {
     var bottom = 0
     var maxRows: Int!
     var maxCols: Int!
+    var audio: AVAudioPlayer?
     
     
     
-    override func didMove(to: SKView) {
+    override func sceneDidLoad() {
+        super.sceneDidLoad()
         let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
         //helperSprite.run(SKAction.repeatForever(rotateAction))
         game = GameModel(start: 4, view: self)
         self.backgroundColor = UIColor.white
     }
-    
+    override func willMove(from: SKView) {
+        game = nil
+        audio = nil
+        sprites.removeAll()
+        board.removeAll()
+        super.willMove(from: from)
+    }
+
     func makeBoard(board: [RowModel]) {
         for r in 0..<board.count {
             TempRow = []
@@ -317,7 +328,7 @@ class GameScene: SKScene {
     func removeBottomRow() {
         // Removes row with action
         //print("Bottom should be:", bottom)
-        if bottom > 1 {
+        if bottom >= 0 {
             //game.board.removeRow()
             var count = 0
             for s in sprites[bottom] {

@@ -10,6 +10,7 @@
 		3F6363441FB138F800A9D3C7 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3F6363431FB138F800A9D3C7 /* Actions.sks */; };
 		3F63635B1FB138F800A9D3C7 /* Sun_SwitchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F63635A1FB138F800A9D3C7 /* Sun_SwitchTests.swift */; };
 		3F6363661FB138F800A9D3C7 /* Sun_SwitchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6363651FB138F800A9D3C7 /* Sun_SwitchUITests.swift */; };
+		3F8688701FD3555D0009F2A1 /* title2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3F86886F1FD3555D0009F2A1 /* title2.wav */; };
 		AE1F0E7A1FCF94CE008FD26B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E6C1FCF94CE008FD26B /* Assets.xcassets */; };
 		AE1F0E7B1FCF94CE008FD26B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E6E1FCF94CE008FD26B /* LaunchScreen.storyboard */; };
 		AE1F0E7C1FCF94CE008FD26B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E701FCF94CE008FD26B /* Main.storyboard */; };
@@ -62,6 +63,7 @@
 		3F6363611FB138F800A9D3C7 /* Sun SwitchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sun SwitchUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F6363651FB138F800A9D3C7 /* Sun_SwitchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sun_SwitchUITests.swift; sourceTree = "<group>"; };
 		3F6363671FB138F800A9D3C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F86886F1FD3555D0009F2A1 /* title2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = title2.wav; sourceTree = "<group>"; };
 		AE1F0E6C1FCF94CE008FD26B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE1F0E6F1FCF94CE008FD26B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE1F0E711FCF94CE008FD26B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 		3F63633E1FB138F800A9D3C7 /* Sun Switch */ = {
 			isa = PBXGroup;
 			children = (
+				3F86886A1FD34AAB0009F2A1 /* Sounds */,
 				AE1F0E831FCF94DE008FD26B /* ViewControllers */,
 				AE1F0E881FCF94DE008FD26B /* Views */,
 				AE1F0E8B1FCF94DE008FD26B /* Designs */,
@@ -167,6 +170,14 @@
 				3F6363671FB138F800A9D3C7 /* Info.plist */,
 			);
 			path = "Sun SwitchUITests";
+			sourceTree = "<group>";
+		};
+		3F86886A1FD34AAB0009F2A1 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				3F86886F1FD3555D0009F2A1 /* title2.wav */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		AE1F0E6D1FCF94CE008FD26B /* Base.lproj */ = {
@@ -300,6 +311,9 @@
 		3F6363341FB138F800A9D3C7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = student;
@@ -353,6 +367,7 @@
 				AE1F0E7D1FCF94CE008FD26B /* GameScene.sks in Resources */,
 				AE1F0E7A1FCF94CE008FD26B /* Assets.xcassets in Resources */,
 				3F6363441FB138F800A9D3C7 /* Actions.sks in Resources */,
+				3F8688701FD3555D0009F2A1 /* title2.wav in Resources */,
 				AE1F0E7C1FCF94CE008FD26B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
