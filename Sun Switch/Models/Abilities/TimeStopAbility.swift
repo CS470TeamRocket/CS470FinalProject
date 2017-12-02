@@ -20,7 +20,7 @@ class TimeStopAbility: AbilityModel {
     
     override func doAbility() {
         super.doAbility()
-        gamemod.stopTime(delay: 10)
+        UserDataHolder.shared.currentGameModel?.stopTime(delay: 10)
     }
     
 }

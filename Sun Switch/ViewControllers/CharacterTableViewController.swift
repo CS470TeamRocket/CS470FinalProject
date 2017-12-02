@@ -97,8 +97,9 @@ class CharacterTableViewController: UITableViewController {
         if segue.identifier == "StartGameWithCharacter" {
             let cell = sender as! CharacterTableViewCell
             if let indexPath = tableView.indexPath(for: cell) {
-                let destination = segue.destination as! GameViewController
-                destination.setCharacterForThisView(character: data[indexPath.row])
+                //let destination = segue.destination as! GameViewController
+                //destination.setCharacterForThisView(character: data[indexPath.row])
+                UserDataHolder.shared.currentCharacter = data[indexPath.row]
             }
         }
     }

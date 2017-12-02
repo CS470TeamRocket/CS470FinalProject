@@ -36,6 +36,7 @@ class GameScene: SKScene {
     var sun1: PModel!
     var sun2: PModel!
     var sun3: PModel!
+    var abilityButton: PModel!
     var game: GameModel!
     var dir: String = ""
     var bottom = 0
@@ -48,6 +49,7 @@ class GameScene: SKScene {
         let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
         //helperSprite.run(SKAction.repeatForever(rotateAction))
         game = GameModel(start: 4, view: self)
+        UserDataHolder.shared.currentGameModel = game
         self.backgroundColor = UIColor.white
     }
     
@@ -138,15 +140,19 @@ class GameScene: SKScene {
             count += 1
         }
         // Suns
-        sun1 = PModel(row: 0, column: 0, imgIdx: 0, originalCenter: CGPoint(x: (-frame.width / 2) + CGFloat(40), y: (-frame.height / 2) + CGFloat(40)), sprite: SKSpriteNode(imageNamed: "sun"))
+        sun1 = PModel(row: 0, column: 0, imgIdx: 0, originalCenter: CGPoint(x: (-frame.width / 4) + CGFloat(40), y: (-frame.height / 2) + CGFloat(40)), sprite: SKSpriteNode(imageNamed: "sun"))
         self.addChild(sun1.sprite)
         sun1.sprite.position = sun1.originalCenter
-        sun2 = PModel(row: 0, column: 0, imgIdx: 0, originalCenter: CGPoint(x: (frame.width / 2) - CGFloat(40), y: (-frame.height / 2) + CGFloat(40)), sprite: SKSpriteNode(imageNamed: "sun"))
+        sun2 = PModel(row: 0, column: 0, imgIdx: 0, originalCenter: CGPoint(x: (frame.width / 4) - CGFloat(40), y: (-frame.height / 2) + CGFloat(40)), sprite: SKSpriteNode(imageNamed: "sun"))
         self.addChild(sun2.sprite)
         sun2.sprite.position = sun2.originalCenter
         sun3 = PModel(row: 00, column: 0, imgIdx: 0, originalCenter: CGPoint(x: 0, y: (-frame.height / 2) + CGFloat(40)), sprite: SKSpriteNode(imageNamed: "sun"))
         self.addChild(sun3.sprite)
         sun3.sprite.position = sun3.originalCenter
+        // AbilityButton
+        abilityButton = PModel(row: 0, column: 0, imgIdx: 0, originalCenter: CGPoint(x: (-frame.width/2) + CGFloat(40), y: (-frame.height/2) + CGFloat(40)), sprite: SKSpriteNode(imageNamed:"helmet"))
+        self.addChild(abilityButton.sprite)
+        abilityButton.sprite.position = abilityButton.originalCenter
     }
  
     func dropFromTop(Index: BoardIndex) {
@@ -460,6 +466,9 @@ class GameScene: SKScene {
             }
             else if self.sun3.sprite.contains(location) {
                 dropTest()
+            }
+            else if self.abilityButton.sprite.contains(location){
+                UserDataHolder.shared.currentCharacter?.ability.doAbility()
             }
 
             for a in arrows {

@@ -12,11 +12,6 @@ import GameplayKit
 
 class GameViewController: UIViewController {
     @IBOutlet weak var titl: UIImageView!
-    var character: CharacterModel! = nil
-
-    func setCharacterForThisView(character: CharacterModel) {
-        self.character = character
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +37,6 @@ class GameViewController: UIViewController {
         return true
     }
     
-    
-
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown

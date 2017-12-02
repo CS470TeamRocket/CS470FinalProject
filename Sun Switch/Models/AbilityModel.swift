@@ -14,15 +14,10 @@ class AbilityModel {
     var desc: String! = "default description"
     var cost: Int! = 0
     var level: Int! = 1
-    var gamemod: GameModel! = nil
     //Should have variable gameModel (named master) to execute doAbility on. Ability will need to receive a gameModel on game start.
     
     init() {
         
-    }
-    
-    func setGameModel(gamemod: GameModel) {
-        self.gamemod = gamemod
     }
     
     func doAbility(){

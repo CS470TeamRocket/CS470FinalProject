@@ -95,6 +95,7 @@ class GameModel: NSObject {
     }
     
     func stopTime(delay: Int){
+        print("Stopping Time")
         timer.invalidate()
         timer = Timer.scheduledTimer(timeInterval: TimeInterval(delay), target: self, selector: (#selector(resetTimer)), userInfo: nil, repeats: false)
     }
@@ -120,6 +121,7 @@ class GameModel: NSObject {
     @objc func timeTick() {
         totalTime += 1
         currTime += 1
+        print("Tick")
         //print("Current Time:", currTime, "\tTotal Time:", totalTime)
         if(currTime >= Int(timeLeft)) {
             //print("Time to reset timer.")

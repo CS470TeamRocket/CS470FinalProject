@@ -11,6 +11,13 @@ import Foundation
 class UserDataHolder {
     var abilities: [AbilityModel] = []
     var characters: [CharacterModel] = []
+    var currentCharacter: CharacterModel?
+    var currentGameModel: GameModel?
+    var sfxVolume: Double = 100
+    var musicVolume: Double = 100
+    var sfxMuted: Bool = false
+    var musicMuted: Bool = false
+    
     
     static let shared = UserDataHolder() //Singleton for user data
     
