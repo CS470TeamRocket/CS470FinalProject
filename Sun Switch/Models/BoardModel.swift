@@ -127,6 +127,7 @@ class BoardModel: NSObject {
     func numColumns() -> Int {
         return columns
     }
+
     func printBoard() {
         for i in 0 ..< currentRows {
             board[i].printRow()

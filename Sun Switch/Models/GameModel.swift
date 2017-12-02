@@ -104,6 +104,8 @@ class GameModel: NSObject {
     }
     
     func stopTime(delay: Int){
+        print("Stopping Time")
+
         timer.invalidate()
         timer = Timer.scheduledTimer(timeInterval: TimeInterval(delay), target: self, selector: (#selector(resetTimer)), userInfo: nil, repeats: false)
     }
@@ -111,6 +113,7 @@ class GameModel: NSObject {
     func restoreRow() {
         board.restoreRow()
     }
+    
     func printBoard() {
         board.printBoard()
         print("")
@@ -120,9 +123,15 @@ class GameModel: NSObject {
         scene.makeBoard(board: board.getBoard())
     }
     
+    func updateTimeBar(timePercent: Double) {
+        //This will be used to update the graphic bar representing the time left for each round.
+        //Takes a double representing a percentage of the bar that should be filled.
+    }
+    
     @objc func timeTick() {
         totalTime += 1
         currTime += 1
+        print("Tick")
         //print("Current Time:", currTime, "\tTotal Time:", totalTime)
         if(currTime >= Int(timeLeft)) {
             //print("Time to reset timer.")
@@ -147,6 +156,47 @@ class GameModel: NSObject {
         }
         
     }
+    func indexColumn(col: Int) -> [BoardIndex] {
+        var list = [BoardIndex]()
+        for i in 0 ..< board.rowsLeft() {
+            list.append( (row: i, col: col))
+            list.append(contentsOf: list)
+        }
+        
+        return list
+    }
+    
+    func indexAdjacent(idx: BoardIndex, cardinalOnly: Bool, dist: Int) -> [BoardIndex]{
+        var list = [BoardIndex]()
+        
+        let minX = idx.col - dist < 0 ? 0 : idx.col - dist
+        let maxX = idx.col + dist >= board.numColumns() ? board.numColumns() - 1 : idx.col + dist
+        
+        let minY = idx.row - dist < 0 ? 0 : idx.row - dist
+        let maxY = idx.row + dist >= board.rowsLeft() ? board.rowsLeft() - 1: idx.row + dist
+        
+        for i in minX ... maxX {
+            for j in minY ... maxY {
+                if(!cardinalOnly || (i == idx.col || j == idx.row) ) {
+                    list.append((row: j, col: i))
+                }
+            }
+        }
+        return list
+    }
+    
+    func bomb(idx: BoardIndex, size: Int) {
+        board.clearPieces(list: indexAdjacent(idx: idx, cardinalOnly: false, dist: size))
+    }
+    
+    func indexRow(row: Int) -> [BoardIndex] {
+        var list = [BoardIndex]()
+        for i in 0 ..< board.numColumns() {
+            list.append( (row: row, col: i))
+        }
+        return list
+    }
+    
     func indexColumn(col: Int) -> [BoardIndex] {
         var list = [BoardIndex]()
         for i in 0 ..< board.rowsLeft() {
