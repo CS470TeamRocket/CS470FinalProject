@@ -44,4 +44,13 @@ class UserDataHolder {
         self.characters = []
         self.abilities = []
     }
+    
+    /*
+    func loadCharacterData() {
+        var json: [Any]?
+        do {
+            json = try JSONSerialization.jsonObject(with: data)
+        }
+    }
+     */
 }
