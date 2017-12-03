@@ -12,19 +12,22 @@ import GameplayKit
 
 class GameViewController: UIViewController {
     @IBOutlet weak var titl: UIImageView!
-
+    var scene : GameScene?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
+            if let newscene = GameScene(fileNamed: "GameScene") {
+                scene = newscene
                 // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
+                scene!.scaleMode = .aspectFill
                 
                 // Present the scene
                 view.presentScene(scene)
+
             }
             
             view.ignoresSiblingOrder = true
@@ -33,10 +36,18 @@ class GameViewController: UIViewController {
             view.showsNodeCount = true
         }
     }
+    override func viewWillDisappear(_ animated: Bool){
+        if(scene != nil) {
+            scene!.destroySelf()
+        } else{
+            print("Scene is nil!")
+        }
+        super.viewWillDisappear(animated)
+    }
     override var shouldAutorotate: Bool {
         return true
     }
-
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown

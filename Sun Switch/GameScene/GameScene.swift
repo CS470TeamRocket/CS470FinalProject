@@ -8,6 +8,8 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
+
 
 class GameScene: SKScene {
     
@@ -18,11 +20,12 @@ class GameScene: SKScene {
     var fakeRowL = [SKSpriteNode]()
     var fakeRowR = [SKSpriteNode]()
     var graphs = [String : GKGraph]()
-    var board = [[PieceModel]]()
+    //var board = [[PieceModel]]()
     var TempRow = [PieceModel]()
     var arrows = [[AModel]]()
     var oldArrows = [[AModel]]()
     var points: [String] = ["3000", "4000", "5000"]
+    
     
     let helperSprite = SKSpriteNode(imageNamed:"moon")
     var curSprite: (SKSpriteNode, CGPoint, Int, Int)!
@@ -33,24 +36,40 @@ class GameScene: SKScene {
     var curArrow: AModel!
     var holding: Bool = false
     var started: Bool = false
+    var canMove: Bool = false
     var sun1: PModel!
     var sun2: PModel!
     var sun3: PModel!
+    var abilityButton: PModel!
     var game: GameModel!
     var dir: String = ""
     var bottom = 0
     var maxRows: Int!
     var maxCols: Int!
+    var audio: AVAudioPlayer?
     
     
     
-    override func didMove(to: SKView) {
+    override func sceneDidLoad() {
+        super.sceneDidLoad()
         let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
         //helperSprite.run(SKAction.repeatForever(rotateAction))
-        game = GameModel(start: 4, view: self)
+        game = GameModel(start: 1, view: self)
+        UserDataHolder.shared.currentGameModel = game
         self.backgroundColor = UIColor.white
     }
-    
+    func destroySelf() {
+        print("Destroying self!")
+        UserDataHolder.shared.currentGameModel = nil
+        game.gameOver()
+        game = nil
+        sprites.removeAll()
+        entities.removeAll()
+       // board.removeAll()
+        self.removeAllActions()
+        self.removeAllChildren()
+    }
+
     func makeBoard(board: [RowModel]) {
         for r in 0..<board.count {
             TempRow = []
@@ -76,18 +95,19 @@ class GameScene: SKScene {
                 self.addChild(sprite)
                 TempRowS.append(sprite)
             }
-            self.board.append(TempRow)
+            //self.board.append(TempRow)
             self.sprites.append(TempRowS)
             self.centers.append(TempRowC)
             TempRow = []
             TempRowS = []
             TempRowC = []
         }
-        maxRows = self.board.count
-        maxCols = self.board[0].count
+        maxRows = board.count
+        maxCols = board[0].length()
         createOtherSprites()
         bottom = sprites.count - 1
         started = true
+        canMove = true
     }
     
     func getImageName(piece: PieceModel) -> String {
@@ -138,15 +158,19 @@ class GameScene: SKScene {
             count += 1
         }
         // Suns
-        sun1 = PModel(row: 0, column: 0, imgIdx: 0, originalCenter: CGPoint(x: (-frame.width / 2) + CGFloat(40), y: (-frame.height / 2) + CGFloat(40)), sprite: SKSpriteNode(imageNamed: "sun"))
+        sun1 = PModel(row: 0, column: 0, imgIdx: 0, originalCenter: CGPoint(x: (-frame.width / 4) + CGFloat(40), y: (-frame.height / 2) + CGFloat(40)), sprite: SKSpriteNode(imageNamed: "sun"))
         self.addChild(sun1.sprite)
         sun1.sprite.position = sun1.originalCenter
-        sun2 = PModel(row: 0, column: 0, imgIdx: 0, originalCenter: CGPoint(x: (frame.width / 2) - CGFloat(40), y: (-frame.height / 2) + CGFloat(40)), sprite: SKSpriteNode(imageNamed: "sun"))
+        sun2 = PModel(row: 0, column: 0, imgIdx: 0, originalCenter: CGPoint(x: (frame.width / 4) - CGFloat(40), y: (-frame.height / 2) + CGFloat(40)), sprite: SKSpriteNode(imageNamed: "sun"))
         self.addChild(sun2.sprite)
         sun2.sprite.position = sun2.originalCenter
         sun3 = PModel(row: 00, column: 0, imgIdx: 0, originalCenter: CGPoint(x: 0, y: (-frame.height / 2) + CGFloat(40)), sprite: SKSpriteNode(imageNamed: "sun"))
         self.addChild(sun3.sprite)
         sun3.sprite.position = sun3.originalCenter
+        // AbilityButton
+        abilityButton = PModel(row: 0, column: 0, imgIdx: 0, originalCenter: CGPoint(x: (-frame.width/2) + CGFloat(40), y: (-frame.height/2) + CGFloat(40)), sprite: SKSpriteNode(imageNamed:"helmet"))
+        self.addChild(abilityButton.sprite)
+        abilityButton.sprite.position = abilityButton.originalCenter
     }
  
     func dropFromTop(Index: BoardIndex) {
@@ -169,7 +193,7 @@ class GameScene: SKScene {
         sprite.run(group)
         sprite.name = name
         sprites[r][c] = sprite
-        board[r][c] = game.board.getPiece(index: BoardIndex(row: r, col: c))
+        //board[r][c] = game.board.getPiece(index: BoardIndex(row: r, col: c))
     }
     
     func printNames() {
@@ -198,7 +222,7 @@ class GameScene: SKScene {
         //sprite.run(SKAction.repeatForever(rotateAction))
         sprite.run(group)
         sprites[to.row][to.col] = sprite
-        board[to.row][to.col] = game.board.getPiece(index: to)
+        //board[to.row][to.col] = game.board.getPiece(index: to)
     }
     
     func moveRow(location: CGPoint) {
@@ -304,7 +328,7 @@ class GameScene: SKScene {
                 //let wait = SKAction.wait(forDuration: 0.3)
                 let remove = SKAction.removeFromParent()
                 s.run(SKAction.sequence([scaleUp, scaleDown, move, fade, remove]))
-                print("DONE DID.")
+                //print("DONE DID.")
             }
             return (s, action)
         }
@@ -314,11 +338,11 @@ class GameScene: SKScene {
     func removeBottomRow() {
         // Removes row with action
         //print("Bottom should be:", bottom)
-        if bottom > 1 {
-            game.board.removeRow()
+        if bottom >= 0 {
+            //game.board.removeRow()
             var count = 0
             for s in sprites[bottom] {
-                print("Deleting sprite at:", bottom, count, s.position)
+               // print("Deleting sprite at:", bottom, count, s.position)
                 s.run(SKAction.sequence([SKAction.scale(by: 1.5, duration: 0.1), SKAction.scale(by: 0.1, duration: 0.1), SKAction.move(to: CGPoint(x: 0,y :Int(-frame.height)), duration: 0.2), SKAction.fadeOut(withDuration: 0.1)]))
                 s.removeFromParent()
                 count += 1
@@ -327,21 +351,21 @@ class GameScene: SKScene {
             for a in arrows[bottom] {
                 a.sprite.removeFromParent()
             }
-            board.remove(at: board.count-1)
+            //board.remove(at: board.count-1)
             sprites.remove(at: sprites.count-1)
-            print(board.count, "&", sprites.count)
+            //print(board.count, "&", sprites.count)
             print("Changing bottom to:", bottom-1)
             bottom -= 1
         }
     }
     
-    func recreateBottomRow() {
+    func recreateBottomRow(newRow: RowModel) {
         print(bottom, "<", maxRows)
         if bottom < maxRows-1 {
-            game.restoreRow()
+            //game.restoreRow()
             print("Bottom is currently:", bottom)
             for r in 0..<sprites[0].count {
-                let piece = game.board.getBoard()[bottom+1].getPiece(col: r)
+                let piece = newRow.getPiece(col: r)
                 TempRow.append(piece)
                 var sprite: SKSpriteNode
                 let center = centers[bottom+1][r]
@@ -352,7 +376,7 @@ class GameScene: SKScene {
                 sprite.run(SKAction.sequence([SKAction.scale(by: 0.5, duration: 0.1), SKAction.scale(by: 4, duration: 0.1), SKAction.scale(by: 0.5, duration: 0.1)]))
                 let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
                 //sprite.run(SKAction.repeatForever(rotateAction))
-                print("Added sprite at:", bottom + 1, r, sprite.position)
+                //print("Added sprite at:", bottom + 1, r, sprite.position)
                 sprite.name = name
                 TempRowS.append(sprite)
             }
@@ -361,10 +385,10 @@ class GameScene: SKScene {
                 addChild(a.sprite)
                 a.sprite.run(SKAction.fadeIn(withDuration: 0.1))
             }
-            print(oldArrows.count)
+            //print(oldArrows.count)
             oldArrows.remove(at: 0)
-            print(oldArrows.count)
-            board.append(TempRow)
+            //print(oldArrows.count)
+           // board.append(TempRow)
             sprites.append(TempRowS)
             TempRow = []
             TempRowS = []
@@ -445,7 +469,9 @@ class GameScene: SKScene {
         // Called When the screen is first touched
         // print("TOUCHES BEGAN")
         // Just hide them
-        
+        if(!canMove) {
+            return
+        }
         for touch in touches {
             let location = touch.location(in: self)
             if self.sun1.sprite.contains(location) {
@@ -455,11 +481,14 @@ class GameScene: SKScene {
                 //print(bottom)
             }
             else if self.sun2.sprite.contains(location) {
-                recreateBottomRow()
+                game.restoreRow()
                 //print(bottom)
             }
             else if self.sun3.sprite.contains(location) {
                 dropTest()
+            }
+            else if self.abilityButton.sprite.contains(location){
+                UserDataHolder.shared.currentCharacter?.ability.doAbility()
             }
 
             for a in arrows {
@@ -503,6 +532,10 @@ class GameScene: SKScene {
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if(!canMove) {
+            snapAllBack()
+            return
+        }
         for touch in touches {
             let location = touch.location(in: self)
             if curArrow != nil {
@@ -591,7 +624,7 @@ class GameScene: SKScene {
                     else if (cDisX > bSize) && (dir == "" || dir == "right") {
                         //print("RIGHT")
                         dir = "right"
-                        if curSprite.3 != board[0].count + 1  {
+                        if curSprite.3 != maxCols + 1  {
                             lastDirection = direction.right
                             //otherSprite = game.gameBoard.board[curSprite.row][curSprite.column + 1]
                             if otherSprite == nil {
@@ -644,6 +677,10 @@ class GameScene: SKScene {
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if(!canMove) {
+            snapAllBack()
+            return
+        }
         //print("TOUCHES ENDED")
         showArrows()
         for touch in touches {
@@ -663,7 +700,7 @@ class GameScene: SKScene {
         }
         holding = false
         snapAllBack()
-        if lastDirection != nil, lastIdx != nil {
+        if lastDirection != nil, lastIdx != nil, otherSprite != nil {
             let move = game.makeMove(move: Move(BoardIndex(lastIdx), dir: lastDirection))
             if !move {
                 swap()
@@ -695,14 +732,31 @@ class GameScene: SKScene {
         //let tempType = getImageName(piece: tempPiece)
         
         curSprite.0.texture = otherSprite.0.texture
-        self.board[r][c] = game.board.getPiece(index: (r2,c2))
+        //self.board[r][c] = game.board.getPiece(index: (r2,c2))
         //curSprite.imgIdx = otherSprite.imgIdx
         otherSprite.0.texture = tempSpriteTex
-        self.board[r2][c2] = tempPiece
+        //self.board[r2][c2] = tempPiece
         //otherSprite.imgIdx = tempImgIdx
         //game.board.getPiece(index: (r,c)).swap(new: game.board.getPiece(index: (r2,c2)))
     }
- 
+    
+    func updateScore(score: Int) {
+        
+    }
+    
+    func enableMove() {
+        canMove = true
+    }
+    
+    func disableMove() {
+        canMove = false
+        curSprite = nil
+        otherSprite = nil
+        curArrow = nil
+        lastDirection = nil
+        lastIdx = nil
+        holding = false
+    }
     override func update(_ currentTime: TimeInterval) {
         
     }

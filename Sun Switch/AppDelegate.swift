@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        generateDummyUserData()
         return true
     }
 
@@ -41,6 +42,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func generateDummyUserData () { //Here to fill the user data with something. to be replaced later, probably with some core data stuff which I don't currently understand
+        var abilities: [AbilityModel] = []
+        var characters: [CharacterModel] = []
+        
+        for i in 1...10 { //generating some characters
+            switch i%3{
+                
+            case 0:
+                characters.append(CharacterModel(img: "Person1.jpg", name: "person \(i)", ability: TimeStopAbility(),desc: "this is person \(i)'s description"))
+            case 1:
+                characters.append(CharacterModel(img: "Person2.png", name: "person \(i)", ability:
+                    PointBoostAbility(),desc: "this is person \(i)'s description"))
+            case 2:
+                characters.append(CharacterModel(img: "Person3.jpeg", name: "person \(i)", ability: DropBombAbility(),desc: "this is person \(i)'s description. It is much longer than the others so we can test scrolling. this is person \(i)'s description. It is much longer than the others so we can test scrolling. this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling."))
+            default:
+                characters.append(CharacterModel(img: "Person1.jpg", name: "person \(i)", ability: TimeStopAbility(),desc: "this is person \(i)'s description"))
+                
+            }
+        }
+        //throwing some dummy abilities in there
+        abilities.append(TimeStopAbility())
+        abilities.append(PointBoostAbility())
+        abilities.append(TeleportAbility())
+        abilities.append(DropBombAbility())
+        UserDataHolder.shared.setAbilities(abilities: abilities)
+        UserDataHolder.shared.setCharacters(characters: characters)
+    }
 
 }
 
