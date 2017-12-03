@@ -7,14 +7,28 @@
 //
 
 import UIKit
+import AVFoundation
 
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var popBackButton: UIButton!
+    @IBOutlet weak var musicButton: UIButton!
+    var audio: AVAudioPlayer?
     
     
     @IBAction func popBack(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func musicSetting(_ sender: UIButton) {
+        if audio != nil {
+            if audio!.isPlaying {
+                audio!.pause()
+            }
+            else {
+                audio!.play()
+            }
+        }
     }
     
     
