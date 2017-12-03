@@ -266,13 +266,13 @@ class GameModel: NSObject {
         let currentBestScore = UserDefaults.standard.integer(forKey: UserDataHolder.shared.BEST_SCORE_KEY)
         if score > currentBestScore {
             UserDefaults.standard.set(score, forKey: UserDataHolder.shared.BEST_SCORE_KEY)
-            print("You have beat your previous score of\(currentBestScore)")
+            print("You have beat your previous score of \(currentBestScore)")
         }
         
         let currentBestTime = UserDefaults.standard.integer(forKey: UserDataHolder.shared.BEST_TIME_KEY)
         if totalTime > currentBestTime {
             UserDefaults.standard.set(totalTime, forKey: UserDataHolder.shared.BEST_TIME_KEY)
-            print("You have beat your previous time of\(currentBestTime)")
+            print("You have beat your previous time of \(currentBestTime)")
         }
     }
     
