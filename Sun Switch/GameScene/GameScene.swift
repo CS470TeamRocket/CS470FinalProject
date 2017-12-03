@@ -20,7 +20,7 @@ class GameScene: SKScene {
     var fakeRowL = [SKSpriteNode]()
     var fakeRowR = [SKSpriteNode]()
     var graphs = [String : GKGraph]()
-    var board = [[PieceModel]]()
+    //var board = [[PieceModel]]()
     var TempRow = [PieceModel]()
     var arrows = [[AModel]]()
     var oldArrows = [[AModel]]()
@@ -54,16 +54,20 @@ class GameScene: SKScene {
         super.sceneDidLoad()
         let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
         //helperSprite.run(SKAction.repeatForever(rotateAction))
-        game = GameModel(start: 4, view: self)
+        game = GameModel(start: 1, view: self)
         UserDataHolder.shared.currentGameModel = game
         self.backgroundColor = UIColor.white
     }
-    override func willMove(from: SKView) {
+    func destroySelf() {
+        print("Destroying self!")
+        UserDataHolder.shared.currentGameModel = nil
+        game.gameOver()
         game = nil
-        audio = nil
         sprites.removeAll()
-        board.removeAll()
-        super.willMove(from: from)
+        entities.removeAll()
+       // board.removeAll()
+        self.removeAllActions()
+        self.removeAllChildren()
     }
 
     func makeBoard(board: [RowModel]) {
@@ -91,15 +95,15 @@ class GameScene: SKScene {
                 self.addChild(sprite)
                 TempRowS.append(sprite)
             }
-            self.board.append(TempRow)
+            //self.board.append(TempRow)
             self.sprites.append(TempRowS)
             self.centers.append(TempRowC)
             TempRow = []
             TempRowS = []
             TempRowC = []
         }
-        maxRows = self.board.count
-        maxCols = self.board[0].count
+        maxRows = board.count
+        maxCols = board[0].length()
         createOtherSprites()
         bottom = sprites.count - 1
         started = true
@@ -189,7 +193,7 @@ class GameScene: SKScene {
         sprite.run(group)
         sprite.name = name
         sprites[r][c] = sprite
-        board[r][c] = game.board.getPiece(index: BoardIndex(row: r, col: c))
+        //board[r][c] = game.board.getPiece(index: BoardIndex(row: r, col: c))
     }
     
     func printNames() {
@@ -218,7 +222,7 @@ class GameScene: SKScene {
         //sprite.run(SKAction.repeatForever(rotateAction))
         sprite.run(group)
         sprites[to.row][to.col] = sprite
-        board[to.row][to.col] = game.board.getPiece(index: to)
+        //board[to.row][to.col] = game.board.getPiece(index: to)
     }
     
     func moveRow(location: CGPoint) {
@@ -324,7 +328,7 @@ class GameScene: SKScene {
                 //let wait = SKAction.wait(forDuration: 0.3)
                 let remove = SKAction.removeFromParent()
                 s.run(SKAction.sequence([scaleUp, scaleDown, move, fade, remove]))
-                print("DONE DID.")
+                //print("DONE DID.")
             }
             return (s, action)
         }
@@ -338,7 +342,7 @@ class GameScene: SKScene {
             //game.board.removeRow()
             var count = 0
             for s in sprites[bottom] {
-                print("Deleting sprite at:", bottom, count, s.position)
+               // print("Deleting sprite at:", bottom, count, s.position)
                 s.run(SKAction.sequence([SKAction.scale(by: 1.5, duration: 0.1), SKAction.scale(by: 0.1, duration: 0.1), SKAction.move(to: CGPoint(x: 0,y :Int(-frame.height)), duration: 0.2), SKAction.fadeOut(withDuration: 0.1)]))
                 s.removeFromParent()
                 count += 1
@@ -347,9 +351,9 @@ class GameScene: SKScene {
             for a in arrows[bottom] {
                 a.sprite.removeFromParent()
             }
-            board.remove(at: board.count-1)
+            //board.remove(at: board.count-1)
             sprites.remove(at: sprites.count-1)
-            print(board.count, "&", sprites.count)
+            //print(board.count, "&", sprites.count)
             print("Changing bottom to:", bottom-1)
             bottom -= 1
         }
@@ -372,7 +376,7 @@ class GameScene: SKScene {
                 sprite.run(SKAction.sequence([SKAction.scale(by: 0.5, duration: 0.1), SKAction.scale(by: 4, duration: 0.1), SKAction.scale(by: 0.5, duration: 0.1)]))
                 let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
                 //sprite.run(SKAction.repeatForever(rotateAction))
-                print("Added sprite at:", bottom + 1, r, sprite.position)
+                //print("Added sprite at:", bottom + 1, r, sprite.position)
                 sprite.name = name
                 TempRowS.append(sprite)
             }
@@ -381,10 +385,10 @@ class GameScene: SKScene {
                 addChild(a.sprite)
                 a.sprite.run(SKAction.fadeIn(withDuration: 0.1))
             }
-            print(oldArrows.count)
+            //print(oldArrows.count)
             oldArrows.remove(at: 0)
-            print(oldArrows.count)
-            board.append(TempRow)
+            //print(oldArrows.count)
+           // board.append(TempRow)
             sprites.append(TempRowS)
             TempRow = []
             TempRowS = []
@@ -620,7 +624,7 @@ class GameScene: SKScene {
                     else if (cDisX > bSize) && (dir == "" || dir == "right") {
                         //print("RIGHT")
                         dir = "right"
-                        if curSprite.3 != board[0].count + 1  {
+                        if curSprite.3 != maxCols + 1  {
                             lastDirection = direction.right
                             //otherSprite = game.gameBoard.board[curSprite.row][curSprite.column + 1]
                             if otherSprite == nil {
@@ -728,14 +732,18 @@ class GameScene: SKScene {
         //let tempType = getImageName(piece: tempPiece)
         
         curSprite.0.texture = otherSprite.0.texture
-        self.board[r][c] = game.board.getPiece(index: (r2,c2))
+        //self.board[r][c] = game.board.getPiece(index: (r2,c2))
         //curSprite.imgIdx = otherSprite.imgIdx
         otherSprite.0.texture = tempSpriteTex
-        self.board[r2][c2] = tempPiece
+        //self.board[r2][c2] = tempPiece
         //otherSprite.imgIdx = tempImgIdx
         //game.board.getPiece(index: (r,c)).swap(new: game.board.getPiece(index: (r2,c2)))
     }
- 
+    
+    func updateScore(score: Int) {
+        
+    }
+    
     func enableMove() {
         canMove = true
     }
