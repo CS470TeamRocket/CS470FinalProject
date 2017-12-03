@@ -472,7 +472,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="back"/>
                                 <connections>
-                                    <segue destination="Z00-o5-38N" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="Eag-5A-IUU"/>
+                                    <segue destination="Z00-o5-38N" kind="presentation" id="0FQ-Jq-z5F"/>
                                 </connections>
                             </button>
                         </subviews>

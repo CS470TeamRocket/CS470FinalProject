@@ -9,6 +9,13 @@
 import Foundation
 
 class UserDataHolder {
+
+    //keys for storing objects in UserDefaults
+    let BEST_SCORE_KEY:String = "bestScore"
+    let BEST_TIME_KEY:String = "bestTime"
+    let LAUNCHED_BEFORE_KEY:String = "launchedBefore"
+    //
+    
     var abilities: [AbilityModel] = []
     var characters: [CharacterModel] = []
     var currentCharacter: CharacterModel?

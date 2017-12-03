@@ -26,6 +26,7 @@ enum direction {
 
 typealias BoardIndex = (row: Int, col: Int)
 typealias Move = (index: BoardIndex, dir: direction)
+typealias MoveResult = (success: Bool, clears: [Int])
 
 class BoardModel: NSObject {
     private let rows: Int = 9 // Number of starting Rows. The number of columns is determined in the RowModel
@@ -47,7 +48,7 @@ class BoardModel: NSObject {
         for i in 0 ..< matchList.count {
             print(matchList[i])
         }
-        update()
+        _ = update()
     }
     
     func generatePieces() {
@@ -88,6 +89,7 @@ class BoardModel: NSObject {
         let row = createRow(count: currentRows + 1, isLast: true)
         board.append(row)
         currentRows += 1
+        scene.recreateBottomRow(newRow: row)
         //Any other cleanup we might need.
     }
     
@@ -96,9 +98,12 @@ class BoardModel: NSObject {
             print("Error in removal!")
             return
         }
+        scene.disableMove()
         board.removeLast()
         board.last!.setLast(val: true)
+        scene.removeBottomRow()
         currentRows -= 1
+        scene.enableMove()
     }
     
     func createRow(count: Int, isLast: Bool) -> RowModel{
@@ -123,35 +128,36 @@ class BoardModel: NSObject {
     func numColumns() -> Int {
         return columns
     }
-    
+
     func printBoard() {
         for i in 0 ..< currentRows {
             board[i].printRow()
         }
     }
     
-    func rotateRow(row: Int, amount: Int, dir: direction )-> Bool{
+    func rotateRow(row: Int, amount: Int, dir: direction )-> MoveResult {
         if(row < rows) {
+            var list = [Int]()
             board[row].rotate(dir: dir, amount: amount)
             if( checkAll().count > 0 ) {
                 print("Match detected!")
-                update()
-                return true
+                list = update()
+                return (success: true, clears: list)
             }
             else {
                 print("No match!")
                 board[row].rotate(dir: dir.opposite(), amount: amount)
-                return false
+                return (success: false, clears: list)
             }
         }
         else {
-            return false
+            return (success: false, clears: [Int]())
         }
     }
     
     func checkAll() -> [BoardIndex]{
         var matched = [BoardIndex]()
-        for i in 0 ..< rows {
+        for i in 0 ..< currentRows {
             for j in 0 ..< columns {
                 if(checkMatch(index: (i, j))) {
                     matched.append((i,j))
@@ -189,7 +195,7 @@ class BoardModel: NSObject {
         //Check below
         i = 1
         matched = true
-        while(row+i < rows && matched) {
+        while(row+i < currentRows && matched) {
             if(piece.isMatching(other: getPiece(index: (row+i, col)))) {
                 matchSize += 1
             } else {
@@ -201,20 +207,25 @@ class BoardModel: NSObject {
         return (matchSize >= 3) ? matchSize : 0
     }
     
-    func makeMove(move: Move) -> Bool {
+    func makeMove(move: Move) -> MoveResult {
         if(checkMove(move: move)) {
             //print("Hey! That's a match!!")
             _ = swap(move: move)
-            update()
-            return true
+            let list = update()
+            return (success: true, clears: list)
+            
         }
-        return false
+        return (success: false, clears: [Int]())
     }
     
-    func update() {
+    func update() ->[Int] {
+        var out = [Int]()
         while(checkAll().count > 0) {
-            clearPieces(list: checkAll())
+            let list = checkAll()
+            out.append(list.count)
+            clearPieces(list: list)
         }
+        return out
     }
     
     func checkMove(move: Move) -> Bool {
@@ -226,8 +237,8 @@ class BoardModel: NSObject {
     
     func updateColumn(col: Int) {
         //var actions: [SKAction] = []
-        var i = rows-1
-        var j = rows-2
+        var i = currentRows-1
+        var j = currentRows-2
         while(i >= 0) {
             let piece = getPiece(index:(i, col))
             
@@ -244,7 +255,7 @@ class BoardModel: NSObject {
                     }
                     from.row = j
                     if scene.started {
-                        print("Drop")
+                        //print("Drop")
                         scene.drop(from: from, to: to)
                     }
                     j -= 1
@@ -308,7 +319,7 @@ class BoardModel: NSObject {
                 //let deadlineTime = DispatchTime.now() + .milliseconds(5000)
             }
         }
-        print(actions)
+        //print(actions)
         //scene.run(SKAction.sequence(actions))
         //scene.helperSprite.run(SKAction.wait(forDuration: 10))
         for i in 0..<actions.count {
