@@ -24,6 +24,7 @@ class GameModel: NSObject {
     var pointValue: Int = 50
     var timeStopped: Bool = true
     var extreme: Bool = false
+    var over: Bool = false
     //*
     var scene: GameScene!
     
@@ -276,6 +277,7 @@ class GameModel: NSObject {
             print("Game Over! You lasted \(totalTime) seconds! Your total score was \(score)!")
         }
         board = nil
+        over = true
         timer.invalidate()
         scene.quitButton.sendActions(for: UIControlEvents.touchUpInside)
     }

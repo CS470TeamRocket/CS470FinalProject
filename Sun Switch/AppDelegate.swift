@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         generateDummyUserData()
+        fillUserDefaultsIfFirstLaunch()
         return true
     }
 
@@ -42,6 +43,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func fillUserDefaultsIfFirstLaunch() {
+        let launchedBefore = UserDefaults.standard.bool(forKey: UserDataHolder.shared.LAUNCHED_BEFORE_KEY)
+        if launchedBefore {
+            print("Not First Launch")
+            //resetUserDefaults()
+        }
+        else {
+            print("First Launch")
+            UserDefaults.standard.set(true, forKey: UserDataHolder.shared.LAUNCHED_BEFORE_KEY)
+            //Anything that needs to be set one the first launch should be set here:
+            //Set the best score and time to zero
+            resetUserDefaults()
+         }
+        }
+    
+    func resetUserDefaults() {
+        UserDefaults.standard.set(Int(0),forKey: UserDataHolder.shared.BEST_SCORE_KEY)
+        UserDefaults.standard.set(Int(0),forKey: UserDataHolder.shared.BEST_TIME_KEY)
+        
+    }
+    
     func generateDummyUserData () { //Here to fill the user data with something. to be replaced later, probably with some core data stuff which I don't currently understand
         var abilities: [AbilityModel] = []
         var characters: [CharacterModel] = []

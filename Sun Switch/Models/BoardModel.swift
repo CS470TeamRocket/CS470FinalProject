@@ -365,9 +365,9 @@ class BoardModel: NSObject {
             //printBoard()
             //print("")
             actions.append(contentsOf: updateColumn(col: i))
-            if scene.started {
+            //if scene.started {
                 //sleep(UInt32(1))
-            }
+            //}
         }
         if actions.count > 0 {
             scene.doSequencialActions(actions: actions, index: 0)

@@ -18,6 +18,7 @@ class GameViewController: UIViewController {
     var audio: AVAudioPlayer?
     
     @IBAction func quit(_ sender: UIButton) {
+        //scene?.game.gameOver()
         //audio!.stop()
     }
     
@@ -31,8 +32,12 @@ class GameViewController: UIViewController {
         }
         if segue.identifier == "gameOver" {
             if let viewController = segue.destination as? GameOverViewController {
+                if !(scene?.game.over)! {
+                    scene?.game.gameOver()
+                }
                 if(scene?.game.score != nil){
                     viewController.score = (scene?.game.score)! as Int
+                    viewController.time = (scene?.game.totalTime)! as Int
                 }
                 if(audio != nil){
                     viewController.audio = audio! as AVAudioPlayer

@@ -314,7 +314,8 @@ class GameScene: SKScene {
         for a in arrows[curRow] {
             a.sprite.position = a.originalCenter
         }
-        var newRow = game.board.getBoard()[curRow]
+        var newRow: RowModel
+        newRow = game.board.getBoard()[curRow]
         var newRowS: [SKSpriteNode] = []
         var tempRow: [PieceModel] = []
         for p in newRow.getPieces() {
