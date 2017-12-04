@@ -15,6 +15,7 @@ class UserDataHolder {
     let BEST_TIME_KEY:String = "bestTime"
     let LAUNCHED_BEFORE_KEY:String = "launchedBefore"
     //
+
     
     var abilities: [AbilityModel] = []
     var characters: [CharacterModel] = []
@@ -51,7 +52,6 @@ class UserDataHolder {
         self.characters = []
         self.abilities = []
     }
-    
     /*
     func loadCharacterData() {
         var json: [Any]?

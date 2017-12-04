@@ -36,6 +36,7 @@ class BoardModel: NSObject {
     private var scene : GameScene
     private var diff : Int
     private var validPieces : [pieceType] = [pieceType]()	//The roster of available pieces. This is based
+    private var rowMatch = false
     //on the current level.
     
     init(difficulty: Int, scene: GameScene) {
@@ -218,6 +219,20 @@ class BoardModel: NSObject {
         return (success: false, clears: [Int]())
     }
     
+    func makeMoveForRow(moves: [Move]) -> MoveResult {
+        var moveRes: MoveResult
+        for m in moves {
+            if !rowMatch {
+                let move = makeMove(move: m)
+                if move.success {
+                    //rowMatch = true
+                    return move
+                }
+            }
+        }
+        return (success: false, clears: [Int]())
+    }
+    
     func update() ->[Int] {
         var out = [Int]()
         while(checkAll().count > 0) {
@@ -235,8 +250,9 @@ class BoardModel: NSObject {
         return isMatch
     }
     
-    func updateColumn(col: Int) {
-        //var actions: [SKAction] = []
+
+    func updateColumn(col: Int) -> [SKAction] {
+        var actions: [SKAction] = []
         var i = currentRows-1
         var j = currentRows-2
         while(i >= 0) {
@@ -246,7 +262,7 @@ class BoardModel: NSObject {
                 var filled : Bool = false
                 let to = BoardIndex(row: i, col: col)
                 var from = BoardIndex(row: i, col: col)
-                
+                var group: [SKAction] = []
                 while(j >= 0 && !filled ) {
                     let replace = getPiece(index: (j, col))
                     if !replace.isEmpty() {
@@ -256,16 +272,30 @@ class BoardModel: NSObject {
                     from.row = j
                     if scene.started {
                         //print("Drop")
-                        scene.drop(from: from, to: to)
+
+                        //scene.run(scene.drop(from: from, to: to))
+                        group.append(scene.drop(from: from, to: to))
                     }
                     j -= 1
+                }
+                if group.count > 0 {
+                    //actions.append(SKAction.group(group))
+                    scene.run(SKAction.sequence(group))
+                    
+                    group = []
                 }
                 
                 if (!filled) {
                     piece.genType(valid: validPieces)
                     if scene.started {
-                        scene.dropFromTop(Index: BoardIndex(row: i, col: col))
+                        //scene.run(scene.dropFromTop(Index: BoardIndex(row: i, col: col)))
+                        group.append(scene.dropFromTop(Index: BoardIndex(row: i, col: col)))
                     }
+                }
+                if group.count > 0 {
+                    //actions.append(SKAction.group(group))
+                    scene.run(SKAction.sequence(group))
+                    group = []
                 }
                 
             }
@@ -276,6 +306,10 @@ class BoardModel: NSObject {
             }
             
         }
+        //if actions.count > 0 {
+        //    scene.doSequencialActions(actions: actions, index: 0)
+        //}
+        return actions
     }
     
     func swap(move: Move) -> BoardIndex {
@@ -312,7 +346,8 @@ class BoardModel: NSObject {
             if scene.started {
                 let act = scene.removeSprite(row: idx.row, col: idx.col)
                 if !sprites.contains(act.0) {
-                    actions.append(act.1)
+                    scene.run(act.1)
+                    //actions.append(act.1)
                     sprites.append(act.0)
                 }
                 scene.pointPop(row: idx.row, col: idx.col)
@@ -322,18 +357,23 @@ class BoardModel: NSObject {
         //print(actions)
         //scene.run(SKAction.sequence(actions))
         //scene.helperSprite.run(SKAction.wait(forDuration: 10))
-        for i in 0..<actions.count {
-            let sequence = SKAction.sequence([actions[actions.count-1-i], SKAction.wait(forDuration: 1)])
-            scene.run(sequence)
-            _ = DispatchTime.now() + .seconds(10)
-            scene.run(SKAction.wait(forDuration: 5))
-        }
-        
+        //for i in 0..<actions.count {
+        //    let sequence = SKAction.sequence([actions[actions.count-1-i], SKAction.wait(forDuration: 1)])
+        //    scene.run(sequence)
+        //    _ = DispatchTime.now() + .seconds(10)
+        //    scene.run(SKAction.wait(forDuration: 5))
+        //}
         
         for i in 0 ..< columns {
             //printBoard()
             //print("")
-            updateColumn(col: i)
+            actions.append(contentsOf: updateColumn(col: i))
+            //if scene.started {
+                //sleep(UInt32(1))
+            //}
+        }
+        if actions.count > 0 {
+            scene.doSequencialActions(actions: actions, index: 0)
         }
     }
     
@@ -371,6 +411,10 @@ class BoardModel: NSObject {
     
     func getBoard() -> [RowModel] {
         return board
+    }
+    
+    func setBoard(row: RowModel, index: Int) {
+        board[index] = row
     }
     
     func getValidPieces() -> [pieceType] {

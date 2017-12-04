@@ -57,6 +57,10 @@ class RowModel :NSObject {
     func length() -> Int {
         return columns
     }
+    
+    func getPieces() -> [PieceModel] {
+        return pieces
+    }
 }
  
  

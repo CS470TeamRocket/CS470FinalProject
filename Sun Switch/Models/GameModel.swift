@@ -25,6 +25,7 @@ class GameModel: NSObject {
     var pointValue: Int = 50
     var timeStopped: Bool = true
     var extreme: Bool = false
+    var over: Bool = false
     //*
     var scene: GameScene!
     
@@ -62,6 +63,7 @@ class GameModel: NSObject {
         print("LEVEL UP!")
         let streakRestore: Int = 3
         level += 1
+        print("Got to level \(level)!")
         board.advanceLevel()
         getNextGoal(current: level)
         if(!timeStopped) {
@@ -84,6 +86,21 @@ class GameModel: NSObject {
         
         if(out.success) {
             calculateScore(out.clears)
+            //Only for Extreme?
+            if(extreme && board.missingRows() > 0) {
+                restoreRow()
+            }
+        }
+        
+        return out.success
+    }
+    
+    func makeRowMove(moves: [Move]) -> Bool{
+        let out = board.makeMoveForRow(moves: moves)
+        
+        if(out.success) {
+            calculateScore(out.clears)
+            //Only for Extreme?
             if(extreme && board.missingRows() > 0) {
                 restoreRow()
             }
@@ -103,8 +120,8 @@ class GameModel: NSObject {
     
     func getNextTime() -> TimeInterval {
         let cap: Int = 10
-        let maxTimer : TimeInterval = 60
-        let minTimer : TimeInterval = 30
+        let maxTimer : TimeInterval = 15
+        let minTimer : TimeInterval = 10
         if(level >= cap) {
             return minTimer
         }
@@ -133,6 +150,7 @@ class GameModel: NSObject {
     @objc func hardResetTimer() {
         resetTimer(true)
     }
+
     func stopTime(delay: Int, hard: Bool){
         timeStopped = true
         print("Stopping Time")
@@ -172,6 +190,7 @@ class GameModel: NSObject {
         totalTime += 1
         currTime += 1
         //print("Tick")
+        //print(currTime)
         if(currTime >= Int(timeLeft)) {
             currTime = 0
             timeUp()
@@ -180,12 +199,17 @@ class GameModel: NSObject {
     
     
     func timeUp() {
-        if(board.rowsLeft() <= 1){
+        print("\(board.rowsLeft()) rows left.")
+        if(board.rowsLeft() <= 2){
             gameOver()
         }else {
             streak = 0
             board.removeRow()
             //scene.removeBottomRow()
+            scene.curArrow = nil
+            scene.lastDirection = nil
+
+            scene.touchesEnded(scene.lastSet, with: scene.lastEvent)
             printBoard()
         }
         
@@ -254,11 +278,17 @@ class GameModel: NSObject {
         } else {
             print("Game Over! You lasted \(totalTime) seconds! Your total score was \(score)!")
         }
+//<<<<<<< HEAD
         //Saving the time and score
-        saveScoreAndTime() //Compares scores and stores them if they are better than previous
+        //saveScoreAndTime() //Compares scores and stores them if they are better than previous
         //Done Saving the time and score
+        //board = nil
+//=======
         board = nil
+        over = true
+//>>>>>>> origin/Baldain
         timer.invalidate()
+        scene.quitButton.sendActions(for: UIControlEvents.touchUpInside)
     }
     
     func saveScoreAndTime() {
@@ -275,6 +305,7 @@ class GameModel: NSObject {
             print("You have beat your previous time of \(currentBestTime)")
         }
     }
+    
     
     
     

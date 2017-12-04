@@ -17,6 +17,15 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var play: UIButton!
     var audio: AVAudioPlayer?
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "settings" {
+            if let viewController = segue.destination as? SettingsViewController {
+                if(audio != nil){
+                    viewController.audio = audio! as AVAudioPlayer
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

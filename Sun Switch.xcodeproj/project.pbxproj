@@ -46,6 +46,25 @@
 		AE1F0EA01FCF94DE008FD26B /* Swift+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0E921FCF94DE008FD26B /* Swift+Gif.swift */; };
 		AE1F0EA11FCF94DE008FD26B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0E931FCF94DE008FD26B /* AppDelegate.swift */; };
 		AE1F0EA21FCF94DE008FD26B /* To Do in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E941FCF94DE008FD26B /* To Do */; };
+		AE1F0ECD1FD39A7C008FD26B /* AbilityStoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0ECB1FD39A7C008FD26B /* AbilityStoreTableViewController.swift */; };
+		AE1F0ECE1FD39A7C008FD26B /* CharacterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0ECC1FD39A7C008FD26B /* CharacterTableViewController.swift */; };
+		AE1F0ED11FD39A88008FD26B /* AbilityStoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0ECF1FD39A88008FD26B /* AbilityStoreTableViewCell.swift */; };
+		AE1F0ED21FD39A88008FD26B /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0ED01FD39A88008FD26B /* CharacterTableViewCell.swift */; };
+		AE1F0EDA1FD39A97008FD26B /* DropBombAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0ED41FD39A97008FD26B /* DropBombAbility.swift */; };
+		AE1F0EDB1FD39A97008FD26B /* PointBoostAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0ED51FD39A97008FD26B /* PointBoostAbility.swift */; };
+		AE1F0EDC1FD39A97008FD26B /* TeleportAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0ED61FD39A97008FD26B /* TeleportAbility.swift */; };
+		AE1F0EDD1FD39A97008FD26B /* TimeStopAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0ED71FD39A97008FD26B /* TimeStopAbility.swift */; };
+		AE1F0EDE1FD39A97008FD26B /* AbilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0ED81FD39A97008FD26B /* AbilityModel.swift */; };
+		AE1F0EDF1FD39A97008FD26B /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0ED91FD39A97008FD26B /* CharacterModel.swift */; };
+		AE1F0EE91FD39AB0008FD26B /* UserDataHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0EE11FD39AB0008FD26B /* UserDataHolder.swift */; };
+		AE1F0EEA1FD39AB0008FD26B /* title2.ogg in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0EE31FD39AB0008FD26B /* title2.ogg */; };
+		AE1F0EEB1FD39AB0008FD26B /* title2.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0EE41FD39AB0008FD26B /* title2.wav */; };
+		AE1F0EEC1FD39AB0008FD26B /* Person1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0EE61FD39AB0008FD26B /* Person1.jpg */; };
+		AE1F0EED1FD39AB0008FD26B /* Person2.png in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0EE71FD39AB0008FD26B /* Person2.png */; };
+		AE1F0EEE1FD39AB0008FD26B /* Person3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0EE81FD39AB0008FD26B /* Person3.jpeg */; };
+		AE1F0EF01FD3B36F008FD26B /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0EEF1FD3B36F008FD26B /* GameOverViewController.swift */; };
+		AE1F0EF21FD3F6C8008FD26B /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0EF11FD3F6C8008FD26B /* RoundedButton.swift */; };
+		AE1F0EF41FD4121C008FD26B /* game.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0EF31FD4121C008FD26B /* game.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +130,25 @@
 		AE1F0E921FCF94DE008FD26B /* Swift+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Swift+Gif.swift"; sourceTree = "<group>"; };
 		AE1F0E931FCF94DE008FD26B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE1F0E941FCF94DE008FD26B /* To Do */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "To Do"; sourceTree = "<group>"; };
+		AE1F0ECB1FD39A7C008FD26B /* AbilityStoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbilityStoreTableViewController.swift; sourceTree = "<group>"; };
+		AE1F0ECC1FD39A7C008FD26B /* CharacterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterTableViewController.swift; sourceTree = "<group>"; };
+		AE1F0ECF1FD39A88008FD26B /* AbilityStoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbilityStoreTableViewCell.swift; sourceTree = "<group>"; };
+		AE1F0ED01FD39A88008FD26B /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
+		AE1F0ED41FD39A97008FD26B /* DropBombAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropBombAbility.swift; sourceTree = "<group>"; };
+		AE1F0ED51FD39A97008FD26B /* PointBoostAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointBoostAbility.swift; sourceTree = "<group>"; };
+		AE1F0ED61FD39A97008FD26B /* TeleportAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeleportAbility.swift; sourceTree = "<group>"; };
+		AE1F0ED71FD39A97008FD26B /* TimeStopAbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeStopAbility.swift; sourceTree = "<group>"; };
+		AE1F0ED81FD39A97008FD26B /* AbilityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbilityModel.swift; sourceTree = "<group>"; };
+		AE1F0ED91FD39A97008FD26B /* CharacterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
+		AE1F0EE11FD39AB0008FD26B /* UserDataHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataHolder.swift; sourceTree = "<group>"; };
+		AE1F0EE31FD39AB0008FD26B /* title2.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = title2.ogg; sourceTree = "<group>"; };
+		AE1F0EE41FD39AB0008FD26B /* title2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = title2.wav; sourceTree = "<group>"; };
+		AE1F0EE61FD39AB0008FD26B /* Person1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Person1.jpg; sourceTree = "<group>"; };
+		AE1F0EE71FD39AB0008FD26B /* Person2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Person2.png; sourceTree = "<group>"; };
+		AE1F0EE81FD39AB0008FD26B /* Person3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Person3.jpeg; sourceTree = "<group>"; };
+		AE1F0EEF1FD3B36F008FD26B /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
+		AE1F0EF11FD3F6C8008FD26B /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		AE1F0EF31FD4121C008FD26B /* game.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = game.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,15 +206,15 @@
 				AE1F0E881FCF94DE008FD26B /* Views */,
 				AE1F0E8B1FCF94DE008FD26B /* Designs */,
 				AE1F0E8E1FCF94DE008FD26B /* Gifs */,
-				AE1F0E931FCF94DE008FD26B /* AppDelegate.swift */,
-				AE1F0E941FCF94DE008FD26B /* To Do */,
-				AE1F0E6C1FCF94CE008FD26B /* Assets.xcassets */,
 				AE1F0E6D1FCF94CE008FD26B /* Base.lproj */,
 				AE1F0E721FCF94CE008FD26B /* GameScene */,
 				AE1F0E751FCF94CE008FD26B /* Models */,
+				AE1F0E6C1FCF94CE008FD26B /* Assets.xcassets */,
 				3F6363431FB138F800A9D3C7 /* Actions.sks */,
+				AE1F0E931FCF94DE008FD26B /* AppDelegate.swift */,
 				3F6363511FB138F800A9D3C7 /* Info.plist */,
 				3FD5DA091FD37C8500C78396 /* SunSwitch.xcdatamodeld */,
+				AE1F0E941FCF94DE008FD26B /* To Do */,
 			);
 			path = "Sun Switch";
 			sourceTree = "<group>";
@@ -276,6 +314,7 @@
 				3F98CB271FCFA51200106D1A /* CharacterTableViewController.swift */,
 				AE1F0E861FCF94DE008FD26B /* HomeViewController.swift */,
 				AE1F0E871FCF94DE008FD26B /* SettingsViewController.swift */,
+				AE1F0EEF1FD3B36F008FD26B /* GameOverViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -294,6 +333,7 @@
 			children = (
 				AE1F0E8C1FCF94DE008FD26B /* CharChoice.swift */,
 				AE1F0E8D1FCF94DE008FD26B /* settingsPopUp.swift */,
+				AE1F0EF11FD3F6C8008FD26B /* RoundedButton.swift */,
 			);
 			path = Designs;
 			sourceTree = "<group>";
@@ -307,6 +347,45 @@
 				AE1F0E921FCF94DE008FD26B /* Swift+Gif.swift */,
 			);
 			path = Gifs;
+			sourceTree = "<group>";
+		};
+		AE1F0ED31FD39A97008FD26B /* Abilities */ = {
+			isa = PBXGroup;
+			children = (
+				AE1F0ED41FD39A97008FD26B /* DropBombAbility.swift */,
+				AE1F0ED51FD39A97008FD26B /* PointBoostAbility.swift */,
+				AE1F0ED61FD39A97008FD26B /* TeleportAbility.swift */,
+				AE1F0ED71FD39A97008FD26B /* TimeStopAbility.swift */,
+			);
+			path = Abilities;
+			sourceTree = "<group>";
+		};
+		AE1F0EE01FD39AB0008FD26B /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				AE1F0EE11FD39AB0008FD26B /* UserDataHolder.swift */,
+			);
+			path = Singletons;
+			sourceTree = "<group>";
+		};
+		AE1F0EE21FD39AB0008FD26B /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				AE1F0EF31FD4121C008FD26B /* game.wav */,
+				AE1F0EE31FD39AB0008FD26B /* title2.ogg */,
+				AE1F0EE41FD39AB0008FD26B /* title2.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		AE1F0EE51FD39AB0008FD26B /* TempImages */ = {
+			isa = PBXGroup;
+			children = (
+				AE1F0EE61FD39AB0008FD26B /* Person1.jpg */,
+				AE1F0EE71FD39AB0008FD26B /* Person2.png */,
+				AE1F0EE81FD39AB0008FD26B /* Person3.jpeg */,
+			);
+			path = TempImages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,11 +495,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE1F0EF41FD4121C008FD26B /* game.wav in Resources */,
 				AE1F0EA21FCF94DE008FD26B /* To Do in Resources */,
 				3F98CB371FCFA69A00106D1A /* Person1.jpg in Resources */,
 				AE1F0E9F1FCF94DE008FD26B /* sun_title.gif in Resources */,
 				3FD5DA0E1FD3878B00C78396 /* data.json in Resources */,
 				AE1F0E9D1FCF94DE008FD26B /* s1.gif in Resources */,
+				AE1F0EEA1FD39AB0008FD26B /* title2.ogg in Resources */,
+				AE1F0EEB1FD39AB0008FD26B /* title2.wav in Resources */,
+				AE1F0EED1FD39AB0008FD26B /* Person2.png in Resources */,
 				AE1F0E9E1FCF94DE008FD26B /* s2.gif in Resources */,
 				AE1F0E7B1FCF94CE008FD26B /* LaunchScreen.storyboard in Resources */,
 				3F98CB361FCFA69A00106D1A /* Person2.png in Resources */,
@@ -458,12 +541,19 @@
 				AE1F0E961FCF94DE008FD26B /* GameViewController.swift in Sources */,
 				AE1F0EA11FCF94DE008FD26B /* AppDelegate.swift in Sources */,
 				AE1F0EA01FCF94DE008FD26B /* Swift+Gif.swift in Sources */,
+				AE1F0EDD1FD39A97008FD26B /* TimeStopAbility.swift in Sources */,
+				AE1F0EDA1FD39A97008FD26B /* DropBombAbility.swift in Sources */,
 				AE1F0E9B1FCF94DE008FD26B /* CharChoice.swift in Sources */,
 				3F98CB201FCFA39D00106D1A /* TimeStopAbility.swift in Sources */,
+				AE1F0EF21FD3F6C8008FD26B /* RoundedButton.swift in Sources */,
 				AE1F0E7F1FCF94CE008FD26B /* BoardModel.swift in Sources */,
 				AE1F0E971FCF94DE008FD26B /* HomeViewController.swift in Sources */,
+				AE1F0ED21FD39A88008FD26B /* CharacterTableViewCell.swift in Sources */,
+				AE1F0EF01FD3B36F008FD26B /* GameOverViewController.swift in Sources */,
 				AE1F0E7E1FCF94CE008FD26B /* GameScene.swift in Sources */,
 				AE1F0E9C1FCF94DE008FD26B /* settingsPopUp.swift in Sources */,
+				AE1F0EDB1FD39A97008FD26B /* PointBoostAbility.swift in Sources */,
+				AE1F0EE91FD39AB0008FD26B /* UserDataHolder.swift in Sources */,
 				AE1F0E811FCF94CE008FD26B /* PieceModel.swift in Sources */,
 				3FD5D9E61FD363FC00C78396 /* DropBombAbility.swift in Sources */,
 				3F98CB221FCFA39D00106D1A /* PointBoostAbility.swift in Sources */,
