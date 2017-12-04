@@ -252,6 +252,7 @@ class GameModel: NSObject {
         updateScore(pointValue * list.count)
     }
     
+    
     func calculateScore(_ list: [Int]){
         var total = 0
         var multiplier = 1.0
@@ -305,13 +306,9 @@ class GameModel: NSObject {
             print("You have beat your previous time of \(currentBestTime)")
         }
     }
-    
-    
-    
-    
-}
+
 //    func startGame(diff: Int, frame: CGRect) {
 //        //gameBoard = BoardModel()
 //        //gameBoard.generatePieces(difficulty: diff, frame: frame)
 //    }
-//}
+}

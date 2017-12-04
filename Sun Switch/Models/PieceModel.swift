@@ -30,6 +30,10 @@ enum pieceType {
     case Satellite
     case Rocket
     case Comet
+    //Bonuses
+    case Money
+    case Bomb
+    //
     case Empty //Empty case must ALWAYS be last.
     
     func validPieces(level: Int) -> [pieceType] {
@@ -58,6 +62,7 @@ enum pieceType {
             pieceList.append(pieceType.Satellite)
             pieceList.append(pieceType.Moon)
         }
+        
         return pieceList
     }
 }
@@ -88,6 +93,8 @@ class PieceModel : NSObject {
         case pieceType.Comet:
             return "C"
         case pieceType.Empty:
+            return " "
+        default:
             return " "
         }
     }
