@@ -65,6 +65,15 @@ enum pieceType {
         
         return pieceList
     }
+    
+    func specialPieces(level: Int) -> [pieceType] {
+        //currently doesn't do anything with level
+        var pieceList = [pieceType]()
+        for i in UserDataHolder.shared.activeBonuses {
+            pieceList.append(i.getPieceType())
+            
+        }
+    }
 }
 
 class PieceModel : NSObject {
@@ -72,12 +81,13 @@ class PieceModel : NSObject {
     //private var row: Int //Index for row
     //private var column: Int //Index for column
     private var myType : pieceType = pieceType.Empty
-    required init(valid: [pieceType] /*rowNum: Int, colNum: Int*/) {
+    required init(valid: [pieceType], special:[pieceType]/*rowNum: Int, colNum: Int*/) {
          //row = rowNum
          //column = colNum
         super.init()
-        genType(valid: valid)
+        genType(valid: valid, special: special, probSpec: 0.1)
     }
+    
     func getTextIcon() ->String {
         switch(myType) {
         case pieceType.Planet:
@@ -92,9 +102,11 @@ class PieceModel : NSObject {
             return "R"
         case pieceType.Comet:
             return "C"
+        case pieceType.Bomb:
+            return "*"
+        case pieceType.Money:
+            return "$"
         case pieceType.Empty:
-            return " "
-        default:
             return " "
         }
     }
@@ -123,10 +135,29 @@ class PieceModel : NSObject {
         return myType == pieceType.Empty
     }
     
-    func genType(valid: [pieceType]) {
+    func genType(valid: [pieceType], special: [pieceType], probSpec: Double) {
+        if (special.count > 0) && (arc4random_uniform(100) > Int(probSpec * 100)) {
+            let index = Int(arc4random_uniform(UInt32(special.count)))
+            self.myType = special[index]
+        }else{
         let index = Int(arc4random_uniform(UInt32(valid.count)))
-        myType = valid[index]
+        self.myType = valid[index]
+        }
     }
+    
+    /* //Unused work in making a proper weighted die
+    func weightedDie(diceSize: Int, weights: [Double]) -> Int{
+        let weightSum = reduce(weights, 0, +)
+        let random = weightSum * Double(arc4random_uniform(UInt32.max)) / Double(UInt32.max)
+        accum += 0.0
+        for (i, p) in enumerate(probabilities){
+            accum += p
+            if random < accum {
+                return i
+            }
+        }
+        return (diceSize-1) //floating point error catcher
+    }*/
     
 }
 

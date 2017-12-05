@@ -15,6 +15,8 @@ class GetPointsBonus: BonusModel {
         name = "GetPoints"
         desc = "Money Stuff"
         cost = 100
+        symbol = "$" //Symbol within the game model
+        type = pieceType.Money
     }
     
     override func doBonus(row: Int, col: Int) {

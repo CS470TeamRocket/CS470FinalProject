@@ -245,6 +245,16 @@ class GameModel: NSObject {
         return list
     }
     
+    func trySpecial(row: Int, col: Int) -> Bool{
+        for i in UserDataHolder.shared.activeBonuses{
+            if board.getPiece(index: BoardIndex(row: row, col: col)).getType() == i.getPieceType() {
+                i.doBonus(row: row, col: col)
+                return true
+            }
+        }
+        return false
+    }
+    
     func bomb(idx: BoardIndex, size: Int) {
         let list = indexAdjacent(idx: idx, cardinalOnly: false, dist: size)
         board.clearPieces(list: list)
@@ -253,7 +263,7 @@ class GameModel: NSObject {
     }
     
     
-    func calculateScore(_ list: [Int]){
+    func calculateScore(_ list: [Int]) {
         var total = 0
         var multiplier = 1.0
         for i in list {
@@ -279,6 +289,7 @@ class GameModel: NSObject {
         } else {
             print("Game Over! You lasted \(totalTime) seconds! Your total score was \(score)!")
         }
+        
 //<<<<<<< HEAD
         //Saving the time and score
         //saveScoreAndTime() //Compares scores and stores them if they are better than previous
@@ -291,6 +302,7 @@ class GameModel: NSObject {
         timer.invalidate()
         scene.quitButton.sendActions(for: UIControlEvents.touchUpInside)
     }
+    
     
     func saveScoreAndTime() {
 

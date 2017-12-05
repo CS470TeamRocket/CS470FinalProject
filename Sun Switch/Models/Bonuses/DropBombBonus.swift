@@ -15,6 +15,8 @@ class DropBombBonus: BonusModel {
         name = "DropBomb"
         desc = "Bomb Stuff"
         cost = 100
+        symbol = "*"
+        type = pieceType.Bomb
     }
     
     override func doBonus(row: Int, col: Int) {
