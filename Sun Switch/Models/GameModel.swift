@@ -30,10 +30,11 @@ class GameModel: NSObject {
     var scene: GameScene!
     
     
-    init(start: Int, view: GameScene) {
+    init(start: Int, view: GameScene, isExtreme: Bool) {
         scene = view
         level = start
         score = 0
+        extreme = isExtreme
         super.init()
         getNextGoal(current: start)
         board = BoardModel(difficulty: start, scene: view)
@@ -94,7 +95,7 @@ class GameModel: NSObject {
         
         return out.success
     }
-    
+    /*
     func makeRowMove(moves: [Move]) -> Bool{
         let out = board.makeMoveForRow(moves: moves)
         
@@ -108,12 +109,15 @@ class GameModel: NSObject {
         
         return out.success
     }
-    
+    */
     func rotateRow(row: Int, amount: Int, dir: direction)->Bool {
         let out = board.rotateRow(row: row, amount: amount, dir: dir)
         printBoard()
         if(out.success) {
             calculateScore(out.clears)
+            if(extreme && board.missingRows() > 0) {
+                restoreRow()
+            }
         }
         return out.success
     }
@@ -122,10 +126,17 @@ class GameModel: NSObject {
         let cap: Int = 10
         let maxTimer : TimeInterval = 15
         let minTimer : TimeInterval = 10
+        let extremeMax : TimeInterval = 10
+        let extremeMin : TimeInterval = 3
+        
         if(level >= cap) {
             return minTimer
         }
+            
         else {
+            if(extreme) {
+                return extremeMax - TimeInterval(Int( (extremeMax - extremeMin / TimeInterval(cap)))  * (level - 1))
+            }
             return maxTimer - TimeInterval( (Int( (maxTimer - minTimer) / TimeInterval(cap)))  * (level - 1))
         }
     }
@@ -200,7 +211,7 @@ class GameModel: NSObject {
     
     func timeUp() {
         print("\(board.rowsLeft()) rows left.")
-        if(board.rowsLeft() <= 2){
+        if(board.rowsLeft() <= 1){
             gameOver()
         }else {
             streak = 0

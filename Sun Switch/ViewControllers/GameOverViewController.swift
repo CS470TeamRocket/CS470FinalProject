@@ -23,7 +23,9 @@ class GameOverViewController: UIViewController {
     var time: Int = 0
     
     @IBAction func stop(_ sender: roundedButton) {
-        audio!.stop()
+        if(audio != nil) {
+            audio!.stop()
+        }
     }
 
     

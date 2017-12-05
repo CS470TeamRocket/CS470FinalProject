@@ -43,6 +43,7 @@ class GameScene: SKScene {
     var holding: Bool = false
     var started: Bool = false
     var canMove: Bool = false
+    var extreme: Bool = false
     var sun1: PModel!
     var sun2: PModel!
     var sun3: PModel!
@@ -52,6 +53,7 @@ class GameScene: SKScene {
     var dir: String = ""
     var bottom = 0
     var maxRows: Int!
+    
     var maxCols: Int!
     var audio: AVAudioPlayer?
 
@@ -59,7 +61,7 @@ class GameScene: SKScene {
         super.sceneDidLoad()
         //let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
         //helperSprite.run(SKAction.repeatForever(rotateAction))
-        game = GameModel(start: 1, view: self)
+        game = GameModel(start: 1, view: self, isExtreme: extreme)
         UserDataHolder.shared.currentGameModel = game
         self.backgroundColor = UIColor.white
     }
@@ -307,11 +309,12 @@ class GameScene: SKScene {
         }
     }
     
-    func snapRow(point: CGPoint) {
+    func snapRow(point: CGPoint) ->Bool {
         let distance = point.x - firstTouch.x
         for a in arrows[curRow] {
             a.sprite.position = a.originalCenter
         }
+        /*
         var newRow: RowModel
         newRow = game.board.getBoard()[curRow]
         var newRowS: [SKSpriteNode] = []
@@ -319,9 +322,38 @@ class GameScene: SKScene {
         for p in newRow.getPieces() {
             tempRow.append(p)
         }
+         */
+        
+        
         let moves = Int(distance) / Int(helperSprite.size.width + 4)
+        if (moves == 0) {
+            return false
+        }
         print("Moves: \(moves)")
+        var move_dir : direction
         if moves > 0 {
+            move_dir = direction.right
+            for _ in 0...moves {
+                sprites[curRow].append(sprites[curRow].removeFirst())
+                
+            }
+            return game.rotateRow(row: curRow, amount: moves, dir: move_dir)
+        }
+            
+        else if moves < 0 {
+            move_dir = direction.left
+            for _ in 0...(-moves) {
+                sprites[curRow].insert(sprites[curRow].removeLast(), at: 0)
+            }
+            return game.rotateRow(row: curRow, amount: -moves, dir: move_dir)
+        }
+        
+        return false
+        
+        
+        /*
+        if moves > 0 {
+            
             for i in 0..<maxCols {
                 let index = (i + moves) % maxCols
                 //let piece = game.board.getPiece(index: BoardIndex(row: curRow, col: index))
@@ -351,7 +383,7 @@ class GameScene: SKScene {
         print("To", terminator: " ")
         printSpriteRow(row: newRowS)
         sprites[curRow] = newRowS
-        
+        */
     }
     
     func printSpriteRow(row: [SKSpriteNode]) {
@@ -621,7 +653,7 @@ class GameScene: SKScene {
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if(!canMove) {
-            snapAllBack()
+            //snapAllBack()
             return
         }
         for touch in touches {
@@ -766,7 +798,7 @@ class GameScene: SKScene {
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if(!canMove) {
-            snapAllBack()
+            //snapAllBack()
             return
         }
         //print("TOUCHES ENDED")
@@ -776,19 +808,25 @@ class GameScene: SKScene {
             if curArrow != nil {
                 print("CURARROW -> \(curRow)")
                 removeFakeRows()
-                snapRow(point: touches.first!.location(in: self))
+                let move = snapRow(point: touches.first!.location(in: self))
+                //game.rotateRow(row: curRow, )
+                /*
                 var moves: [Move] = []
                 for i in 0..<maxCols-1 {
                     moves.append(Move(BoardIndex(row: curRow, col: i), dir: direction.right))
                 }
                 let move = game.makeRowMove(moves: moves)
-                if move {
+                 */
+                //snapBackRow(newSprites: sprites[curRow])
+                
+                if move{
                     snapBackRow(newSprites: sprites[curRow])
                 }
                 else {
                     snapBackRow(newSprites: oldRowS)
-                    game.board.setBoard(row: oldRow, index: curRow)
+                    //game.board.setBoard(row: oldRow, index: curRow)
                 }
+                
                 //snapBackRow()
             }
             else if otherSprite != nil, lastDirection != nil {
@@ -887,10 +925,24 @@ class GameScene: SKScene {
         lastDirection = nil
         lastIdx = nil
         holding = false
+        cleanup()
     }
 
     override func update(_ currentTime: TimeInterval) {
         
+    }
+    func cleanup() {
+        if(fakeRowL.count > 0) {
+            for i in fakeRowL {
+                i.removeFromParent()
+            }
+        }
+        if(fakeRowR.count > 0) {
+            for i in fakeRowR {
+                i.removeFromParent()
+            }
+        }
+        snapAllBack()
     }
 }
 

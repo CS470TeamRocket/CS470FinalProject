@@ -218,7 +218,7 @@ class BoardModel: NSObject {
         }
         return (success: false, clears: [Int]())
     }
-    
+    /*
     func makeMoveForRow(moves: [Move]) -> MoveResult {
         var moveRes: MoveResult
         for m in moves {
@@ -232,6 +232,7 @@ class BoardModel: NSObject {
         }
         return (success: false, clears: [Int]())
     }
+    */
     
     func update() ->[Int] {
         var out = [Int]()
@@ -413,9 +414,11 @@ class BoardModel: NSObject {
         return board
     }
     
+    /*
     func setBoard(row: RowModel, index: Int) {
         board[index] = row
     }
+    */
     
     func getValidPieces() -> [pieceType] {
         return validPieces
