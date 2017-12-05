@@ -2,7 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+<<<<<<< HEAD
       "filename" : "icons8-spaceship.png",
+=======
+      "filename" : "icons8-spaceship-c.png",
+>>>>>>> Zach
       "scale" : "1x"
     },
     {

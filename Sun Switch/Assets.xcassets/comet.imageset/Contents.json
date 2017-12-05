@@ -2,7 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+<<<<<<< HEAD
       "filename" : "icons8-comet.png",
+=======
+      "filename" : "icons8-comet-c.png",
+>>>>>>> Zach
       "scale" : "1x"
     },
     {

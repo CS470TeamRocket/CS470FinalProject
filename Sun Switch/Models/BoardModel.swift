@@ -15,10 +15,24 @@ enum direction {
     case right
     case up
     case down
+<<<<<<< HEAD
+=======
+    func opposite() ->direction {
+        if(self == direction.left) {
+            return direction.right
+        }
+        return direction.left
+    }
+    
+>>>>>>> Zach
 }
 
 typealias BoardIndex = (row: Int, col: Int)
 typealias Move = (index: BoardIndex, dir: direction)
+<<<<<<< HEAD
+=======
+typealias MoveResult = (success: Bool, clears: [Int])
+>>>>>>> Zach
 
 class BoardModel: NSObject {
     private let rows: Int = 9 // Number of starting Rows. The number of columns is determined in the RowModel
@@ -28,6 +42,10 @@ class BoardModel: NSObject {
     private var scene : GameScene
     private var diff : Int
     private var validPieces : [pieceType] = [pieceType]()	//The roster of available pieces. This is based
+<<<<<<< HEAD
+=======
+    private var rowMatch = false
+>>>>>>> Zach
     //on the current level.
     
     init(difficulty: Int, scene: GameScene) {
@@ -40,7 +58,11 @@ class BoardModel: NSObject {
         for i in 0 ..< matchList.count {
             print(matchList[i])
         }
+<<<<<<< HEAD
         update()
+=======
+        _ = update()
+>>>>>>> Zach
     }
     
     func generatePieces() {
@@ -81,6 +103,10 @@ class BoardModel: NSObject {
         let row = createRow(count: currentRows + 1, isLast: true)
         board.append(row)
         currentRows += 1
+<<<<<<< HEAD
+=======
+        scene.recreateBottomRow(newRow: row)
+>>>>>>> Zach
         //Any other cleanup we might need.
     }
     
@@ -89,9 +115,18 @@ class BoardModel: NSObject {
             print("Error in removal!")
             return
         }
+<<<<<<< HEAD
         board.removeLast()
         board.last!.setLast(val: true)
         currentRows -= 1
+=======
+        scene.disableMove()
+        board.removeLast()
+        board.last!.setLast(val: true)
+        scene.removeBottomRow()
+        currentRows -= 1
+        scene.enableMove()
+>>>>>>> Zach
     }
     
     func createRow(count: Int, isLast: Bool) -> RowModel{
@@ -113,12 +148,20 @@ class BoardModel: NSObject {
         return currentRows
     }
     
+<<<<<<< HEAD
+=======
+    func numColumns() -> Int {
+        return columns
+    }
+
+>>>>>>> Zach
     func printBoard() {
         for i in 0 ..< currentRows {
             board[i].printRow()
         }
     }
     
+<<<<<<< HEAD
     func rotateRow(row: Int, dir: direction )-> Bool{
         if(row < rows) {
             board[row].rotate(dir: dir)
@@ -126,12 +169,35 @@ class BoardModel: NSObject {
         }
         else {
             return false
+=======
+    func rotateRow(row: Int, amount: Int, dir: direction )-> MoveResult {
+        if(row < rows) {
+            var list = [Int]()
+            board[row].rotate(dir: dir, amount: amount)
+            if( checkAll().count > 0 ) {
+                print("Match detected!")
+                list = update()
+                return (success: true, clears: list)
+            }
+            else {
+                print("No match!")
+                board[row].rotate(dir: dir.opposite(), amount: amount)
+                return (success: false, clears: list)
+            }
+        }
+        else {
+            return (success: false, clears: [Int]())
+>>>>>>> Zach
         }
     }
     
     func checkAll() -> [BoardIndex]{
         var matched = [BoardIndex]()
+<<<<<<< HEAD
         for i in 0 ..< rows {
+=======
+        for i in 0 ..< currentRows {
+>>>>>>> Zach
             for j in 0 ..< columns {
                 if(checkMatch(index: (i, j))) {
                     matched.append((i,j))
@@ -169,7 +235,11 @@ class BoardModel: NSObject {
         //Check below
         i = 1
         matched = true
+<<<<<<< HEAD
         while(row+i < rows && matched) {
+=======
+        while(row+i < currentRows && matched) {
+>>>>>>> Zach
             if(piece.isMatching(other: getPiece(index: (row+i, col)))) {
                 matchSize += 1
             } else {
@@ -181,6 +251,7 @@ class BoardModel: NSObject {
         return (matchSize >= 3) ? matchSize : 0
     }
     
+<<<<<<< HEAD
     func makeMove(move: Move) -> Bool {
         if(checkMove(move: move)) {
             print("Hey! That's a match!!")
@@ -195,6 +266,42 @@ class BoardModel: NSObject {
         while(checkAll().count > 0) {
             clearPieces(list: checkAll())
         }
+=======
+    func makeMove(move: Move) -> MoveResult {
+        if(checkMove(move: move)) {
+            //print("Hey! That's a match!!")
+            _ = swap(move: move)
+            let list = update()
+            return (success: true, clears: list)
+            
+        }
+        return (success: false, clears: [Int]())
+    }
+    /*
+    func makeMoveForRow(moves: [Move]) -> MoveResult {
+        var moveRes: MoveResult
+        for m in moves {
+            if !rowMatch {
+                let move = makeMove(move: m)
+                if move.success {
+                    //rowMatch = true
+                    return move
+                }
+            }
+        }
+        return (success: false, clears: [Int]())
+    }
+    */
+    
+    func update() ->[Int] {
+        var out = [Int]()
+        while(checkAll().count > 0) {
+            let list = checkAll()
+            out.append(list.count)
+            clearPieces(list: list)
+        }
+        return out
+>>>>>>> Zach
     }
     
     func checkMove(move: Move) -> Bool {
@@ -204,10 +311,18 @@ class BoardModel: NSObject {
         return isMatch
     }
     
+<<<<<<< HEAD
     func updateColumn(col: Int) {
         //var actions: [SKAction] = []
         var i = rows-1
         var j = rows-2
+=======
+
+    func updateColumn(col: Int) -> [SKAction] {
+        var actions: [SKAction] = []
+        var i = currentRows-1
+        var j = currentRows-2
+>>>>>>> Zach
         while(i >= 0) {
             let piece = getPiece(index:(i, col))
             
@@ -215,7 +330,11 @@ class BoardModel: NSObject {
                 var filled : Bool = false
                 let to = BoardIndex(row: i, col: col)
                 var from = BoardIndex(row: i, col: col)
+<<<<<<< HEAD
                 
+=======
+                var group: [SKAction] = []
+>>>>>>> Zach
                 while(j >= 0 && !filled ) {
                     let replace = getPiece(index: (j, col))
                     if !replace.isEmpty() {
@@ -224,18 +343,46 @@ class BoardModel: NSObject {
                     }
                     from.row = j
                     if scene.started {
+<<<<<<< HEAD
                         print("Drop")
                         scene.drop(from: from, to: to)
                     }
                     j -= 1
                 }
+=======
+                        //print("Drop")
+
+                        //scene.run(scene.drop(from: from, to: to))
+                        group.append(scene.drop(from: from, to: to))
+                    }
+                    j -= 1
+                }
+                if group.count > 0 {
+                    //actions.append(SKAction.group(group))
+                    scene.run(SKAction.sequence(group))
+                    
+                    group = []
+                }
+>>>>>>> Zach
                 
                 if (!filled) {
                     piece.genType(valid: validPieces)
                     if scene.started {
+<<<<<<< HEAD
                         scene.dropFromTop(Index: BoardIndex(row: i, col: col))
                     }
                 }
+=======
+                        //scene.run(scene.dropFromTop(Index: BoardIndex(row: i, col: col)))
+                        group.append(scene.dropFromTop(Index: BoardIndex(row: i, col: col)))
+                    }
+                }
+                if group.count > 0 {
+                    //actions.append(SKAction.group(group))
+                    scene.run(SKAction.sequence(group))
+                    group = []
+                }
+>>>>>>> Zach
                 
             }
             
@@ -245,6 +392,13 @@ class BoardModel: NSObject {
             }
             
         }
+<<<<<<< HEAD
+=======
+        //if actions.count > 0 {
+        //    scene.doSequencialActions(actions: actions, index: 0)
+        //}
+        return actions
+>>>>>>> Zach
     }
     
     func swap(move: Move) -> BoardIndex {
@@ -281,13 +435,19 @@ class BoardModel: NSObject {
             if scene.started {
                 let act = scene.removeSprite(row: idx.row, col: idx.col)
                 if !sprites.contains(act.0) {
+<<<<<<< HEAD
                     actions.append(act.1)
+=======
+                    scene.run(act.1)
+                    //actions.append(act.1)
+>>>>>>> Zach
                     sprites.append(act.0)
                 }
                 scene.pointPop(row: idx.row, col: idx.col)
                 //let deadlineTime = DispatchTime.now() + .milliseconds(5000)
             }
         }
+<<<<<<< HEAD
         print(actions)
         //scene.run(SKAction.sequence(actions))
         //scene.helperSprite.run(SKAction.wait(forDuration: 10))
@@ -298,11 +458,32 @@ class BoardModel: NSObject {
             scene.run(SKAction.wait(forDuration: 5))
         }
         
+=======
+        //print(actions)
+        //scene.run(SKAction.sequence(actions))
+        //scene.helperSprite.run(SKAction.wait(forDuration: 10))
+        //for i in 0..<actions.count {
+        //    let sequence = SKAction.sequence([actions[actions.count-1-i], SKAction.wait(forDuration: 1)])
+        //    scene.run(sequence)
+        //    _ = DispatchTime.now() + .seconds(10)
+        //    scene.run(SKAction.wait(forDuration: 5))
+        //}
+>>>>>>> Zach
         
         for i in 0 ..< columns {
             //printBoard()
             //print("")
+<<<<<<< HEAD
             updateColumn(col: i)
+=======
+            actions.append(contentsOf: updateColumn(col: i))
+            //if scene.started {
+                //sleep(UInt32(1))
+            //}
+        }
+        if actions.count > 0 {
+            scene.doSequencialActions(actions: actions, index: 0)
+>>>>>>> Zach
         }
     }
     
@@ -342,6 +523,15 @@ class BoardModel: NSObject {
         return board
     }
     
+<<<<<<< HEAD
+=======
+    /*
+    func setBoard(row: RowModel, index: Int) {
+        board[index] = row
+    }
+    */
+    
+>>>>>>> Zach
     func getValidPieces() -> [pieceType] {
         return validPieces
     }

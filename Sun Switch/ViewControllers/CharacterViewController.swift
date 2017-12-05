@@ -31,7 +31,11 @@ class CharacterViewController: UIViewController {
         mainScrollView.contentSize.height = bigImg.frame.size.height
         let x = mainScrollView.frame.width / 15
         var y = mainScrollView.contentSize.height / 15
+<<<<<<< HEAD:SSP/SSP/SSP/ViewControllers/CharacterViewController.swift
         for i in 0..<6 {
+=======
+        for _ in 0..<6 {
+>>>>>>> Zach:Sun Switch/ViewControllers/CharacterViewController.swift
             let origin = CGPoint(x: x, y: y)
             let size = CGSize(width: mainScrollView.frame.width - x * 2, height: mainScrollView.contentSize.height / 7)
             let rect = CGRect(origin: origin, size: size)

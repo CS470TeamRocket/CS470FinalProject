@@ -2,7 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+<<<<<<< HEAD
       "filename" : "icons8-sci-fi.png",
+=======
+      "filename" : "icons8-sci-fi-c.png",
+>>>>>>> Zach
       "scale" : "1x"
     },
     {
