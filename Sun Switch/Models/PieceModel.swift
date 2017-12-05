@@ -47,14 +47,6 @@ enum pieceType {
             fallthrough
             
         case (4...5):
-<<<<<<< HEAD
-            pieceList.append(pieceType.Rocket)
-            fallthrough
-        case (2...3):
-            pieceList.append(pieceType.Alien)
-            fallthrough
-        default:
-=======
             
             fallthrough
         case (2...3):
@@ -62,7 +54,6 @@ enum pieceType {
             fallthrough
         default:
             pieceList.append(pieceType.Alien)
->>>>>>> Zach
             pieceList.append(pieceType.Planet)
             pieceList.append(pieceType.Satellite)
             pieceList.append(pieceType.Moon)

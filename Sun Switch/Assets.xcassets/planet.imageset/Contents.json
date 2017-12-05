@@ -2,11 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-<<<<<<< HEAD
-      "filename" : "icons8-planet.png",
-=======
       "filename" : "icons8-planet-c.png",
->>>>>>> Zach
       "scale" : "1x"
     },
     {

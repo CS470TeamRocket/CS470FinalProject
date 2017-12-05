@@ -2,11 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-<<<<<<< HEAD
-      "filename" : "icons8-moon-phase.png",
-=======
       "filename" : "icons8-moon-phase-c.png",
->>>>>>> Zach
       "scale" : "1x"
     },
     {

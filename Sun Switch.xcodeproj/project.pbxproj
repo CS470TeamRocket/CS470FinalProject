@@ -48,6 +48,9 @@
 		AE1F0EA21FCF94DE008FD26B /* To Do in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E941FCF94DE008FD26B /* To Do */; };
 		AE1F0EF01FD3B36F008FD26B /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0EEF1FD3B36F008FD26B /* GameOverViewController.swift */; };
 		AE1F0EF21FD3F6C8008FD26B /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0EF11FD3F6C8008FD26B /* RoundedButton.swift */; };
+		AE1F0EF81FD69762008FD26B /* game.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0EF51FD69762008FD26B /* game.wav */; };
+		AE1F0EF91FD69762008FD26B /* title2.ogg in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0EF61FD69762008FD26B /* title2.ogg */; };
+		AE1F0EFA1FD69762008FD26B /* title2.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0EF71FD69762008FD26B /* title2.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,9 +71,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3F61171A1FD623B600544B5C /* game.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = game.wav; sourceTree = "<group>"; };
-		3F61171B1FD623B700544B5C /* title2.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = title2.ogg; sourceTree = "<group>"; };
-		3F61171C1FD623B700544B5C /* title2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = title2.wav; sourceTree = "<group>"; };
 		3F63633C1FB138F800A9D3C7 /* Sun Switch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sun Switch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F6363431FB138F800A9D3C7 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		3F6363511FB138F800A9D3C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -118,6 +118,9 @@
 		AE1F0E941FCF94DE008FD26B /* To Do */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "To Do"; sourceTree = "<group>"; };
 		AE1F0EEF1FD3B36F008FD26B /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		AE1F0EF11FD3F6C8008FD26B /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		AE1F0EF51FD69762008FD26B /* game.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = game.wav; sourceTree = "<group>"; };
+		AE1F0EF61FD69762008FD26B /* title2.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = title2.ogg; sourceTree = "<group>"; };
+		AE1F0EF71FD69762008FD26B /* title2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = title2.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,9 +151,9 @@
 		3F6117191FD623B600544B5C /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				3F61171A1FD623B600544B5C /* game.wav */,
-				3F61171B1FD623B700544B5C /* title2.ogg */,
-				3F61171C1FD623B700544B5C /* title2.wav */,
+				AE1F0EF51FD69762008FD26B /* game.wav */,
+				AE1F0EF61FD69762008FD26B /* title2.ogg */,
+				AE1F0EF71FD69762008FD26B /* title2.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -447,11 +450,14 @@
 				AE1F0EA21FCF94DE008FD26B /* To Do in Resources */,
 				3F98CB371FCFA69A00106D1A /* Person1.jpg in Resources */,
 				AE1F0E9F1FCF94DE008FD26B /* sun_title.gif in Resources */,
+				AE1F0EF91FD69762008FD26B /* title2.ogg in Resources */,
 				3FD5DA0E1FD3878B00C78396 /* data.json in Resources */,
 				AE1F0E9D1FCF94DE008FD26B /* s1.gif in Resources */,
 				AE1F0E9E1FCF94DE008FD26B /* s2.gif in Resources */,
 				AE1F0E7B1FCF94CE008FD26B /* LaunchScreen.storyboard in Resources */,
 				3F98CB361FCFA69A00106D1A /* Person2.png in Resources */,
+				AE1F0EF81FD69762008FD26B /* game.wav in Resources */,
+				AE1F0EFA1FD69762008FD26B /* title2.wav in Resources */,
 				AE1F0E7D1FCF94CE008FD26B /* GameScene.sks in Resources */,
 				AE1F0E7A1FCF94CE008FD26B /* Assets.xcassets in Resources */,
 				3F6363441FB138F800A9D3C7 /* Actions.sks in Resources */,

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-//
-=======
  //
->>>>>>> Zach
 //  GameModel.swift
 //  Switch Personal
 //
@@ -11,10 +7,7 @@
 //
 
 import UIKit
-<<<<<<< HEAD
-=======
 import CoreData
->>>>>>> Zach
 import SpriteKit
 import GameplayKit
 
@@ -22,85 +15,64 @@ class GameModel: NSObject {
     var board: BoardModel!
     var level : Int	//The current level of difficulty, integer from 1 to an arbitrary amount
     var score : Int
-<<<<<<< HEAD
-    var nextGoal: Int = 1000
-=======
     var nextGoal: Int = 2000
->>>>>>> Zach
+    var lastGoal: Int = 2000
     var streak: Int = 0
     var timeLeft : TimeInterval = 90
     var timer : Timer = Timer()
     var totalTime : Int = 0
     var currTime : Int = 0
-<<<<<<< HEAD
-=======
     var tooLong : Bool = false
     var pointValue: Int = 50
     var timeStopped: Bool = true
     var extreme: Bool = false
     var over: Bool = false
->>>>>>> Zach
     //*
     var scene: GameScene!
     
     
-<<<<<<< HEAD
-    init(start: Int, view: GameScene) {
-        scene = view
-        level = start
-        score = 0
-=======
     init(start: Int, view: GameScene, isExtreme: Bool) {
         scene = view
         level = start
         score = 0
         extreme = isExtreme
->>>>>>> Zach
         super.init()
         getNextGoal(current: start)
         board = BoardModel(difficulty: start, scene: view)
         displayBoard()
-<<<<<<< HEAD
-        resetTimer()
-=======
         resetTimer(true)
->>>>>>> Zach
         
     }
     
     func getNextGoal(current: Int){
-<<<<<<< HEAD
-        nextGoal = current * 1000
-=======
+        lastGoal = nextGoal
         nextGoal = current * 2000
->>>>>>> Zach
         if( score >= nextGoal) {
             advanceLevel()
         }
     }
-<<<<<<< HEAD
-=======
     func checkGoal() {
         if score >= nextGoal {
             advanceLevel()
         }
+        else {
+            print("S: \(score) N: \(nextGoal) L: \(lastGoal)")
+            if level <= 1 {
+                scene.run(scene.scoreMeter(score: self.score, maxScore: self.nextGoal))
+                
+            }
+            else {
+                scene.run(scene.scoreMeter(score: self.score - self.lastGoal, maxScore: self.nextGoal - self.lastGoal))
+            }
+        }
     }
     
->>>>>>> Zach
     //*
 //    func createGameScene() -> GameScene{
 //        
 //    }
     
     func advanceLevel() {
-<<<<<<< HEAD
-        let streakRestore: Int = 3
-        level += 1
-        board.advanceLevel()
-        getNextGoal(current: level)
-        timeLeft = getNextTime()
-        currTime = 0
-=======
         print("LEVEL UP!")
         let streakRestore: Int = 3
         level += 1
@@ -109,8 +81,8 @@ class GameModel: NSObject {
         getNextGoal(current: level)
         if(!timeStopped) {
             stopTime(delay: 3, hard: true)  //Stops time for 3 seconds, then restarts the timer.
+            scene.ticker.removeAllActions()
         }
->>>>>>> Zach
         streak += 1
         //Check current "restore row" count. If enough, we restore a new row.
         if(streak >= streakRestore) {
@@ -118,31 +90,15 @@ class GameModel: NSObject {
                 restoreRow()
             }
         }
+        var actions: [SKAction] = []
+        actions.append(scene.scoreMeter(score: 1, maxScore: 1))
+        actions.append(scene.scoreMeter(score: 0, maxScore: 1))
+        print("S: \(score) N: \(nextGoal) L: \(lastGoal)")
+        actions.append(scene.scoreMeter(score: self.score - self.lastGoal, maxScore: self.nextGoal - self.lastGoal))
+        actions.append(SKAction.wait(forDuration: 0))
+        scene.doSequencialActions(actions: actions, index: 0)
     }
-    
     func makeMove(move: Move) -> Bool{
-<<<<<<< HEAD
-        return board.makeMove(move: move)
-    }
-    
-    func getNextTime() -> TimeInterval {
-        let cap: Int = 3
-        let maxTimer : TimeInterval = 10
-        let minTimer : TimeInterval = 5
-        if(level >= cap) {
-            return minTimer
-        }
-        else {
-            return maxTimer - TimeInterval(1 * (level - 1))
-        }
-    }
-    
-    func resetTimer() {
-        //Set the timer based on the current level.
-        //Timer starts at a large amount and decreases each level, capping at a yet undetermined amount.
-        timeLeft = getNextTime()
-        print("Setting timer!")
-=======
         if(move.index.row >= board.rowsLeft()) {
             return false
         }
@@ -209,22 +165,16 @@ class GameModel: NSObject {
         //Timer starts at a large amount and decreases each level, capping at a yet undetermined amount.
         timeLeft = getNextTime()
         if(timeReset) {
+            scene.ticker.zRotation = 0
+            scene.rotateTicker(duration: timeLeft)
             currTime = 0
         }
         print("Setting timer!")
         timeStopped = false
->>>>>>> Zach
         timer = Timer.scheduledTimer(timeInterval: TimeInterval(1), target: self, selector: (#selector(timeTick)), userInfo: nil, repeats: true)
         //Re-initialize the actual timer.
     }
     
-<<<<<<< HEAD
-    func restoreRow() {
-        board.restoreRow()
-    }
-    func printBoard() {
-        //board.printBoard()
-=======
     @objc func softResetTimer() {
         resetTimer(false)
     }
@@ -247,12 +197,12 @@ class GameModel: NSObject {
     }
     
     func restoreRow() {
+        scene.sunShrink()
         board.restoreRow()
     }
     
     func printBoard() {
         board.printBoard()
->>>>>>> Zach
         print("")
     }
     
@@ -260,14 +210,6 @@ class GameModel: NSObject {
         scene.makeBoard(board: board.getBoard())
     }
     
-<<<<<<< HEAD
-    @objc func timeTick() {
-        totalTime += 1
-        currTime += 1
-        //print("Current Time:", currTime, "\tTotal Time:", totalTime)
-        if(currTime >= Int(timeLeft)) {
-            //print("Time to reset timer.")
-=======
     func updateTimeBar(timePercent: Double) {
         //This will be used to update the graphic bar representing the time left for each round.
         //Takes a double representing a percentage of the bar that should be filled.
@@ -283,42 +225,31 @@ class GameModel: NSObject {
         //print("Tick")
         //print(currTime)
         if(currTime >= Int(timeLeft)) {
->>>>>>> Zach
             currTime = 0
             timeUp()
         }
     }
     
-<<<<<<< HEAD
-    func timeUp() {
-=======
     
     func timeUp() {
         print("\(board.rowsLeft()) rows left.")
->>>>>>> Zach
-        if(board.rowsLeft() <= 1){
+        if(board.rowsLeft() <= 2){
             gameOver()
         }else {
             streak = 0
-<<<<<<< HEAD
-            //board.removeRow()
-            //scene.removeBottomRow()
-            //printBoard()
-        }
-        
-    }
-    
-    func gameOver() {
-        print("Game Over! You lasted \(totalTime) seconds!")
-        timer.invalidate()
-    }
-    
-=======
+            scene.sunGrow()
             board.removeRow()
             //scene.removeBottomRow()
+            //if scene.curArrow != nil {
+            //    scene.sprites[scene.curRow][scene.maxCols-1].position = scene.centers[scene.curRow][scene.maxCols-1]
+            //}
+            if scene.curRow != nil {
+                scene.snapBackRow(newSprites: scene.sprites[scene.curRow])
+            }
             scene.curArrow = nil
             scene.lastDirection = nil
-
+            scene.fakeRowL = []
+            scene.fakeRowR = []
             scene.touchesEnded(scene.lastSet, with: scene.lastEvent)
             printBoard()
         }
@@ -357,7 +288,9 @@ class GameModel: NSObject {
     
     func bomb(idx: BoardIndex, size: Int) {
         let list = indexAdjacent(idx: idx, cardinalOnly: false, dist: size)
-        board.clearPieces(list: list)
+        var actions = board.clearPieces(list: list)
+        actions.append(SKAction.wait(forDuration: 0))
+        scene.doSequencialActions(actions: actions, index: 0)
         _ = board.update()
         updateScore(pointValue * list.count)
     }
@@ -418,7 +351,6 @@ class GameModel: NSObject {
     
     
     
->>>>>>> Zach
     
 }
 //    func startGame(diff: Int, frame: CGRect) {

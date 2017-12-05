@@ -14,11 +14,7 @@
         <!--Home View Controller-->
         <scene sceneID="ls1-aB-DsU">
             <objects>
-<<<<<<< HEAD
-                <viewController id="Z00-o5-38N" customClass="HomeViewController" customModule="ZSS" customModuleProvider="target" sceneMemberID="viewController">
-=======
                 <viewController id="Z00-o5-38N" customClass="HomeViewController" customModule="Sun_Switch" customModuleProvider="target" sceneMemberID="viewController">
->>>>>>> Zach
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m4c-Pa-JJY"/>
                         <viewControllerLayoutGuide type="bottom" id="Id9-X7-Dpc"/>
@@ -44,11 +40,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="icons8-settings"/>
                                 <connections>
-<<<<<<< HEAD
-                                    <segue destination="nWG-92-yLe" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="lmy-i1-xD7"/>
-=======
                                     <segue destination="nWG-92-yLe" kind="presentation" identifier="settings" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="lmy-i1-xD7"/>
->>>>>>> Zach
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFi-bh-QJY">
@@ -72,11 +64,7 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="play"/>
                                 <connections>
-<<<<<<< HEAD
-                                    <segue destination="yr1-tD-Y8P" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="dM8-Ov-PR2"/>
-=======
                                     <segue destination="m4h-3a-4in" kind="show" id="k3b-c4-M6V"/>
->>>>>>> Zach
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OnL-U5-23q">
@@ -90,12 +78,9 @@
                                 <state key="normal" image="shop">
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-<<<<<<< HEAD
-=======
                                 <connections>
                                     <segue destination="DjQ-Wm-jvE" kind="show" id="LbR-Ir-PfT"/>
                                 </connections>
->>>>>>> Zach
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48I-HQ-Hkp">
                                 <frame key="frameInset" minX="29" minY="589" width="262" height="76"/>
@@ -136,87 +121,6 @@
             </objects>
             <point key="canvasLocation" x="-788" y="-994.45277361319347"/>
         </scene>
-<<<<<<< HEAD
-        <!--Character View Controller-->
-        <scene sceneID="Yld-wP-U6h">
-            <objects>
-                <viewController id="yr1-tD-Y8P" customClass="CharacterViewController" customModule="ZSS" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8lL-p8-tVV"/>
-                        <viewControllerLayoutGuide type="bottom" id="Vhc-61-PZz"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="XRW-EI-ozc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mG7-Yn-IVU">
-                                <frame key="frameInset" width="414" height="736"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="5kFullWide" translatesAutoresizingMaskIntoConstraints="NO" id="ikk-vh-QYO">
-                                        <rect key="frame" x="-94" y="0.0" width="932" height="977"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose Character" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGi-Ud-ZVi">
-                                        <rect key="frame" x="25" y="8" width="381" height="69"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="40"/>
-                                        <color key="textColor" red="0.36561451342281881" green="0.30696833053691225" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ulj-Kx-scW" customClass="CharView" customModule="ZSS" customModuleProvider="target">
-                                        <rect key="frame" x="25" y="65" width="365" height="142"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jU6-2S-wlj">
-                                                <frame key="frameInset" minX="101" minY="43" width="240" height="90"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Spaceship" translatesAutoresizingMaskIntoConstraints="NO" id="0jR-pf-2m2">
-                                                <frame key="frameInset" minX="8" minY="17" width="85" height="85"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Myo-2B-aUq">
-                                                <frame key="frameInset" minX="106" minY="7" width="161" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <state key="normal" title="Name  -  Ability">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="choseCharacter:" destination="yr1-tD-Y8P" eventType="touchUpInside" id="1mB-t6-Tmj"/>
-                                                    <segue destination="BV1-FR-VrT" kind="presentation" id="Wp6-Vz-gvy"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                </subviews>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="414" height="738"/>
-                    <connections>
-                        <outlet property="bigImg" destination="ikk-vh-QYO" id="LWt-oH-WJ8"/>
-                        <outlet property="mainScrollView" destination="mG7-Yn-IVU" id="cAK-Jd-3d4"/>
-                        <outletCollection property="chars" destination="0jR-pf-2m2" collectionClass="NSMutableArray" id="NzT-Lv-NHW"/>
-                        <outletCollection property="abilityButtons" destination="Myo-2B-aUq" collectionClass="NSMutableArray" id="T6T-Q5-TZa"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8MI-VL-H0P" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="8.6956521739130448" y="-995.38043478260875"/>
-=======
         <!--CharacterTableViewController-->
         <scene sceneID="lgb-8v-NUh">
             <objects>
@@ -395,7 +299,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AbilityCell" rowHeight="120" id="W1P-Vd-8wp" customClass="AbilityStoreTableViewCell" customModule="Sun_Switch" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="161" width="414" height="120"/>
+                                <rect key="frame" x="0.0" y="97" width="414" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W1P-Vd-8wp" id="qjJ-g2-b5g">
                                     <frame key="frameInset" width="414" height="119.5"/>
@@ -470,16 +374,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1cH-Ov-h7Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="204" y="-233.43328335832086"/>
->>>>>>> Zach
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="H0y-9y-F3a">
             <objects>
-<<<<<<< HEAD
-                <viewController id="nWG-92-yLe" customClass="SettingsViewController" customModule="ZSS" customModuleProvider="target" sceneMemberID="viewController">
-=======
                 <viewController id="nWG-92-yLe" customClass="SettingsViewController" customModule="Sun_Switch" customModuleProvider="target" sceneMemberID="viewController">
->>>>>>> Zach
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nNw-fm-S8T"/>
                         <viewControllerLayoutGuide type="bottom" id="WMb-Ba-Am8"/>
@@ -495,35 +394,22 @@
                                     <action selector="popBack:" destination="nWG-92-yLe" eventType="touchUpInside" id="KWZ-Q1-Akl"/>
                                 </connections>
                             </button>
-<<<<<<< HEAD
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x3n-YM-4J3" customClass="settingsPopUp" customModule="ZSS" customModuleProvider="target">
-                                <frame key="frameInset" minX="87" minY="223" width="240" height="329"/>
-=======
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x3n-YM-4J3" customClass="settingsPopUp" customModule="Sun_Switch" customModuleProvider="target">
                                 <frame key="frameInset" minX="87" minY="204" width="240" height="329"/>
->>>>>>> Zach
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGr-qG-TKW">
                                         <frame key="frameInset" minX="17" minY="12" width="95" height="95"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<<<<<<< HEAD
-                                        <state key="normal" backgroundImage="icons8-sound"/>
-=======
                                         <state key="normal" backgroundImage="icons8-music"/>
                                         <connections>
                                             <action selector="musicSetting:" destination="nWG-92-yLe" eventType="touchUpInside" id="x6l-eN-aLp"/>
                                         </connections>
->>>>>>> Zach
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k5R-w1-1B6">
                                         <frame key="frameInset" minX="127" minY="12" width="95" height="95"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<<<<<<< HEAD
-                                        <state key="normal" backgroundImage="icons8-music"/>
-=======
                                         <state key="normal" backgroundImage="icons8-sound"/>
->>>>>>> Zach
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uoJ-91-CHS">
                                         <frame key="frameInset" minX="18" minY="115" width="95" height="95"/>
@@ -557,10 +443,7 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-<<<<<<< HEAD
-=======
                         <outlet property="musicButton" destination="kGr-qG-TKW" id="PL9-nB-4wX"/>
->>>>>>> Zach
                         <outlet property="popBackButton" destination="EbF-z1-xfd" id="Yub-vW-eyA"/>
                     </connections>
                 </viewController>
@@ -571,11 +454,7 @@
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-<<<<<<< HEAD
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="ZSS" customModuleProvider="target" sceneMemberID="viewController">
-=======
                 <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="Sun_Switch" customModuleProvider="target" sceneMemberID="viewController">
->>>>>>> Zach
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8aa-yV-Osq"/>
                         <viewControllerLayoutGuide type="bottom" id="qHh-Mt-9TT"/>
@@ -593,17 +472,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="icons8-settings"/>
                                 <connections>
-<<<<<<< HEAD
-                                    <segue destination="nWG-92-yLe" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="45r-KD-L9x"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="riY-Qi-puo">
-                                <frame key="frameInset" minX="20" minY="20" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" backgroundImage="back"/>
-                                <connections>
-                                    <segue destination="Z00-o5-38N" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="Eag-5A-IUU"/>
-=======
                                     <segue destination="nWG-92-yLe" kind="presentation" identifier="settings" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="45r-KD-L9x"/>
                                 </connections>
                             </button>
@@ -614,28 +482,20 @@
                                 <connections>
                                     <action selector="quit:" destination="BV1-FR-VrT" eventType="touchUpInside" id="cBQ-rs-M7z"/>
                                     <segue destination="jYi-6p-Ds9" kind="presentation" identifier="gameOver" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="5fC-wQ-qpt"/>
->>>>>>> Zach
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-<<<<<<< HEAD
-                    </view>
-                    <connections>
-=======
                         <gestureRecognizers/>
                     </view>
                     <connections>
                         <outlet property="QuitButton" destination="riY-Qi-puo" id="1nG-co-EED"/>
->>>>>>> Zach
                         <outlet property="titl" destination="7EW-Vs-PHa" id="JS8-rz-Q7T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="215.94202898550725" y="-1701.358695652174"/>
-<<<<<<< HEAD
-=======
         </scene>
         <!--Game Over View Controller-->
         <scene sceneID="yU2-da-t8W">
@@ -714,8 +574,8 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Coins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WiO-DU-lTA">
-                                        <frame key="frameInset" minX="40" minY="393" width="267" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Units" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WiO-DU-lTA">
+                                        <frame key="frameInset" minX="40" minY="393" width="267" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -832,26 +692,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GSa-ip-m4V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1076.8115942028987" y="-1702.1739130434785"/>
->>>>>>> Zach
         </scene>
     </scenes>
     <resources>
         <image name="5kFullWide" width="1920" height="1080"/>
         <image name="Spaceship" width="394" height="347"/>
-<<<<<<< HEAD
-        <image name="back" width="50" height="50"/>
-        <image name="classic" width="2092" height="408"/>
-        <image name="extreme" width="2165" height="391"/>
-        <image name="icons8-music" width="150" height="150"/>
-        <image name="icons8-settings" width="150" height="150"/>
-        <image name="icons8-sound" width="150" height="150"/>
-        <image name="play" width="1232" height="390"/>
-        <image name="shop" width="1367" height="408"/>
-    </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Wp6-Vz-gvy"/>
-        <segue reference="45r-KD-L9x"/>
-=======
         <image name="astronaut" width="50" height="50"/>
         <image name="classic" width="2039" height="408"/>
         <image name="extreme" width="2165" height="391"/>
@@ -871,6 +716,5 @@
         <segue reference="65e-H9-Asj"/>
         <segue reference="Voh-4E-Nbu"/>
         <segue reference="lmy-i1-xD7"/>
->>>>>>> Zach
     </inferredMetricsTieBreakers>
 </document>

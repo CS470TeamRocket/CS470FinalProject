@@ -7,20 +7,14 @@
 //
 
 import UIKit
-<<<<<<< HEAD
-=======
 import AVFoundation
 
->>>>>>> Zach
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var SUN: UIImageView!
     @IBOutlet weak var SWITCH: UIImageView!
     @IBOutlet weak var settings: UIButton!
     @IBOutlet weak var play: UIButton!
-<<<<<<< HEAD
-
-=======
     var audio: AVAudioPlayer?
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -32,20 +26,11 @@ class HomeViewController: UIViewController {
             }
         }
     }
->>>>>>> Zach
     
     override func viewDidLoad() {
         super.viewDidLoad()
         SUN.loadGif(name: "s1")
         SWITCH.loadGif(name: "s2")
-<<<<<<< HEAD
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-    
-=======
         playTitleTheme()
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -57,14 +42,10 @@ class HomeViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
->>>>>>> Zach
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-<<<<<<< HEAD
-    
-=======
     func playTitleTheme() {
         do {
             if let url : URL = Bundle.main.url(forResource: "title2", withExtension: "wav", subdirectory:""){
@@ -85,7 +66,6 @@ class HomeViewController: UIViewController {
             print("Error initializing Audio Player")
         }
     }
->>>>>>> Zach
     
 }
 

@@ -9,14 +9,6 @@
 import UIKit
 import SpriteKit
 import GameplayKit
-<<<<<<< HEAD
-
-class GameViewController: UIViewController {
-    @IBOutlet weak var titl: UIImageView!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-=======
 import AVFoundation
 
 class GameViewController: UIViewController {
@@ -56,19 +48,10 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         //super.viewDidLoad()
->>>>>>> Zach
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-<<<<<<< HEAD
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-=======
             if let newscene = GameScene(fileNamed: "GameScene") {
                 scene = newscene
                 scene?.quitButton = QuitButton
@@ -78,21 +61,12 @@ class GameViewController: UIViewController {
                 // Present the scene
                 view.presentScene(scene)
 
->>>>>>> Zach
             }
             
             view.ignoresSiblingOrder = true
             
             view.showsFPS = true
             view.showsNodeCount = true
-<<<<<<< HEAD
-        }
-    }
-    override var shouldAutorotate: Bool {
-        return true
-    }
-
-=======
             playGameTheme()
 
         }
@@ -112,7 +86,6 @@ class GameViewController: UIViewController {
         return true
     }
     
->>>>>>> Zach
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown
@@ -129,8 +102,6 @@ class GameViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
-<<<<<<< HEAD
-=======
     
     
     func playGameTheme() {
@@ -154,7 +125,6 @@ class GameViewController: UIViewController {
         }
     }
     
->>>>>>> Zach
 }
 
 
