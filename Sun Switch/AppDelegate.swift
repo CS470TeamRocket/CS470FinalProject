@@ -8,18 +8,20 @@
 
 import UIKit
 import CoreData
-
+import  AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var audio: AVAudioPlayer?
+    var AVS: String = ""
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        generateDummyUserData()
         fillUserDefaultsIfFirstLaunch()
+        generateDummyUserData()
         return true
     }
 
@@ -113,34 +115,115 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func resetUserDefaults() {
         UserDefaults.standard.set(Int(0),forKey: UserDataHolder.shared.BEST_SCORE_KEY)
         UserDefaults.standard.set(Int(0),forKey: UserDataHolder.shared.BEST_TIME_KEY)
+        UserDefaults.standard.set(Int(2500), forKey: UserDataHolder.shared.TOTAL_CURRENCY)
+        UserDefaults.standard.set(Int(2), forKey: UserDataHolder.shared.NUM_UNLOCKED_CHARACTERS)
     }
     
     func generateDummyUserData () { //Here to fill the user data with something. to be replaced later, probably with some core data stuff which I don't currently understand
         var abilities: [AbilityModel] = []
         var characters: [CharacterModel] = []
+        var unlockedChars: [CharacterModel] = []
         
-        for i in 1...10 { //generating some characters
-            switch i%3{
+        for i in 0...3 { //generating some characters
+            
+            switch i{
                 
             case 0:
-                characters.append(CharacterModel(img: "Person1.jpg", name: "person \(i)", ability: TimeStopAbility(),desc: "this is person \(i)'s description"))
+                let c = CharacterModel(img: "Person1.jpg", name: "person \(i)", ability: TimeStopAbility(),desc: "this is person \(i)'s description", unlocked: true)
+                characters.append(c)
+                if c.unlocked! { unlockedChars.append(c) }
             case 1:
-                characters.append(CharacterModel(img: "Person2.png", name: "person \(i)", ability:
-                    PointBoostAbility(),desc: "this is person \(i)'s description"))
+                let c = CharacterModel(img: "Person2.png", name: "person \(i)", ability:
+                    PointBoostAbility(),desc: "this is person \(i)'s description", unlocked: true)
+                characters.append(c)
+                if c.unlocked! { unlockedChars.append(c) }
+                
             case 2:
-                characters.append(CharacterModel(img: "Person3.jpeg", name: "person \(i)", ability: DropBombAbility(),desc: "this is person \(i)'s description. It is much longer than the others so we can test scrolling. this is person \(i)'s description. It is much longer than the others so we can test scrolling. this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling."))
+                let c = CharacterModel(img: "Person3.jpeg", name: "person \(i)", ability: DropBombAbility(),desc: "this is person \(i)'s description. It is much longer than the others so we can test scrolling. this is person \(i)'s description. It is much longer than the others so we can test scrolling. this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.", unlocked: false)
+                characters.append(c)
+                if c.unlocked! { unlockedChars.append(c) }
+            case 3:
+                let c = CharacterModel(img: "Person2.png", name: "person \(i)", ability:
+                    TeleportAbility(),desc: "this is person \(i)'s description", unlocked: false)
+                characters.append(c)
+                if c.unlocked! { unlockedChars.append(c) }
             default:
-                characters.append(CharacterModel(img: "Person1.jpg", name: "person \(i)", ability: TimeStopAbility(),desc: "this is person \(i)'s description"))
+                let c = CharacterModel(img: "Person1.jpg", name: "person \(i)", ability: TimeStopAbility(),desc: "this is person \(i)'s description", unlocked: true)
+                    characters.append(c)
+                    if c.unlocked! { unlockedChars.append(c) }
                 
             }
         }
+        //characters[2].ability = TeleportAbility()
         //throwing some dummy abilities in there
-        abilities.append(TimeStopAbility())
-        abilities.append(PointBoostAbility())
+        //abilities.append(TimeStopAbility())
+        //abilities.append(PointBoostAbility())
         abilities.append(TeleportAbility())
         abilities.append(DropBombAbility())
         UserDataHolder.shared.setAbilities(abilities: abilities)
         UserDataHolder.shared.setCharacters(characters: characters)
+        UserDataHolder.shared.setUnlockedCharacters(characters: unlockedChars)
     }
-
+    
+    func playTitleTheme() {
+        if AVS != "title2" {
+            print("A: \(audio)")
+            do {
+                if let url : URL = Bundle.main.url(forResource: "title2", withExtension: "wav", subdirectory:""){
+                    if audio != nil{
+                        print("TRYING TO STOP!")
+                        audio!.stop()
+                        audio = nil
+                    }
+                    try audio = AVAudioPlayer(contentsOf: url)
+                }
+                else {
+                    print ("URL was not successfully generated")
+                }
+            }catch{
+                print("An error has occurred.")
+            }
+            if(audio != nil){
+                audio!.numberOfLoops = -1
+                audio!.play()
+                AVS = "title2"
+            }
+            else {
+                print("Error initializing Audio Player")
+            }
+        }
+        else {
+            print("ALREADY PLAYING THIS SONG!!")
+        }
+    }
+    
+    func playGameTheme() {
+        if AVS != "game" {
+            do {
+                if let url : URL = Bundle.main.url(forResource: "game", withExtension: "wav", subdirectory:""){
+                    if audio != nil{
+                        audio!.stop()
+                        audio = nil
+                    }
+                    try audio = AVAudioPlayer(contentsOf: url)
+                }
+                else {
+                    print ("URL was not successfully generated")
+                }
+            }catch{
+                print("An error has occurred.")
+            }
+            if(audio != nil){
+                audio!.numberOfLoops = -1
+                audio!.play()
+                AVS = "game"
+            }
+            else {
+                print("Error initializing Audio Player")
+            }
+        }
+        else {
+            print("ALREADY PLAYING THIS SONG!!")
+        }
+    }
 }

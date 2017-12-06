@@ -14,11 +14,14 @@ class UserDataHolder {
     let BEST_SCORE_KEY:String = "bestScore"
     let BEST_TIME_KEY:String = "bestTime"
     let LAUNCHED_BEFORE_KEY:String = "launchedBefore"
+    let TOTAL_CURRENCY:String = "totalCurrency"
+    let NUM_UNLOCKED_CHARACTERS:String = "numCharacters"
     //
 
     
     var abilities: [AbilityModel] = []
     var characters: [CharacterModel] = []
+    var unlockedCharacters: [CharacterModel] = []
     var currentCharacter: CharacterModel?
     var currentGameModel: GameModel?
     var sfxVolume: Double = 100
@@ -36,8 +39,33 @@ class UserDataHolder {
         return abilities
     }
     
+    func getAbility(idx: Int) -> AbilityModel {
+        if abilities[idx].name != "default name" {
+            let a = abilities[idx]
+            return a
+        }
+        return AbilityModel()
+    }
+    
     func getCharacters() -> [CharacterModel]{
         return characters
+    }
+    
+    func getUnlockedCharacters() -> [CharacterModel]{
+        return unlockedCharacters
+    }
+    
+    func unlockChar() {
+        
+    }
+    
+    func buyAbility(ability: AbilityModel) {
+        for c in characters {
+            if c.ability.name == ability.name {
+                c.unlocked = true
+                unlockedCharacters.append(c)
+            }
+        }
     }
     
     func setAbilities(abilities: [AbilityModel]) {
@@ -48,9 +76,14 @@ class UserDataHolder {
         self.characters = characters
     }
     
+    func setUnlockedCharacters(characters: [CharacterModel]) {
+        self.unlockedCharacters = characters
+    }
+    
     func clearData() {
         self.characters = []
         self.abilities = []
+        self.unlockedCharacters = []
     }
     /*
     func loadCharacterData() {

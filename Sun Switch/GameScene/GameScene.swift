@@ -42,19 +42,21 @@ class GameScene: SKScene {
     var stopwatch = SKSpriteNode(imageNamed: "stopwatch")
     var ticker = SKSpriteNode(imageNamed: "ticker")
     var curSprite: (SKSpriteNode, CGPoint, Int, Int)!
+    var otherSprite: (SKSpriteNode, CGPoint, Int, Int)!
+    var teleSprite1: (SKSpriteNode, CGPoint, Int, Int)!
+    var teleSprite2: (SKSpriteNode, CGPoint, Int, Int)!
     var firstTouch: CGPoint!
+    var rotation: CGFloat = 0
     var curRow: Int!
     var lastIdx: (Int, Int)!
     var lastDirection: direction!
-    var otherSprite: (SKSpriteNode, CGPoint, Int, Int)!
     var curArrow: AModel!
     var holding: Bool = false
     var started: Bool = false
     var canMove: Bool = false
     var extreme: Bool = false
-    var sun1: PModel!
-    var sun2: PModel!
-    var sun3: PModel!
+    var teleportMode: Bool = false
+    var bombMode: Bool = false
     var abilityButton: PModel!
     var quitButton: UIButton!
     var game: GameModel!
@@ -67,14 +69,16 @@ class GameScene: SKScene {
 
     override func sceneDidLoad() {
         super.sceneDidLoad()
-        //let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
-        //helperSprite.run(SKAction.repeatForever(rotateAction))
+        let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
+        helperSprite.run(SKAction.repeatForever(rotateAction))
         game = GameModel(start: 1, view: self, isExtreme: extreme)
         UserDataHolder.shared.currentGameModel = game
         self.addChild(sunSprite)
         sunSprite.scale(to: CGSize(width: self.frame.width*2, height: sunSprite.frame.height))
         sunSprite.position = CGPoint(x: 0, y: -(Int(self.frame.height)) + 160)
-        self.backgroundColor = UIColor.black
+        sunSprite.zPosition = 5
+        // Should probably rotate left raight a little to give animated feel
+        self.backgroundColor = UIColor.gray
     }
 
     func backStars() {
@@ -92,8 +96,10 @@ class GameScene: SKScene {
                     }
                 }
             }
-            var star = SKSpriteNode(imageNamed: "star")
+            var star: SKSpriteNode
+            star = SKSpriteNode(imageNamed: "star")
             self.addChild(star)
+            star.zPosition = -10
             let z = Double(Int(arc4random()) % 3 + 1) / 10
             let size = CGSize(width: 50 * z, height: 50 * z )
             star.scale(to: size)
@@ -107,12 +113,12 @@ class GameScene: SKScene {
         }
     }
     
-    func movement(position: CGPoint, option: Int) -> SKAction{
-        let left = SKAction.moveBy(x: 0, y: -1, duration: 2)
-        let right = SKAction.moveBy(x: 0, y: 1, duration: 2)
-        let up = SKAction.moveBy(x: 1, y: 0, duration: 2)
-        let down = SKAction.moveBy(x: -1, y: 0, duration: 2)
-        let back = SKAction.move(to: position, duration: 2)
+    func movement(position: CGPoint, option: Int) -> SKAction {
+        let left = SKAction.moveBy(x: 0, y: -1, duration: 0.5)
+        let right = SKAction.moveBy(x: 0, y: 1, duration: 0.5)
+        let up = SKAction.moveBy(x: 1, y: 0, duration: 0.5)
+        let down = SKAction.moveBy(x: -1, y: 0, duration: 0.5)
+        let back = SKAction.move(to: position, duration: 0.5)
         if option == 0 {
             return SKAction.sequence([right, back, left, back, up, back, down, back])
         }
@@ -138,10 +144,10 @@ class GameScene: SKScene {
     }
     
     func scoreMeter(score: Int, maxScore: Int) -> SKAction {
-        print("METER")
+        //print("METER")
         let scale = CGFloat(score) / CGFloat(maxScore) * 200
         let act = SKAction.run {
-            print("RUN")
+            //print("RUN")
             self.meterLine.run(SKAction.scale(to: CGSize(width: scale, height: self.meterLine.frame.height), duration: 0.4))
 
         }
@@ -149,14 +155,16 @@ class GameScene: SKScene {
     }
     
     func rotateTicker(duration: TimeInterval) {
-        ticker.run(SKAction.repeatForever(SKAction.rotate(byAngle: -CGFloat(M_PI * 2.0), duration: duration)))
+        ticker.run(SKAction.repeatForever(SKAction.rotate(byAngle: -CGFloat(M_PI * 2.0), duration: duration)), withKey: "rotate")
     }
     
     func makeBoard(board: [RowModel]) {
         backStars()
         self.addChild(meter)
+        meter.zPosition = 4
         self.addChild(meterLine)
-        let meterPosition = CGPoint(x: 0, y:Int(self.frame.height/2) - 50)
+        meterLine.zPosition = 3
+        let meterPosition = CGPoint(x: 30, y:Int(self.frame.height/2) - 50)
         meter.position = meterPosition
         meterLine.position = meterPosition
         meterLine.size.width = 2
@@ -178,14 +186,14 @@ class GameScene: SKScene {
                 let rows = board.count
                 let columns = board[r].length()
                 let x = (c - columns/2) * Int(helperSprite.size.width + 4)
-                let arc = 0//(x * x) / 500
+                let arc = (x * x) / 800
                 let y = (r - rows/2) * Int(helperSprite.size.width + 10) * -1 - arc
                 let center = CGPoint(x: x, y: y)
                 TempRowC.append(center)
                 let name = getImageName(piece: piece)
                 sprite = SKSpriteNode(imageNamed: name)
-                //let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
-                //sprite.run(SKAction.repeatForever(rotateAction))
+                let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
+                sprite.run(SKAction.repeatForever(rotateAction))
                 sprite.position = center
                 sprite.name = name
                 self.addChild(sprite)
@@ -243,44 +251,30 @@ class GameScene: SKScene {
             let y2 = Int(r[columns - 1].position.y) - Int(helperSprite.size.width/2)
             let oC2 = CGPoint(x: x2 , y: y2)
             let arrow2 = AModel(row: count, originalCenter: oC2, sprite: SKSpriteNode(texture: sprites[count][0].texture))
-            //let group = SKAction.group([SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5), SKAction.sequence([SKAction.fadeOut(withDuration: 1), SKAction.fadeIn(withDuration: 0.5)])])
+            let group = SKAction.group([SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)]) //, SKAction.sequence([SKAction.fadeOut(withDuration: 1), SKAction.fadeIn(withDuration: 0.5)])])
             self.addChild(arrow1.sprite)
             arrow1.sprite.position = arrow1.originalCenter
-            //arrow1.sprite.run(SKAction.repeatForever(group))
+            arrow1.sprite.run(SKAction.repeatForever(group))
             self.addChild(arrow2.sprite)
             arrow2.sprite.position = arrow2.originalCenter
-            //arrow2.sprite.run(SKAction.repeatForever(group))
+            arrow2.sprite.run(SKAction.repeatForever(group))
             arrows.append([arrow1, arrow2])
             count += 1
         }
-        // Suns
-        sun1 = PModel(row: 0, column: 0, imgIdx: 0, originalCenter: CGPoint(x: (-frame.width / 4) + CGFloat(40), y: (-frame.height / 2) + CGFloat(40)), sprite: SKSpriteNode(imageNamed: "sun"))
-        self.addChild(sun1.sprite)
-        sun1.sprite.position = sun1.originalCenter
-        sun2 = PModel(row: 0, column: 0, imgIdx: 0, originalCenter: CGPoint(x: (frame.width / 4) - CGFloat(40), y: (-frame.height / 2) + CGFloat(40)), sprite: SKSpriteNode(imageNamed: "sun"))
-        self.addChild(sun2.sprite)
-        sun2.sprite.position = sun2.originalCenter
-        sun3 = PModel(row: 00, column: 0, imgIdx: 0, originalCenter: CGPoint(x: 0, y: (-frame.height / 2) + CGFloat(40)), sprite: SKSpriteNode(imageNamed: "sun"))
-        self.addChild(sun3.sprite)
-        sun3.sprite.position = sun3.originalCenter
-        // AbilityButton
-        abilityButton = PModel(row: 0, column: 0, imgIdx: 0, originalCenter: CGPoint(x: (-frame.width/2) + CGFloat(40), y: (-frame.height/2) + CGFloat(40)), sprite: SKSpriteNode(imageNamed:"helmet"))
-        self.addChild(abilityButton.sprite)
-        abilityButton.sprite.position = abilityButton.originalCenter
-        //ResignButton
-        //resignButton = PModel(row: 0, column: 0, imgIdx: 0, originalCenter: CGPoint(x: (frame.width/2) - CGFloat(40), y: (-frame.height/2) + CGFloat(40)), sprite: SKSpriteNode(imageNamed:"physics"))
-        //self.addChild(resignButton.sprite)
-        //resignButton.sprite.position = resignButton.originalCenter
+        //Teleport Mode
+        teleSprite1 = nil
+        teleSprite2 = nil
     }
- 
     
     func sunGrow() {
-        sunSprite.position.y += helperSprite.frame.width + 10
+        sunSprite.run(SKAction.moveBy(x: 0, y: helperSprite.frame.width + 10, duration: 1))
+        fakeRowL = []
+        fakeRowR = []
         //sunSprite.scale(to: CGSize(width: sunSprite.frame.width + helperSprite.frame.width * 2, height: sunSprite.frame.height + helperSprite.frame.width * 2))
     }
     
     func sunShrink() {
-        sunSprite.position.y -= helperSprite.frame.width + 10
+        sunSprite.run(SKAction.moveBy(x: 0, y: -(helperSprite.frame.width + 10), duration: 1))
         //sunSprite.scale(to: CGSize(width: sunSprite.frame.width - helperSprite.frame.width * 2, height: sunSprite.frame.height - helperSprite.frame.width * 2))
     }
     
@@ -304,10 +298,11 @@ class GameScene: SKScene {
         sprite.zRotation = helperSprite.zRotation
         fake.zRotation = helperSprite.zRotation
         sprite.name = name
+        fake.name = name
         sprites[r][c] = sprite
         let group = SKAction.group([SKAction.move(to: center, duration: 0.4), SKAction.fadeAlpha(to: 1, duration: 0.4)])
-        //let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
-        //sprite.run(SKAction.repeatForever(rotateAction))
+        let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
+        sprite.run(SKAction.repeatForever(rotateAction))
         let act = SKAction.run {
             self.sprites[r][c].alpha = 0
             fake.run(group, completion: {
@@ -320,7 +315,7 @@ class GameScene: SKScene {
     }
     
     func drop(from: BoardIndex, to: BoardIndex) -> SKAction {
-        //_ = DispatchTime.now() + .milliseconds(500000000)
+        //_ = DispatchTime.now() + .milliseconds(800000000)
         //self.run(SKAction.wait(forDuration: 5))
         let center = centers[to.row][to.col]
         let startCenter = centers[from.row][from.col]
@@ -333,17 +328,22 @@ class GameScene: SKScene {
         fake.position = startCenter
         sprite.alpha = 0
         fake.alpha = 0
+        fake.name = sprite.name
         sprites[to.row][to.col] = sprite
         let group = SKAction.group([SKAction.move(to: center, duration: 0.4), SKAction.fadeAlpha(to: 1, duration: 0.4)])
         //let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
         //sprite.run(SKAction.repeatForever(rotateAction))
         let act = SKAction.run {
-            self.sprites[to.row][to.col].alpha = 0
-            fake.run(group, completion: {
-                self.sprites[to.row][to.col].alpha = 1
-                self.sprites[to.row][to.col].position = center
-                fake.removeFromParent()
-            })
+            if to.row < self.game.board.rowsLeft() {
+                self.sprites[to.row][to.col].alpha = 0
+                fake.run(group, completion: {
+                    if to.row < self.game.board.rowsLeft() {
+                        self.sprites[to.row][to.col].alpha = 1
+                        self.sprites[to.row][to.col].position = center
+                        fake.removeFromParent()
+                    }
+                })
+            }
         }
         //board[to.row][to.col] = game.board.getPiece(index: to)
         return act
@@ -366,6 +366,7 @@ class GameScene: SKScene {
             for c in 0..<sprites[r].count {
                 let index = BoardIndex(row: r, col: c)
                 let name = getImageName(piece: game.board.getPiece(index: index))
+                //print("S: \(sprites[r][c].name!) -> \(name)")
                 self.sprites[r][c].texture = SKTexture(imageNamed: name)
             }
         }
@@ -379,21 +380,21 @@ class GameScene: SKScene {
                 s.position.x += tDis
                 let tSize = Int(helperSprite.size.width)
                 let y = (curRow - (maxRows / 2)) * (tSize + 10) * -1
-                let arc = 0//Int(s.position.x * s.position.x) / 500
+                let arc = Int(s.position.x * s.position.x) / 800
                 s.position.y = CGFloat(y - arc)
             }
             for s in fakeRowL {
                 s.position.x += tDis
                 let tSize = Int(helperSprite.size.width)
                 let y = (curRow - (maxRows / 2)) * (tSize + 10) * -1
-                let arc = 0//Int(s.position.x * s.position.x) / 500
+                let arc = Int(s.position.x * s.position.x) / 800
                 s.position.y = CGFloat(y - arc)
             }
             for s in fakeRowR {
                 s.position.x += tDis
                 let tSize = Int(helperSprite.size.width)
                 let y = (curRow - (maxRows / 2)) * (tSize + 10) * -1
-                let arc = 0//Int(s.position.x * s.position.x) / 500
+                let arc = Int(s.position.x * s.position.x) / 800
                 s.position.y = CGFloat(y - arc)
             }
             curArrow.sprite.position.x = location.x
@@ -413,7 +414,7 @@ class GameScene: SKScene {
     func snapBackRow(newSprites: [SKSpriteNode]) {
         // Moves a whole row back to it's original place
         if curRow != nil {
-            print("SBR -> \(curRow)")
+            //print("SBR -> \(curRow)")
             for a in arrows[curRow] {
                 a.sprite.position = a.originalCenter
             }
@@ -549,8 +550,7 @@ class GameScene: SKScene {
             var count = 0
             for s in sprites[bottom] {
                // print("Deleting sprite at:", bottom, count, s.position)
-                s.run(SKAction.sequence([SKAction.scale(by: 1.5, duration: 0.1), SKAction.scale(by: 0.1, duration: 0.1), SKAction.move(to: CGPoint(x: 0,y :Int(-frame.height)), duration: 0.2), SKAction.fadeOut(withDuration: 0.1)]))
-                s.removeFromParent()
+                s.run(SKAction.sequence([SKAction.scale(by: 1.5, duration: 0.1), SKAction.group([SKAction.scale(by: 0.1, duration: 0.2), SKAction.move(to: CGPoint(x: 0,y :Int(-frame.height)), duration: 0.2), SKAction.fadeOut(withDuration: 0.4)]), SKAction.removeFromParent()]))
                 count += 1
             }
             oldArrows.insert(arrows[bottom], at: 0)
@@ -580,8 +580,8 @@ class GameScene: SKScene {
                 self.addChild(sprite)
                 sprite.position = center
                 sprite.run(SKAction.sequence([SKAction.scale(by: 0.5, duration: 0.1), SKAction.scale(by: 4, duration: 0.1), SKAction.scale(by: 0.5, duration: 0.1)]))
-                //let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
-                //sprite.run(SKAction.repeatForever(rotateAction))
+                let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
+                sprite.run(SKAction.repeatForever(rotateAction))
                 //print("Added sprite at:", bottom + 1, r, sprite.position)
                 sprite.name = name
                 TempRowS.append(sprite)
@@ -634,7 +634,7 @@ class GameScene: SKScene {
         for c in sprites {
             var arc = 0
             let y = (row - maxRows/2) * Int(helperSprite.size.width + 10) * -1
-            //let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
+            let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
             let distance = helperSprite.size.width * CGFloat(maxCols) + helperSprite.size.width/2
             let rotation = c.zRotation
             var fakeR: SKSpriteNode
@@ -642,19 +642,19 @@ class GameScene: SKScene {
             
             fakeL = SKSpriteNode(texture: c.texture)
             fakeL.position.x = c.position.x - distance
-            arc = y// + Int(fakeL.position.x * fakeL.position.x) / 500 * -1
+            arc = y + Int(fakeL.position.x * fakeL.position.x) / 800 * -1
             fakeL.position.y = CGFloat(arc)
             fakeL.zRotation = rotation
-            //fakeL.run(SKAction.repeatForever(rotateAction))
+            fakeL.run(SKAction.repeatForever(rotateAction))
             self.addChild(fakeL)
             fakeRowL.append(fakeL)
             
             fakeR = SKSpriteNode(texture: c.texture)
             fakeR.position.x = c.position.x + distance
-            arc = y// + Int(fakeR.position.x * fakeR.position.x) / 500 * -1
+            arc = y + Int(fakeR.position.x * fakeR.position.x) / 800 * -1
             fakeR.position.y = CGFloat(arc)
             fakeR.zRotation = rotation
-            //fakeR.run(SKAction.repeatForever(rotateAction))
+            fakeR.run(SKAction.repeatForever(rotateAction))
             self.addChild(fakeR)
             fakeRowR.append(fakeR)
         }
@@ -671,10 +671,13 @@ class GameScene: SKScene {
         fakeRowR = []
     }
     
+    func doAbility() {
+        UserDataHolder.shared.currentCharacter?.ability.doAbility()
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // Called When the screen is first touched
-        // print("TOUCHES BEGAN")
-        // Just hide them
+        
+        
         firstTouch = touches.first?.location(in: self)
         lastSet = touches
         lastEvent = event!
@@ -683,28 +686,56 @@ class GameScene: SKScene {
         }
         for touch in touches {
             let location = touch.location(in: self)
-            if self.sun1.sprite.contains(location) {
-                if bottom > 0 {
-                    //removeBottomRow()
-                    game.timeUp()
-                }
-                //print(bottom)
+            if bombMode {
+                for r in 0..<sprites.count{ for c in 0..<sprites[r].count{ if sprites[r][c].contains(location) {
+                    lastIdx = (r, c)
+                    game.bomb(idx: lastIdx, size: 1)
+                    bombMode = false
+                    return
+                }}}
+                return
             }
-            else if self.sun2.sprite.contains(location) {
-                game.restoreRow()
-                //print(bottom)
+            if teleportMode {
+                for r in 0..<sprites.count{ for c in 0..<sprites[r].count{ if sprites[r][c].contains(location) {
+                    if teleSprite1 == nil {
+                        teleSprite1 = (sprites[r][c], centers[r][c], r, c)
+                        return
+                    }
+                    else if sprites[r][c] != teleSprite1.0 {
+                        teleSprite2 = (sprites[r][c], centers[r][c], r, c)
+                        swap(s1: teleSprite1.0, s2: teleSprite2.0)
+                        snapBack(sprite: teleSprite1.0, row: teleSprite1.2, col: teleSprite1.3)
+                        snapBack(sprite: teleSprite2.0, row: teleSprite2.2, col: teleSprite2.3)
+                        let lastIdx1 = (teleSprite1.2, teleSprite1.3)
+                        let lastIdx2 = (teleSprite2.2, teleSprite2.3)
+                        var dir1 = direction.left
+                        if teleSprite1.3 == 0 {
+                            dir1 = direction.right
+                        }
+                        var dir2 = direction.left
+                        if teleSprite2.3 == 0 {
+                            dir2 = direction.right
+                        }
+                        print("MOVE")
+                        var move = game.makeMove(move: Move(BoardIndex(lastIdx1), dir: dir1))
+                        if !move {
+                            move = game.makeMove(move: Move(BoardIndex(lastIdx2), dir: dir2))
+                            if !move {
+                                swap(s1: teleSprite1.0, s2: teleSprite2.0)
+                            }
+                        }
+                        teleSprite1 = nil
+                        teleSprite2 = nil
+                        teleportMode = false
+                    }
+                    else if sprites[r][c] == teleSprite1.0 {
+                        //teleSprite1.0.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(M_PI*2), duration: 5)))
+                        teleSprite1 = nil
+                        return
+                    }
+                }}}
+                return
             }
-            else if self.sun3.sprite.contains(location) {
-                dropTest()
-            }
-            else if self.abilityButton.sprite.contains(location){
-                UserDataHolder.shared.currentCharacter?.ability.doAbility()
-            }
-                
-            //else if self.resignButton.sprite.contains(location){
-             //   UserDataHolder.shared.currentGameModel?.gameOver()
-            //}
-
             for a in arrows {
                 for b in a {
                     if !holding, b.sprite.contains(location), b.row <= bottom {
@@ -749,6 +780,9 @@ class GameScene: SKScene {
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if teleportMode || bombMode {
+            return
+        }
         if(!canMove) {
             //snapAllBack()
             return
@@ -894,6 +928,7 @@ class GameScene: SKScene {
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+
         if(!canMove) {
             //snapAllBack()
             return
@@ -907,25 +942,12 @@ class GameScene: SKScene {
                 removeFakeRows()
                 let move = snapRow(point: touches.first!.location(in: self))
                 updateSpritesFromBoard()
-                //game.rotateRow(row: curRow, )
-                /*
-                var moves: [Move] = []
-                for i in 0..<maxCols-1 {
-                    moves.append(Move(BoardIndex(row: curRow, col: i), dir: direction.right))
-                }
-                let move = game.makeRowMove(moves: moves)
-                 */
-                //snapBackRow(newSprites: sprites[curRow])
-                
                 if move{
                     snapBackRow(newSprites: sprites[curRow])
                 }
                 else {
                     snapBackRow(newSprites: oldRowS)
-                    //game.board.setBoard(row: oldRow, index: curRow)
                 }
-                
-                //snapBackRow()
             }
             else if otherSprite != nil, lastDirection != nil {
                 swap()
@@ -943,13 +965,6 @@ class GameScene: SKScene {
                 lastIdx = (curSprite.2, curSprite.3)
             }
             holding = false
-            //if lastDirection != nil, lastIdx != nil, otherSprite != nil {
-            //    print("MOVE")
-            //    let move = game.makeMove(move: Move(BoardIndex(lastIdx), dir: lastDirection))
-            //    if !move {
-            //        swap()
-            //    }
-            //}
         }
         snapAllBack()
         fakeRowL = []
@@ -964,6 +979,7 @@ class GameScene: SKScene {
         oldRow = nil
         oldRowS = []
         updateArrows()
+        updateSpritesFromBoard()
         printNames()
     }
     
@@ -973,7 +989,7 @@ class GameScene: SKScene {
             self.run(actions[0])
         }
         else if index < actions.count - 1 {
-            print(actions[index])
+            //print(actions[index])
             self.run(actions[index], completion: {
                 self.doSequencialActions(actions: actions, index: index + 1)
             })
@@ -988,21 +1004,15 @@ class GameScene: SKScene {
     }
     
     func swap() {
-        //let r = curSprite.2
-        //let c = curSprite.3
-        //let r2 = otherSprite.2
-        //let c2 = otherSprite.3
         let tempSpriteTex = curSprite.0.texture
-        //let tempPiece = game.board.getPiece(index: (r,c))
-        //let tempType = getImageName(piece: tempPiece)
-        
         curSprite.0.texture = otherSprite.0.texture
-        //self.board[r][c] = game.board.getPiece(index: (r2,c2))
-        //curSprite.imgIdx = otherSprite.imgIdx
         otherSprite.0.texture = tempSpriteTex
-        //self.board[r2][c2] = tempPiece
-        //otherSprite.imgIdx = tempImgIdx
-        //game.board.getPiece(index: (r,c)).swap(new: game.board.getPiece(index: (r2,c2)))
+    }
+    
+    func swap(s1: SKSpriteNode, s2: SKSpriteNode) {
+        let tempSpriteTex = s1.texture
+        s2.texture = s1.texture
+        s1.texture = tempSpriteTex
     }
     
     func swapRow(newRow: RowModel) {
@@ -1031,6 +1041,7 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         
     }
+    
     func cleanup() {
         if(fakeRowL.count > 0) {
             for i in fakeRowL {

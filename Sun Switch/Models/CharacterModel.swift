@@ -11,14 +11,16 @@ import UIKit
 class CharacterModel {
     let img: String!
     let name: String!
-    let ability: AbilityModel!
+    var ability: AbilityModel!
     let desc: String!
+    var unlocked: Bool!
     
-    init(img: String, name: String, ability: AbilityModel, desc: String) {
+    init(img: String, name: String, ability: AbilityModel, desc: String, unlocked: Bool) {
         self.img = img
         self.name = name
         self.ability = ability
         self.desc = desc
+        self.unlocked = unlocked
     }
     
     func getImg() -> UIImage? {

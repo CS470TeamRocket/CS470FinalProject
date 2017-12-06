@@ -27,7 +27,7 @@ class GameModel: NSObject {
     var timeStopped: Bool = true
     var extreme: Bool = false
     var over: Bool = false
-    //*
+    var boostTime: Int = 0
     var scene: GameScene!
     
     
@@ -80,8 +80,10 @@ class GameModel: NSObject {
         board.advanceLevel()
         getNextGoal(current: level)
         if(!timeStopped) {
-            stopTime(delay: 3, hard: true)  //Stops time for 3 seconds, then restarts the timer.
             scene.ticker.removeAllActions()
+            scene.ticker.run(SKAction.rotate(toAngle: 0, duration: 2.9))
+            //scene.ticker.zRotation = 0
+            stopTime(delay: 3, hard: true)  //Stops time for 3 seconds, then restarts the timer.
         }
         streak += 1
         //Check current "restore row" count. If enough, we restore a new row.
@@ -93,7 +95,7 @@ class GameModel: NSObject {
         var actions: [SKAction] = []
         actions.append(scene.scoreMeter(score: 1, maxScore: 1))
         actions.append(scene.scoreMeter(score: 0, maxScore: 1))
-        print("S: \(score) N: \(nextGoal) L: \(lastGoal)")
+        //print("S: \(score) N: \(nextGoal) L: \(lastGoal)")
         actions.append(scene.scoreMeter(score: self.score - self.lastGoal, maxScore: self.nextGoal - self.lastGoal))
         actions.append(SKAction.wait(forDuration: 0))
         scene.doSequencialActions(actions: actions, index: 0)
@@ -177,6 +179,12 @@ class GameModel: NSObject {
     
     @objc func softResetTimer() {
         resetTimer(false)
+        var rot = -CGFloat(M_PI*2)
+        if scene.rotation > CGFloat(M_PI) {
+            rot = rot*2
+        }
+        print("SOFT: \(scene.rotation) ROT: \(rot)")
+        scene.ticker.run(SKAction.rotate(toAngle: rot, duration: self.timeLeft-Double(self.currTime)))
     }
     
     @objc func hardResetTimer() {
@@ -185,6 +193,7 @@ class GameModel: NSObject {
 
     func stopTime(delay: Int, hard: Bool){
         timeStopped = true
+        scene.rotation = scene.ticker.zRotation
         print("Stopping Time")
 
         timer.invalidate()
@@ -192,13 +201,14 @@ class GameModel: NSObject {
             timer = Timer.scheduledTimer(timeInterval: TimeInterval(delay), target: self, selector: (#selector(hardResetTimer)), userInfo: nil, repeats: false)
         }
         else {
+            scene.ticker.removeAllActions()
             timer = Timer.scheduledTimer(timeInterval: TimeInterval(delay), target: self, selector: (#selector(softResetTimer)), userInfo: nil, repeats: false)
         }
     }
     
     func restoreRow() {
-        scene.sunShrink()
         board.restoreRow()
+        scene.sunShrink()
     }
     
     func printBoard() {
@@ -216,6 +226,12 @@ class GameModel: NSObject {
     }
     
     @objc func timeTick() {
+        if boostTime == 1 {
+            pointValue = 50
+        }
+        if boostTime > 0{
+            boostTime -= 1
+        }
         if(totalTime >= Int.max - 1) {
             totalTime = 0
             tooLong = true
@@ -243,7 +259,7 @@ class GameModel: NSObject {
             //if scene.curArrow != nil {
             //    scene.sprites[scene.curRow][scene.maxCols-1].position = scene.centers[scene.curRow][scene.maxCols-1]
             //}
-            if scene.curRow != nil {
+            if scene.curRow != nil, scene.curRow < board.rowsLeft() {
                 scene.snapBackRow(newSprites: scene.sprites[scene.curRow])
             }
             scene.curArrow = nil
@@ -251,17 +267,21 @@ class GameModel: NSObject {
             scene.fakeRowL = []
             scene.fakeRowR = []
             scene.touchesEnded(scene.lastSet, with: scene.lastEvent)
+            if scene.ticker.hasActions() {
+                scene.ticker.removeAllActions()
+            }
+            scene.ticker.zRotation = 0
+            scene.rotateTicker(duration: timeLeft)
             printBoard()
         }
-        
     }
+    
     func indexColumn(col: Int) -> [BoardIndex] {
         var list = [BoardIndex]()
         for i in 0 ..< board.rowsLeft() {
             list.append( (row: i, col: col))
             list.append(contentsOf: list)
         }
-        
         return list
     }
     
@@ -286,6 +306,10 @@ class GameModel: NSObject {
         return list
     }
     
+    func setBomb() {
+        scene.bombMode = true
+    }
+    
     func bomb(idx: BoardIndex, size: Int) {
         let list = indexAdjacent(idx: idx, cardinalOnly: false, dist: size)
         var actions = board.clearPieces(list: list)
@@ -295,12 +319,23 @@ class GameModel: NSObject {
         updateScore(pointValue * list.count)
     }
     
+    func pointBoost() {
+        //print("BOOSTED")
+        pointValue = 250
+        boostTime = 8
+    }
+    
+    func teleport() {
+        scene.teleportMode = true
+    }
+    
     func calculateScore(_ list: [Int]){
         var total = 0
         var multiplier = 1.0
         for i in list {
             let combomult = 1 + (0.25 * Double(i - 3))
             total += Int(Double(pointValue) * (Double(i) * combomult) * multiplier)
+            print(pointValue,"->",i,"->",combomult,"->",multiplier,"->",total)
             multiplier += 0.5
         }
         print()
@@ -321,15 +356,8 @@ class GameModel: NSObject {
         } else {
             print("Game Over! You lasted \(totalTime) seconds! Your total score was \(score)!")
         }
-//<<<<<<< HEAD
-        //Saving the time and score
-        //saveScoreAndTime() //Compares scores and stores them if they are better than previous
-        //Done Saving the time and score
-        //board = nil
-//=======
         board = nil
         over = true
-//>>>>>>> origin/Baldain
         timer.invalidate()
         scene.quitButton.sendActions(for: UIControlEvents.touchUpInside)
     }

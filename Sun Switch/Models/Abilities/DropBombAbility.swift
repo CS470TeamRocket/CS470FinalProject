@@ -13,13 +13,13 @@ class DropBombAbility: AbilityModel {
         image = "Person2.png" //Placeholder
         name = "DropBomb"
         desc = "Bomb Stuff"
-        cost = 100
+        cost = 1000
         level = 1
     }
     
     override func doAbility() {
         super.doAbility()
-        UserDataHolder.shared.currentGameModel?.bomb(idx: BoardIndex(row: 5, col: 5), size: 1)
+        UserDataHolder.shared.currentGameModel?.setBomb()
     }
     
 }

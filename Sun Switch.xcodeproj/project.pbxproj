@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F6363441FB138F800A9D3C7 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3F6363431FB138F800A9D3C7 /* Actions.sks */; };
 		3F63635B1FB138F800A9D3C7 /* Sun_SwitchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F63635A1FB138F800A9D3C7 /* Sun_SwitchTests.swift */; };
 		3F6363661FB138F800A9D3C7 /* Sun_SwitchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6363651FB138F800A9D3C7 /* Sun_SwitchUITests.swift */; };
 		3F98CB1A1FCFA37E00106D1A /* AbilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98CB181FCFA37E00106D1A /* AbilityModel.swift */; };
@@ -24,7 +23,6 @@
 		3F98CB371FCFA69A00106D1A /* Person1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F98CB341FCFA69A00106D1A /* Person1.jpg */; };
 		3F98CB381FCFA69A00106D1A /* Person3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3F98CB351FCFA69A00106D1A /* Person3.jpeg */; };
 		3FD5D9E61FD363FC00C78396 /* DropBombAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D9E51FD363FC00C78396 /* DropBombAbility.swift */; };
-		3FD5DA0B1FD37C8500C78396 /* SunSwitch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5DA091FD37C8500C78396 /* SunSwitch.xcdatamodeld */; };
 		3FD5DA0E1FD3878B00C78396 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FD5DA0D1FD3878B00C78396 /* data.json */; };
 		AE1F0E7A1FCF94CE008FD26B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E6C1FCF94CE008FD26B /* Assets.xcassets */; };
 		AE1F0E7B1FCF94CE008FD26B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E6E1FCF94CE008FD26B /* LaunchScreen.storyboard */; };
@@ -72,7 +70,6 @@
 
 /* Begin PBXFileReference section */
 		3F63633C1FB138F800A9D3C7 /* Sun Switch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sun Switch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F6363431FB138F800A9D3C7 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		3F6363511FB138F800A9D3C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F6363561FB138F800A9D3C7 /* Sun SwitchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sun SwitchTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F63635A1FB138F800A9D3C7 /* Sun_SwitchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sun_SwitchTests.swift; sourceTree = "<group>"; };
@@ -94,7 +91,6 @@
 		3F98CB341FCFA69A00106D1A /* Person1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Person1.jpg; sourceTree = "<group>"; };
 		3F98CB351FCFA69A00106D1A /* Person3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Person3.jpeg; sourceTree = "<group>"; };
 		3FD5D9E51FD363FC00C78396 /* DropBombAbility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropBombAbility.swift; sourceTree = "<group>"; };
-		3FD5DA0A1FD37C8500C78396 /* SunSwitch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SunSwitch.xcdatamodel; sourceTree = "<group>"; };
 		3FD5DA0D1FD3878B00C78396 /* data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		AE1F0E6C1FCF94CE008FD26B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE1F0E6F1FCF94CE008FD26B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -194,10 +190,8 @@
 				AE1F0E721FCF94CE008FD26B /* GameScene */,
 				AE1F0E751FCF94CE008FD26B /* Models */,
 				AE1F0E6C1FCF94CE008FD26B /* Assets.xcassets */,
-				3F6363431FB138F800A9D3C7 /* Actions.sks */,
 				AE1F0E931FCF94DE008FD26B /* AppDelegate.swift */,
 				3F6363511FB138F800A9D3C7 /* Info.plist */,
-				3FD5DA091FD37C8500C78396 /* SunSwitch.xcdatamodeld */,
 				AE1F0E941FCF94DE008FD26B /* To Do */,
 			);
 			path = "Sun Switch";
@@ -460,7 +454,6 @@
 				AE1F0EFA1FD69762008FD26B /* title2.wav in Resources */,
 				AE1F0E7D1FCF94CE008FD26B /* GameScene.sks in Resources */,
 				AE1F0E7A1FCF94CE008FD26B /* Assets.xcassets in Resources */,
-				3F6363441FB138F800A9D3C7 /* Actions.sks in Resources */,
 				3F98CB381FCFA69A00106D1A /* Person3.jpeg in Resources */,
 				AE1F0E7C1FCF94CE008FD26B /* Main.storyboard in Resources */,
 			);
@@ -511,7 +504,6 @@
 				3F98CB311FCFA66100106D1A /* UserDataHolder.swift in Sources */,
 				3F98CB1B1FCFA37E00106D1A /* CharacterModel.swift in Sources */,
 				AE1F0E981FCF94DE008FD26B /* SettingsViewController.swift in Sources */,
-				3FD5DA0B1FD37C8500C78396 /* SunSwitch.xcdatamodeld in Sources */,
 				3F98CB211FCFA39D00106D1A /* TeleportAbility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -812,19 +804,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		3FD5DA091FD37C8500C78396 /* SunSwitch.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				3FD5DA0A1FD37C8500C78396 /* SunSwitch.xcdatamodel */,
-			);
-			currentVersion = 3FD5DA0A1FD37C8500C78396 /* SunSwitch.xcdatamodel */;
-			path = SunSwitch.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 3F6363341FB138F800A9D3C7 /* Project object */;
 }

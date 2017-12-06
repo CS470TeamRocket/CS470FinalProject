@@ -15,14 +15,25 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var SWITCH: UIImageView!
     @IBOutlet weak var settings: UIButton!
     @IBOutlet weak var play: UIButton!
-    var audio: AVAudioPlayer?
+    let AD = UIApplication.shared.delegate as! AppDelegate
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "settings" {
-            if let viewController = segue.destination as? SettingsViewController {
-                if(audio != nil){
-                    viewController.audio = audio! as AVAudioPlayer
-                }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "settings" {
+//            if let viewController = segue.destination as? SettingsViewController {
+//                if(audio != nil){
+//                    viewController.audio = audio! as AVAudioPlayer
+//                }
+//            }
+//        }
+//    }
+    
+    @IBAction func pauseMusic(_ sender: UIButton) {
+        if AD.audio != nil {
+            if AD.audio!.isPlaying {
+                AD.audio!.pause()
+            }
+            else {
+                AD.audio!.play()
             }
         }
     }
@@ -31,11 +42,11 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         SUN.loadGif(name: "s1")
         SWITCH.loadGif(name: "s2")
-        playTitleTheme()
+        AD.playTitleTheme()
     }
     override func viewWillDisappear(_ animated: Bool) {
-        if(audio != nil) {
-            audio!.stop()
+        if(AD.audio != nil) {
+            //audio!.stop()
         }
         super.viewWillDisappear(animated)
     }
@@ -46,26 +57,7 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func playTitleTheme() {
-        do {
-            if let url : URL = Bundle.main.url(forResource: "title2", withExtension: "wav", subdirectory:""){
-                try audio = AVAudioPlayer(contentsOf: url)
-            }
-            else {
-                print ("URL was not successfully generated")
-            }
-        }catch{
-            print("An error has occurred.")
-        }
-        
-        if(audio != nil){
-            audio!.numberOfLoops = -1
-            audio!.play()
-        }
-        else {
-            print("Error initializing Audio Player")
-        }
-    }
+    
     
 }
 

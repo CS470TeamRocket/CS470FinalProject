@@ -1,26 +1,24 @@
 TO DO:
-- Check for movement vertical/horizontal - M +
-- generation without matches - M +
-- replace form top - M +
-- particle effects - M ->
-- meters/bars - M ?
-- sun growth - M +
-- row loss - M +
-- row recreation - M +
-- characters/abilities - B (Set up basic characters, associate (unimplemented) abilities)
-- match detection/removal
-- point system
-- shop
-- images/art
-    - ViewController
-    - unlockables/upgrades - B (characters)
-    - in-app currency(s)
-- leaderboard
-- achievements
-- sounds/music - B
-- game over screen
+- More abilities
+- Characters
+- Buy from shop
+- Point pop ups/outs/offs
+- ability meter and button
 -
 
-TO LOOK AT
-- CoreData
-- UserDefaults
+WHAT I DID FOR THIS COMMIT:
+- Point Boost ability
+- Teleport ability
+- Fixed Bomb ability to do clicked sprite
+- Moved Audio Player in AppDelegate so it can be accessed by all viewControllers
+- Completed Shop UI
+- Fully functional shop
+- Can purchase characters
+- Completed Character UI
+- Put animations back in for testing(it worked)
+- Changed Settings PopUp because it wasn't being used
+- Game Over screen shows progress for scores, time, and coins
+- Added Values to UserDataHolder and AbilityModel
+
+
+Made Point Boost ability and Teleport ability. Fixed Bomb ability to do clicked sprite, and fixed Time Stop ability to stop visual stopwatch and calculate correct angular rotation and duration. Moved Audio Player in AppDelegate so it can be accessed by all viewControllers. Completed Shop UI and Character UI. Fully functional shop, can purchase characters. Put animations back in for testing(it worked). Changed Settings PopUp because it wasn't being used. Game Over screen shows progress for scores, time, and coins. Added Values to UserDataHolder and AbilityModel.
