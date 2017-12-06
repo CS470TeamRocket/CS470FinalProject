@@ -43,9 +43,11 @@ class RowModel :NSObject {
         for _ in 0 ..< amount {
             if(dir == direction.left) {
                 pieces.append(pieces.removeFirst())
+                print("First on end")
             }
             else {
                 pieces.insert(pieces.removeLast(), at: 0)
+                print("Last on start")
             }
         }
     }

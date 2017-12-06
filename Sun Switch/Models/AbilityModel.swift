@@ -14,10 +14,13 @@ class AbilityModel {
     var desc: String! = "default description"
     var cost: Int! = 0
     var level: Int! = 1
+    var unlocked: Bool = false
+    var id: Int
     //Should have variable gameModel (named master) to execute doAbility on. Ability will need to receive a gameModel on game start.
     
-    init() {
-        
+    init(id: Int) {
+        self.id = id
+        //super.init()
     }
     
     func doAbility(){

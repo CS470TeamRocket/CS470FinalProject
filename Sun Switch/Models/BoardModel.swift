@@ -220,7 +220,7 @@ class BoardModel: NSObject {
         }
         return (success: false, clears: [Int]())
     }
-    
+    /*
     func makeMoveForRow(moves: [Move]) -> MoveResult {
         var moveRes: MoveResult
         for m in moves {
@@ -234,13 +234,22 @@ class BoardModel: NSObject {
         }
         return (success: false, clears: [Int]())
     }
+    */
     
     func update() ->[Int] {
+        var actions: [SKAction] = []
         var out = [Int]()
         while(checkAll().count > 0) {
             let list = checkAll()
             out.append(list.count)
-            clearPieces(list: list)
+            let acts = clearPieces(list: list)
+            for a in acts {
+                actions.append(a)
+            }
+            if actions.count > 0 {
+                actions.append(SKAction.wait(forDuration: 0))
+                scene.doSequencialActions(actions: actions, index: 0)
+            }
         }
         return out
     }
@@ -264,7 +273,6 @@ class BoardModel: NSObject {
                 var filled : Bool = false
                 let to = BoardIndex(row: i, col: col)
                 var from = BoardIndex(row: i, col: col)
-                var group: [SKAction] = []
                 while(j >= 0 && !filled ) {
                     let replace = getPiece(index: (j, col))
                     if !replace.isEmpty() {
@@ -273,27 +281,17 @@ class BoardModel: NSObject {
                     }
                     from.row = j
                     if scene.started {
-                        //print("Drop")
-
-                        //scene.run(scene.drop(from: from, to: to))
-                        group.append(scene.drop(from: from, to: to))
+                        actions.append(scene.drop(from: from, to: to))
                     }
                     j -= 1
                 }
-                if group.count > 0 {
-                    //actions.append(SKAction.group(group))
-                    scene.run(SKAction.sequence(group))
-                    
-                    group = []
-                }
-                
                 if (!filled) {
                     piece.genType(valid: validPieces, special: specialPieces, probSpec: calculateSpecialPieceProbability())
                     if scene.started {
-                        //scene.run(scene.dropFromTop(Index: BoardIndex(row: i, col: col)))
-                        group.append(scene.dropFromTop(Index: BoardIndex(row: i, col: col)))
+                        actions.append(scene.dropFromTop(Index: BoardIndex(row: i, col: col)))
                     }
                 }
+/*<<<<<<< HEAD
                 
                 if group.count > 0 {
                     //actions.append(SKAction.group(group))
@@ -301,6 +299,8 @@ class BoardModel: NSObject {
                     group = []
                 }
                 
+=======
+>>>>>>> maurice*/
             }
             
             i -= 1
@@ -312,7 +312,8 @@ class BoardModel: NSObject {
         //if actions.count > 0 {
         //    scene.doSequencialActions(actions: actions, index: 0)
         //}
-        return actions
+        actions.append(SKAction.wait(forDuration: 0.01))
+        return [SKAction.group(actions)]
     }
     
     func swap(move: Move) -> BoardIndex {
@@ -340,7 +341,7 @@ class BoardModel: NSObject {
         return (offsetY, offsetX)
     }
     
-    func clearPieces(list: [BoardIndex]) {
+    func clearPieces(list: [BoardIndex]) -> [SKAction] {
         var actions: [SKAction] = []
         var sprites: [SKSpriteNode] = []
         for idx in list {
@@ -349,8 +350,8 @@ class BoardModel: NSObject {
             if scene.started {
                 let act = scene.removeSprite(row: idx.row, col: idx.col)
                 if !sprites.contains(act.0) {
-                    scene.run(act.1)
-                    //actions.append(act.1)
+                    //scene.run(act.1)
+                    actions.append(act.1)
                     sprites.append(act.0)
                 }
                 scene.pointPop(row: idx.row, col: idx.col)
@@ -370,14 +371,19 @@ class BoardModel: NSObject {
         for i in 0 ..< columns {
             //printBoard()
             //print("")
-            actions.append(contentsOf: updateColumn(col: i))
+            let colActs = updateColumn(col: i)
+            for a in colActs {
+                actions.append(a)
+            }
             //if scene.started {
                 //sleep(UInt32(1))
             //}
         }
-        if actions.count > 0 {
-            scene.doSequencialActions(actions: actions, index: 0)
-        }
+        //if actions.count > 0 {
+        //    actions.append(SKAction.wait(forDuration: 0))
+        //    scene.doSequencialActions(actions: actions, index: 0)
+        //}
+        return actions
     }
     
     func scanHoriz(index: BoardIndex) -> Int {
@@ -416,9 +422,11 @@ class BoardModel: NSObject {
         return board
     }
     
+    /*
     func setBoard(row: RowModel, index: Int) {
         board[index] = row
     }
+    */
     
     func getValidPieces() -> [pieceType] {
         return validPieces

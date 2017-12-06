@@ -11,10 +11,14 @@ import UIKit
 class CharacterTableViewController: UITableViewController {
     var data: [CharacterModel] = []
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.backgroundView = UIImageView(image: UIImage(named: "5kHalfWide"))
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         //grab info from singleton
-        data = UserDataHolder.shared.getCharacters()
+        data = UserDataHolder.shared.getUnlockedCharacters()
+        print("Data", data)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -22,7 +26,11 @@ class CharacterTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         // self.tableView.reloadData()
     }
-
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -44,7 +52,9 @@ class CharacterTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier", for: indexPath) as! CharacterTableViewCell
-        
+        cell.layer.cornerRadius = 10
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.backgroundColor = UIColor.clear
         // Configure the cell...
         cell.useCharacter(data[indexPath.row])
         
@@ -52,6 +62,9 @@ class CharacterTableViewController: UITableViewController {
     }
     
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
