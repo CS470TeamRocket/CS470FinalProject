@@ -74,7 +74,7 @@ class BoardModel: NSObject {
     func newPiece() -> PieceModel{
         //This should hopefully create a new piece based off the type chosen at random.
         
-        return PieceModel(valid: validPieces, special: specialPieces)
+        return PieceModel(valid: validPieces, special: specialPieces, probSpec: calculateSpecialPieceProbability())
     }
     
     func advanceLevel() {
@@ -286,13 +286,12 @@ class BoardModel: NSObject {
                     j -= 1
                 }
                 if (!filled) {
-                    piece.genType(valid: validPieces, special: specialPieces, probSpec: 0.1)
+                    piece.genType(valid: validPieces, special: specialPieces, probSpec: calculateSpecialPieceProbability())
                     if scene.started {
                         actions.append(scene.dropFromTop(Index: BoardIndex(row: i, col: col)))
                     }
                 }
 /*<<<<<<< HEAD
-=======
                 
                 if group.count > 0 {
                     //actions.append(SKAction.group(group))
@@ -300,7 +299,8 @@ class BoardModel: NSObject {
                     group = []
                 }
                 
->>>>>>> origin/richardson*/
+=======
+>>>>>>> maurice*/
             }
             
             i -= 1
@@ -430,6 +430,11 @@ class BoardModel: NSObject {
     
     func getValidPieces() -> [pieceType] {
         return validPieces
+    }
+    
+    func calculateSpecialPieceProbability() -> Double{
+        //Function for how probability of special piece decreases as difficulty increases
+        return 0.05/(1.0 + (0.25 * (Double(diff)))) //at 0 difficulty, special pieces should appear 5% of the time.
     }
 }
 

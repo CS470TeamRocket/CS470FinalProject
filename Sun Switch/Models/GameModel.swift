@@ -306,7 +306,6 @@ class GameModel: NSObject {
         return list
     }
     
-    
     func trySpecial(row: Int, col: Int) -> Bool{
         for i in UserDataHolder.shared.activeBonuses{
             if board.getPiece(index: BoardIndex(row: row, col: col)).getType() == i.getPieceType() {
@@ -316,11 +315,11 @@ class GameModel: NSObject {
         }
         return false
     }
- 
- 
+    
     func setBomb() {
         scene.bombMode = true
     }
+    
     func bomb(idx: BoardIndex, size: Int) {
         let list = indexAdjacent(idx: idx, cardinalOnly: false, dist: size)
         var actions = board.clearPieces(list: list)
@@ -329,7 +328,7 @@ class GameModel: NSObject {
         _ = board.update()
         updateScore(pointValue * list.count)
     }
- 
+    
     func pointBoost() {
         //print("BOOSTED")
         pointValue = 250
@@ -367,7 +366,6 @@ class GameModel: NSObject {
         } else {
             print("Game Over! You lasted \(totalTime) seconds! Your total score was \(score)!")
         }
-
         board = nil
         over = true
         timer.invalidate()

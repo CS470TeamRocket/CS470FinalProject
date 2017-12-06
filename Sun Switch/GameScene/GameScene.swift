@@ -233,13 +233,12 @@ class GameScene: SKScene {
         else if piece.getTextIcon() == "C" {
             return "comet"
         }
-            /*
-        else if piece.getTextIcon() == "b"{
-            return "" //Need Image for bomb
+        else if piece.getTextIcon() == "*"{
+            return "physics" //Might want a better bomb image
         }
-        else if piece.getTextIcon() == "m"{
-            return "" //Need Image for money
-        }*/
+        else if piece.getTextIcon() == "$"{
+            return "money"
+        }
 
         return ""
     }
@@ -275,6 +274,12 @@ class GameScene: SKScene {
     
     func sunGrow() {
         sunSprite.run(SKAction.moveBy(x: 0, y: helperSprite.frame.width + 10, duration: 1))
+        for a in fakeRowL {
+            a.removeFromParent()
+        }
+        for b in fakeRowR {
+            b.removeFromParent()
+        }
         fakeRowL = []
         fakeRowR = []
         //sunSprite.scale(to: CGSize(width: sunSprite.frame.width + helperSprite.frame.width * 2, height: sunSprite.frame.height + helperSprite.frame.width * 2))
@@ -344,7 +349,7 @@ class GameScene: SKScene {
             if to.row < self.game.board.rowsLeft() {
                 self.sprites[to.row][to.col].alpha = 0
                 fake.run(group, completion: {
-                    if to.row < self.game.board.rowsLeft() {
+                    if self.game.board != nil, to.row < self.game.board.rowsLeft() {
                         self.sprites[to.row][to.col].alpha = 1
                         self.sprites[to.row][to.col].position = center
                         fake.removeFromParent()
@@ -764,6 +769,10 @@ class GameScene: SKScene {
                 var co = 0
                 for sp in r {
                     if !holding, sp.contains(location){
+                        // Sprite found, with row ro and column co
+                        if game.trySpecial(row: ro, col: co) { //If the peice is a bomb or something, trigger it and return
+                            return
+                        }
                         // Get curSprite and move center to touch location
                         curSprite = (SKSpriteNode.init(imageNamed: "moon"), CGPoint(x: 0, y: 0), 100, 100)
                         curSprite.0 = sp
