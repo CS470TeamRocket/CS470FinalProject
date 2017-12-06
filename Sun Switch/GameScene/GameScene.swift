@@ -233,6 +233,13 @@ class GameScene: SKScene {
         else if piece.getTextIcon() == "C" {
             return "comet"
         }
+            /*
+        else if piece.getTextIcon() == "b"{
+            return "" //Need Image for bomb
+        }
+        else if piece.getTextIcon() == "m"{
+            return "" //Need Image for money
+        }*/
 
         return ""
     }
