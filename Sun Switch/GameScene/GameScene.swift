@@ -234,7 +234,7 @@ class GameScene: SKScene {
             return "comet"
         }
         else if piece.getTextIcon() == "*"{
-            return "physics" //Might want a better bomb image
+            return "bomb" //Might want a better bomb image
         }
         else if piece.getTextIcon() == "$"{
             return "money"
