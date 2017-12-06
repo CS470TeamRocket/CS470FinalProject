@@ -25,9 +25,11 @@ class GameViewController: UIViewController {
     @IBAction func pauseMusic(_ sender: UIButton) {
         if AD.audio!.isPlaying {
             AD.audio!.pause()
+            UserDataHolder.shared.musicMuted = true
         }
         else {
             AD.audio!.play()
+            UserDataHolder.shared.musicMuted = false
         }
     }
     

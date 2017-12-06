@@ -10,11 +10,11 @@ import UIKit
 
 class AbilityStoreTableViewController: UITableViewController {
     var abilities: [AbilityModel] = []
-    @IBOutlet weak var units: UIButton!
+    @IBOutlet weak var units: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        units.setTitle("units:" + String(UserDefaults.standard.integer(forKey: UserDataHolder.shared.TOTAL_CURRENCY)), for: .normal)
+        units.text = "units:" + String(UserDefaults.standard.integer(forKey: UserDataHolder.shared.TOTAL_CURRENCY))
         let center = units.center
         units.sizeToFit()
         units.center = center
@@ -23,11 +23,6 @@ class AbilityStoreTableViewController: UITableViewController {
         //Generating dummy data
         abilities = UserDataHolder.shared.getAbilities()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -71,7 +66,32 @@ class AbilityStoreTableViewController: UITableViewController {
             cell.purchase()
             abilities.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            let new  = UserDefaults.standard.integer(forKey: UserDataHolder.shared.TOTAL_CURRENCY) - cost
+            removeCurrencyAnimation(old: currency, current: currency, new: new, ix: 50)
+            //self.viewDidLoad()
         }
+    }
+    
+    func removeCurrencyAnimation(old: Int, current: Int, new: Int, ix: Int) {
+        if current - ix >= new {
+            UIView.animate(withDuration: 1, animations: {
+                //print(current-ix)
+                self.units.text = "units:" + String(current-ix)
+                UserDefaults.standard.set(current-ix, forKey: UserDataHolder.shared.TOTAL_CURRENCY)
+                self.units.setNeedsLayout()
+                }, completion: { finished in
+                    //self.viewDidLoad()
+                    self.removeCurrencyAnimation(old: old, current: current - ix, new: new, ix: ix)
+            })
+        }
+        else if ix < 5 {
+            self.removeCurrencyAnimation(old: old, current: current - 1, new: new, ix: 1)
+        }
+        else if current != new {
+            self.removeCurrencyAnimation(old: old, current: current - ix/5, new: new, ix: ix/5)
+        }
+
+        
     }
     /*
     // Override to support conditional editing of the table view.

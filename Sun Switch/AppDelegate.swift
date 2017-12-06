@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        fillUserDefaultsIfFirstLaunch()
         generateDummyUserData()
+        fillUserDefaultsIfFirstLaunch()
         return true
     }
 
@@ -98,59 +98,74 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let launchedBefore = UserDefaults.standard.bool(forKey: UserDataHolder.shared.LAUNCHED_BEFORE_KEY)
         if launchedBefore {
             print("Not First Launch")
-
+            print(UserDefaults.standard.array(forKey: UserDataHolder.shared.UNLOCKED))
+            UserDataHolder.shared.updateCharacters(characters: UserDataHolder.shared.characters)
             //resetUserDefaults()
 
         }
         else {
             print("First Launch")
+            resetUserDefaults()
             UserDefaults.standard.set(true, forKey: UserDataHolder.shared.LAUNCHED_BEFORE_KEY)
-
             //Anything that needs to be set one the first launch should be set here:
             //Set the best score and time to zero
-            resetUserDefaults()
          }
         }
     
     func resetUserDefaults() {
+        print("RESET")
         UserDefaults.standard.set(Int(0),forKey: UserDataHolder.shared.BEST_SCORE_KEY)
         UserDefaults.standard.set(Int(0),forKey: UserDataHolder.shared.BEST_TIME_KEY)
-        UserDefaults.standard.set(Int(2500), forKey: UserDataHolder.shared.TOTAL_CURRENCY)
+        UserDefaults.standard.set(Int(50000), forKey: UserDataHolder.shared.TOTAL_CURRENCY)
         UserDefaults.standard.set(Int(2), forKey: UserDataHolder.shared.NUM_UNLOCKED_CHARACTERS)
+        UserDefaults.standard.set([], forKey: UserDataHolder.shared.CHARACTER_ID)
+        UserDefaults.standard.set([], forKey: UserDataHolder.shared.LOCKED_CHARACTERS_ID)
+        UserDefaults.standard.set([], forKey: UserDataHolder.shared.UNLOCKED_CHARACTER_ID)
+        UserDefaults.standard.set([], forKey: UserDataHolder.shared.ABILITY_ID)
+        UserDefaults.standard.set([false, false, false, false], forKey: UserDataHolder.shared.UNLOCKED)
+        UserDefaults.standard.synchronize()
+        UserDataHolder.shared.updateCharacters(characters: UserDataHolder.shared.characters)
+        //UserDataHolder.shared.updateAllSets()
     }
     
     func generateDummyUserData () { //Here to fill the user data with something. to be replaced later, probably with some core data stuff which I don't currently understand
         var abilities: [AbilityModel] = []
         var characters: [CharacterModel] = []
         var unlockedChars: [CharacterModel] = []
+        var lockedChars: [CharacterModel] = []
         
         for i in 0...3 { //generating some characters
             
             switch i{
                 
             case 0:
-                let c = CharacterModel(img: "Person1.jpg", name: "person \(i)", ability: TimeStopAbility(),desc: "this is person \(i)'s description", unlocked: true)
+                let c = CharacterModel(img: "Person1.jpg", name: "person \(i)", ability: TimeStopAbility(id: i),desc: "this is person \(i)'s description", unlocked: false, id: i)
                 characters.append(c)
                 if c.unlocked! { unlockedChars.append(c) }
+                else { lockedChars.append(c); abilities.append(c.ability) }
             case 1:
                 let c = CharacterModel(img: "Person2.png", name: "person \(i)", ability:
-                    PointBoostAbility(),desc: "this is person \(i)'s description", unlocked: true)
+                    PointBoostAbility(id: i),desc: "this is person \(i)'s description", unlocked: false, id: i)
                 characters.append(c)
                 if c.unlocked! { unlockedChars.append(c) }
+                else { lockedChars.append(c); abilities.append(c.ability) }
                 
             case 2:
-                let c = CharacterModel(img: "Person3.jpeg", name: "person \(i)", ability: DropBombAbility(),desc: "this is person \(i)'s description. It is much longer than the others so we can test scrolling. this is person \(i)'s description. It is much longer than the others so we can test scrolling. this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.", unlocked: false)
+                let c = CharacterModel(img: "Person3.jpeg", name: "person \(i)", ability: DropBombAbility(id: i),desc: "this is person \(i)'s description. It is much longer than the others so we can test scrolling. this is person \(i)'s description. It is much longer than the others so we can test scrolling. this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.", unlocked: false, id: i)
                 characters.append(c)
                 if c.unlocked! { unlockedChars.append(c) }
+                else { lockedChars.append(c); abilities.append(c.ability) }
             case 3:
                 let c = CharacterModel(img: "Person2.png", name: "person \(i)", ability:
-                    TeleportAbility(),desc: "this is person \(i)'s description", unlocked: false)
+                    TeleportAbility(id: i),desc: "this is person \(i)'s description", unlocked: false, id: i)
                 characters.append(c)
                 if c.unlocked! { unlockedChars.append(c) }
+                else { lockedChars.append(c); abilities.append(c.ability) }
             default:
-                let c = CharacterModel(img: "Person1.jpg", name: "person \(i)", ability: TimeStopAbility(),desc: "this is person \(i)'s description", unlocked: true)
+                let c = CharacterModel(img: "Person1.jpg", name: "person \(i)", ability: TimeStopAbility(id: i),desc: "this is person \(i)'s description", unlocked: false, id: i)
                     characters.append(c)
-                    if c.unlocked! { unlockedChars.append(c) }
+                if c.unlocked! { unlockedChars.append(c) }
+                else { lockedChars.append(c); abilities.append(c.ability) }
                 
             }
         }
@@ -158,11 +173,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //throwing some dummy abilities in there
         //abilities.append(TimeStopAbility())
         //abilities.append(PointBoostAbility())
-        abilities.append(TeleportAbility())
-        abilities.append(DropBombAbility())
+        //abilities.append(TeleportAbility())
+        //abilities.append(DropBombAbility())
         UserDataHolder.shared.setAbilities(abilities: abilities)
         UserDataHolder.shared.setCharacters(characters: characters)
         UserDataHolder.shared.setUnlockedCharacters(characters: unlockedChars)
+        UserDataHolder.shared.setLockedCharacters(characters: lockedChars)
     }
     
     func playTitleTheme() {
@@ -187,6 +203,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 audio!.numberOfLoops = -1
                 audio!.play()
                 AVS = "title2"
+                if UserDataHolder.shared.musicMuted {
+                    audio!.pause()
+                }
             }
             else {
                 print("Error initializing Audio Player")
@@ -217,6 +236,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 audio!.numberOfLoops = -1
                 audio!.play()
                 AVS = "game"
+                if UserDataHolder.shared.musicMuted {
+                    audio!.pause()
+                }
             }
             else {
                 print("Error initializing Audio Player")

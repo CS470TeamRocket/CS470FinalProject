@@ -28,12 +28,15 @@ class HomeViewController: UIViewController {
 //    }
     
     @IBAction func pauseMusic(_ sender: UIButton) {
+        print(AD.audio!)
         if AD.audio != nil {
             if AD.audio!.isPlaying {
                 AD.audio!.pause()
+                UserDataHolder.shared.musicMuted = true
             }
             else {
                 AD.audio!.play()
+                UserDataHolder.shared.musicMuted = false
             }
         }
     }

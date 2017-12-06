@@ -6,19 +6,8 @@ TO DO:
 - ability meter and button
 -
 
-WHAT I DID FOR THIS COMMIT:
-- Point Boost ability
-- Teleport ability
-- Fixed Bomb ability to do clicked sprite
-- Moved Audio Player in AppDelegate so it can be accessed by all viewControllers
-- Completed Shop UI
-- Fully functional shop
-- Can purchase characters
-- Completed Character UI
-- Put animations back in for testing(it worked)
-- Changed Settings PopUp because it wasn't being used
-- Game Over screen shows progress for scores, time, and coins
-- Added Values to UserDataHolder and AbilityModel
-
-
-Made Point Boost ability and Teleport ability. Fixed Bomb ability to do clicked sprite, and fixed Time Stop ability to stop visual stopwatch and calculate correct angular rotation and duration. Moved Audio Player in AppDelegate so it can be accessed by all viewControllers. Completed Shop UI and Character UI. Fully functional shop, can purchase characters. Put animations back in for testing(it worked). Changed Settings PopUp because it wasn't being used. Game Over screen shows progress for scores, time, and coins. Added Values to UserDataHolder and AbilityModel.
+WHAT I AM DOING:
+- added new Array to UserDataHolder
+- currency shows removal in store
+- music stays pause when changing songs if last one was paused
+- only generate user data on first launch
