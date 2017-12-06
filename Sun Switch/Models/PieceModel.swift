@@ -73,6 +73,7 @@ enum pieceType {
             pieceList.append(i.getPieceType())
             
         }
+        return pieceList
     }
 }
 
@@ -81,11 +82,11 @@ class PieceModel : NSObject {
     //private var row: Int //Index for row
     //private var column: Int //Index for column
     private var myType : pieceType = pieceType.Empty
-    required init(valid: [pieceType], special:[pieceType]/*rowNum: Int, colNum: Int*/) {
+    required init(valid: [pieceType], special:[pieceType], probSpec: Double/*rowNum: Int, colNum: Int*/) {
          //row = rowNum
          //column = colNum
         super.init()
-        genType(valid: valid, special: special, probSpec: 0.1)
+        genType(valid: valid, special: special, probSpec: probSpec)
     }
     
     func getTextIcon() ->String {
@@ -136,7 +137,7 @@ class PieceModel : NSObject {
     }
     
     func genType(valid: [pieceType], special: [pieceType], probSpec: Double) {
-        if (special.count > 0) && (arc4random_uniform(100) > Int(probSpec * 100)) {
+        if (special.count > 0) && (arc4random_uniform(UInt32(100)) < Int(probSpec * 100)) {
             let index = Int(arc4random_uniform(UInt32(special.count)))
             self.myType = special[index]
         }else{

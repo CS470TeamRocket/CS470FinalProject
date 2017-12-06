@@ -289,16 +289,8 @@ class GameModel: NSObject {
         } else {
             print("Game Over! You lasted \(totalTime) seconds! Your total score was \(score)!")
         }
-        
-//<<<<<<< HEAD
-        //Saving the time and score
-        //saveScoreAndTime() //Compares scores and stores them if they are better than previous
-        //Done Saving the time and score
-        //board = nil
-//=======
         board = nil
         over = true
-//>>>>>>> origin/Baldain
         timer.invalidate()
         scene.quitButton.sendActions(for: UIControlEvents.touchUpInside)
     }

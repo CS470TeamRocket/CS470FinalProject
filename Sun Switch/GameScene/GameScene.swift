@@ -135,13 +135,12 @@ class GameScene: SKScene {
         else if piece.getTextIcon() == "C" {
             return "comet"
         }
-            /*
-        else if piece.getTextIcon() == "b"{
-            return "" //Need Image for bomb
+        else if piece.getTextIcon() == "*"{
+            return "physics" //Might want a better bomb image
         }
-        else if piece.getTextIcon() == "m"{
-            return "" //Need Image for money
-        }*/
+        else if piece.getTextIcon() == "$"{
+            return "money"
+        }
 
         return ""
     }
@@ -604,6 +603,10 @@ class GameScene: SKScene {
                 var co = 0
                 for sp in r {
                     if !holding, sp.contains(location){
+                        // Sprite found, with row ro and column co
+                        if game.trySpecial(row: ro, col: co) { //If the peice is a bomb or something, trigger it and return
+                            return
+                        }
                         // Get curSprite and move center to touch location
                         curSprite = (SKSpriteNode.init(imageNamed: "moon"), CGPoint(x: 0, y: 0), 100, 100)
                         curSprite.0 = sp
