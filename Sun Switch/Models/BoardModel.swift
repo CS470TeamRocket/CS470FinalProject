@@ -36,8 +36,9 @@ class BoardModel: NSObject {
     private var scene : GameScene
     private var diff : Int
     private var validPieces : [pieceType] = [pieceType]()	//The roster of available pieces. This is based
-    private var rowMatch = false
     //on the current level.
+    private var specialPieces : [pieceType] = [pieceType]() //roster of available special pieces (like bombs)
+    private var rowMatch = false
     
     init(difficulty: Int, scene: GameScene) {
         diff = (difficulty <= 0 ) ? 1 : difficulty
@@ -56,6 +57,7 @@ class BoardModel: NSObject {
         //This uses the difficulty level to select a number of piece types to add to the
         //roster of available pieces. This will be pretty hard-coded, unfortunately.
         validPieces = pieceType.Empty.validPieces(level: diff)
+        specialPieces = pieceType.Empty.specialPieces(level: diff)
     }
     
     func generateBoard() {
@@ -72,7 +74,7 @@ class BoardModel: NSObject {
     func newPiece() -> PieceModel{
         //This should hopefully create a new piece based off the type chosen at random.
         
-        return PieceModel(valid: validPieces)
+        return PieceModel(valid: validPieces, special: specialPieces, probSpec: calculateSpecialPieceProbability())
     }
     
     func advanceLevel() {
@@ -284,11 +286,21 @@ class BoardModel: NSObject {
                     j -= 1
                 }
                 if (!filled) {
-                    piece.genType(valid: validPieces)
+                    piece.genType(valid: validPieces, special: specialPieces, probSpec: calculateSpecialPieceProbability())
                     if scene.started {
                         actions.append(scene.dropFromTop(Index: BoardIndex(row: i, col: col)))
                     }
                 }
+/*<<<<<<< HEAD
+                
+                if group.count > 0 {
+                    //actions.append(SKAction.group(group))
+                    scene.run(SKAction.sequence(group))
+                    group = []
+                }
+                
+=======
+>>>>>>> maurice*/
             }
             
             i -= 1
@@ -418,6 +430,11 @@ class BoardModel: NSObject {
     
     func getValidPieces() -> [pieceType] {
         return validPieces
+    }
+    
+    func calculateSpecialPieceProbability() -> Double{
+        //Function for how probability of special piece decreases as difficulty increases
+        return 0.05/(1.0 + (0.25 * (Double(diff)))) //at 0 difficulty, special pieces should appear 5% of the time.
     }
 }
 

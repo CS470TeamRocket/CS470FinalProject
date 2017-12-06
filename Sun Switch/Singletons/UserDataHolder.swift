@@ -30,6 +30,9 @@ class UserDataHolder {
     var lockedCharacters: [CharacterModel] = []
     var currentCharacter: CharacterModel?
     var currentGameModel: GameModel?
+    
+    var activeBonuses: [BonusModel] = [GetPointsBonus(), DropBombBonus()]
+    
     var sfxVolume: Double = 100
     var musicVolume: Double = 100
     var sfxMuted: Bool = false
