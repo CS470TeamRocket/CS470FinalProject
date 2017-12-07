@@ -15,7 +15,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var SWITCH: UIImageView!
     @IBOutlet weak var settings: UIButton!
     @IBOutlet weak var play: UIButton!
-    let AD = UIApplication.shared.delegate as! AppDelegate
 
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "settings" {
