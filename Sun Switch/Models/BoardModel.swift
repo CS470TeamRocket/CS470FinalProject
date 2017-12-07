@@ -246,7 +246,10 @@ class BoardModel: NSObject {
             }
             if actions.count > 0 {
                 actions.append(SKAction.wait(forDuration: 0))
-                scene.doSequencialActions(actions: actions, index: 0)
+                let sequence = SKAction.sequence(actions)
+                scene.run(sequence)
+                
+                
             }
         }
         return out
