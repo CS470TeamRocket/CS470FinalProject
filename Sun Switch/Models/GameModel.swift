@@ -306,6 +306,7 @@ class GameModel: NSObject {
         return list
     }
     
+
     func indexRandom(_ probability: Int) -> [BoardIndex] {
         var list = [BoardIndex]()
         if(probability > 100 || probability < 0) {
@@ -333,6 +334,17 @@ class GameModel: NSObject {
             }
         }
         return list
+    }
+    
+    func trySpecial(row: Int, col: Int) -> Bool{
+        for i in UserDataHolder.shared.activeBonuses{
+            if board.getPiece(index: BoardIndex(row: row, col: col)).getType() == i.getPieceType() {
+                i.doBonus(row: row, col: col)
+                return true
+            }
+        }
+        return false
+
     }
     
     func setBomb() {
@@ -391,6 +403,7 @@ class GameModel: NSObject {
         scene.quitButton.sendActions(for: UIControlEvents.touchUpInside)
     }
     
+    
     func saveScoreAndTime() {
 
         let currentBestScore = UserDefaults.standard.integer(forKey: UserDataHolder.shared.BEST_SCORE_KEY)
@@ -405,13 +418,10 @@ class GameModel: NSObject {
             print("You have beat your previous time of \(currentBestTime)")
         }
     }
-    
-    
-    
-    
-}
+
 //    func startGame(diff: Int, frame: CGRect) {
 //        //gameBoard = BoardModel()
 //        //gameBoard.generatePieces(difficulty: diff, frame: frame)
 //    }
-//}
+ }
+

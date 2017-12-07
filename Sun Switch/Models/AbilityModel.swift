@@ -16,6 +16,8 @@ class AbilityModel {
     var level: Int! = 1
     var unlocked: Bool = false
     var id: Int
+    var WarmUpTime : Int = 10
+    var timer : Timer = Timer()
     //Should have variable gameModel (named master) to execute doAbility on. Ability will need to receive a gameModel on game start.
     
     init(id: Int) {
@@ -49,6 +51,10 @@ class AbilityModel {
     
     func setLevel(level: Int){
         self.level = level
+    }
+    
+    func setWarmUpTime(seconds: Int){
+        self.WarmUpTime = seconds
     }
     
     func LevelUp() {
