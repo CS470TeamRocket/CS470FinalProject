@@ -15,11 +15,16 @@ class DropBombAbility: AbilityModel {
         desc = "Bomb Stuff"
         cost = 1000
         level = 1
+        warmUpTime = 10
+        abilityDuration = 0
     }
     
-    override func doAbility() {
-        super.doAbility()
-        UserDataHolder.shared.currentGameModel?.setBomb()
+    override func doAbility() -> (Bool){
+        if (super.doAbility()) {
+            UserDataHolder.shared.currentGameModel?.setBomb()
+            return true
+        }
+        return false
     }
     
 }
