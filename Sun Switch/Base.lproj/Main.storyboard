@@ -585,7 +585,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="215.94202898550725" y="-1701.358695652174"/>
+            <point key="canvasLocation" x="215.19999999999999" y="-1701.4992503748126"/>
         </scene>
         <!--Game Over View Controller-->
         <scene sceneID="yU2-da-t8W">
@@ -791,9 +791,9 @@
         <image name="sun" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ygR-aO-eBV"/>
+        <segue reference="fJM-Ih-8gH"/>
         <segue reference="9hb-7R-6ck"/>
         <segue reference="5U4-H8-ess"/>
-        <segue reference="xOW-8l-td5"/>
+        <segue reference="GxQ-OH-eel"/>
     </inferredMetricsTieBreakers>
 </document>

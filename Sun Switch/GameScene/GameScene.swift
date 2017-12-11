@@ -40,7 +40,9 @@ class GameScene: SKScene {
     var meter = SKSpriteNode(imageNamed: "meter")
     var meterLine = SKSpriteNode(imageNamed: "meterLine")
     var stopwatch = SKSpriteNode(imageNamed: "stopwatch")
+    var abilityStopwatch = SKSpriteNode(imageNamed: "stopwatch")
     var ticker = SKSpriteNode(imageNamed: "ticker")
+    var abilityTicker = SKSpriteNode(imageNamed: "ticker")
     var curSprite: (SKSpriteNode, CGPoint, Int, Int)!
     var otherSprite: (SKSpriteNode, CGPoint, Int, Int)!
     var teleSprite1: (SKSpriteNode, CGPoint, Int, Int)!
@@ -57,8 +59,9 @@ class GameScene: SKScene {
     var extreme: Bool = false
     var teleportMode: Bool = false
     var bombMode: Bool = false
-    var abilityButton: PModel!
+    //var abilityButton: PModel!
     var quitButton: UIButton!
+    var abilityButton: UIButton!
     var game: GameModel!
     var dir: String = ""
     var bottom = 0
@@ -80,7 +83,11 @@ class GameScene: SKScene {
         // Should probably rotate left raight a little to give animated feel
         self.backgroundColor = UIColor.gray
     }
-
+    
+    deinit {
+        print("GameScene memory freed")
+    }
+    
     func backStars() {
         var next = false
         for _ in 0..<50 {
@@ -134,7 +141,7 @@ class GameScene: SKScene {
     func destroySelf() {
         print("Destroying self!")
         UserDataHolder.shared.currentGameModel = nil
-        //game.gameOver()
+        game.gameOver()
         game = nil
         sprites.removeAll()
         entities.removeAll()
@@ -158,6 +165,39 @@ class GameScene: SKScene {
         ticker.run(SKAction.repeatForever(SKAction.rotate(byAngle: -CGFloat(M_PI * 2.0), duration: duration)), withKey: "rotate")
     }
     
+    func rotateAbilityTicker(duration: TimeInterval) {
+        //make ticker visible
+        abilityStopwatch.alpha = 1
+        abilityTicker.alpha = 1
+
+        abilityTicker.run(SKAction.rotate(byAngle: -CGFloat(M_PI * 2.0), duration: duration), completion: {() -> Void in
+            //make it invisible again
+            self.abilityStopwatch.alpha = 0
+            self.abilityTicker.alpha = 0
+        })
+    }
+    
+    func attachAbilityButton(button: UIButton) {
+        abilityButton = button
+        var abilityStopwatchPosition = abilityButton.center
+        abilityStopwatchPosition.x += -frame.width/2 //adjusting to different coordinate system
+        abilityStopwatchPosition.y += -frame.height/2
+        abilityStopwatchPosition.y = -abilityStopwatchPosition.y
+        //let meterPosition = CGPoint(x: 30, y:Int(self.frame.height/2) - 50)
+        //var stopwatchPosition = meterPosition
+        //stopwatchPosition.x = stopwatchPosition.x - meter.size.width/2 - 30
+        //stopwatchPosition.y = stopwatchPosition.y + meter.size.height/2 + 30
+        //var abilityStopwatchPosition = stopwatchPosition
+        //set position for clock on top of ability button
+        abilityTicker.position = abilityStopwatchPosition
+        abilityStopwatch.position = abilityStopwatchPosition
+        abilityStopwatch.zPosition = 1
+        abilityTicker.zPosition = 1
+        //Make ability stopwatch invisible
+        abilityTicker.alpha = 0
+        abilityStopwatch.alpha = 0
+    }
+    
     func makeBoard(board: [RowModel]) {
         backStars()
         self.addChild(meter)
@@ -170,11 +210,18 @@ class GameScene: SKScene {
         meterLine.size.width = 2
         var stopwatchPosition = meterPosition
         stopwatchPosition.x = stopwatchPosition.x - meter.size.width/2 - 30
+
         self.addChild(stopwatch)
         self.addChild(ticker)
+        self.addChild(abilityTicker)
+        self.addChild(abilityStopwatch)
         stopwatch.position = stopwatchPosition
         ticker.position = stopwatchPosition
         ticker.position.y -= 2
+        //abilityTicker position cannot be known yet, so make it invisible
+        //abilityTicker.alpha = 0
+        //abilityStopwatch.alpha = 0
+        
         for r in 0..<board.count {
             TempRow = []
             TempRowS = []
