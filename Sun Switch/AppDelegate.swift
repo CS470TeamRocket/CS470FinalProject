@@ -10,12 +10,25 @@ import UIKit
 import CoreData
 import  AVFoundation
 
+struct Defaults {
+    static let bestScore: Int = 0
+    static let bestTime: Int = 0
+    static let TotalCurrency: Int = 50000
+    static let unlockedChars : [Bool] = [true, true, false, false]
+    static let unlockedAbilities: [Bool] = [false, false]
+    //let characters : [CharacterModel]
+    //let lockedChars : [CharacterModel]
+}
+
+struct Characters {
+
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var audio: AVAudioPlayer?
-    var AVS: String = ""
+    
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -47,6 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+        //UserDataHolder.save()
     }
     
     // MARK: - Core Data stack
@@ -114,19 +128,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func resetUserDefaults() {
         print("RESET")
-        UserDefaults.standard.set(Int(0),forKey: UserDataHolder.shared.BEST_SCORE_KEY)
-        UserDefaults.standard.set(Int(0),forKey: UserDataHolder.shared.BEST_TIME_KEY)
-        UserDefaults.standard.set(Int(50000), forKey: UserDataHolder.shared.TOTAL_CURRENCY)
+        resetScore()
+        resetTime()
+        resetCharacters()
+        //UserDefaults.standard.set(Int(0),forKey: UserDataHolder.shared.BEST_SCORE_KEY)
+        //UserDefaults.standard.set(Int(0),forKey: UserDataHolder.shared.BEST_TIME_KEY)
+        //UserDefaults.standard.set(Int(50000), forKey: UserDataHolder.shared.TOTAL_CURRENCY)
         UserDefaults.standard.set(Int(2), forKey: UserDataHolder.shared.NUM_UNLOCKED_CHARACTERS)
         UserDefaults.standard.set([], forKey: UserDataHolder.shared.CHARACTER_ID)
         UserDefaults.standard.set([], forKey: UserDataHolder.shared.LOCKED_CHARACTERS_ID)
         UserDefaults.standard.set([], forKey: UserDataHolder.shared.UNLOCKED_CHARACTER_ID)
         UserDefaults.standard.set([], forKey: UserDataHolder.shared.ABILITY_ID)
-        UserDefaults.standard.set([false, false, false, false], forKey: UserDataHolder.shared.UNLOCKED)
+        UserDefaults.standard.set([true, true, false, false], forKey: UserDataHolder.shared.UNLOCKED)
         UserDefaults.standard.synchronize()
         UserDataHolder.shared.updateCharacters(characters: UserDataHolder.shared.characters)
         //UserDataHolder.shared.updateAllSets()
     }
+    
+    func resetScore() {
+        UserDefaults.standard.set(Defaults.bestScore, forKey: UserDataHolder.shared.BEST_SCORE_KEY)
+    }
+    
+    func resetTime() {
+        UserDefaults.standard.set(Defaults.bestTime, forKey: UserDataHolder.shared.BEST_TIME_KEY)
+    }
+    func resetCharacters() {
+        UserDefaults.standard.set(Defaults.unlockedChars, forKey: UserDataHolder.shared.UNLOCKED)
+    }
+    
+    
+    
     
     func generateDummyUserData () { //Here to fill the user data with something. to be replaced later, probably with some core data stuff which I don't currently understand
         var abilities: [AbilityModel] = []
@@ -139,19 +170,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             switch i{
                 
             case 0:
-                let c = CharacterModel(img: "Person1.jpg", name: "person \(i)", ability: TimeStopAbility(id: i),desc: "this is person \(i)'s description", unlocked: false, id: i)
+                let c = CharacterModel(img: "Chrona.png", name: "Chrona, Time Wizard", ability: TimeStopAbility(id: i),desc: "A reclusive and mysterious figure, gifted with unusual powers over the flow of time itself.", unlocked: true, id: i)
                 characters.append(c)
                 if c.unlocked! { unlockedChars.append(c) }
                 else { lockedChars.append(c); abilities.append(c.ability) }
             case 1:
-                let c = CharacterModel(img: "Person2.png", name: "person \(i)", ability:
-                    PointBoostAbility(id: i),desc: "this is person \(i)'s description", unlocked: false, id: i)
+                let c = CharacterModel(img: "Captain Pointman.png", name: "Captain Pointman", ability:
+                    PointBoostAbility(id: i),desc: "A hero to the people, rallying the forces of good against the forces of evil.", unlocked: true, id: i)
                 characters.append(c)
                 if c.unlocked! { unlockedChars.append(c) }
                 else { lockedChars.append(c); abilities.append(c.ability) }
                 
             case 2:
-                let c = CharacterModel(img: "Person3.jpeg", name: "person \(i)", ability: DropBombAbility(id: i),desc: "this is person \(i)'s description. It is much longer than the others so we can test scrolling. this is person \(i)'s description. It is much longer than the others so we can test scrolling. this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.this is person \(i)'s description. It is much longer than the others so we can test scrolling.", unlocked: false, id: i)
+                let c = CharacterModel(img: "Doc Boom.png", name: "Doc Boom", ability: DropBombAbility(id: i),desc: "A mad scientist, bent on vengeance, the pursuit of higher knowledge, and explosions.", unlocked: true, id: i)
                 characters.append(c)
                 if c.unlocked! { unlockedChars.append(c) }
                 else { lockedChars.append(c); abilities.append(c.ability) }
@@ -181,71 +212,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDataHolder.shared.setLockedCharacters(characters: lockedChars)
     }
     
-    func playTitleTheme() {
-        if AVS != "title2" {
-            print("A: \(audio)")
-            do {
-                if let url : URL = Bundle.main.url(forResource: "title2", withExtension: "wav", subdirectory:""){
-                    if audio != nil{
-                        print("TRYING TO STOP!")
-                        audio!.stop()
-                        audio = nil
-                    }
-                    try audio = AVAudioPlayer(contentsOf: url)
-                }
-                else {
-                    print ("URL was not successfully generated")
-                }
-            }catch{
-                print("An error has occurred.")
-            }
-            if(audio != nil){
-                audio!.numberOfLoops = -1
-                audio!.play()
-                AVS = "title2"
-                if UserDataHolder.shared.musicMuted {
-                    audio!.pause()
-                }
-            }
-            else {
-                print("Error initializing Audio Player")
-            }
-        }
-        else {
-            print("ALREADY PLAYING THIS SONG!!")
-        }
-    }
-    
-    func playGameTheme() {
-        if AVS != "game" {
-            do {
-                if let url : URL = Bundle.main.url(forResource: "game", withExtension: "wav", subdirectory:""){
-                    if audio != nil{
-                        audio!.stop()
-                        audio = nil
-                    }
-                    try audio = AVAudioPlayer(contentsOf: url)
-                }
-                else {
-                    print ("URL was not successfully generated")
-                }
-            }catch{
-                print("An error has occurred.")
-            }
-            if(audio != nil){
-                audio!.numberOfLoops = -1
-                audio!.play()
-                AVS = "game"
-                if UserDataHolder.shared.musicMuted {
-                    audio!.pause()
-                }
-            }
-            else {
-                print("Error initializing Audio Player")
-            }
-        }
-        else {
-            print("ALREADY PLAYING THIS SONG!!")
-        }
-    }
 }

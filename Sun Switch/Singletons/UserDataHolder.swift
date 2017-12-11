@@ -201,9 +201,18 @@ class UserDataHolder {
     }
     
     func fixBools() {
-        let oldBools = UserDefaults.standard.object(forKey: UNLOCKED) as! [Bool]
-        for c in 0..<characters.count {
-            characters[c].unlocked = oldBools[c]
+        if let oldBools = UserDefaults.standard.object(forKey: UNLOCKED) as? [Bool] {
+            for c in 0..<characters.count {
+                characters[c].unlocked = oldBools[c]
+            }
+        }
+        else {
+            let oldBools = Defaults.unlockedChars
+            for c in 0..<characters.count {
+                characters[c].unlocked = oldBools[c]
+            }
+            //Data is corrupted. Reset.
+
         }
     }
     

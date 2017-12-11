@@ -287,7 +287,7 @@ class GameModel: NSObject {
     
     func indexAdjacent(idx: BoardIndex, cardinalOnly: Bool, dist: Int) -> [BoardIndex]{
         var list = [BoardIndex]()
-        if(idx.row >= board.rowsLeft() - 1) {
+        if(idx.row > board.rowsLeft() - 1) {
             return list
         }
         let minX = idx.col - dist < 0 ? 0 : idx.col - dist
@@ -306,6 +306,36 @@ class GameModel: NSObject {
         return list
     }
     
+
+    func indexRandom(_ probability: Int) -> [BoardIndex] {
+        var list = [BoardIndex]()
+        if(probability > 100 || probability < 0) {
+            print("Warning: Invalid probability sent to Index Random. Must be between 0 and 100")
+        }
+        for i in 0..<board.rowsLeft() {
+            for j in 0..<board.numColumns() {
+                let index = Int(arc4random_uniform(UInt32(100)))
+                if(index <= probability) {
+                    list.append((row: i, col: j))
+                }
+            }
+        }
+        return list
+    }
+    
+    
+    func indexType(_ type:  pieceType) -> [BoardIndex] {
+        var list = [BoardIndex]()
+        for i in 0..<board.rowsLeft() {
+            for j in 0..<board.numColumns() {
+                if(board.getPiece(index: (row: i, col: j)).getType() == type) {
+                    list.append( (row: i, col: j))
+                }
+            }
+        }
+        return list
+    }
+    
     func trySpecial(row: Int, col: Int) -> Bool{
         for i in UserDataHolder.shared.activeBonuses{
             if board.getPiece(index: BoardIndex(row: row, col: col)).getType() == i.getPieceType() {
@@ -314,6 +344,7 @@ class GameModel: NSObject {
             }
         }
         return false
+
     }
     
     func setBomb() {
@@ -392,4 +423,5 @@ class GameModel: NSObject {
 //        //gameBoard = BoardModel()
 //        //gameBoard.generatePieces(difficulty: diff, frame: frame)
 //    }
-}
+ }
+
