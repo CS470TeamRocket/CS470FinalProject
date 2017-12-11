@@ -138,6 +138,39 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="Y21-NI-BQw">
+                            <rect key="frame" x="0.0" y="229" width="375" height="84"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Get More Characters at the Shop" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5C9-zS-fsH">
+                                    <rect key="frame" x="8" y="0.0" width="359" height="29"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <accessibility key="accessibilityConfiguration">
+                                        <accessibilityTraits key="traits" notEnabled="YES"/>
+                                    </accessibility>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" name="Copperplate-Light" family="Copperplate" pointSize="18"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TcX-Pp-KhT" userLabel="Shop" customClass="roundedButton" customModule="Sun_Switch" customModuleProvider="target">
+                                    <rect key="frame" x="162" y="34" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.81176470590000005" green="0.83137254900000002" blue="0.84705882349999995" alpha="0.74989224139999999" colorSpace="calibratedRGB"/>
+                                    <state key="normal" image="money"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="stop:" destination="jYi-6p-Ds9" eventType="touchUpInside" id="Hbo-kE-Jes"/>
+                                        <segue destination="4Fw-9u-xdY" kind="presentation" modalTransitionStyle="crossDissolve" id="9hb-7R-6ck"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellReuseIdentifier" rowHeight="157" id="yg7-Rr-sXu" customClass="CharacterTableViewCell" customModule="Sun_Switch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="157"/>
@@ -198,6 +231,16 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Name Of Character" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqO-rv-Yr0">
+                                            <rect key="frame" x="4" y="0.0" width="171" height="37"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" notEnabled="YES"/>
+                                            </accessibility>
+                                            <fontDescription key="fontDescription" name="Copperplate-Light" family="Copperplate" pointSize="20"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -275,6 +318,39 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="MWx-kg-j0g">
+                            <rect key="frame" x="0.0" y="198" width="375" height="84"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2q9-yn-IB9" userLabel="Character" customClass="roundedButton" customModule="Sun_Switch" customModuleProvider="target">
+                                    <rect key="frame" x="162" y="34" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.81176470590000005" green="0.83137254900000002" blue="0.84705882349999995" alpha="0.74989224139999999" colorSpace="calibratedRGB"/>
+                                    <state key="normal" image="astronaut"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="stop:" destination="jYi-6p-Ds9" eventType="touchUpInside" id="p0a-Lt-vcv"/>
+                                        <segue destination="m4h-3a-4in" kind="presentation" modalTransitionStyle="crossDissolve" id="5U4-H8-ess"/>
+                                    </connections>
+                                </button>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Start Playing!" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fms-MR-qXY">
+                                    <rect key="frame" x="8" y="0.0" width="359" height="29"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <accessibility key="accessibilityConfiguration">
+                                        <accessibilityTraits key="traits" notEnabled="YES"/>
+                                    </accessibility>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" name="Copperplate-Light" family="Copperplate" pointSize="18"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
@@ -494,7 +570,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="quit:" destination="BV1-FR-VrT" eventType="touchUpInside" id="cBQ-rs-M7z"/>
-                                    <segue destination="jYi-6p-Ds9" kind="presentation" identifier="gameOver" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="5fC-wQ-qpt"/>
+                                    <segue destination="jYi-6p-Ds9" kind="presentation" identifier="gameOver" modalTransitionStyle="crossDissolve" id="5fC-wQ-qpt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YP-NO-W6m" customClass="roundedButton" customModule="Sun_Switch" customModuleProvider="target">
@@ -730,8 +806,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="fJM-Ih-8gH"/>
-        <segue reference="aod-EX-4KG"/>
-        <segue reference="65e-H9-Asj"/>
+        <segue reference="9hb-7R-6ck"/>
+        <segue reference="5U4-H8-ess"/>
         <segue reference="kfT-Yf-d93"/>
     </inferredMetricsTieBreakers>
 </document>
