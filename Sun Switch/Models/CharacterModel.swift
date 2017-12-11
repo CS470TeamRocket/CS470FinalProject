@@ -15,14 +15,16 @@ class CharacterModel {
     let desc: String!
     var unlocked: Bool!
     var id: Int!
+    var cost: Int!
     
-    init(img: String, name: String, ability: AbilityModel, desc: String, unlocked: Bool, id: Int) {
+    init(img: String, name: String, ability: AbilityModel, desc: String, unlocked: Bool, id: Int, cost: Int) {
         self.img = img
         self.name = name
         self.ability = ability
         self.desc = desc
         self.unlocked = unlocked
         self.id = id
+        self.cost = cost
     }
     
     func getImg() -> UIImage? {
@@ -39,6 +41,10 @@ class CharacterModel {
     
     func getAbility() -> AbilityModel {
         return ability
+    }
+    
+    func getCost() -> Int {
+        return cost
     }
     
     required init(coder decoder: NSCoder) {

@@ -15,6 +15,7 @@ class DropBombBonus: BonusModel {
         name = "DropBomb"
         desc = "Bomb Stuff"
         cost = 100
+        bonusId = 2
         symbol = "*"
         type = pieceType.Bomb
     }

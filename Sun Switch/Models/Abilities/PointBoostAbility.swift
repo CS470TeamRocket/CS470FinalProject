@@ -12,12 +12,12 @@ class PointBoostAbility: AbilityModel{
     override init(id: Int) {
         super.init(id: id)
         image = "Person2.png" //Placeholder
-        name = "PointBoost"
-        desc = "Boosts Points and stuff"
+        name = "Point Rally!"
         cost = 1000
         level = 1
         warmUpTime = 10 //after it is used, you must wait 10 seconds before using it again
         abilityDuration = 8 //pointboost lasts for 8 seconds
+        desc = "Let our efforts be multiplied! Quintuples your points earned for \(abilityDuration) seconds!"
     }
     
     override func doAbility() -> (Bool){

@@ -48,30 +48,38 @@ class GameOverViewController: UIViewController {
         super.viewDidLoad()
         var newScore = false
         var newTime = false
-        let oldTotal = UserDefaults.standard.integer(forKey: UserDataHolder.shared.TOTAL_CURRENCY)
-        let oldTime = UserDefaults.standard.integer(forKey: UserDataHolder.shared.BEST_TIME_KEY)
-        let oldScore = UserDefaults.standard.integer(forKey: UserDataHolder.shared.BEST_SCORE_KEY)
+        //let oldTotal = UserDefaults.standard.integer(forKey: UserDataHolder.shared.TOTAL_CURRENCY)
+        //let oldTime = UserDefaults.standard.integer(forKey: UserDataHolder.shared.BEST_TIME_KEY)
+        //let oldScore = UserDefaults.standard.integer(forKey: UserDataHolder.shared.BEST_SCORE_KEY)
+        let oldTotal = UserDataHolder.shared.wallet
+        let oldTime = UserDataHolder.shared.bestTime
+        let oldScore = UserDataHolder.shared.highScore
         if score > oldScore {
             newScore = true
-            UserDefaults.standard.set(score, forKey: UserDataHolder.shared.BEST_SCORE_KEY)
+            //UserDefaults.standard.set(score, forKey: UserDataHolder.shared.BEST_SCORE_KEY)
+            UserDataHolder.shared.updateScore(score, save: true)
         }
         if time > oldTime {
             newTime = true
-            UserDefaults.standard.set(time, forKey: UserDataHolder.shared.BEST_TIME_KEY)
+            //UserDefaults.standard.set(time, forKey: UserDataHolder.shared.BEST_TIME_KEY)
+            UserDataHolder.shared.updateTime(time, save: true)
         }
         let newCoins = (score+50)/100
         let coins = oldTotal + newCoins
-        UserDefaults.standard.set(coins, forKey: UserDataHolder.shared.TOTAL_CURRENCY)
+        UserDataHolder.shared.earn(newCoins)
+        //UserDefaults.standard.set(coins, forKey: UserDataHolder.shared.TOTAL_CURRENCY)
         ScoreLabel.text = String(score)
         TimeLabel.text = String(time)
-        let highScore = UserDefaults.standard.integer(forKey: UserDataHolder.shared.BEST_SCORE_KEY)
+        //let highScore = UserDefaults.standard.integer(forKey: UserDataHolder.shared.BEST_SCORE_KEY)
+        let highScore = score >= oldScore ? score : oldScore
         HiScoreLabel.text = String(highScore)
-        let bestTime = UserDefaults.standard.integer(forKey: UserDataHolder.shared.BEST_TIME_KEY)
+        //let bestTime = UserDefaults.standard.integer(forKey: UserDataHolder.shared.BEST_TIME_KEY)
+        let bestTime = time >= oldTime ? time : oldTime
         BestTimeLabel.text = String(bestTime)
         CoinsLabel.text = "\(oldTotal)"
         print(score)
         if newScore {
-            countUpAnimation(label: HiScoreLabel, oldTotal: oldScore, currentTotal: oldScore+50, newTotal: highScore, ix: 50)
+            countUpAnimation(label: HiScoreLabel, oldTotal: oldScore, currentTotal: oldScore+1, newTotal: highScore, ix: 50)
         }
         if newTime {
             countUpAnimation(label: BestTimeLabel, oldTotal: oldTime, currentTotal: oldTime+1, newTotal: bestTime, ix: 1)

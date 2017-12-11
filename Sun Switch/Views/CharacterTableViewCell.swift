@@ -11,8 +11,9 @@ import UIKit
 class CharacterTableViewCell: UITableViewCell {
     @IBOutlet weak var cellImage: UIImageView!
     @IBOutlet weak var cellDesc: UITextView!
-    @IBOutlet weak var cellTitle: UITextView!
-    @IBOutlet weak var characterAbilityName: UITextView!
+    @IBOutlet weak var cellTitle: UILabel!
+    @IBOutlet weak var characterAbilityName: UILabel!
+    @IBOutlet weak var abilityDesc: UITextView!
     //Stored to be passed to game
 
     override func awakeFromNib() {
@@ -30,9 +31,19 @@ class CharacterTableViewCell: UITableViewCell {
         if let cImage = char.getImg()  {
             self.cellImage.image = cImage
         }
-        self.cellTitle.text = char.getName()
-        self.cellDesc.text = char.getDesc()
-        self.characterAbilityName.text = char.getAbility().getName()
+        cellTitle.text = char.getName()
+        cellDesc.text = char.getDesc()
+        characterAbilityName.text = char.getAbility().getName()
+        characterAbilityName.isUserInteractionEnabled = true
+        abilityDesc.text = char.getAbility().getDesc()
+        let abilityTap = UITapGestureRecognizer(target: self, action: #selector(toggleAbilityDesc))
+        characterAbilityName.addGestureRecognizer(abilityTap)
+        abilityTap.delegate = self
     }
+    
+    func toggleAbilityDesc() {
+        abilityDesc.isHidden = !abilityDesc.isHidden
+    }
+
 
 }

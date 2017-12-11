@@ -12,12 +12,12 @@ class TimeStopAbility: AbilityModel {
     override init(id: Int) {
         super.init(id: id)
         image = "Person2.png" //Placeholder
-        name = "TimeWarp"
-        desc = "Time is at your beck and call! Stop it in its tracks using the trace flow backimeter"
+        name = "Tachyon Drift"
         cost = 1000
         level = 1
         warmUpTime = 10
         abilityDuration = 8
+        desc = "Time is an illusion. Exert your control. Stops the timer for \(abilityDuration) seconds."
     }
     
     override func doAbility() -> (Bool){

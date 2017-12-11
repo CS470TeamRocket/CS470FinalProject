@@ -281,14 +281,34 @@ class GameModel: NSObject {
         }
     }
     
-    func indexColumn(col: Int) -> [BoardIndex] {
+    func indexColumns(_ col: [Int]) -> [BoardIndex] {
         var list = [BoardIndex]()
         for i in 0 ..< board.rowsLeft() {
-            list.append( (row: i, col: col))
-            list.append(contentsOf: list)
+            var colList = [BoardIndex]()
+            for j in col {
+                colList.append( (row: i, col: j))
+            }
+            list.append(contentsOf: colList)
         }
         return list
     }
+    
+    func indexRows(_ row: [Int]) -> [BoardIndex] {
+        var list = [BoardIndex]()
+        for i in row {
+            if(i > board.rowsLeft() || i < 0) {
+                continue
+            }
+            var rowList = [BoardIndex]()
+            for j in 0..<board.numColumns() {
+                
+                rowList.append((row: i, col: j))
+            }
+            list.append(contentsOf: rowList)
+        }
+        return list
+    }
+    
     
     func indexAdjacent(idx: BoardIndex, cardinalOnly: Bool, dist: Int) -> [BoardIndex]{
         var list = [BoardIndex]()
@@ -342,7 +362,7 @@ class GameModel: NSObject {
     }
     
     func trySpecial(row: Int, col: Int) -> Bool{
-        for i in UserDataHolder.shared.activeBonuses{
+        for i in UserDataHolder.shared.unlockedBonuses{
             if board.getPiece(index: BoardIndex(row: row, col: col)).getType() == i.getPieceType() {
                 i.doBonus(row: row, col: col)
                 return true
@@ -367,6 +387,31 @@ class GameModel: NSObject {
         scene.doSequencialActions(actions: actions, index: 0)
         _ = board.update()
         updateScore(pointValue * list.count)
+    }
+    
+    func clusterBomb(_ probability: Int) {
+        let list = indexRandom(probability)
+        var actions = board.clearPieces(list: list)
+        actions.append(SKAction.wait(forDuration: 0))
+        scene.doSequencialActions(actions: actions, index: 0)
+        _ = board.update()
+        updateScore((pointValue) * list.count)
+    }
+    
+    func clearBottomRow(_ amount: Int) {
+        var rows = [Int]()
+        for i in 0 ..< amount {
+            let rowNum = board.rowsLeft() - i
+            if(rowNum >= 0) {
+                rows.append(rowNum)
+            }
+        }
+        let list = indexRows(rows)
+        var actions = board.clearPieces(list: list)
+        actions.append(SKAction.wait(forDuration: 0))
+        scene.doSequencialActions(actions: actions, index: 0)
+        _ = board.update()
+        updateScore((pointValue / 2) * list.count)
     }
     
     func pointBoost(duration: TimeInterval, pointValue: Int) {
