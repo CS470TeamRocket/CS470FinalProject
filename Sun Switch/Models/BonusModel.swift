@@ -5,6 +5,7 @@ class BonusModel {
     var name: String! = "default name"
     var desc: String! = "default description"
     var cost: Int! = 0
+    var bonusId: Int = 0
     var symbol: String! = ""
     var type: pieceType = pieceType.Empty
     //Should have variable gameModel (named master) to execute doAbility on. Ability will need to receive a gameModel on game start.

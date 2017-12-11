@@ -31,7 +31,7 @@ class AbilityStoreTableViewCell: UITableViewCell {
             let a = UserDataHolder.shared.getAbility(idx: i)
             var currency = UserDefaults.standard.integer(forKey: UserDataHolder.shared.TOTAL_CURRENCY)
             if a.getName() == self.AbilityName.text, a.cost <= currency {
-                UserDataHolder.shared.buyAbility(ability: a)
+                //UserDataHolder.shared.buyAbility(ability: a)
                 currency = currency - a.cost
                 return
             }

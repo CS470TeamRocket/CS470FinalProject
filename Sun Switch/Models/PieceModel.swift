@@ -69,7 +69,7 @@ enum pieceType {
     func specialPieces(level: Int) -> [pieceType] {
         //currently doesn't do anything with level
         var pieceList = [pieceType]()
-        for i in UserDataHolder.shared.activeBonuses {
+        for i in UserDataHolder.shared.unlockedBonuses {
             pieceList.append(i.getPieceType())
             
         }

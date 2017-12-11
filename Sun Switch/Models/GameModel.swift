@@ -337,7 +337,7 @@ class GameModel: NSObject {
     }
     
     func trySpecial(row: Int, col: Int) -> Bool{
-        for i in UserDataHolder.shared.activeBonuses{
+        for i in UserDataHolder.shared.unlockedBonuses{
             if board.getPiece(index: BoardIndex(row: row, col: col)).getType() == i.getPieceType() {
                 i.doBonus(row: row, col: col)
                 return true
