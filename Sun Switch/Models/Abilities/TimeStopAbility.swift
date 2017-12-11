@@ -16,11 +16,15 @@ class TimeStopAbility: AbilityModel {
         desc = "Time is at your beck and call! Stop it in its tracks using the trace flow backimeter"
         cost = 1000
         level = 1
+        warmUpTime = 10
+        abilityDuration = 8
     }
     
-    override func doAbility() {
-        super.doAbility()
-        UserDataHolder.shared.currentGameModel?.stopTime(delay: 8, hard: false)
+    override func doAbility() -> (Bool){
+        if (super.doAbility()) {
+            UserDataHolder.shared.currentGameModel?.stopTime(delay: Int(abilityDuration), hard: false)
+            return true
+        }
+        return false
     }
-    
 }

@@ -16,11 +16,16 @@ class TeleportAbility: AbilityModel {
         desc = "Who's worrying about commute times when you can teleport your workplace to you?"
         cost = 1000
         level = 1
+        warmUpTime = 10
+        abilityDuration = 0
     }
     
-    override func doAbility() {
-        super.doAbility()
-        UserDataHolder.shared.currentGameModel?.teleport()
+    override func doAbility() -> (Bool){
+        if (super.doAbility()) {
+            UserDataHolder.shared.currentGameModel?.teleport()
+            return true
+        }
+        return false
     }
     
 }

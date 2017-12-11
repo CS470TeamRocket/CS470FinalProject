@@ -360,10 +360,10 @@ class GameModel: NSObject {
         updateScore(pointValue * list.count)
     }
     
-    func pointBoost() {
+    func pointBoost(duration: TimeInterval, pointValue: Int) {
         //print("BOOSTED")
-        pointValue = 250
-        boostTime = 8
+        self.pointValue = pointValue
+        self.boostTime = Int(duration)
     }
     
     func teleport() {

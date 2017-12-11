@@ -16,11 +16,16 @@ class PointBoostAbility: AbilityModel{
         desc = "Boosts Points and stuff"
         cost = 1000
         level = 1
+        warmUpTime = 10 //after it is used, you must wait 10 seconds before using it again
+        abilityDuration = 8 //pointboost lasts for 8 seconds
     }
     
-    override func doAbility() {
-        super.doAbility()
-        UserDataHolder.shared.currentGameModel?.pointBoost()
+    override func doAbility() -> (Bool){
+        if (super.doAbility()) {
+            UserDataHolder.shared.currentGameModel?.pointBoost(duration: abilityDuration, pointValue: 250)
+            return true
+        }
+        return false
     }
     
     
