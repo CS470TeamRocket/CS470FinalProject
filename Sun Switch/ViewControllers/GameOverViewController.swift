@@ -18,13 +18,14 @@ class GameOverViewController: UIViewController {
     @IBOutlet weak var BestTimeLabel: UILabel!
     @IBOutlet weak var CoinsLabel: UILabel!
     @IBOutlet var Buttons: [roundedButton]!
-    let AD = UIApplication.shared.delegate as! AppDelegate
+    //let AD = UIApplication.shared.delegate as! AppDelegate
     //var audio: AVAudioPlayer?
     var score: Int = 0
     var time: Int = 0
     
     @IBAction func stop(_ sender: roundedButton) {
-        AD.playTitleTheme()
+        AudioPlayer.shared.playSong("title2", exten: "wav", forceReset: false)
+        //AD.playTitleTheme()
         UserDataHolder.shared.currentCharacter = nil
     }
     

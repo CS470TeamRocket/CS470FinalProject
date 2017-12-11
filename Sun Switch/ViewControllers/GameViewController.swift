@@ -16,13 +16,16 @@ class GameViewController: UIViewController {
     @IBOutlet weak var QuitButton: UIButton!
     @IBOutlet weak var abilityButton: roundedButton!
     var scene : GameScene?
-    let AD = UIApplication.shared.delegate as! AppDelegate
+    //let AD = UIApplication.shared.delegate as! AppDelegate
     
     @IBAction func quit(_ sender: UIButton) {
         //scene?.game.gameOver()
         //audio!.stop()
+        AudioPlayer.shared.stop()
     }
     @IBAction func pauseMusic(_ sender: UIButton) {
+        AudioPlayer.shared.pauseMusic()
+        /*
         if AD.audio!.isPlaying {
             AD.audio!.pause()
             UserDataHolder.shared.musicMuted = true
@@ -31,6 +34,7 @@ class GameViewController: UIViewController {
             AD.audio!.play()
             UserDataHolder.shared.musicMuted = false
         }
+        */
     }
     
     @IBAction func doAbility(_ sender: roundedButton) {
@@ -72,13 +76,15 @@ class GameViewController: UIViewController {
             
             view.showsFPS = true
             view.showsNodeCount = true
-            AD.playGameTheme()
+            //AD.playGameTheme()
+            AudioPlayer.shared.playSong("game", exten: "wav", forceReset: true)
         }
     }
     override func viewWillDisappear(_ animated: Bool){
-        if(AD.audio != nil) {
+         /*if(AD.audio != nil) {
             //AD.audio!.stop()
         }
+         */
         if(scene != nil) {
             scene!.destroySelf()
         } else{

@@ -27,8 +27,12 @@ class HomeViewController: UIViewController {
 //    }
     
     @IBAction func pauseMusic(_ sender: UIButton) {
-        print(AD.audio!)
-        if AD.audio != nil {
+        AudioPlayer.shared.pauseMusic();
+        
+        
+        /*
+        //print(AudioPlayer.shared.audio!)
+        if AudioPlayer.shared.musicPlayer != nil {
             if AD.audio!.isPlaying {
                 AD.audio!.pause()
                 UserDataHolder.shared.musicMuted = true
@@ -37,19 +41,24 @@ class HomeViewController: UIViewController {
                 AD.audio!.play()
                 UserDataHolder.shared.musicMuted = false
             }
-        }
+        }*/
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         SUN.loadGif(name: "s1")
         SWITCH.loadGif(name: "s2")
-        AD.playTitleTheme()
+        AudioPlayer.shared.playSong("title2", exten: "wav", forceReset: false)
+        //AD.playTitleTheme()
     }
     override func viewWillDisappear(_ animated: Bool) {
-        if(AD.audio != nil) {
+        //AudioPlayer.shared.stop()
+        
+        /*if(AD.audio != nil) {
             //audio!.stop()
-        }
+        }*/
+        
         super.viewWillDisappear(animated)
     }
     override var prefersStatusBarHidden: Bool {
