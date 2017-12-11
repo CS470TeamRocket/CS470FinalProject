@@ -137,7 +137,7 @@ class PieceModel : NSObject {
     }
     
     func genType(valid: [pieceType], special: [pieceType], probSpec: Double) {
-        if (special.count > 0) && (arc4random_uniform(UInt32(100)) < Int(probSpec * 100)) {
+        if (special.count > 0) && (Int(arc4random_uniform(UInt32(100))) < Int(probSpec * 100)) {
             let index = Int(arc4random_uniform(UInt32(special.count)))
             self.myType = special[index]
         }else{

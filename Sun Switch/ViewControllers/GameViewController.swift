@@ -19,6 +19,7 @@ class GameViewController: UIViewController {
     //let AD = UIApplication.shared.delegate as! AppDelegate
     
     @IBAction func quit(_ sender: UIButton) {
+        scene?.removeAllActions()
         //scene?.game.gameOver()
         //audio!.stop()
         AudioPlayer.shared.stop()

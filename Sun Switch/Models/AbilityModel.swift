@@ -16,8 +16,10 @@ class AbilityModel {
     var level: Int! = 1
     var unlocked: Bool = false
     var id: Int
-    var WarmUpTime : Int = 10
-    var timer : Timer = Timer()
+    var warmUpTime : TimeInterval = 10 //How long to reuse ability after it completes (the ability duration has expired).
+    var abilityDuration : TimeInterval = 0 //How long an ability is active. for many abilities it is 0 (like bombs and teleport)
+    var timer : Timer = Timer() //Timer that runs warmup time stuff
+    var abilityReady : Bool = true //True if the warm up time has expired
     //Should have variable gameModel (named master) to execute doAbility on. Ability will need to receive a gameModel on game start.
     
     init(id: Int) {
@@ -25,8 +27,18 @@ class AbilityModel {
         //super.init()
     }
     
-    func doAbility(){
-        
+    func doAbility() -> (Bool){
+        if abilityReady {
+            abilityReady = false
+            timer = Timer.scheduledTimer(timeInterval: abilityDuration + warmUpTime, target: self, selector: (#selector(enableAbility)), userInfo: nil, repeats: false)
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    @objc func enableAbility() {
+        self.abilityReady = true
     }
     
     func getImg() -> UIImage? {
@@ -53,8 +65,8 @@ class AbilityModel {
         self.level = level
     }
     
-    func setWarmUpTime(seconds: Int){
-        self.WarmUpTime = seconds
+    func setWarmUpTime(seconds: TimeInterval){
+        self.warmUpTime = seconds
     }
     
     func LevelUp() {

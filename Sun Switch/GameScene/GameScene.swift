@@ -274,6 +274,12 @@ class GameScene: SKScene {
     
     func sunGrow() {
         sunSprite.run(SKAction.moveBy(x: 0, y: helperSprite.frame.width + 10, duration: 1))
+        for a in fakeRowL {
+            a.removeFromParent()
+        }
+        for b in fakeRowR {
+            b.removeFromParent()
+        }
         fakeRowL = []
         fakeRowR = []
         //sunSprite.scale(to: CGSize(width: sunSprite.frame.width + helperSprite.frame.width * 2, height: sunSprite.frame.height + helperSprite.frame.width * 2))
@@ -343,7 +349,7 @@ class GameScene: SKScene {
             if to.row < self.game.board.rowsLeft() {
                 self.sprites[to.row][to.col].alpha = 0
                 fake.run(group, completion: {
-                    if to.row < self.game.board.rowsLeft() {
+                    if self.game.board != nil, to.row < self.game.board.rowsLeft() {
                         self.sprites[to.row][to.col].alpha = 1
                         self.sprites[to.row][to.col].position = center
                         fake.removeFromParent()
