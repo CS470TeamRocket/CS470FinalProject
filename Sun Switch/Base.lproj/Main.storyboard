@@ -164,7 +164,7 @@
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="stop:" destination="jYi-6p-Ds9" eventType="touchUpInside" id="Hbo-kE-Jes"/>
-                                        <segue destination="4Fw-9u-xdY" kind="show" id="9hb-7R-6ck"/>
+                                        <segue destination="4Fw-9u-xdY" kind="presentation" modalTransitionStyle="crossDissolve" id="9hb-7R-6ck"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -323,7 +323,7 @@
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="stop:" destination="jYi-6p-Ds9" eventType="touchUpInside" id="p0a-Lt-vcv"/>
-                                        <segue destination="m4h-3a-4in" kind="show" id="5U4-H8-ess"/>
+                                        <segue destination="m4h-3a-4in" kind="presentation" modalTransitionStyle="crossDissolve" id="5U4-H8-ess"/>
                                     </connections>
                                 </button>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Start Playing!" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fms-MR-qXY">
@@ -556,7 +556,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="quit:" destination="BV1-FR-VrT" eventType="touchUpInside" id="cBQ-rs-M7z"/>
-                                    <segue destination="jYi-6p-Ds9" kind="presentation" identifier="gameOver" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="5fC-wQ-qpt"/>
+                                    <segue destination="jYi-6p-Ds9" kind="presentation" identifier="gameOver" modalTransitionStyle="crossDissolve" id="5fC-wQ-qpt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YP-NO-W6m" customClass="roundedButton" customModule="Sun_Switch" customModuleProvider="target">
@@ -791,9 +791,9 @@
         <image name="sun" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fJM-Ih-8gH"/>
+        <segue reference="ygR-aO-eBV"/>
         <segue reference="9hb-7R-6ck"/>
         <segue reference="5U4-H8-ess"/>
-        <segue reference="kfT-Yf-d93"/>
+        <segue reference="xOW-8l-td5"/>
     </inferredMetricsTieBreakers>
 </document>

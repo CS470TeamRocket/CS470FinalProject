@@ -134,7 +134,7 @@ class GameScene: SKScene {
     func destroySelf() {
         print("Destroying self!")
         UserDataHolder.shared.currentGameModel = nil
-        game.gameOver()
+        //game.gameOver()
         game = nil
         sprites.removeAll()
         entities.removeAll()
