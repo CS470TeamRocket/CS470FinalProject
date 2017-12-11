@@ -8,20 +8,22 @@
 
 import UIKit
 
-class AbilityStoreTableViewController: UITableViewController {
-    var abilities: [AbilityModel] = []
+class StoreTableViewController: UITableViewController {
+    //var abilities: [AbilityModel] = []
+    var characters: [CharacterModel] = []
     @IBOutlet weak var units: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        units.text = "units:" + String(UserDefaults.standard.integer(forKey: UserDataHolder.shared.TOTAL_CURRENCY))
+        units.text = "Credits:" + String(UserDataHolder.shared.wallet)
         let center = units.center
         units.sizeToFit()
         units.center = center
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "5kHalfWide"))
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         //Generating dummy data
-        abilities = UserDataHolder.shared.getAbilities()
+        //abilities = UserDataHolder.shared.getAbilities()
+        characters = UserDataHolder.shared.getLockedCharacters()
 
     }
     
@@ -43,15 +45,15 @@ class AbilityStoreTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return abilities.count
+        return characters.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AbilityCell", for: indexPath) as! AbilityStoreTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterCell", for: indexPath) as! CharacterStoreTableViewCell
 
         // Configure the cell...
-        cell.useAbility(ability: abilities[indexPath.row])
+        cell.useCharacter(characters[indexPath.row])
         cell.layer.cornerRadius = 10
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.backgroundColor = UIColor.clear
@@ -59,15 +61,17 @@ class AbilityStoreTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! AbilityStoreTableViewCell
-        let currency = UserDefaults.standard.integer(forKey: UserDataHolder.shared.TOTAL_CURRENCY)
-        let cost = Int(cell.AbilityCost.text)!
+        let cell = tableView.cellForRow(at: indexPath) as! CharacterStoreTableViewCell
+        //let currency = UserDefaults.standard.integer(forKey: UserDataHolder.shared.TOTAL_CURRENCY)
+        let currency = UserDataHolder.shared.wallet
+        let cost = Int(cell.characterCost.text)!
+        //let cost = Int(cell.AbilityCost.text)!
         if cost <= currency {
             cell.purchase()
-            abilities.remove(at: indexPath.row)
+            characters.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            let new  = UserDefaults.standard.integer(forKey: UserDataHolder.shared.TOTAL_CURRENCY) - cost
-            removeCurrencyAnimation(old: currency, current: currency, new: new, ix: 50)
+            //let new  = UserDefaults.standard.integer(forKey: UserDataHolder.shared.TOTAL_CURRENCY) - cost
+            removeCurrencyAnimation(old: currency, current: currency, new: currency - cost, ix: 50)
             //self.viewDidLoad()
         }
     }
@@ -76,8 +80,8 @@ class AbilityStoreTableViewController: UITableViewController {
         if current - ix >= new {
             UIView.animate(withDuration: 1, animations: {
                 //print(current-ix)
-                self.units.text = "units:" + String(current-ix)
-                UserDefaults.standard.set(current-ix, forKey: UserDataHolder.shared.TOTAL_CURRENCY)
+                self.units.text = "Credits:" + String(current-ix)
+                //UserDefaults.standard.set(current-ix, forKey: UserDataHolder.shared.TOTAL_CURRENCY)
                 self.units.setNeedsLayout()
                 }, completion: { finished in
                     //self.viewDidLoad()

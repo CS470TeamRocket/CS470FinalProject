@@ -240,28 +240,30 @@ class UserDataHolder {
     }
     
     func generateDummy() {
-        for i in 0...3 { //generating some characters
+        for i in 0...4 { //generating some characters
             
             switch i{
                 
             case 0:
-                let c = CharacterModel(img: "Chrona.png", name: "Chrona, Time Wizard", ability: TimeStopAbility(id: i),desc: "A reclusive and mysterious figure, gifted with unusual powers over the flow of time itself.", unlocked: true, id: i+1)
+                let c = CharacterModel(img: "Chrona.png", name: "Chrona, Time Wizard", ability: TimeStopAbility(id: i),desc: "A reclusive and mysterious figure, gifted with unusual powers over the flow of time itself.", unlocked: true, id: i+1, cost: 5000)
                  characters.append(c)
             case 1:
                 let c = CharacterModel(img: "Captain Pointman.png", name: "Captain Pointman", ability:
-                    PointBoostAbility(id: i),desc: "A hero to the people, rallying the forces of good against the forces of evil.", unlocked: true, id: i+1)
+                    PointBoostAbility(id: i),desc: "A hero to the people, rallying the forces of good against the forces of evil.", unlocked: true, id: i+1, cost: 0)
                  characters.append(c)
                 
             case 2:
-                let c = CharacterModel(img: "Doc Boom.png", name: "Doc Boom", ability: DropBombAbility(id: i),desc: "A mad scientist, bent on vengeance, the pursuit of higher knowledge, and explosions.", unlocked: true, id: i+1)
+                let c = CharacterModel(img: "Doc Boom.png", name: "Doc Boom", ability: DropBombAbility(id: i),desc: "A mad scientist, bent on vengeance, the pursuit of higher knowledge, and explosions.", unlocked: true, id: i+1, cost: 1000)
                  characters.append(c)
             case 3:
-                let c = CharacterModel(img: "Person2.png", name: "person \(i)", ability:
-                    TeleportAbility(id: i),desc: "this is person \(i)'s description", unlocked: false, id: i+1)
+                let c = CharacterModel(img: "Geremlo.png", name: "Geremlo the Wanderer", ability:
+                    TeleportAbility(id: i),desc: "Thousands of lightyears from his homeworld, he seeks to return to his land once more.", unlocked: false, id: i+1, cost: 2000)
+                 characters.append(c)
+            case 4:
+                let c = CharacterModel(img: "Xarvok.png", name: "Xarvok the Destroyer", ability: ClusterBombAbility(id: i),desc: "A warlord with an insatiable bloodlust. Longs to see the galaxy rendered to dust, with himself reigning supreme.", unlocked: false, id: i+1, cost: 10000)
                  characters.append(c)
             default:
-                let c = CharacterModel(img: "Person1.jpg", name: "person \(i)", ability: TimeStopAbility(id: i),desc: "this is person \(i)'s description", unlocked: false, id: i+1)
-                 characters.append(c)
+                return
             }
         }
     }
@@ -300,6 +302,14 @@ class UserDataHolder {
         }
     }
     
+    func spend(_ amount: Int) {
+        wallet -= amount
+        updateMoney(wallet, save: true)
+    }
+    func earn(_ amount: Int) {
+        wallet += amount
+        updateMoney(wallet, save: true)
+    }
     
     /*
     func loadCharacterData() {

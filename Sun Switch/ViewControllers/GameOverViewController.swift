@@ -55,7 +55,7 @@ class GameOverViewController: UIViewController {
         }
         let newCoins = (score+50)/100
         let coins = oldTotal + newCoins
-        UserDataHolder.shared.updateMoney(coins, save: true)
+        UserDataHolder.shared.earn(newCoins)
         //UserDefaults.standard.set(coins, forKey: UserDataHolder.shared.TOTAL_CURRENCY)
         ScoreLabel.text = String(score)
         TimeLabel.text = String(time)
