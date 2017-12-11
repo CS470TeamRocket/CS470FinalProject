@@ -240,6 +240,7 @@ class BoardModel: NSObject {
         var actions: [SKAction] = []
         var out = [Int]()
         while(checkAll().count > 0) {
+            //actions = []
             let list = checkAll()
             out.append(list.count)
             let acts = clearPieces(list: list)
@@ -248,12 +249,13 @@ class BoardModel: NSObject {
             }
             if actions.count > 0 {
                 actions.append(SKAction.wait(forDuration: 0))
-                let sequence = SKAction.sequence(actions)
-                scene.run(sequence)
                 
                 
             }
         }
+        let sequence = SKAction.sequence(actions)
+        print(actions)
+        scene.run(sequence)
         return out
     }
     

@@ -47,11 +47,13 @@ class GameViewController: UIViewController {
         if segue.identifier == "gameOver" {
             if let viewController = segue.destination as? GameOverViewController {
                 if !(scene?.game.over)! {
+                    scene?.removeAllActions()
                     scene?.game.gameOver()
                 }
                 if(scene?.game.score != nil){
                     viewController.score = (scene?.game.score)! as Int
                     viewController.time = (scene?.game.totalTime)! as Int
+                    viewController.scene = scene!
                 }
             }
         }

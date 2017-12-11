@@ -133,7 +133,7 @@
                                 <rect key="frame" x="0.0" y="72" width="414" height="140"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yg7-Rr-sXu" id="MYK-yo-BvO">
-                                    <frame key="frameInset" width="414" height="139"/>
+                                    <frame key="frameInset" width="414" height="139.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cLz-RL-1b2" customClass="CharChoice" customModule="Sun_Switch" customModuleProvider="target">
@@ -270,7 +270,7 @@
                                 <rect key="frame" x="0.0" y="78" width="414" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W1P-Vd-8wp" id="qjJ-g2-b5g">
-                                    <frame key="frameInset" width="414" height="119"/>
+                                    <frame key="frameInset" width="414" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4eL-Rf-2HM" customClass="CharChoice" customModule="Sun_Switch" customModuleProvider="target">
@@ -659,6 +659,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="reset:" destination="jYi-6p-Ds9" eventType="touchUpInside" id="UdM-mh-dMn"/>
                                     <segue destination="BV1-FR-VrT" kind="presentation" modalTransitionStyle="crossDissolve" id="ygR-aO-eBV"/>
                                 </connections>
                             </button>
@@ -716,9 +717,9 @@
         <image name="sun" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="k3b-c4-M6V"/>
-        <segue reference="GxQ-OH-eel"/>
-        <segue reference="aod-EX-4KG"/>
-        <segue reference="fJM-Ih-8gH"/>
+        <segue reference="ygR-aO-eBV"/>
+        <segue reference="Voh-4E-Nbu"/>
+        <segue reference="xOW-8l-td5"/>
+        <segue reference="65e-H9-Asj"/>
     </inferredMetricsTieBreakers>
 </document>
