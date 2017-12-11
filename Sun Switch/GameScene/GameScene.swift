@@ -72,7 +72,7 @@ class GameScene: SKScene {
 
     override func sceneDidLoad() {
         super.sceneDidLoad()
-        let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
+        let rotateAction = SKAction.rotate(byAngle: CGFloat(.pi * 2.0) , duration: 5)
         helperSprite.run(SKAction.repeatForever(rotateAction))
         game = GameModel(start: 1, view: self, isExtreme: extreme)
         UserDataHolder.shared.currentGameModel = game
@@ -162,7 +162,7 @@ class GameScene: SKScene {
     }
     
     func rotateTicker(duration: TimeInterval) {
-        ticker.run(SKAction.repeatForever(SKAction.rotate(byAngle: -CGFloat(M_PI * 2.0), duration: duration)), withKey: "rotate")
+        ticker.run(SKAction.repeatForever(SKAction.rotate(byAngle: -CGFloat(.pi * 2.0), duration: duration)), withKey: "rotate")
     }
     
     func rotateAbilityTicker(duration: TimeInterval) {
@@ -239,7 +239,7 @@ class GameScene: SKScene {
                 TempRowC.append(center)
                 let name = getImageName(piece: piece)
                 sprite = SKSpriteNode(imageNamed: name)
-                let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
+                let rotateAction = SKAction.rotate(byAngle: CGFloat(.pi * 2.0) , duration: 5)
                 sprite.run(SKAction.repeatForever(rotateAction))
                 sprite.position = center
                 sprite.name = name
@@ -304,7 +304,7 @@ class GameScene: SKScene {
             let y2 = Int(r[columns - 1].position.y) - Int(helperSprite.size.width/2)
             let oC2 = CGPoint(x: x2 , y: y2)
             let arrow2 = AModel(row: count, originalCenter: oC2, sprite: SKSpriteNode(texture: sprites[count][0].texture))
-            let group = SKAction.group([SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)]) //, SKAction.sequence([SKAction.fadeOut(withDuration: 1), SKAction.fadeIn(withDuration: 0.5)])])
+            let group = SKAction.group([SKAction.rotate(byAngle: CGFloat(.pi * 2.0) , duration: 5)]) //, SKAction.sequence([SKAction.fadeOut(withDuration: 1), SKAction.fadeIn(withDuration: 0.5)])])
             self.addChild(arrow1.sprite)
             arrow1.sprite.position = arrow1.originalCenter
             arrow1.sprite.run(SKAction.repeatForever(group))
@@ -321,6 +321,12 @@ class GameScene: SKScene {
     
     func sunGrow() {
         sunSprite.run(SKAction.moveBy(x: 0, y: helperSprite.frame.width + 10, duration: 1))
+        for a in fakeRowL {
+            a.removeFromParent()
+        }
+        for b in fakeRowR {
+            b.removeFromParent()
+        }
         fakeRowL = []
         fakeRowR = []
         //sunSprite.scale(to: CGSize(width: sunSprite.frame.width + helperSprite.frame.width * 2, height: sunSprite.frame.height + helperSprite.frame.width * 2))
@@ -348,18 +354,25 @@ class GameScene: SKScene {
         fake.position = startCenter
         sprite.alpha = 0
         fake.alpha = 0
-        sprite.zRotation = helperSprite.zRotation
-        fake.zRotation = helperSprite.zRotation
+        //sprite.zRotation = helperSprite.zRotation
+        fake.zRotation = sprites[r][c].zRotation
         sprite.name = name
         fake.name = name
         sprites[r][c] = sprite
-        let group = SKAction.group([SKAction.move(to: center, duration: 0.4), SKAction.fadeAlpha(to: 1, duration: 0.4)])
-        let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
+        let rotateAction = SKAction.rotate(byAngle: CGFloat(.pi * 2.0) , duration: 5)
         sprite.run(SKAction.repeatForever(rotateAction))
         let act = SKAction.run {
             self.sprites[r][c].alpha = 0
+            fake.zRotation = self.sprites[r][c].zRotation
+            var group = SKAction.wait(forDuration: 0)
+            if self.sprites[r][c] == sprite {
+                group = SKAction.group([SKAction.move(to: center, duration: 0.4), SKAction.fadeAlpha(to: 1, duration: 0.4)])
+            }
             fake.run(group, completion: {
-                self.sprites[r][c].alpha = 1
+                if self.sprites[r][c] == sprite {
+                    self.sprites[r][c].zRotation = 0
+                    self.sprites[r][c].alpha = 1
+                }
                 fake.removeFromParent()
             })
         }
@@ -383,18 +396,22 @@ class GameScene: SKScene {
         fake.alpha = 0
         fake.name = sprite.name
         sprites[to.row][to.col] = sprite
-        let group = SKAction.group([SKAction.move(to: center, duration: 0.4), SKAction.fadeAlpha(to: 1, duration: 0.4)])
-        //let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
+        //let rotateAction = SKAction.rotate(byAngle: CGFloat(.pi * 2.0) , duration: 5)
         //sprite.run(SKAction.repeatForever(rotateAction))
         let act = SKAction.run {
             if to.row < self.game.board.rowsLeft() {
+                var group = SKAction.wait(forDuration: 0)
+                if self.sprites[to.row][to.col] == sprite {
+                    group = SKAction.group([SKAction.move(to: center, duration: 0.4), SKAction.fadeAlpha(to: 1, duration: 0.4)])
+                }
                 self.sprites[to.row][to.col].alpha = 0
                 fake.run(group, completion: {
-                    if to.row < self.game.board.rowsLeft() {
+                    if self.sprites[to.row][to.col] == sprite, self.game.board != nil, to.row < self.game.board.rowsLeft(){
+                        self.sprites[to.row][to.col].zRotation = 0
                         self.sprites[to.row][to.col].alpha = 1
                         self.sprites[to.row][to.col].position = center
-                        fake.removeFromParent()
                     }
+                    fake.removeFromParent()
                 })
             }
         }
@@ -456,7 +473,7 @@ class GameScene: SKScene {
     
     func snapBack(sprite: SKSpriteNode, row: Int, col: Int) {
         // Move pieces back to their centers with an action
-        let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 0.4)
+        let rotateAction = SKAction.rotate(byAngle: CGFloat(.pi * 2.0) , duration: 0.4)
         let updatePosition = SKAction.run {
             sprite.position = self.centers[row][col]
         }
@@ -479,7 +496,7 @@ class GameScene: SKScene {
                 s = sprites[curRow][c]
                 //let moveAction = SKAction.moveBy(x: 10, y: -15, duration: 0.8)
                 let r = curRow!
-                let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 0.4)
+                let rotateAction = SKAction.rotate(byAngle: CGFloat(.pi * 2.0) , duration: 0.4)
                 let updatePosition = SKAction.run {
                     s.position = self.centers[r][c]
                 }
@@ -633,7 +650,7 @@ class GameScene: SKScene {
                 self.addChild(sprite)
                 sprite.position = center
                 sprite.run(SKAction.sequence([SKAction.scale(by: 0.5, duration: 0.1), SKAction.scale(by: 4, duration: 0.1), SKAction.scale(by: 0.5, duration: 0.1)]))
-                let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
+                let rotateAction = SKAction.rotate(byAngle: CGFloat(.pi * 2.0) , duration: 5)
                 sprite.run(SKAction.repeatForever(rotateAction))
                 //print("Added sprite at:", bottom + 1, r, sprite.position)
                 sprite.name = name
@@ -687,7 +704,7 @@ class GameScene: SKScene {
         for c in sprites {
             var arc = 0
             let y = (row - maxRows/2) * Int(helperSprite.size.width + 10) * -1
-            let rotateAction = SKAction.rotate(byAngle: CGFloat(M_PI * 2.0) , duration: 5)
+            let rotateAction = SKAction.rotate(byAngle: CGFloat(.pi * 2.0) , duration: 5)
             let distance = helperSprite.size.width * CGFloat(maxCols) + helperSprite.size.width/2
             let rotation = c.zRotation
             var fakeR: SKSpriteNode
@@ -782,7 +799,7 @@ class GameScene: SKScene {
                         teleportMode = false
                     }
                     else if sprites[r][c] == teleSprite1.0 {
-                        //teleSprite1.0.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(M_PI*2), duration: 5)))
+                        //teleSprite1.0.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(.pi*2), duration: 5)))
                         teleSprite1 = nil
                         return
                     }
