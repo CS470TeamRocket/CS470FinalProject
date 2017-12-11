@@ -18,15 +18,26 @@ class GameOverViewController: UIViewController {
     @IBOutlet weak var BestTimeLabel: UILabel!
     @IBOutlet weak var CoinsLabel: UILabel!
     @IBOutlet var Buttons: [roundedButton]!
+    var scene: GameScene!
     //let AD = UIApplication.shared.delegate as! AppDelegate
     //var audio: AVAudioPlayer?
     var score: Int = 0
     var time: Int = 0
     
+    @IBAction func reset(_ sender: roundedButton) {
+        //scene.removeAllChildren()
+    }
     @IBAction func stop(_ sender: roundedButton) {
+        //scene.removeAllChildren()
+        
         AudioPlayer.shared.playSong("title2", exten: "wav", forceReset: false)
         //AD.playTitleTheme()
         UserDataHolder.shared.currentCharacter = nil
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        scene.removeAllChildren()
+        scene.removeFromParent()
     }
     
     override var prefersStatusBarHidden: Bool {

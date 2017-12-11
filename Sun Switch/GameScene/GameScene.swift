@@ -307,18 +307,25 @@ class GameScene: SKScene {
         fake.position = startCenter
         sprite.alpha = 0
         fake.alpha = 0
-        sprite.zRotation = helperSprite.zRotation
-        fake.zRotation = helperSprite.zRotation
+        //sprite.zRotation = helperSprite.zRotation
+        fake.zRotation = sprites[r][c].zRotation
         sprite.name = name
         fake.name = name
         sprites[r][c] = sprite
-        let group = SKAction.group([SKAction.move(to: center, duration: 0.4), SKAction.fadeAlpha(to: 1, duration: 0.4)])
         let rotateAction = SKAction.rotate(byAngle: CGFloat(.pi * 2.0) , duration: 5)
         sprite.run(SKAction.repeatForever(rotateAction))
         let act = SKAction.run {
             self.sprites[r][c].alpha = 0
+            fake.zRotation = self.sprites[r][c].zRotation
+            var group = SKAction.wait(forDuration: 0)
+            if self.sprites[r][c] == sprite {
+                group = SKAction.group([SKAction.move(to: center, duration: 0.4), SKAction.fadeAlpha(to: 1, duration: 0.4)])
+            }
             fake.run(group, completion: {
-                self.sprites[r][c].alpha = 1
+                if self.sprites[r][c] == sprite {
+                    self.sprites[r][c].zRotation = 0
+                    self.sprites[r][c].alpha = 1
+                }
                 fake.removeFromParent()
             })
         }
@@ -342,18 +349,22 @@ class GameScene: SKScene {
         fake.alpha = 0
         fake.name = sprite.name
         sprites[to.row][to.col] = sprite
-        let group = SKAction.group([SKAction.move(to: center, duration: 0.4), SKAction.fadeAlpha(to: 1, duration: 0.4)])
         //let rotateAction = SKAction.rotate(byAngle: CGFloat(.pi * 2.0) , duration: 5)
         //sprite.run(SKAction.repeatForever(rotateAction))
         let act = SKAction.run {
             if to.row < self.game.board.rowsLeft() {
+                var group = SKAction.wait(forDuration: 0)
+                if self.sprites[to.row][to.col] == sprite {
+                    group = SKAction.group([SKAction.move(to: center, duration: 0.4), SKAction.fadeAlpha(to: 1, duration: 0.4)])
+                }
                 self.sprites[to.row][to.col].alpha = 0
                 fake.run(group, completion: {
-                    if self.game.board != nil, to.row < self.game.board.rowsLeft() {
+                    if self.sprites[to.row][to.col] == sprite, self.game.board != nil, to.row < self.game.board.rowsLeft(){
+                        self.sprites[to.row][to.col].zRotation = 0
                         self.sprites[to.row][to.col].alpha = 1
                         self.sprites[to.row][to.col].position = center
-                        fake.removeFromParent()
                     }
+                    fake.removeFromParent()
                 })
             }
         }
