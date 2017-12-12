@@ -15,7 +15,7 @@ class ClusterBombAbility: AbilityModel {
         name = "Missile Barrage"
         cost = 1000
         level = 1
-        warmUpTime = 10
+        warmUpTime = 15
         abilityDuration = 0
         desc = "Fire the guns. Fire ALL the guns! Destroys a number of random pieces."
     }

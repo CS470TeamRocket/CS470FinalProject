@@ -38,6 +38,7 @@ class AudioPlayer {
                     }
                     try musicPlayer = AVAudioPlayer(contentsOf: url)
                     musicPlayer!.play()
+                    musicPlayer!.numberOfLoops = -1
                     currSong = title
                 }
             }catch {
