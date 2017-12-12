@@ -84,11 +84,16 @@ class GameModel: NSObject {
         print("Got to level \(level)!")
         board.advanceLevel()
         getNextGoal(current: level)
+        scene.ticker.removeAllActions()
+        
         if(!timeStopped) {
-            scene.ticker.removeAllActions()
-            scene.ticker.run(SKAction.rotate(toAngle: 0, duration: 2.9))
             //scene.ticker.zRotation = 0
+            scene.ticker.run(SKAction.rotate(toAngle: 0, duration: 2.9))
             stopTime(delay: 3, hard: true)  //Stops time for 3 seconds, then restarts the timer.
+        } else {
+            currTime = 0;
+            scene.ticker.run(SKAction.rotate(toAngle: 0, duration: 0.5))//Time is already stopped, so simply reset the clock count so we don't cause race
+            //conditions.
         }
         streak += 1
         //Check current "restore row" count. If enough, we restore a new row.
@@ -190,6 +195,7 @@ class GameModel: NSObject {
         }
         print("SOFT: \(scene.rotation) ROT: \(rot)")
         scene.ticker.run(SKAction.rotate(toAngle: rot, duration: self.timeLeft-Double(self.currTime)))
+        scene.redTime()
     }
     
     @objc func hardResetTimer() {
@@ -212,8 +218,7 @@ class GameModel: NSObject {
     }
     
     func restoreRow() {
-        board.restoreRow()
-        scene.sunShrink()
+        calculateScore(board.restoreRow())
     }
     
     func printBoard() {
@@ -231,7 +236,11 @@ class GameModel: NSObject {
     }
     
     @objc func timeTick() {
+        if !scene.abilityButton.isEnabled, UserDataHolder.shared.currentCharacter != nil, (UserDataHolder.shared.currentCharacter?.ability.abilityReady)! {
+            scene.abilityButton.isEnabled = true
+        }
         if boostTime == 1 {
+            scene.redScore()
             pointValue = 50
         }
         if boostTime > 0{
@@ -258,25 +267,8 @@ class GameModel: NSObject {
             gameOver()
         }else {
             streak = 0
-            scene.sunGrow()
             board.removeRow()
-            //scene.removeBottomRow()
-            //if scene.curArrow != nil {
-            //    scene.sprites[scene.curRow][scene.maxCols-1].position = scene.centers[scene.curRow][scene.maxCols-1]
-            //}
-            if scene.curRow != nil, scene.curRow < board.rowsLeft() {
-                scene.snapBackRow(newSprites: scene.sprites[scene.curRow])
-            }
-            scene.curArrow = nil
-            scene.lastDirection = nil
-            scene.fakeRowL = []
-            scene.fakeRowR = []
-            scene.touchesEnded(scene.lastSet, with: scene.lastEvent)
-            if scene.ticker.hasActions() {
-                scene.ticker.removeAllActions()
-            }
-            scene.ticker.zRotation = 0
-            scene.rotateTicker(duration: timeLeft)
+            scene.timeUp(timeLeft)
             printBoard()
         }
     }
@@ -381,9 +373,14 @@ class GameModel: NSObject {
     }
     
     func bomb(idx: BoardIndex, size: Int) {
+        var sound = SKAction.wait(forDuration: 0)
+        if board.getPiece(index: idx).getType() != pieceType.Money {
+            sound = SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: false)
+        }
         let list = indexAdjacent(idx: idx, cardinalOnly: false, dist: size)
         var actions = board.clearPieces(list: list)
         actions.append(SKAction.wait(forDuration: 0))
+        scene.run(sound)
         scene.doSequencialActions(actions: actions, index: 0)
         _ = board.update()
         updateScore(pointValue * list.count)
@@ -393,6 +390,9 @@ class GameModel: NSObject {
         let list = indexRandom(probability)
         var actions = board.clearPieces(list: list)
         actions.append(SKAction.wait(forDuration: 0))
+        if actions.count > 0 {
+            scene.run(SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: false))
+        }
         scene.doSequencialActions(actions: actions, index: 0)
         _ = board.update()
         updateScore((pointValue) * list.count)
@@ -401,7 +401,7 @@ class GameModel: NSObject {
     func clearBottomRow(_ amount: Int) {
         var rows = [Int]()
         for i in 0 ..< amount {
-            let rowNum = board.rowsLeft() - i
+            let rowNum = board.rowsLeft() - 1 - i
             if(rowNum >= 0) {
                 rows.append(rowNum)
             }
@@ -414,6 +414,26 @@ class GameModel: NSObject {
         updateScore((pointValue / 2) * list.count)
     }
     
+    func clearCenterColumn(_ amount: Int) {
+        var columns = [Int]()
+        let mid : Int = Int(Double(board.numColumns()) / 2.0)
+        columns.append(mid)
+        for i in 1 ..< amount {
+            if(i <= mid) {
+                columns.append(mid - i)
+                if(i != mid) {
+                    columns.append(mid + i)
+                }
+            }
+        }
+        let list = indexColumns(columns)
+        var actions = board.clearPieces(list: list)
+        actions.append(SKAction.wait(forDuration: 0))
+        scene.doSequencialActions(actions: actions, index: 0)
+        _ = board.update()
+        updateScore((pointValue) * list.count)
+    }
+    
     func pointBoost(duration: TimeInterval, pointValue: Int) {
         //print("BOOSTED")
         self.pointValue = pointValue
@@ -422,6 +442,13 @@ class GameModel: NSObject {
     
     func teleport() {
         scene.teleportMode = true
+    }
+    
+    func teleMove(_ first: BoardIndex, _ second: BoardIndex) {
+        let res = board.teleSwap(first, second)
+        if(res.success) {
+            calculateScore(res.clears)
+        }
     }
     
     func calculateScore(_ list: [Int]){
@@ -457,7 +484,7 @@ class GameModel: NSObject {
         scene.quitButton.sendActions(for: UIControlEvents.touchUpInside)
     }
     
-    
+    /*
     func saveScoreAndTime() {
 
         let currentBestScore = UserDefaults.standard.integer(forKey: UserDataHolder.shared.BEST_SCORE_KEY)
@@ -472,6 +499,7 @@ class GameModel: NSObject {
             print("You have beat your previous time of \(currentBestTime)")
         }
     }
+    */
 
 //    func startGame(diff: Int, frame: CGRect) {
 //        //gameBoard = BoardModel()

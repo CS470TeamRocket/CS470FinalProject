@@ -68,6 +68,7 @@ class GameViewController: UIViewController {
                 scene = newscene
                 scene!.quitButton = QuitButton
                 scene!.attachAbilityButton(button: abilityButton)
+
                 // Set the scale mode to scale to fit the window
                 scene!.scaleMode = .aspectFill
                 

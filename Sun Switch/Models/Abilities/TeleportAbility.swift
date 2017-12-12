@@ -13,10 +13,10 @@ class TeleportAbility: AbilityModel {
         super.init(id: id)
         image = "Person2.png" //Placeholder
         name = "Teleport"
-        desc = "Who's worrying about commute times when you can teleport your workplace to you?"
+        desc = "The journey continues... Swap two pieces anywhere on the board, regardless of whether a match is produced."
         cost = 1000
         level = 1
-        warmUpTime = 10
+        warmUpTime = 8
         abilityDuration = 0
     }
     

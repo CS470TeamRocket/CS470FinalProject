@@ -1,33 +1,34 @@
 //
-//  ClusterBombAbility.swift
+//  ColumnWipeAbility.swift
 //  Sun Switch
 //
-//  Created by student on 12/10/17.
+//  Created by student on 12/11/17.
 //  Copyright © 2017 student. All rights reserved.
 //
 
 import UIKit
 
-class ClusterBombAbility: AbilityModel {
+class ColumnWipeAbility: AbilityModel {
     override init(id: Int) {
         super.init(id: id)
         image = "Person2.png" //Placeholder
-        name = "Missile Barrage"
+        name = "Beam Katana"
         cost = 1000
         level = 1
-        warmUpTime = 15
+        warmUpTime = 10
         abilityDuration = 0
-        desc = "Fire the guns. Fire ALL the guns! Destroys a number of random pieces."
+        desc = "Witness the dancing of my blade! Deletes the entire center column."
     }
     
     override func doAbility() -> (Bool){
         if (super.doAbility()) {
             if let gameModel = UserDataHolder.shared.currentGameModel {
-                gameModel.clusterBomb(10)
+                gameModel.clearCenterColumn(1)
                 return true
             }
         }
         return false
     }
+    
 }
 
