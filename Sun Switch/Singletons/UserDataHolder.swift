@@ -122,7 +122,7 @@ class UserDataHolder {
         unlockedBonuses.append(bonus)
         for i in 0..<lockedBonuses.count {
             if(lockedBonuses[i].bonusId == bonus.bonusId) {
-                lockedCharacters.remove(at: i)
+                lockedBonuses.remove(at: i)
                 break
             }
         }
@@ -131,8 +131,10 @@ class UserDataHolder {
             for b in unlockedBonuses {
                 index.append(b.bonusId)
             }
+            index.sort()
             updateBonuses(index, save: true)
         }
+        unlockedBonuses.sort {return $0.bonusId < $1.bonusId}
     }
     
     func loadFromData() {

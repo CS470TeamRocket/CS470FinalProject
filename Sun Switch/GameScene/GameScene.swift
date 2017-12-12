@@ -88,7 +88,7 @@ class GameScene: SKScene {
         abilityStopwatch.zPosition = 40
         abilityTicker.zPosition = 40
     }
-//<<<<<<< HEAD
+
 
     func redTime() {
         print(stopwatch.texture!)
@@ -111,12 +111,12 @@ class GameScene: SKScene {
             meterLine.texture = SKTexture(imageNamed: "meterLine")
         }
         boosted = !boosted
+
     }
-//=======
+
     
     deinit {
         print("GameScene memory freed")
-//>>>>>>> origin/Zach
     }
     
     func backStars() {
@@ -401,7 +401,7 @@ class GameScene: SKScene {
                 group = SKAction.group([SKAction.move(to: center, duration: 0.4), SKAction.fadeAlpha(to: 1, duration: 0.4)])
             }
             fake.run(group, completion: {
-                if self.sprites[r][c] == sprite {
+                if sprite == self.sprites[r][c]{
                     self.sprites[r][c].zRotation = 0
                     self.sprites[r][c].alpha = 1
                 }
@@ -726,9 +726,9 @@ class GameScene: SKScene {
         let rand = Int(arc4random()) % 3
         var sp = SKSpriteNode(imageNamed: points[rand])
         sp.setScale(0.5)
-        if bombMode{
+        //if bombMode{
             sp = SKSpriteNode(imageNamed: "explosion")
-        }
+        //}
         self.addChild(sp)
         sp.position = cp
         let group = SKAction.group([SKAction.scale(by: 2, duration: 0.2), SKAction.fadeOut(withDuration: 0.2)])

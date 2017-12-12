@@ -9,7 +9,7 @@
 import UIKit
 
 class BonusStoreTableViewCell: UITableViewCell {
-    @IBOutlet weak var BuyButton: roundedButton!
+    @IBOutlet weak var BuyButton: UIButton!
     @IBOutlet weak var cellImage: UIImageView!
     @IBOutlet weak var cellTitle: UILabel!
     @IBOutlet weak var cellDesc: UITextView!
@@ -47,5 +47,6 @@ class BonusStoreTableViewCell: UITableViewCell {
         cellDesc.text = bonus.getDesc()
         cellDesc.text = bonus.getDesc()
         bonusCost.text = String( bonus.getCost())
+        bonusId.text = String( bonus.bonusId)
     }
 }
