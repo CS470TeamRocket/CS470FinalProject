@@ -11,10 +11,11 @@ import Foundation
 class GetPointsBonus: BonusModel {
     override init() {
         super.init()
-        image = "Person2.png" //Placeholder
-        name = "GetPoints"
-        desc = "Money Stuff"
-        cost = 100
+        image = #imageLiteral(resourceName: "money") 
+        //image = "Person2.png" //Placeholder
+        name = "Money Bags"
+        desc = "Don't you sometimes just want some cold, hard, space cash?"
+        cost = 1000
         bonusId = 1
         symbol = "$" //Symbol within the game model
         type = pieceType.Money

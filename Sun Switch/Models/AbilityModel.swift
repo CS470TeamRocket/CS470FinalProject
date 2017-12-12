@@ -31,6 +31,7 @@ class AbilityModel {
         if abilityReady {
             abilityReady = false
             timer = Timer.scheduledTimer(timeInterval: abilityDuration + warmUpTime, target: self, selector: (#selector(enableAbility)), userInfo: nil, repeats: false)
+            UserDataHolder.shared.currentGameModel?.runAbilityStopwatchAnimation(duration: abilityDuration + warmUpTime)
             return true
         }else{
             return false

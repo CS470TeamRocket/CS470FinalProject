@@ -40,7 +40,9 @@ class GameScene: SKScene {
     var meter = SKSpriteNode(imageNamed: "meter")
     var meterLine = SKSpriteNode(imageNamed: "meterLine")
     var stopwatch = SKSpriteNode(imageNamed: "stopwatch")
+    var abilityStopwatch = SKSpriteNode(imageNamed: "stopwatch")
     var ticker = SKSpriteNode(imageNamed: "ticker")
+    var abilityTicker = SKSpriteNode(imageNamed: "ticker")
     var curSprite: (SKSpriteNode, CGPoint, Int, Int)!
     var otherSprite: (SKSpriteNode, CGPoint, Int, Int)!
     var teleSprite1: (SKSpriteNode, CGPoint, Int, Int)!
@@ -59,9 +61,8 @@ class GameScene: SKScene {
     var boosted: Bool = false
     var teleportMode: Bool = false
     var bombMode: Bool = false
-    var abilityButton: roundedButton!
-    
     var quitButton: UIButton!
+    var abilityButton: UIButton!
     var game: GameModel!
     var dir: String = ""
     var bottom = 0
@@ -84,7 +85,10 @@ class GameScene: SKScene {
         self.backgroundColor = UIColor.gray
         stopwatch.zPosition = -20
         meterLine.zPosition = -20
+        abilityStopwatch.zPosition = 40
+        abilityTicker.zPosition = 40
     }
+//<<<<<<< HEAD
 
     func redTime() {
         print(stopwatch.texture!)
@@ -107,6 +111,12 @@ class GameScene: SKScene {
             meterLine.texture = SKTexture(imageNamed: "meterLine")
         }
         boosted = !boosted
+    }
+//=======
+    
+    deinit {
+        print("GameScene memory freed")
+//>>>>>>> origin/Zach
     }
     
     func backStars() {
@@ -162,7 +172,7 @@ class GameScene: SKScene {
     func destroySelf() {
         print("Destroying self!")
         UserDataHolder.shared.currentGameModel = nil
-        //game.gameOver()
+        game.gameOver()
         game = nil
         sprites.removeAll()
         entities.removeAll()
@@ -186,6 +196,40 @@ class GameScene: SKScene {
         ticker.run(SKAction.repeatForever(SKAction.rotate(byAngle: -CGFloat(.pi * 2.0), duration: duration)), withKey: "rotate")
     }
     
+    func rotateAbilityTicker(duration: TimeInterval) {
+        //make ticker visible
+        abilityStopwatch.alpha = 1
+        abilityTicker.alpha = 1
+
+        abilityTicker.run(SKAction.rotate(byAngle: -CGFloat(M_PI * 2.0), duration: duration), completion: {() -> Void in
+            //make it invisible again
+            self.abilityStopwatch.alpha = 0
+            self.abilityTicker.alpha = 0
+            self.abilityButton.isHidden = false
+        })
+    }
+    
+    func attachAbilityButton(button: UIButton) {
+        abilityButton = button
+        var abilityStopwatchPosition = abilityButton.center
+        abilityStopwatchPosition.x += -frame.width/2 //adjusting to different coordinate system
+        abilityStopwatchPosition.y += -frame.height/2
+        abilityStopwatchPosition.y = -abilityStopwatchPosition.y
+        //let meterPosition = CGPoint(x: 30, y:Int(self.frame.height/2) - 50)
+        //var stopwatchPosition = meterPosition
+        //stopwatchPosition.x = stopwatchPosition.x - meter.size.width/2 - 30
+        //stopwatchPosition.y = stopwatchPosition.y + meter.size.height/2 + 30
+        //var abilityStopwatchPosition = stopwatchPosition
+        //set position for clock on top of ability button
+        abilityTicker.position = abilityStopwatchPosition
+        abilityStopwatch.position = abilityStopwatchPosition
+        abilityStopwatch.zPosition = 1
+        abilityTicker.zPosition = 1
+        //Make ability stopwatch invisible
+        abilityTicker.alpha = 0
+        abilityStopwatch.alpha = 0
+    }
+    
     func makeBoard(board: [RowModel]) {
         backStars()
         self.addChild(meter)
@@ -198,11 +242,18 @@ class GameScene: SKScene {
         meterLine.size.width = 2
         var stopwatchPosition = meterPosition
         stopwatchPosition.x = stopwatchPosition.x - meter.size.width/2 - 30
+
         self.addChild(stopwatch)
         self.addChild(ticker)
+        self.addChild(abilityTicker)
+        self.addChild(abilityStopwatch)
         stopwatch.position = stopwatchPosition
         ticker.position = stopwatchPosition
         ticker.position.y -= 2
+        //abilityTicker position cannot be known yet, so make it invisible
+        //abilityTicker.alpha = 0
+        //abilityStopwatch.alpha = 0
+        
         for r in 0..<board.count {
             TempRow = []
             TempRowS = []
@@ -673,11 +724,14 @@ class GameScene: SKScene {
     func pointPop(row: Int, col: Int) {
         let cp = centers[row][col]
         let rand = Int(arc4random()) % 3
-        let sp = SKSpriteNode(imageNamed: points[rand])
-        self.addChild(sp)
+        var sp = SKSpriteNode(imageNamed: points[rand])
         sp.setScale(0.5)
+        if bombMode{
+            sp = SKSpriteNode(imageNamed: "explosion")
+        }
+        self.addChild(sp)
         sp.position = cp
-        let group = SKAction.group([SKAction.moveBy(x: 0, y: 15, duration: 0.2), SKAction.fadeOut(withDuration: 0.2)])
+        let group = SKAction.group([SKAction.scale(by: 2, duration: 0.2), SKAction.fadeOut(withDuration: 0.2)])
         let seque = SKAction.sequence([group, SKAction.removeFromParent()])
         sp.run(seque)
     }
@@ -724,10 +778,12 @@ class GameScene: SKScene {
     }
     
     func doAbility() {
-        abilityButton.isEnabled = false
+        abilityButton.isHidden = true
         let ability = UserDataHolder.shared.currentCharacter?.ability
-        print("ABILITY:", ability!)
-        abilityVisuals(id: (ability!.id))
+        //print("ABILITY:", ability)
+        if ability != nil {
+            abilityVisuals(id: (ability!.id))
+        }
         _ = ability?.doAbility()
     }
     
@@ -764,9 +820,11 @@ class GameScene: SKScene {
                 return
             }
             if teleportMode {
+                let pulse = SKAction.sequence([SKAction.scale(by: 1.25, duration: 1), SKAction.scale(by: CGFloat(4.0/5.0), duration: 1)])
                 for r in 0..<sprites.count{ for c in 0..<sprites[r].count{ if sprites[r][c].contains(location) {
                     if teleSprite1 == nil {
                         teleSprite1 = (sprites[r][c], centers[r][c], r, c)
+                        teleSprite1.0.run(SKAction.repeatForever(pulse))
                         return
                     }
                     else if sprites[r][c] != teleSprite1.0 {
@@ -796,12 +854,22 @@ class GameScene: SKScene {
                         }
                          */
                         game.teleMove(lastIdx1, lastIdx2)
+                        let rotateAction = SKAction.rotate(byAngle: CGFloat(.pi * 2.0) , duration: 5)
+                        teleSprite1.0.size = CGSize(width: helperSprite.size.width, height: helperSprite.size.height)
+                        teleSprite1.0.removeAllActions()
+                        teleSprite1.0.run(SKAction.repeatForever(rotateAction))
+                        teleSprite2.0.removeAllActions()
+                        teleSprite2.0.run(SKAction.repeatForever(rotateAction))
                         teleSprite1 = nil
                         teleSprite2 = nil
                         teleportMode = false
                     }
                     else if sprites[r][c] == teleSprite1.0 {
                         //teleSprite1.0.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(.pi*2), duration: 5)))
+                        teleSprite1.0.removeAllActions()
+                        teleSprite1.0.size = CGSize(width: helperSprite.size.width, height: helperSprite.size.height)
+                        let rotateAction = SKAction.rotate(byAngle: CGFloat(.pi * 2.0) , duration: 5)
+                        teleSprite1.0.run(SKAction.repeatForever(rotateAction))
                         teleSprite1 = nil
                         return
                     }

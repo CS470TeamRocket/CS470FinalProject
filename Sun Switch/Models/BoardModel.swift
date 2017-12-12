@@ -169,6 +169,7 @@ class BoardModel: NSObject {
                 }
             }
         }
+        scene.bombMode = false
         return matched
     }
     
