@@ -23,6 +23,8 @@ class GameOverViewController: UIViewController {
     //var audio: AVAudioPlayer?
     var score: Int = 0
     var time: Int = 0
+    var wasExtreme = false
+    var wasClassic = false
     
     @IBAction func reset(_ sender: roundedButton) {
         //scene.removeAllChildren()
@@ -110,15 +112,21 @@ class GameOverViewController: UIViewController {
     }
     
     
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
+        if segue.identifier == "restart" {
+            if let destination = segue.destination as? GameViewController{
+                destination.classic = wasClassic
+                destination.extreme = wasExtreme
+            }
+        }
      }
-     */
+    
     
     
 }

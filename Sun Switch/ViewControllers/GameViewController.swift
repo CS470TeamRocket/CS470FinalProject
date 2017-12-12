@@ -57,6 +57,9 @@ class GameViewController: UIViewController {
                     viewController.time = (scene?.game.totalTime)! as Int
                     viewController.scene = scene!
                 }
+                //tells the viewcontroller what mode the game was in, so that it can replicate that on replay
+                viewController.wasExtreme = extreme
+                viewController.wasClassic = classic
             }
         }
     }

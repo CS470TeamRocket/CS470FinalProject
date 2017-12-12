@@ -777,7 +777,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="reset:" destination="jYi-6p-Ds9" eventType="touchUpInside" id="UdM-mh-dMn"/>
-                                    <segue destination="BV1-FR-VrT" kind="presentation" modalTransitionStyle="crossDissolve" id="ygR-aO-eBV"/>
+                                    <segue destination="BV1-FR-VrT" kind="presentation" identifier="restart" modalTransitionStyle="crossDissolve" id="ygR-aO-eBV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbf-VU-CAG" userLabel="Shop" customClass="roundedButton" customModule="Sun_Switch" customModuleProvider="target">
@@ -1030,17 +1030,9 @@
         <image name="sun" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-
-        <segue reference="fJM-Ih-8gH"/>
-        <segue reference="9hb-7R-6ck"/>
-        <segue reference="5U4-H8-ess"/>
-        <segue reference="kfT-Yf-d93"/>
-
         <segue reference="ygR-aO-eBV"/>
-        <segue reference="fJM-Ih-8gH"/>
-        <segue reference="ghP-ia-Gxg"/>
-        <segue reference="0CH-yl-3Ae"/>
-        <segue reference="GxQ-OH-eel"/>
-
+        <segue reference="Voh-4E-Nbu"/>
+        <segue reference="65e-H9-Asj"/>
+        <segue reference="xOW-8l-td5"/>
     </inferredMetricsTieBreakers>
 </document>
