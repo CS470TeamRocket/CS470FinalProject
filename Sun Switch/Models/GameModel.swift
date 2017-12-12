@@ -73,7 +73,7 @@ class GameModel: NSObject {
             advanceLevel()
         }
         else {
-            print("S: \(score) N: \(nextGoal) L: \(lastGoal)")
+            //print("S: \(score) N: \(nextGoal) L: \(lastGoal)")
             if level <= 1 {
                 scene.run(scene.scoreMeter(score: self.score, maxScore: self.nextGoal))
                 
@@ -90,10 +90,10 @@ class GameModel: NSObject {
 //    }
     
     func advanceLevel() {
-        print("LEVEL UP!")
+        //print("LEVEL UP!")
         let streakRestore: Int = 3
         level += 1
-        print("Got to level \(level)!")
+        //print("Got to level \(level)!")
         board.advanceLevel()
         getNextGoal(current: level)
         scene.ticker.removeAllActions()
@@ -160,7 +160,7 @@ class GameModel: NSObject {
     */
     func rotateRow(row: Int, amount: Int, dir: direction)->Bool {
         let out = board.rotateRow(row: row, amount: amount, dir: dir)
-        printBoard()
+        //printBoard()
         if(out.success) {
             calculateScore(out.clears)
             if(extreme && board.missingRows() > 0) {
@@ -201,7 +201,7 @@ class GameModel: NSObject {
             scene.rotateTicker(duration: timeLeft)
             currTime = 0
         }
-        print("Setting timer!")
+        //print("Setting timer!")
         timeStopped = false
         timer = Timer.scheduledTimer(timeInterval: TimeInterval(1), target: self, selector: (#selector(timeTick)), userInfo: nil, repeats: true)
         //Re-initialize the actual timer.
@@ -213,7 +213,7 @@ class GameModel: NSObject {
         if scene.rotation > CGFloat(M_PI) {
             rot = rot*2
         }
-        print("SOFT: \(scene.rotation) ROT: \(rot)")
+        //print("SOFT: \(scene.rotation) ROT: \(rot)")
         scene.ticker.run(SKAction.rotate(toAngle: rot, duration: self.timeLeft-Double(self.currTime)))
         scene.redTime()
     }
@@ -225,7 +225,7 @@ class GameModel: NSObject {
     func stopTime(delay: Int, hard: Bool){
         timeStopped = true
         scene.rotation = scene.ticker.zRotation
-        print("Stopping Time")
+        //print("Stopping Time")
 
         timer.invalidate()
         if(hard) {
@@ -282,14 +282,14 @@ class GameModel: NSObject {
     
     
     func timeUp() {
-        print("\(board.rowsLeft()) rows left.")
+        //print("\(board.rowsLeft()) rows left.")
         if(board.rowsLeft() <= 2){
             gameOver()
         }else {
             streak = 0
             board.removeRow()
             scene.timeUp(timeLeft)
-            printBoard()
+            //printBoard()
         }
     }
     
@@ -479,26 +479,26 @@ class GameModel: NSObject {
         for i in list {
             let combomult = 1 + (0.25 * Double(i - 3))
             total += Int(Double(pointValue) * (Double(i) * combomult) * multiplier)
-            print(pointValue,"->",i,"->",combomult,"->",multiplier,"->",total)
+            //print(pointValue,"->",i,"->",combomult,"->",multiplier,"->",total)
             multiplier += 0.5
         }
-        print()
+        //print()
         updateScore(total)
     }
     
     func updateScore(_ points: Int) {
         
         score += points
-        print("Worth \(points) points! You have  You have \(score) points, and the next level is at \(nextGoal)")
+        //print("Worth \(points) points! You have  You have \(score) points, and the next level is at \(nextGoal)")
         checkGoal()
         scene.updateScore(score: score)
     }
     
     func gameOver() {
         if(tooLong) {
-            print("Game Over! You lasted for over 292 billion years, somehow! Otherwise, there was some kind of horrible glitch!")
+            //print("Game Over! You lasted for over 292 billion years, somehow! Otherwise, there was some kind of horrible glitch!")
         } else {
-            print("Game Over! You lasted \(totalTime) seconds! Your total score was \(score)!")
+            //print("Game Over! You lasted \(totalTime) seconds! Your total score was \(score)!")
         }
         board = nil
         over = true

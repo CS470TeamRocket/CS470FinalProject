@@ -18,7 +18,7 @@ class CharacterTableViewController: UITableViewController {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         //grab info from singleton
         data = UserDataHolder.shared.getUnlockedCharacters()
-        print("Data", data)
+        //print("Data", data)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

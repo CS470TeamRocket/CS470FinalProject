@@ -108,9 +108,9 @@ class GameScene: SKScene {
         updateSpritesFromBoard()
     }
     func redTime() {
-        print(stopwatch.texture!)
+        //print(stopwatch.texture!)
         if !stopped {
-            print("STOPPED", stopped)
+            //print("STOPPED", stopped)
             stopwatch.texture = SKTexture(imageNamed: "stopwatchRed")
         }
         else {
@@ -120,7 +120,7 @@ class GameScene: SKScene {
     }
     
     func redScore() {
-        print("BOOSTED", boosted)
+        //print("BOOSTED", boosted)
         if !boosted {
             meterLine.texture = SKTexture(imageNamed: "meterLineRed")
         }
@@ -187,7 +187,7 @@ class GameScene: SKScene {
     }
     
     func destroySelf() {
-        print("Destroying self!")
+        //print("Destroying self!")
         UserDataHolder.shared.currentGameModel = nil
         game.gameOver()
         game = nil
@@ -537,7 +537,7 @@ class GameScene: SKScene {
             for a in arrows[curRow] {
                 a.sprite.position = a.originalCenter
             }
-            printSpriteRow(row: newSprites)
+            //printSpriteRow(row: newSprites)
             sprites[curRow] = newSprites
             for c in 0..<maxCols {
                 var s: SKSpriteNode
@@ -572,7 +572,7 @@ class GameScene: SKScene {
         if (moves == 0) {
             return false
         }
-        print("Moves: \(moves)")
+        //print("Moves: \(moves)")
         var move_dir : direction
         if moves > 0 {
             move_dir = direction.right
@@ -679,16 +679,16 @@ class GameScene: SKScene {
             //board.remove(at: board.count-1)
             sprites.remove(at: bottom)
             //print(board.count, "&", sprites.count)
-            print("Changing bottom to:", bottom-1)
+            //print("Changing bottom to:", bottom-1)
             bottom -= 1
         }
     }
     
     func recreateBottomRow(newRow: RowModel) {
-        print(bottom, "<", maxRows)
+        //print(bottom, "<", maxRows)
         if bottom < maxRows-1 {
             //game.restoreRow()
-            print("Bottom is currently:", bottom)
+            //print("Bottom is currently:", bottom)
             for r in 0..<sprites[0].count {
                 let piece = newRow.getPiece(col: r)
                 TempRow.append(piece)
@@ -717,7 +717,7 @@ class GameScene: SKScene {
             sprites.append(TempRowS)
             TempRow = []
             TempRowS = []
-            print("Changing bottom to:", bottom+1)
+            //print("Changing bottom to:", bottom+1)
             bottom += 1
         }
         sunShrink()
@@ -805,7 +805,7 @@ class GameScene: SKScene {
     }
     
     func abilityVisuals(id: Int) {
-        print(id)
+        //print(id)
         switch id{
         case 0:
             redTime()
