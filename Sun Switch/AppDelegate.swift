@@ -10,15 +10,6 @@ import UIKit
 import CoreData
 import  AVFoundation
 
-struct Defaults {
-    static let bestScore: Int = 0
-    static let bestTime: Int = 0
-    static let TotalCurrency: Int = 50000
-    static let unlockedChars : [Bool] = [true, true, false, false]
-    static let unlockedAbilities: [Bool] = [false, false]
-    //let characters : [CharacterModel]
-    //let lockedChars : [CharacterModel]
-}
 
 struct Characters {
 
@@ -33,8 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        generateDummyUserData()
-        fillUserDefaultsIfFirstLaunch()
+        //generateDummyUserData()
+        //fillUserDefaultsIfFirstLaunch()
+        UserDataHolder.shared.loadFromData()
         return true
     }
 
@@ -108,57 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    func fillUserDefaultsIfFirstLaunch() {
-        let launchedBefore = UserDefaults.standard.bool(forKey: UserDataHolder.shared.LAUNCHED_BEFORE_KEY)
-        if launchedBefore {
-            print("Not First Launch")
-            print(UserDefaults.standard.array(forKey: UserDataHolder.shared.UNLOCKED))
-            UserDataHolder.shared.updateCharacters(characters: UserDataHolder.shared.characters)
-            //resetUserDefaults()
-
-        }
-        else {
-            print("First Launch")
-            resetUserDefaults()
-            UserDefaults.standard.set(true, forKey: UserDataHolder.shared.LAUNCHED_BEFORE_KEY)
-            //Anything that needs to be set one the first launch should be set here:
-            //Set the best score and time to zero
-         }
-        }
-    
-    func resetUserDefaults() {
-        print("RESET")
-        resetScore()
-        resetTime()
-        resetCharacters()
-        //UserDefaults.standard.set(Int(0),forKey: UserDataHolder.shared.BEST_SCORE_KEY)
-        //UserDefaults.standard.set(Int(0),forKey: UserDataHolder.shared.BEST_TIME_KEY)
-        //UserDefaults.standard.set(Int(50000), forKey: UserDataHolder.shared.TOTAL_CURRENCY)
-        UserDefaults.standard.set(Int(2), forKey: UserDataHolder.shared.NUM_UNLOCKED_CHARACTERS)
-        UserDefaults.standard.set([], forKey: UserDataHolder.shared.CHARACTER_ID)
-        UserDefaults.standard.set([], forKey: UserDataHolder.shared.LOCKED_CHARACTERS_ID)
-        UserDefaults.standard.set([], forKey: UserDataHolder.shared.UNLOCKED_CHARACTER_ID)
-        UserDefaults.standard.set([], forKey: UserDataHolder.shared.ABILITY_ID)
-        UserDefaults.standard.set([true, true, false, false], forKey: UserDataHolder.shared.UNLOCKED)
-        UserDefaults.standard.synchronize()
-        UserDataHolder.shared.updateCharacters(characters: UserDataHolder.shared.characters)
-        //UserDataHolder.shared.updateAllSets()
-    }
-    
-    func resetScore() {
-        UserDefaults.standard.set(Defaults.bestScore, forKey: UserDataHolder.shared.BEST_SCORE_KEY)
-    }
-    
-    func resetTime() {
-        UserDefaults.standard.set(Defaults.bestTime, forKey: UserDataHolder.shared.BEST_TIME_KEY)
-    }
-    func resetCharacters() {
-        UserDefaults.standard.set(Defaults.unlockedChars, forKey: UserDataHolder.shared.UNLOCKED)
-    }
-    
-    
-    
-    
+    /*
     func generateDummyUserData () { //Here to fill the user data with something. to be replaced later, probably with some core data stuff which I don't currently understand
         var abilities: [AbilityModel] = []
         var characters: [CharacterModel] = []
@@ -211,5 +153,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDataHolder.shared.setUnlockedCharacters(characters: unlockedChars)
         UserDataHolder.shared.setLockedCharacters(characters: lockedChars)
     }
-    
+    */
 }

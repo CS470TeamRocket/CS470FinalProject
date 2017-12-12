@@ -15,6 +15,7 @@ class GetPointsBonus: BonusModel {
         name = "GetPoints"
         desc = "Money Stuff"
         cost = 100
+        bonusId = 1
         symbol = "$" //Symbol within the game model
         type = pieceType.Money
     }

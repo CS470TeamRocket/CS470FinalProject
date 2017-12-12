@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F584AFA1FDE4F280058D300 /* Xarvok.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F584AF81FDE4F270058D300 /* Xarvok.png */; };
+		3F584AFB1FDE4F280058D300 /* Geremlo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F584AF91FDE4F270058D300 /* Geremlo.png */; };
+		3F584AFD1FDE4FF40058D300 /* RowWipeAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F584AFC1FDE4FF40058D300 /* RowWipeAbility.swift */; };
+		3F584AFF1FDE54B00058D300 /* ClusterBombAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F584AFE1FDE54B00058D300 /* ClusterBombAbility.swift */; };
+		3F584B011FDE56410058D300 /* CharacterStoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F584B001FDE56410058D300 /* CharacterStoreTableViewCell.swift */; };
 		3F63635B1FB138F800A9D3C7 /* Sun_SwitchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F63635A1FB138F800A9D3C7 /* Sun_SwitchTests.swift */; };
 		3F6363661FB138F800A9D3C7 /* Sun_SwitchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6363651FB138F800A9D3C7 /* Sun_SwitchUITests.swift */; };
 		3F98CB1A1FCFA37E00106D1A /* AbilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98CB181FCFA37E00106D1A /* AbilityModel.swift */; };
@@ -17,7 +22,7 @@
 		3F98CB251FCFA50000106D1A /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98CB231FCFA50000106D1A /* CharacterTableViewCell.swift */; };
 		3F98CB261FCFA50000106D1A /* AbilityStoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98CB241FCFA50000106D1A /* AbilityStoreTableViewCell.swift */; };
 		3F98CB291FCFA51200106D1A /* CharacterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98CB271FCFA51200106D1A /* CharacterTableViewController.swift */; };
-		3F98CB2A1FCFA51200106D1A /* AbilityStoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98CB281FCFA51200106D1A /* AbilityStoreTableViewController.swift */; };
+		3F98CB2A1FCFA51200106D1A /* StoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98CB281FCFA51200106D1A /* StoreTableViewController.swift */; };
 		3F98CB311FCFA66100106D1A /* UserDataHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F98CB301FCFA66100106D1A /* UserDataHolder.swift */; };
 		3F98CB361FCFA69A00106D1A /* Person2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F98CB331FCFA69A00106D1A /* Person2.png */; };
 		3F98CB371FCFA69A00106D1A /* Person1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F98CB341FCFA69A00106D1A /* Person1.jpg */; };
@@ -77,6 +82,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F584AF81FDE4F270058D300 /* Xarvok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Xarvok.png; sourceTree = "<group>"; };
+		3F584AF91FDE4F270058D300 /* Geremlo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Geremlo.png; sourceTree = "<group>"; };
+		3F584AFC1FDE4FF40058D300 /* RowWipeAbility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowWipeAbility.swift; sourceTree = "<group>"; };
+		3F584AFE1FDE54B00058D300 /* ClusterBombAbility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterBombAbility.swift; sourceTree = "<group>"; };
+		3F584B001FDE56410058D300 /* CharacterStoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStoreTableViewCell.swift; sourceTree = "<group>"; };
 		3F63633C1FB138F800A9D3C7 /* Sun Switch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sun Switch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F6363511FB138F800A9D3C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F6363561FB138F800A9D3C7 /* Sun SwitchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sun SwitchTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,7 +103,7 @@
 		3F98CB231FCFA50000106D1A /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		3F98CB241FCFA50000106D1A /* AbilityStoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbilityStoreTableViewCell.swift; sourceTree = "<group>"; };
 		3F98CB271FCFA51200106D1A /* CharacterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterTableViewController.swift; sourceTree = "<group>"; };
-		3F98CB281FCFA51200106D1A /* AbilityStoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbilityStoreTableViewController.swift; sourceTree = "<group>"; };
+		3F98CB281FCFA51200106D1A /* StoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTableViewController.swift; sourceTree = "<group>"; };
 		3F98CB301FCFA66100106D1A /* UserDataHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataHolder.swift; sourceTree = "<group>"; };
 		3F98CB331FCFA69A00106D1A /* Person2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Person2.png; sourceTree = "<group>"; };
 		3F98CB341FCFA69A00106D1A /* Person1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Person1.jpg; sourceTree = "<group>"; };
@@ -238,6 +248,8 @@
 				3F98CB1E1FCFA39D00106D1A /* TeleportAbility.swift */,
 				3F98CB1D1FCFA39D00106D1A /* TimeStopAbility.swift */,
 				3FD5D9E51FD363FC00C78396 /* DropBombAbility.swift */,
+				3F584AFC1FDE4FF40058D300 /* RowWipeAbility.swift */,
+				3F584AFE1FDE54B00058D300 /* ClusterBombAbility.swift */,
 			);
 			path = Abilities;
 			sourceTree = "<group>";
@@ -254,6 +266,8 @@
 		3F98CB321FCFA67100106D1A /* TempImages */ = {
 			isa = PBXGroup;
 			children = (
+				3F584AF91FDE4F270058D300 /* Geremlo.png */,
+				3F584AF81FDE4F270058D300 /* Xarvok.png */,
 				3FAF5B681FD8AE7900ECD047 /* Chrona.png */,
 				3FAF5B641FD8ACE600ECD047 /* Captain Pointman.png */,
 				3FAF5B651FD8ACE600ECD047 /* Doc Boom.png */,
@@ -318,7 +332,7 @@
 		AE1F0E831FCF94DE008FD26B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3F98CB281FCFA51200106D1A /* AbilityStoreTableViewController.swift */,
+				3F98CB281FCFA51200106D1A /* StoreTableViewController.swift */,
 				AE1F0E851FCF94DE008FD26B /* GameViewController.swift */,
 				3F98CB271FCFA51200106D1A /* CharacterTableViewController.swift */,
 				AE1F0E861FCF94DE008FD26B /* HomeViewController.swift */,
@@ -333,6 +347,7 @@
 			children = (
 				3F98CB241FCFA50000106D1A /* AbilityStoreTableViewCell.swift */,
 				3F98CB231FCFA50000106D1A /* CharacterTableViewCell.swift */,
+				3F584B001FDE56410058D300 /* CharacterStoreTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -465,6 +480,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F584AFA1FDE4F280058D300 /* Xarvok.png in Resources */,
+				3F584AFB1FDE4F280058D300 /* Geremlo.png in Resources */,
 				AE1F0EA21FCF94DE008FD26B /* To Do in Resources */,
 				3F98CB371FCFA69A00106D1A /* Person1.jpg in Resources */,
 				AE1F0E9F1FCF94DE008FD26B /* sun_title.gif in Resources */,
@@ -508,8 +525,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F584AFD1FDE4FF40058D300 /* RowWipeAbility.swift in Sources */,
 				3F98CB261FCFA50000106D1A /* AbilityStoreTableViewCell.swift in Sources */,
 				3F98CB291FCFA51200106D1A /* CharacterTableViewController.swift in Sources */,
+				3F584AFF1FDE54B00058D300 /* ClusterBombAbility.swift in Sources */,
 				AE1F0E961FCF94DE008FD26B /* GameViewController.swift in Sources */,
 				AE1F0EA11FCF94DE008FD26B /* AppDelegate.swift in Sources */,
 				AE1F0EA01FCF94DE008FD26B /* Swift+Gif.swift in Sources */,
@@ -517,6 +536,7 @@
 				3F98CB201FCFA39D00106D1A /* TimeStopAbility.swift in Sources */,
 				AE1F0EF21FD3F6C8008FD26B /* RoundedButton.swift in Sources */,
 				AE1F0E7F1FCF94CE008FD26B /* BoardModel.swift in Sources */,
+				3F584B011FDE56410058D300 /* CharacterStoreTableViewCell.swift in Sources */,
 				AE1F0E971FCF94DE008FD26B /* HomeViewController.swift in Sources */,
 				AE1F0EF01FD3B36F008FD26B /* GameOverViewController.swift in Sources */,
 				3FC081BA1FD6093C002EAACC /* GetPointsBonus.swift in Sources */,
@@ -529,7 +549,7 @@
 				3FC081BE1FD60B06002EAACC /* DropBombBonus.swift in Sources */,
 				3F98CB1A1FCFA37E00106D1A /* AbilityModel.swift in Sources */,
 				AE1F0E821FCF94CE008FD26B /* RowModel.swift in Sources */,
-				3F98CB2A1FCFA51200106D1A /* AbilityStoreTableViewController.swift in Sources */,
+				3F98CB2A1FCFA51200106D1A /* StoreTableViewController.swift in Sources */,
 				AE1F0E801FCF94CE008FD26B /* GameModel.swift in Sources */,
 				3FC21EB01FD9B65A001FC9E3 /* AudioPlayer.swift in Sources */,
 				3F98CB311FCFA66100106D1A /* UserDataHolder.swift in Sources */,
