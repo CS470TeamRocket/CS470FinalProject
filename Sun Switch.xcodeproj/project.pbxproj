@@ -36,9 +36,10 @@
 		3FC21EB01FD9B65A001FC9E3 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC21EAF1FD9B65A001FC9E3 /* AudioPlayer.swift */; };
 		3FD5D9E61FD363FC00C78396 /* DropBombAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5D9E51FD363FC00C78396 /* DropBombAbility.swift */; };
 		3FD5DA0E1FD3878B00C78396 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FD5DA0D1FD3878B00C78396 /* data.json */; };
+		AE01B78A1FDF4E2600F38CED /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE01B7891FDF4E2600F38CED /* explosion.wav */; };
+		AE01B78D1FDF560500F38CED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE01B78B1FDF560500F38CED /* Main.storyboard */; };
 		AE1F0E7A1FCF94CE008FD26B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E6C1FCF94CE008FD26B /* Assets.xcassets */; };
 		AE1F0E7B1FCF94CE008FD26B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E6E1FCF94CE008FD26B /* LaunchScreen.storyboard */; };
-		AE1F0E7C1FCF94CE008FD26B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E701FCF94CE008FD26B /* Main.storyboard */; };
 		AE1F0E7D1FCF94CE008FD26B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AE1F0E731FCF94CE008FD26B /* GameScene.sks */; };
 		AE1F0E7E1FCF94CE008FD26B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0E741FCF94CE008FD26B /* GameScene.swift */; };
 		AE1F0E7F1FCF94CE008FD26B /* BoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F0E761FCF94CE008FD26B /* BoardModel.swift */; };
@@ -116,9 +117,10 @@
 		3FC21EAF1FD9B65A001FC9E3 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		3FD5D9E51FD363FC00C78396 /* DropBombAbility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropBombAbility.swift; sourceTree = "<group>"; };
 		3FD5DA0D1FD3878B00C78396 /* data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		AE01B7891FDF4E2600F38CED /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
+		AE01B78C1FDF560500F38CED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		AE1F0E6C1FCF94CE008FD26B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE1F0E6F1FCF94CE008FD26B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		AE1F0E711FCF94CE008FD26B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		AE1F0E731FCF94CE008FD26B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		AE1F0E741FCF94CE008FD26B /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		AE1F0E761FCF94CE008FD26B /* BoardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardModel.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		3F6117191FD623B600544B5C /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				AE01B7891FDF4E2600F38CED /* explosion.wav */,
 				AE1F0EF51FD69762008FD26B /* game.wav */,
 				AE1F0EF61FD69762008FD26B /* title2.ogg */,
 				AE1F0EF71FD69762008FD26B /* title2.wav */,
@@ -295,8 +298,8 @@
 		AE1F0E6D1FCF94CE008FD26B /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
+				AE01B78B1FDF560500F38CED /* Main.storyboard */,
 				AE1F0E6E1FCF94CE008FD26B /* LaunchScreen.storyboard */,
-				AE1F0E701FCF94CE008FD26B /* Main.storyboard */,
 			);
 			path = Base.lproj;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE01B78D1FDF560500F38CED /* Main.storyboard in Resources */,
 				3F584AFA1FDE4F280058D300 /* Xarvok.png in Resources */,
 				3F584AFB1FDE4F280058D300 /* Geremlo.png in Resources */,
 				AE1F0EA21FCF94DE008FD26B /* To Do in Resources */,
@@ -488,6 +492,7 @@
 				AE1F0E9E1FCF94DE008FD26B /* s2.gif in Resources */,
 				AE1F0E7B1FCF94CE008FD26B /* LaunchScreen.storyboard in Resources */,
 				3FAF5B691FD8AE7900ECD047 /* Chrona.png in Resources */,
+				AE01B78A1FDF4E2600F38CED /* explosion.wav in Resources */,
 				3F98CB361FCFA69A00106D1A /* Person2.png in Resources */,
 				AE1F0EF81FD69762008FD26B /* game.wav in Resources */,
 				AE1F0EFA1FD69762008FD26B /* title2.wav in Resources */,
@@ -495,7 +500,6 @@
 				AE1F0E7A1FCF94CE008FD26B /* Assets.xcassets in Resources */,
 				3FAF5B661FD8ACE700ECD047 /* Captain Pointman.png in Resources */,
 				3F98CB381FCFA69A00106D1A /* Person3.jpeg in Resources */,
-				AE1F0E7C1FCF94CE008FD26B /* Main.storyboard in Resources */,
 				3FAF5B671FD8ACE700ECD047 /* Doc Boom.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -588,20 +592,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		AE01B78B1FDF560500F38CED /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE01B78C1FDF560500F38CED /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		AE1F0E6E1FCF94CE008FD26B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				AE1F0E6F1FCF94CE008FD26B /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		AE1F0E701FCF94CE008FD26B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AE1F0E711FCF94CE008FD26B /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

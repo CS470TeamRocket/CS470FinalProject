@@ -67,6 +67,10 @@ class GameViewController: UIViewController {
             if let newscene = GameScene(fileNamed: "GameScene") {
                 scene = newscene
                 scene!.quitButton = QuitButton
+                scene!.abilityButton = abilityButton
+                if UserDataHolder.shared.currentCharacter == nil {
+                    abilityButton.isEnabled = false
+                }
                 // Set the scale mode to scale to fit the window
                 scene!.scaleMode = .aspectFill
                 
