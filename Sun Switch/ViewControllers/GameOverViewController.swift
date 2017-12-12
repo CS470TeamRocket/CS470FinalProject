@@ -37,6 +37,7 @@ class GameOverViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         scene.removeAllChildren()
+        scene.game.scene.removeFromParent()
         scene.removeFromParent()
     }
     

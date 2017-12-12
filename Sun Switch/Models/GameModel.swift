@@ -352,9 +352,14 @@ class GameModel: NSObject {
     }
     
     func bomb(idx: BoardIndex, size: Int) {
+        var sound = SKAction.wait(forDuration: 0)
+        if board.getPiece(index: idx).getType() != pieceType.Money {
+            sound = SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: false)
+        }
         let list = indexAdjacent(idx: idx, cardinalOnly: false, dist: size)
         var actions = board.clearPieces(list: list)
         actions.append(SKAction.wait(forDuration: 0))
+        scene.run(sound)
         scene.doSequencialActions(actions: actions, index: 0)
         _ = board.update()
         updateScore(pointValue * list.count)
