@@ -402,6 +402,13 @@ class GameModel: NSObject {
         scene.teleportMode = true
     }
     
+    func teleMove(_ first: BoardIndex, _ second: BoardIndex) {
+        let res = board.teleSwap(first, second)
+        if(res.success) {
+            calculateScore(res.clears)
+        }
+    }
+    
     func calculateScore(_ list: [Int]){
         var total = 0
         var multiplier = 1.0
