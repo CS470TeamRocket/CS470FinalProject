@@ -190,6 +190,7 @@ class GameModel: NSObject {
         }
         print("SOFT: \(scene.rotation) ROT: \(rot)")
         scene.ticker.run(SKAction.rotate(toAngle: rot, duration: self.timeLeft-Double(self.currTime)))
+        scene.redTime()
     }
     
     @objc func hardResetTimer() {
@@ -234,6 +235,7 @@ class GameModel: NSObject {
             scene.abilityButton.isEnabled = true
         }
         if boostTime == 1 {
+            scene.redScore()
             pointValue = 50
         }
         if boostTime > 0{
@@ -379,6 +381,9 @@ class GameModel: NSObject {
         let list = indexRandom(probability)
         var actions = board.clearPieces(list: list)
         actions.append(SKAction.wait(forDuration: 0))
+        if actions.count > 0 {
+            scene.run(SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: false))
+        }
         scene.doSequencialActions(actions: actions, index: 0)
         _ = board.update()
         updateScore((pointValue) * list.count)
