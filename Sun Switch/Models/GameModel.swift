@@ -236,9 +236,9 @@ class GameModel: NSObject {
     }
     
     @objc func timeTick() {
-        if !scene.abilityButton.isEnabled, UserDataHolder.shared.currentCharacter != nil, (UserDataHolder.shared.currentCharacter?.ability.abilityReady)! {
-            scene.abilityButton.isEnabled = true
-        }
+        //if scene.abilityButton.isHidden, UserDataHolder.shared.currentCharacter != nil, (UserDataHolder.shared.currentCharacter?.ability.abilityReady)! {
+        //    scene.abilityButton.isHidden = false
+        //}
         if boostTime == 1 {
             scene.redScore()
             pointValue = 50
@@ -375,6 +375,7 @@ class GameModel: NSObject {
     func bomb(idx: BoardIndex, size: Int) {
         var sound = SKAction.wait(forDuration: 0)
         if board.getPiece(index: idx).getType() != pieceType.Money {
+            scene.bombMode = true
             sound = SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: false)
         }
         let list = indexAdjacent(idx: idx, cardinalOnly: false, dist: size)
@@ -387,6 +388,7 @@ class GameModel: NSObject {
     }
     
     func clusterBomb(_ probability: Int) {
+        scene.bombMode = true
         let list = indexRandom(probability)
         var actions = board.clearPieces(list: list)
         actions.append(SKAction.wait(forDuration: 0))
