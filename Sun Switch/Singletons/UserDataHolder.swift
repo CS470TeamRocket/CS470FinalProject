@@ -13,7 +13,7 @@ struct Defaults {
     static let bestTime: Int = 0
     static let TotalCurrency: Int = 50000
     static let unlockedChars : [Int] = [1, 2]
-    static let unlockedBonuses: [Int] = [1, 2]
+    static let unlockedBonuses: [Int] = []
     //let characters : [CharacterModel]
     //let lockedChars : [CharacterModel]
 }
@@ -89,6 +89,14 @@ class UserDataHolder {
     
     func getLockedCharacters() -> [CharacterModel]{
         return lockedCharacters
+    }
+    
+    func getUnlockedBonuses() -> [BonusModel]{
+        return unlockedBonuses
+    }
+    
+    func getLockedBonuses() -> [BonusModel]{
+        return lockedBonuses
     }
 
     func unlockCharacter(_ char: CharacterModel, save: Bool) {

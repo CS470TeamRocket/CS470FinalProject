@@ -44,6 +44,11 @@ class GameModel: NSObject {
         
     }
     
+    deinit {
+        scene = nil
+        print("GameModel memory freed")
+    }
+    
     func getNextGoal(current: Int){
         lastGoal = nextGoal
         nextGoal = current * 2000
@@ -355,6 +360,10 @@ class GameModel: NSObject {
         }
         return false
 
+    }
+    
+    func runAbilityStopwatchAnimation(duration: TimeInterval){
+        scene.rotateAbilityTicker(duration: duration)
     }
     
     func setBomb() {
