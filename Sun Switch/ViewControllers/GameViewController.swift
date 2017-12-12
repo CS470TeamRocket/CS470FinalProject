@@ -67,14 +67,8 @@ class GameViewController: UIViewController {
             if let newscene = GameScene(fileNamed: "GameScene") {
                 scene = newscene
                 scene!.quitButton = QuitButton
-<<<<<<< HEAD
-                scene!.abilityButton = abilityButton
-                if UserDataHolder.shared.currentCharacter == nil {
-                    abilityButton.isEnabled = false
-                }
-=======
                 scene!.attachAbilityButton(button: abilityButton)
->>>>>>> origin/richardson
+
                 // Set the scale mode to scale to fit the window
                 scene!.scaleMode = .aspectFill
                 
