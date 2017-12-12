@@ -74,6 +74,7 @@ class GameScene: SKScene {
 
     override func sceneDidLoad() {
         super.sceneDidLoad()
+        
         let rotateAction = SKAction.rotate(byAngle: CGFloat(.pi * 2.0) , duration: 5)
         helperSprite.run(SKAction.repeatForever(rotateAction))
         game = GameModel(start: 1, view: self, isExtreme: extreme, isClassic: classic)
@@ -89,7 +90,23 @@ class GameScene: SKScene {
         abilityStopwatch.zPosition = 40
         abilityTicker.zPosition = 40
     }
-
+    
+    func toggleExtreme() {
+        extreme = true
+        if let a = abilityButton {
+            a.isHidden = true
+        }
+        game.toggleExtreme()
+        updateSpritesFromBoard()
+    }
+    func toggleClassic() {
+        classic = true
+        if let a = abilityButton {
+            a.isHidden = true
+        }
+        game.toggleClassic()
+        updateSpritesFromBoard()
+    }
     func redTime() {
         print(stopwatch.texture!)
         if !stopped {

@@ -29,6 +29,7 @@ class GameModel: NSObject {
     var over: Bool = false
     var boostTime: Int = 0
     var scene: GameScene!
+    var perLevel: Int = 2000
     
     
     init(start: Int, view: GameScene, isExtreme: Bool, isClassic: Bool) {
@@ -49,9 +50,20 @@ class GameModel: NSObject {
         print("GameModel memory freed")
     }
     
+    func toggleExtreme() {
+        extreme = true
+        pointValue = 100
+        perLevel = 3000
+        board.disableBonuses()
+    }
+    
+    func toggleClassic() {
+        board.disableBonuses()
+    }
+    
     func getNextGoal(current: Int){
         lastGoal = nextGoal
-        nextGoal = current * 2000
+        nextGoal = current * perLevel
         if( score >= nextGoal) {
             advanceLevel()
         }
@@ -88,8 +100,13 @@ class GameModel: NSObject {
         
         if(!timeStopped) {
             //scene.ticker.zRotation = 0
-            scene.ticker.run(SKAction.rotate(toAngle: 0, duration: 2.9))
-            stopTime(delay: 3, hard: true)  //Stops time for 3 seconds, then restarts the timer.
+            if(!extreme) {
+                scene.ticker.run(SKAction.rotate(toAngle: 0, duration: 2.9))
+                stopTime(delay: 3, hard: true)  //Stops time for 3 seconds, then restarts the timer.
+            } else {
+                scene.ticker.run(SKAction.rotate(toAngle:0, duration: 0.5))
+                stopTime(delay: 1, hard: true)
+            }
         } else {
             currTime = 0;
             scene.ticker.run(SKAction.rotate(toAngle: 0, duration: 0.5))//Time is already stopped, so simply reset the clock count so we don't cause race
@@ -155,18 +172,21 @@ class GameModel: NSObject {
     
     func getNextTime() -> TimeInterval {
         let cap: Int = 10
-        let maxTimer : TimeInterval = 15
+        let maxTimer : TimeInterval = 20
         let minTimer : TimeInterval = 10
         let extremeMax : TimeInterval = 10
         let extremeMin : TimeInterval = 3
         
         if(level >= cap) {
+            if(extreme) {
+                return extremeMin
+            }
             return minTimer
         }
             
         else {
             if(extreme) {
-                return extremeMax - TimeInterval(Int( (extremeMax - extremeMin / TimeInterval(cap)))  * (level - 1))
+                return extremeMax - TimeInterval(Int( (extremeMax - extremeMin) / TimeInterval(cap))  * (level - 1))
             }
             return maxTimer - TimeInterval( (Int( (maxTimer - minTimer) / TimeInterval(cap)))  * (level - 1))
         }
