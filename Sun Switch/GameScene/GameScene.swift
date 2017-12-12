@@ -726,9 +726,9 @@ class GameScene: SKScene {
         let rand = Int(arc4random()) % 3
         var sp = SKSpriteNode(imageNamed: points[rand])
         sp.setScale(0.5)
-        if bombMode{
+        //if bombMode{
             sp = SKSpriteNode(imageNamed: "explosion")
-        }
+        //}
         self.addChild(sp)
         sp.position = cp
         let group = SKAction.group([SKAction.scale(by: 2, duration: 0.2), SKAction.fadeOut(withDuration: 0.2)])
