@@ -110,6 +110,7 @@ class GameScene: SKScene {
             meterLine.texture = SKTexture(imageNamed: "meterLine")
         }
         boosted = !boosted
+    }
 
     
     func backStars() {
