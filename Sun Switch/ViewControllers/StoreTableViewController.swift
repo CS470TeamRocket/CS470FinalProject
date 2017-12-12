@@ -88,7 +88,7 @@ class StoreTableViewController: UITableViewController {
                     self.removeCurrencyAnimation(old: old, current: current - ix, new: new, ix: ix)
             })
         }
-        else if ix < 5 {
+        else if ix < 5, ix > 0 {
             self.removeCurrencyAnimation(old: old, current: current - 1, new: new, ix: 1)
         }
         else if current != new {
