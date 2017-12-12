@@ -87,12 +87,14 @@ class BoardModel: NSObject {
         
     }
     
-    func restoreRow() {
+    func restoreRow() -> [Int] {
         board.last!.setLast(val: false)
         let row = createRow(count: currentRows + 1, isLast: true)
         board.append(row)
         currentRows += 1
+        let out = update()
         scene.recreateBottomRow(newRow: row)
+        return out
         //Any other cleanup we might need.
     }
     

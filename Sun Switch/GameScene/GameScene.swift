@@ -624,6 +624,7 @@ class GameScene: SKScene {
             print("Changing bottom to:", bottom+1)
             bottom += 1
         }
+        sunShrink()
     }
 
     func snapAllBack() {
@@ -1067,6 +1068,27 @@ class GameScene: SKScene {
 
     override func update(_ currentTime: TimeInterval) {
         
+    }
+    
+    func timeUp(_ timeLeft: TimeInterval) {
+        sunGrow()
+        //removeBottomRow()
+        //if curArrow != nil {
+        //    sprites[curRow][maxCols-1].position = centers[curRow][maxCols-1]
+        //}
+        if curRow != nil, curRow < game.board.rowsLeft() {
+            snapBackRow(newSprites: sprites[curRow])
+        }
+        curArrow = nil
+        lastDirection = nil
+        fakeRowL = []
+        fakeRowR = []
+        touchesEnded(lastSet, with: lastEvent)
+        if ticker.hasActions() {
+            ticker.removeAllActions()
+        }
+        ticker.zRotation = 0
+        rotateTicker(duration: timeLeft)
     }
     
     func cleanup() {
