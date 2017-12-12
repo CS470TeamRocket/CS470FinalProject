@@ -57,6 +57,8 @@ class GameScene: SKScene {
     var started: Bool = false
     var canMove: Bool = false
     var extreme: Bool = false
+    var stopped: Bool = false
+    var boosted: Bool = false
     var teleportMode: Bool = false
     var bombMode: Bool = false
     var quitButton: UIButton!
@@ -81,11 +83,33 @@ class GameScene: SKScene {
         sunSprite.zPosition = 5
         // Should probably rotate left raight a little to give animated feel
         self.backgroundColor = UIColor.gray
+        stopwatch.zPosition = -20
+        meterLine.zPosition = -20
+    }
+
+
+    func redTime() {
+        print(stopwatch.texture!)
+        if !stopped {
+            print("STOPPED", stopped)
+            stopwatch.texture = SKTexture(imageNamed: "stopwatchRed")
+        }
+        else {
+            stopwatch.texture = SKTexture(imageNamed: "stopwatch")
+        }
+        stopped = !stopped
     }
     
-    deinit {
-        print("GameScene memory freed")
-    }
+    func redScore() {
+        print("BOOSTED", boosted)
+        if !boosted {
+            meterLine.texture = SKTexture(imageNamed: "meterLineRed")
+        }
+        else {
+            meterLine.texture = SKTexture(imageNamed: "meterLine")
+        }
+        boosted = !boosted
+
     
     func backStars() {
         var next = false
@@ -743,7 +767,22 @@ class GameScene: SKScene {
     
     func doAbility() {
         abilityButton.isEnabled = false
-        _ = UserDataHolder.shared.currentCharacter?.ability.doAbility()
+        let ability = UserDataHolder.shared.currentCharacter?.ability
+        print("ABILITY:", ability!)
+        abilityVisuals(id: (ability!.id))
+        _ = ability?.doAbility()
+    }
+    
+    func abilityVisuals(id: Int) {
+        print(id)
+        switch id{
+        case 0:
+            redTime()
+        case 1:
+            redScore()
+        default:
+            return
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
