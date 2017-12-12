@@ -57,6 +57,7 @@ class GameScene: SKScene {
     var started: Bool = false
     var canMove: Bool = false
     var extreme: Bool = false
+    var classic: Bool = false
     var stopped: Bool = false
     var boosted: Bool = false
     var teleportMode: Bool = false
@@ -75,7 +76,7 @@ class GameScene: SKScene {
         super.sceneDidLoad()
         let rotateAction = SKAction.rotate(byAngle: CGFloat(.pi * 2.0) , duration: 5)
         helperSprite.run(SKAction.repeatForever(rotateAction))
-        game = GameModel(start: 1, view: self, isExtreme: extreme)
+        game = GameModel(start: 1, view: self, isExtreme: extreme, isClassic: classic)
         UserDataHolder.shared.currentGameModel = game
         self.addChild(sunSprite)
         sunSprite.scale(to: CGSize(width: self.frame.width*2, height: sunSprite.frame.height))
@@ -86,7 +87,6 @@ class GameScene: SKScene {
         stopwatch.zPosition = -20
         meterLine.zPosition = -20
     }
-
 
     func redTime() {
         print(stopwatch.texture!)

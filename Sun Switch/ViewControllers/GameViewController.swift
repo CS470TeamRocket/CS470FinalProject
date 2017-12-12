@@ -16,6 +16,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var QuitButton: UIButton!
     @IBOutlet weak var abilityButton: roundedButton!
     var scene : GameScene?
+    var extreme : Bool = false
+    var classic : Bool = false
     //let AD = UIApplication.shared.delegate as! AppDelegate
     
     @IBAction func quit(_ sender: UIButton) {
@@ -62,10 +64,12 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         //super.viewDidLoad()
         super.viewDidLoad()
+        
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let newscene = GameScene(fileNamed: "GameScene") {
                 scene = newscene
+                //UserDataHolder.shared.currentGameModel = GameModel(start: 1, view: scene as GameScene, isExtreme: extreme, isClassic: classic)
                 scene!.quitButton = QuitButton
                 scene!.attachAbilityButton(button: abilityButton)
 
