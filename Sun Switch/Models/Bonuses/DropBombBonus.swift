@@ -11,10 +11,11 @@ import Foundation
 class DropBombBonus: BonusModel {
     override init() {
         super.init()
-        image = "Person2.png" //Placeholder
+        image = #imageLiteral(resourceName: "bomb")
+        //image = "Person2.png" //Placeholder
         name = "DropBomb"
-        desc = "Bomb Stuff"
-        cost = 100
+        desc = "Blow things up!"
+        cost = 2000
         bonusId = 2
         symbol = "*"
         type = pieceType.Bomb

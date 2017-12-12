@@ -1,7 +1,7 @@
 import UIKit
 
 class BonusModel {
-    var image: String! = nil
+    var image: UIImage = #imageLiteral(resourceName: "comet")
     var name: String! = "default name"
     var desc: String! = "default description"
     var cost: Int! = 0
@@ -19,7 +19,7 @@ class BonusModel {
     }
     
     func getImg() -> UIImage? {
-        return UIImage(named: image)
+        return image
     }
     
     func getName() -> String {
