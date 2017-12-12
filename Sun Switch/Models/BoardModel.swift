@@ -300,7 +300,7 @@ class BoardModel: NSObject {
                     j -= 1
                 }
                 if (!filled) {
-                    piece.genType(valid: validPieces, special: specialPieces, probSpec: calculateSpecialPieceProbability())
+                    piece.genType(valid: validPieces, special: specialPieces, probSpec: Double(specialPieces.count) * calculateSpecialPieceProbability())
                     if scene.started {
                         actions.append(scene.dropFromTop(Index: BoardIndex(row: i, col: col)))
                     }
@@ -437,8 +437,8 @@ class BoardModel: NSObject {
     }
     
     func calculateSpecialPieceProbability() -> Double{
-        //Function for how probability of special piece decreases as difficulty increases
-        return 0.05/(1.0 + (0.25 * (Double(diff)))) //at 0 difficulty, special pieces should appear 5% of the time.
+        //Function for how probability of special piece per type decreases as difficulty increases
+        return 0.025/(1.0 + (0.25 * (Double(diff)))) //at 0 difficulty, special pieces should appear 5% of the time.
     }
 }
 

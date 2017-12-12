@@ -392,7 +392,7 @@ class GameScene: SKScene {
                 group = SKAction.group([SKAction.move(to: center, duration: 0.4), SKAction.fadeAlpha(to: 1, duration: 0.4)])
             }
             fake.run(group, completion: {
-                if self.sprites[r][c] == sprite {
+                if sprite == self.sprites[r][c]{
                     self.sprites[r][c].zRotation = 0
                     self.sprites[r][c].alpha = 1
                 }
