@@ -43,6 +43,7 @@ class CharacterTableViewCell: UITableViewCell {
     
     func toggleAbilityDesc() {
         abilityDesc.isHidden = !abilityDesc.isHidden
+        cellDesc.isHidden = !cellDesc.isHidden
     }
 
 

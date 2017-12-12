@@ -226,6 +226,9 @@ class GameModel: NSObject {
     }
     
     @objc func timeTick() {
+        if !scene.abilityButton.isEnabled, UserDataHolder.shared.currentCharacter != nil, (UserDataHolder.shared.currentCharacter?.ability.abilityReady)! {
+            scene.abilityButton.isEnabled = true
+        }
         if boostTime == 1 {
             pointValue = 50
         }

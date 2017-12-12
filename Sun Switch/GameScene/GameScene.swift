@@ -57,7 +57,8 @@ class GameScene: SKScene {
     var extreme: Bool = false
     var teleportMode: Bool = false
     var bombMode: Bool = false
-    var abilityButton: PModel!
+    var abilityButton: roundedButton!
+    
     var quitButton: UIButton!
     var game: GameModel!
     var dir: String = ""
@@ -695,7 +696,8 @@ class GameScene: SKScene {
     }
     
     func doAbility() {
-        UserDataHolder.shared.currentCharacter?.ability.doAbility()
+        abilityButton.isEnabled = false
+        _ = UserDataHolder.shared.currentCharacter?.ability.doAbility()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
