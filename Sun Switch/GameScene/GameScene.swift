@@ -110,7 +110,6 @@ class GameScene: SKScene {
         }
         boosted = !boosted
     }
-
     
     func backStars() {
         var next = false
