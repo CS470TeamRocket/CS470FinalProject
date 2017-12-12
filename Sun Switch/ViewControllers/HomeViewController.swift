@@ -68,15 +68,17 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    /*
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     if segue.identifier == "extreme" {
-     
+        if segue.identifier == "extreme" {
+            var destination = segue.destination as! GameViewController
+            destination.extreme = true
+        }
+        else if segue.identifier == "classic" {
+            var destination = segue.destination as! GameViewController
+            destination.classic = true
+        }
     }
-     else if segue.identifier == "classic" {
-     
-     }
-    */
 }
 
 

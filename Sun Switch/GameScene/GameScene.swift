@@ -88,7 +88,6 @@ class GameScene: SKScene {
         meterLine.zPosition = -20
     }
 
-
     func redTime() {
         print(stopwatch.texture!)
         if !stopped {

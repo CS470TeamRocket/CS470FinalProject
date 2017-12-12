@@ -38,7 +38,7 @@ class GameModel: NSObject {
         extreme = isExtreme
         super.init()
         getNextGoal(current: start)
-        board = BoardModel(difficulty: start, scene: view, includeBonuses: !(isExtreme||isClassic))
+        board = BoardModel(difficulty: start, scene: view, includeBonuses: !isExtreme && !isClassic)
         displayBoard()
         resetTimer(true)
         
