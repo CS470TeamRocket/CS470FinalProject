@@ -74,6 +74,7 @@ class GameScene: SKScene {
 
     override func sceneDidLoad() {
         super.sceneDidLoad()
+        
         let rotateAction = SKAction.rotate(byAngle: CGFloat(.pi * 2.0) , duration: 5)
         helperSprite.run(SKAction.repeatForever(rotateAction))
         game = GameModel(start: 1, view: self, isExtreme: extreme, isClassic: classic)
@@ -86,8 +87,26 @@ class GameScene: SKScene {
         self.backgroundColor = UIColor.gray
         stopwatch.zPosition = -20
         meterLine.zPosition = -20
+        abilityStopwatch.zPosition = 40
+        abilityTicker.zPosition = 40
     }
-
+    
+    func toggleExtreme() {
+        extreme = true
+        if let a = abilityButton {
+            a.isHidden = true
+        }
+        game.toggleExtreme()
+        updateSpritesFromBoard()
+    }
+    func toggleClassic() {
+        classic = true
+        if let a = abilityButton {
+            a.isHidden = true
+        }
+        game.toggleClassic()
+        updateSpritesFromBoard()
+    }
     func redTime() {
         print(stopwatch.texture!)
         if !stopped {
@@ -109,6 +128,12 @@ class GameScene: SKScene {
             meterLine.texture = SKTexture(imageNamed: "meterLine")
         }
         boosted = !boosted
+
+    }
+
+    
+    deinit {
+        print("GameScene memory freed")
     }
     
     func backStars() {
@@ -197,6 +222,7 @@ class GameScene: SKScene {
             //make it invisible again
             self.abilityStopwatch.alpha = 0
             self.abilityTicker.alpha = 0
+            self.abilityButton.isHidden = false
         })
     }
     
@@ -715,11 +741,14 @@ class GameScene: SKScene {
     func pointPop(row: Int, col: Int) {
         let cp = centers[row][col]
         let rand = Int(arc4random()) % 3
-        let sp = SKSpriteNode(imageNamed: points[rand])
-        self.addChild(sp)
+        var sp = SKSpriteNode(imageNamed: points[rand])
         sp.setScale(0.5)
+        //if bombMode{
+            sp = SKSpriteNode(imageNamed: "explosion")
+        //}
+        self.addChild(sp)
         sp.position = cp
-        let group = SKAction.group([SKAction.moveBy(x: 0, y: 15, duration: 0.2), SKAction.fadeOut(withDuration: 0.2)])
+        let group = SKAction.group([SKAction.scale(by: 2, duration: 0.2), SKAction.fadeOut(withDuration: 0.2)])
         let seque = SKAction.sequence([group, SKAction.removeFromParent()])
         sp.run(seque)
     }
@@ -766,10 +795,12 @@ class GameScene: SKScene {
     }
     
     func doAbility() {
-        abilityButton.isEnabled = false
+        abilityButton.isHidden = true
         let ability = UserDataHolder.shared.currentCharacter?.ability
-        print("ABILITY:", ability!)
-        abilityVisuals(id: (ability!.id))
+        //print("ABILITY:", ability)
+        if ability != nil {
+            abilityVisuals(id: (ability!.id))
+        }
         _ = ability?.doAbility()
     }
     
@@ -806,9 +837,11 @@ class GameScene: SKScene {
                 return
             }
             if teleportMode {
+                let pulse = SKAction.sequence([SKAction.scale(by: 1.25, duration: 1), SKAction.scale(by: CGFloat(4.0/5.0), duration: 1)])
                 for r in 0..<sprites.count{ for c in 0..<sprites[r].count{ if sprites[r][c].contains(location) {
                     if teleSprite1 == nil {
                         teleSprite1 = (sprites[r][c], centers[r][c], r, c)
+                        teleSprite1.0.run(SKAction.repeatForever(pulse))
                         return
                     }
                     else if sprites[r][c] != teleSprite1.0 {
@@ -838,12 +871,22 @@ class GameScene: SKScene {
                         }
                          */
                         game.teleMove(lastIdx1, lastIdx2)
+                        let rotateAction = SKAction.rotate(byAngle: CGFloat(.pi * 2.0) , duration: 5)
+                        teleSprite1.0.size = CGSize(width: helperSprite.size.width, height: helperSprite.size.height)
+                        teleSprite1.0.removeAllActions()
+                        teleSprite1.0.run(SKAction.repeatForever(rotateAction))
+                        teleSprite2.0.removeAllActions()
+                        teleSprite2.0.run(SKAction.repeatForever(rotateAction))
                         teleSprite1 = nil
                         teleSprite2 = nil
                         teleportMode = false
                     }
                     else if sprites[r][c] == teleSprite1.0 {
                         //teleSprite1.0.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(.pi*2), duration: 5)))
+                        teleSprite1.0.removeAllActions()
+                        teleSprite1.0.size = CGSize(width: helperSprite.size.width, height: helperSprite.size.height)
+                        let rotateAction = SKAction.rotate(byAngle: CGFloat(.pi * 2.0) , duration: 5)
+                        teleSprite1.0.run(SKAction.repeatForever(rotateAction))
                         teleSprite1 = nil
                         return
                     }

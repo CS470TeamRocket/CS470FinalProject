@@ -24,23 +24,32 @@ enum direction {
     
 }
 
-typealias BoardIndex = (row: Int, col: Int)
-typealias Move = (index: BoardIndex, dir: direction)
-typealias MoveResult = (success: Bool, clears: [Int])
+typealias BoardIndex = (row: Int, col: Int) //A TypeAlias representing an index on the board.
+//The primary purpose of this is to avoid sending row and col as separate arguments, which often leads to confusion and
+//errors.
+
+typealias Move = (index: BoardIndex, dir: direction) //A TypeAlias representing a "Move", that is, an index and a
+//direction to move. This makes it much easier to send information between the models.
+
+typealias MoveResult = (success: Bool, clears: [Int]) //A TypeAlias representing the results of a move.
+//Success is whether or not the move was successful. clears is an integer array. Each index represents one part of
+//"chain", that is, successive matches all derived from one move. Each index's value is the number of pieces cleared
+// in that stage of the "chain."
 
 class BoardModel: NSObject {
     private let rows: Int = 9 // Number of starting Rows. The number of columns is determined in the RowModel
     private var currentRows : Int = 9 // Current number of rows. This cannot exceed rows
-    private var columns : Int = 7
-    private var board : [RowModel] = [RowModel]()
-    private var scene : GameScene
-    private var diff : Int
+    private var columns : Int = 7   //Number of columns for storage purposes.
+    private var board : [RowModel] = [RowModel]()   //The board representing the game board.
+    private var scene : GameScene   //A reference to the current GameScene. Added by Maurice.
+    private var diff : Int  //Represents the difficulty, or level of the game.
     private var validPieces : [pieceType] = [pieceType]()	//The roster of available pieces. This is based
     //on the current level.
     private var specialPieces : [pieceType] = [pieceType]() //roster of available special pieces (like bombs)
-    private var rowMatch = false
+    //private var rowMatch = false
     private var includeBonuses = false
     
+    //
     init(difficulty: Int, scene: GameScene, includeBonuses: Bool) {
         self.includeBonuses = includeBonuses
         diff = (difficulty <= 0 ) ? 1 : difficulty
@@ -49,9 +58,19 @@ class BoardModel: NSObject {
         generatePieces(includeBonuses: includeBonuses)
         generateBoard()
         let matchList = checkAll()
-        for i in 0 ..< matchList.count {
+        /*for i in 0 ..< matchList.count {
             print(matchList[i])
         }
+         */
+        _ = update()
+    }
+    
+    func disableBonuses() {
+        board.removeAll()
+        includeBonuses = false;
+        generatePieces(includeBonuses: false)
+        generateBoard()
+        _ = checkAll()
         _ = update()
     }
     
@@ -151,12 +170,12 @@ class BoardModel: NSObject {
             var list = [Int]()
             board[row].rotate(dir: dir, amount: amount)
             if( checkAll().count > 0 ) {
-                print("Match detected!")
+                //print("Match detected!")
                 list = update()
                 return (success: true, clears: list)
             }
             else {
-                print("No match!")
+                //print("No match!")
                 board[row].rotate(dir: dir.opposite(), amount: amount)
                 return (success: false, clears: list)
             }
@@ -175,6 +194,7 @@ class BoardModel: NSObject {
                 }
             }
         }
+        scene.bombMode = false
         return matched
     }
     
@@ -269,7 +289,7 @@ class BoardModel: NSObject {
             }
         }
         let sequence = SKAction.sequence(actions)
-        print(actions)
+        //print(actions)
         scene.run(sequence)
         return out
     }

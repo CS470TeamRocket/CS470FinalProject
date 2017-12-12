@@ -76,7 +76,16 @@ class GameViewController: UIViewController {
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let newscene = GameScene(fileNamed: "GameScene") {
-                scene = newscene
+                if(extreme) {
+                    newscene.toggleExtreme()
+                }
+                else if(classic) {
+                    newscene.toggleClassic()
+                }
+
+            
+                
+                scene = newscene   
                 //UserDataHolder.shared.currentGameModel = GameModel(start: 1, view: scene as GameScene, isExtreme: extreme, isClassic: classic)
                 scene!.quitButton = QuitButton
                 scene!.attachAbilityButton(button: abilityButton)
