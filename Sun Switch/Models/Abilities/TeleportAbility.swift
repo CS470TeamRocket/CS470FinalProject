@@ -9,6 +9,7 @@
 import Foundation
 
 class TeleportAbility: AbilityModel {
+    //This ability swaps the location of two pieces if the player clicks on the ability icon, and then the two peices
     override init(id: Int) {
         super.init(id: id)
         image = "Person2.png" //Placeholder

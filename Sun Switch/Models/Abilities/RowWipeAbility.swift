@@ -9,6 +9,7 @@
 import UIKit
 
 class RowWipeAbility: AbilityModel {
+    //This ability wipes out a row where the player clicks.
     override init(id: Int) {
         super.init(id: id)
         image = "Person2.png" //Placeholder

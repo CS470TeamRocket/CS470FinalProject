@@ -1,6 +1,7 @@
 import UIKit
 
 class BonusModel {
+    //This is the base model for all bonuses. It doesn't really do anything, and all of its data is placeholder
     var image: UIImage = #imageLiteral(resourceName: "comet")
     var name: String! = "default name"
     var desc: String! = "default description"
@@ -15,7 +16,7 @@ class BonusModel {
     }
     
     func doBonus(row: Int, col: Int){
-        
+        //Function to be polymorphically defined by bonus types. When a bonus is clicked on, this function should be run for it
     }
     
     func getImg() -> UIImage? {
