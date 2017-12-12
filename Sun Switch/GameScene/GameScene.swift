@@ -90,6 +90,7 @@ class GameScene: SKScene {
         abilityStopwatch.zPosition = 40
         abilityTicker.zPosition = 40
     }
+
     
     func toggleExtreme() {
         extreme = true
@@ -107,6 +108,8 @@ class GameScene: SKScene {
         game.toggleClassic()
         updateSpritesFromBoard()
     }
+ 
+
     func redTime() {
         //print(stopwatch.texture!)
         if !stopped {
