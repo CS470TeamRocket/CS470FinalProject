@@ -241,7 +241,7 @@ class UserDataHolder {
     }
     
     func generateDummy() {
-        for i in 0...4 { //generating some characters
+        for i in 0...7 { //generating some characters
             
             switch i{
                 
@@ -254,19 +254,29 @@ class UserDataHolder {
                  characters.append(c)
                 
             case 2:
-                let c = CharacterModel(img: "Doc Boom.png", name: "Doc Boom", ability: DropBombAbility(id: i),desc: "A mad scientist, bent on vengeance, the pursuit of higher knowledge, and explosions.", unlocked: true, id: i+1, cost: 1000)
+                let c = CharacterModel(img: "Doc Boom.png", name: "Doc Boom", ability: DropBombAbility(id: i),desc: "A mad scientist, bent on vengeance, the pursuit of higher knowledge, and explosions.", unlocked: true, id: i+1, cost: 500)
                  characters.append(c)
             case 3:
                 let c = CharacterModel(img: "Geremlo.png", name: "Geremlo the Wanderer", ability:
-                    TeleportAbility(id: i),desc: "Thousands of lightyears from his homeworld, he seeks to return to his land once more.", unlocked: false, id: i+1, cost: 2000)
+                    TeleportAbility(id: i),desc: "Thousands of lightyears from his homeworld, he seeks to return to his land once more.", unlocked: false, id: i+1, cost: 1500)
                  characters.append(c)
             case 4:
-                let c = CharacterModel(img: "Xarvok.png", name: "Xarvok the Destroyer", ability: ClusterBombAbility(id: i),desc: "A warlord with an insatiable bloodlust. Longs to see the galaxy rendered to dust, with himself reigning supreme.", unlocked: false, id: i+1, cost: 10000)
+                let c = CharacterModel(img: "Xarvok.png", name: "Xarvok the Destroyer", ability: ClusterBombAbility(id: i),desc: "A warlord with an insatiable bloodlust. Longs to see the galaxy rendered to dust, with himself reigning supreme.", unlocked: false, id: i+1, cost: 7500)
                  characters.append(c)
+            case 5:
+                let c = CharacterModel(img: "Nikita.png", name: "Nikita, Heavenly Blade", ability: ColumnWipeAbility(id: i),desc: "An unparalleled swordswoman, seeking the one who killed her master many years ago.", unlocked: false, id: i+1, cost: 3000)
+                characters.append(c)
+            case 6:
+                let c = CharacterModel(img: "H47-E.png", name: "H47-E, Steelwrought Overlord", ability: RowWipeAbility(id: i),desc: "A cold, authoritative general of an endless army of steel. He longs to bring all the universe to clockwork efficiency.", unlocked: false, id: i+1, cost: 5000)
+                characters.append(c)
+            case 7:
+                let c = CharacterModel(img: "Overseer", name: "The Overseer", ability: RowRestoreAbility(id: i),desc: "A mysterious and powerful figure. Little is known of it, but nothing escapes its gaze.", unlocked: false, id: i+1, cost: 7500)
+                characters.append(c)
             default:
                 return
             }
         }
+        characters.sort {return $0.cost < $1.cost}
     }
     
     func updateScore(_ newScore: Int, save: Bool) {

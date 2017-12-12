@@ -15,7 +15,7 @@ class TimeStopAbility: AbilityModel {
         name = "Tachyon Drift"
         cost = 1000
         level = 1
-        warmUpTime = 10
+        warmUpTime = 16
         abilityDuration = 8
         desc = "Time is an illusion. Exert your control. Stops the timer for \(abilityDuration) seconds."
     }

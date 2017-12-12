@@ -392,7 +392,7 @@ class GameModel: NSObject {
     func clearBottomRow(_ amount: Int) {
         var rows = [Int]()
         for i in 0 ..< amount {
-            let rowNum = board.rowsLeft() - i
+            let rowNum = board.rowsLeft() - 1 - i
             if(rowNum >= 0) {
                 rows.append(rowNum)
             }
@@ -403,6 +403,26 @@ class GameModel: NSObject {
         scene.doSequencialActions(actions: actions, index: 0)
         _ = board.update()
         updateScore((pointValue / 2) * list.count)
+    }
+    
+    func clearCenterColumn(_ amount: Int) {
+        var columns = [Int]()
+        let mid : Int = Int(Double(board.numColumns()) / 2.0)
+        columns.append(mid)
+        for i in 1 ..< amount {
+            if(i <= mid) {
+                columns.append(mid - i)
+                if(i != mid) {
+                    columns.append(mid + i)
+                }
+            }
+        }
+        let list = indexColumns(columns)
+        var actions = board.clearPieces(list: list)
+        actions.append(SKAction.wait(forDuration: 0))
+        scene.doSequencialActions(actions: actions, index: 0)
+        _ = board.update()
+        updateScore((pointValue) * list.count)
     }
     
     func pointBoost(duration: TimeInterval, pointValue: Int) {
@@ -455,7 +475,7 @@ class GameModel: NSObject {
         scene.quitButton.sendActions(for: UIControlEvents.touchUpInside)
     }
     
-    
+    /*
     func saveScoreAndTime() {
 
         let currentBestScore = UserDefaults.standard.integer(forKey: UserDataHolder.shared.BEST_SCORE_KEY)
@@ -470,6 +490,7 @@ class GameModel: NSObject {
             print("You have beat your previous time of \(currentBestTime)")
         }
     }
+    */
 
 //    func startGame(diff: Int, frame: CGRect) {
 //        //gameBoard = BoardModel()
