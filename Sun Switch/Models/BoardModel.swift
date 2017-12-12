@@ -87,12 +87,14 @@ class BoardModel: NSObject {
         
     }
     
-    func restoreRow() {
+    func restoreRow() -> [Int] {
         board.last!.setLast(val: false)
         let row = createRow(count: currentRows + 1, isLast: true)
         board.append(row)
         currentRows += 1
         scene.recreateBottomRow(newRow: row)
+        let out = update()
+        return out
         //Any other cleanup we might need.
     }
     
@@ -220,6 +222,13 @@ class BoardModel: NSObject {
         }
         return (success: false, clears: [Int]())
     }
+    
+    func teleSwap(_ first: BoardIndex, _ second: BoardIndex) -> MoveResult
+    {
+        getPiece(index: first).swap(new: getPiece(index: second))
+        let list = update()
+        return ((success: (list.count > 0), clears: list))
+    }
     /*
     func makeMoveForRow(moves: [Move]) -> MoveResult {
         var moveRes: MoveResult
@@ -296,16 +305,6 @@ class BoardModel: NSObject {
                         actions.append(scene.dropFromTop(Index: BoardIndex(row: i, col: col)))
                     }
                 }
-/*<<<<<<< HEAD
-                
-                if group.count > 0 {
-                    //actions.append(SKAction.group(group))
-                    scene.run(SKAction.sequence(group))
-                    group = []
-                }
-                
-=======
->>>>>>> maurice*/
             }
             
             i -= 1

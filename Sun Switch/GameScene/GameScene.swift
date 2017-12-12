@@ -359,8 +359,8 @@ class GameScene: SKScene {
                     group = SKAction.group([SKAction.move(to: center, duration: 0.4), SKAction.fadeAlpha(to: 1, duration: 0.4)])
                 }
                 self.sprites[to.row][to.col].alpha = 0
-                fake.run(group, completion: {
-                    if self.sprites[to.row][to.col] == sprite, self.game.board != nil, to.row < self.game.board.rowsLeft(){
+                fake.run(group, completion:{
+                    if (to.row < self.game.board.rowsLeft() && self.sprites[to.row][to.col] == sprite && self.game.board != nil ){
                         self.sprites[to.row][to.col].zRotation = 0
                         self.sprites[to.row][to.col].alpha = 1
                         self.sprites[to.row][to.col].position = center
@@ -625,6 +625,7 @@ class GameScene: SKScene {
             print("Changing bottom to:", bottom+1)
             bottom += 1
         }
+        sunShrink()
     }
 
     func snapAllBack() {
@@ -731,8 +732,9 @@ class GameScene: SKScene {
                         swap(s1: teleSprite1.0, s2: teleSprite2.0)
                         snapBack(sprite: teleSprite1.0, row: teleSprite1.2, col: teleSprite1.3)
                         snapBack(sprite: teleSprite2.0, row: teleSprite2.2, col: teleSprite2.3)
-                        let lastIdx1 = (teleSprite1.2, teleSprite1.3)
-                        let lastIdx2 = (teleSprite2.2, teleSprite2.3)
+                        let lastIdx1 :BoardIndex = (teleSprite1.2, teleSprite1.3)
+                        let lastIdx2 :BoardIndex = (teleSprite2.2, teleSprite2.3)
+                        /*
                         var dir1 = direction.left
                         if teleSprite1.3 == 0 {
                             dir1 = direction.right
@@ -741,6 +743,7 @@ class GameScene: SKScene {
                         if teleSprite2.3 == 0 {
                             dir2 = direction.right
                         }
+ 
                         print("MOVE")
                         var move = game.makeMove(move: Move(BoardIndex(lastIdx1), dir: dir1))
                         if !move {
@@ -749,6 +752,8 @@ class GameScene: SKScene {
                                 swap(s1: teleSprite1.0, s2: teleSprite2.0)
                             }
                         }
+                         */
+                        game.teleMove(lastIdx1, lastIdx2)
                         teleSprite1 = nil
                         teleSprite2 = nil
                         teleportMode = false
@@ -1069,6 +1074,27 @@ class GameScene: SKScene {
 
     override func update(_ currentTime: TimeInterval) {
         
+    }
+    
+    func timeUp(_ timeLeft: TimeInterval) {
+        sunGrow()
+        //removeBottomRow()
+        //if curArrow != nil {
+        //    sprites[curRow][maxCols-1].position = centers[curRow][maxCols-1]
+        //}
+        if curRow != nil, curRow < game.board.rowsLeft() {
+            snapBackRow(newSprites: sprites[curRow])
+        }
+        curArrow = nil
+        lastDirection = nil
+        fakeRowL = []
+        fakeRowR = []
+        touchesEnded(lastSet, with: lastEvent)
+        if ticker.hasActions() {
+            ticker.removeAllActions()
+        }
+        ticker.zRotation = 0
+        rotateTicker(duration: timeLeft)
     }
     
     func cleanup() {

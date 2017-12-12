@@ -79,11 +79,16 @@ class GameModel: NSObject {
         print("Got to level \(level)!")
         board.advanceLevel()
         getNextGoal(current: level)
+        scene.ticker.removeAllActions()
+        
         if(!timeStopped) {
-            scene.ticker.removeAllActions()
-            scene.ticker.run(SKAction.rotate(toAngle: 0, duration: 2.9))
             //scene.ticker.zRotation = 0
+            scene.ticker.run(SKAction.rotate(toAngle: 0, duration: 2.9))
             stopTime(delay: 3, hard: true)  //Stops time for 3 seconds, then restarts the timer.
+        } else {
+            currTime = 0;
+            scene.ticker.run(SKAction.rotate(toAngle: 0, duration: 0.5))//Time is already stopped, so simply reset the clock count so we don't cause race
+            //conditions.
         }
         streak += 1
         //Check current "restore row" count. If enough, we restore a new row.
@@ -207,8 +212,7 @@ class GameModel: NSObject {
     }
     
     func restoreRow() {
-        board.restoreRow()
-        scene.sunShrink()
+        calculateScore(board.restoreRow())
     }
     
     func printBoard() {
@@ -256,25 +260,8 @@ class GameModel: NSObject {
             gameOver()
         }else {
             streak = 0
-            scene.sunGrow()
             board.removeRow()
-            //scene.removeBottomRow()
-            //if scene.curArrow != nil {
-            //    scene.sprites[scene.curRow][scene.maxCols-1].position = scene.centers[scene.curRow][scene.maxCols-1]
-            //}
-            if scene.curRow != nil, scene.curRow < board.rowsLeft() {
-                scene.snapBackRow(newSprites: scene.sprites[scene.curRow])
-            }
-            scene.curArrow = nil
-            scene.lastDirection = nil
-            scene.fakeRowL = []
-            scene.fakeRowR = []
-            scene.touchesEnded(scene.lastSet, with: scene.lastEvent)
-            if scene.ticker.hasActions() {
-                scene.ticker.removeAllActions()
-            }
-            scene.ticker.zRotation = 0
-            scene.rotateTicker(duration: timeLeft)
+            scene.timeUp(timeLeft)
             printBoard()
         }
     }
@@ -421,6 +408,13 @@ class GameModel: NSObject {
     
     func teleport() {
         scene.teleportMode = true
+    }
+    
+    func teleMove(_ first: BoardIndex, _ second: BoardIndex) {
+        let res = board.teleSwap(first, second)
+        if(res.success) {
+            calculateScore(res.clears)
+        }
     }
     
     func calculateScore(_ list: [Int]){

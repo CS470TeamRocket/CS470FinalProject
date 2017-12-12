@@ -82,10 +82,10 @@ class GameOverViewController: UIViewController {
             countUpAnimation(label: HiScoreLabel, oldTotal: oldScore, currentTotal: oldScore+1, newTotal: highScore, ix: 50)
         }
         if newTime {
-            countUpAnimation(label: BestTimeLabel, oldTotal: oldTime, currentTotal: oldTime+1, newTotal: bestTime, ix: 1)
+            countUpAnimation(label: BestTimeLabel, oldTotal: oldTime, currentTotal: oldTime+1, newTotal: bestTime, ix: 5)
         }
         if newCoins > 0 {
-            countUpAnimation(label: CoinsLabel, oldTotal: oldTotal, currentTotal: oldTotal, newTotal: coins, ix: 1)
+            countUpAnimation(label: CoinsLabel, oldTotal: oldTotal, currentTotal: oldTotal, newTotal: coins, ix: 5)
         }
         //popBack(UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0)))
         // Do any additional setup after loading the view.

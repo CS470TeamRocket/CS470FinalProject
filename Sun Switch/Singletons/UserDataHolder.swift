@@ -221,6 +221,7 @@ class UserDataHolder {
         updateTime(Defaults.bestTime, save: false)
         updateCharacters(Defaults.unlockedChars, save: false)
         updateBonuses(Defaults.unlockedBonuses, save: false)
+        updateMoney(Defaults.TotalCurrency, save: false)
         UserDefaults.standard.set(true, forKey: LAUNCHED_BEFORE_KEY)
         UserDefaults.standard.synchronize()
         loadFromData()
