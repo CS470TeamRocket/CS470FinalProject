@@ -64,6 +64,11 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         //super.viewDidLoad()
         super.viewDidLoad()
+        // Disable ability button if game mode is extreme of classic
+        if extreme || classic { //In these cases, we do not want the user clicking on this button.
+            abilityButton.isUserInteractionEnabled = false
+            abilityButton.alpha = 0
+        }
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'

@@ -9,11 +9,12 @@
 import UIKit
 
 class AbilityModel {
+    //This is the base class for all abilities. It contains logic for a warmup period after the ability is used before which the ability can be used again, as well as some accessors
     var image: String! = nil
     var name: String! = "default name"
     var desc: String! = "default description"
     var cost: Int! = 0
-    var level: Int! = 1
+    var level: Int! = 1 //level isn't currently used for anything, but was intended to scale the ability's effects
     var unlocked: Bool = false
     var id: Int
     var warmUpTime : TimeInterval = 10 //How long to reuse ability after it completes (the ability duration has expired).
@@ -28,13 +29,14 @@ class AbilityModel {
     }
     
     func doAbility() -> (Bool){
+    //This is polymorphically defined in all child classes. The child class's definition should call the parent class, and only execute its implementation of the ability if the parent returns true
         if abilityReady {
             abilityReady = false
             timer = Timer.scheduledTimer(timeInterval: abilityDuration + warmUpTime, target: self, selector: (#selector(enableAbility)), userInfo: nil, repeats: false)
             UserDataHolder.shared.currentGameModel?.runAbilityStopwatchAnimation(duration: abilityDuration + warmUpTime)
-            return true
+            return true //child's doAbility function should do ability stuff
         }else{
-            return false
+            return false //child's doAbility function should not do ability stuff
         }
     }
     
