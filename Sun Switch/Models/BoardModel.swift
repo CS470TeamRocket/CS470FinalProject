@@ -39,12 +39,14 @@ class BoardModel: NSObject {
     //on the current level.
     private var specialPieces : [pieceType] = [pieceType]() //roster of available special pieces (like bombs)
     private var rowMatch = false
+    private var includeBonuses = false
     
-    init(difficulty: Int, scene: GameScene) {
+    init(difficulty: Int, scene: GameScene, includeBonuses: Bool) {
+        self.includeBonuses = includeBonuses
         diff = (difficulty <= 0 ) ? 1 : difficulty
         self.scene = scene
         super.init()
-        generatePieces()
+        generatePieces(includeBonuses: includeBonuses)
         generateBoard()
         let matchList = checkAll()
         for i in 0 ..< matchList.count {
@@ -53,11 +55,15 @@ class BoardModel: NSObject {
         _ = update()
     }
     
-    func generatePieces() {
+    func generatePieces(includeBonuses: Bool) {
         //This uses the difficulty level to select a number of piece types to add to the
         //roster of available pieces. This will be pretty hard-coded, unfortunately.
         validPieces = pieceType.Empty.validPieces(level: diff)
+        if includeBonuses {
         specialPieces = pieceType.Empty.specialPieces(level: diff)
+        }else{
+        specialPieces = []
+        }
     }
     
     func generateBoard() {
@@ -83,7 +89,7 @@ class BoardModel: NSObject {
         //negative pieces (unbreakable blocks, etc)
         
         diff += 1
-        generatePieces()
+        generatePieces(includeBonuses: self.includeBonuses)
         
     }
     

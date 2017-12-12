@@ -46,7 +46,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <state key="normal" backgroundImage="classic"/>
                                 <connections>
-                                    <segue destination="BV1-FR-VrT" kind="presentation" id="k3M-8O-NWF"/>
+                                    <segue destination="BV1-FR-VrT" kind="presentation" identifier="classic" id="k3M-8O-NWF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="3KK-7f-G7X">
@@ -76,7 +76,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <state key="normal" backgroundImage="extreme"/>
                                 <connections>
-                                    <segue destination="BV1-FR-VrT" kind="presentation" id="4at-0d-cKt"/>
+                                    <segue destination="BV1-FR-VrT" kind="presentation" identifier="extreme" id="4at-0d-cKt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATB-zm-DTz">
@@ -1032,9 +1032,9 @@
         <image name="sun" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fJM-Ih-8gH"/>
-        <segue reference="ghP-ia-Gxg"/>
-        <segue reference="0CH-yl-3Ae"/>
+        <segue reference="k3M-8O-NWF"/>
+        <segue reference="aod-EX-4KG"/>
+        <segue reference="k3b-c4-M6V"/>
         <segue reference="GxQ-OH-eel"/>
     </inferredMetricsTieBreakers>
 </document>

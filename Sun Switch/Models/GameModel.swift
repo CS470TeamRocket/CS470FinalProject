@@ -31,14 +31,14 @@ class GameModel: NSObject {
     var scene: GameScene!
     
     
-    init(start: Int, view: GameScene, isExtreme: Bool) {
+    init(start: Int, view: GameScene, isExtreme: Bool, isClassic: Bool) {
         scene = view
         level = start
         score = 0
         extreme = isExtreme
         super.init()
         getNextGoal(current: start)
-        board = BoardModel(difficulty: start, scene: view)
+        board = BoardModel(difficulty: start, scene: view, includeBonuses: !(isExtreme||isClassic))
         displayBoard()
         resetTimer(true)
         
