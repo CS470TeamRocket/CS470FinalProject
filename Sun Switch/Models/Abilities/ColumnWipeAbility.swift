@@ -9,6 +9,7 @@
 import UIKit
 
 class ColumnWipeAbility: AbilityModel {
+    //This ability clears a column where the player clicks
     override init(id: Int) {
         super.init(id: id)
         image = "Person2.png" //Placeholder

@@ -9,6 +9,7 @@
 import Foundation
 
 class PointBoostAbility: AbilityModel{
+    //This ability boosts the amount of points the player gets by normal means
     override init(id: Int) {
         super.init(id: id)
         image = "Person2.png" //Placeholder

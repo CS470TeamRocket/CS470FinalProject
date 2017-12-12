@@ -9,6 +9,7 @@
 import Foundation
 
 class TimeStopAbility: AbilityModel {
+    //This ability halts the clock for a time, giving the player time to think
     override init(id: Int) {
         super.init(id: id)
         image = "Person2.png" //Placeholder

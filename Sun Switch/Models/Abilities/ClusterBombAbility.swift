@@ -9,6 +9,7 @@
 import UIKit
 
 class ClusterBombAbility: AbilityModel {
+    //This ability clears multiple locations on the board
     override init(id: Int) {
         super.init(id: id)
         image = "Person2.png" //Placeholder

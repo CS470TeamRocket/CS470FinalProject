@@ -9,6 +9,7 @@
 import Foundation
 
 class DropBombBonus: BonusModel {
+    //This is the bomb bonus, which should clear a 3x3 area around it when the player clicks on it.
     override init() {
         super.init()
         image = #imageLiteral(resourceName: "bomb")
@@ -23,7 +24,7 @@ class DropBombBonus: BonusModel {
     
     override func doBonus(row: Int, col: Int) {
         super.doBonus(row: row, col: col)
-        UserDataHolder.shared.currentGameModel?.bomb(idx: BoardIndex(row: row, col: col), size: 1)
+        UserDataHolder.shared.currentGameModel?.bomb(idx: BoardIndex(row: row, col: col), size: 1) //Radius of 1 means the area is 3x3
     }
     
 }

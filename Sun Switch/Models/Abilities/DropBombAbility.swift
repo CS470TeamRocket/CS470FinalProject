@@ -8,6 +8,7 @@
 import Foundation
 
 class DropBombAbility: AbilityModel {
+    //This ability generates an explosion at the point that the player clicks on after activating it
     override init(id: Int) {
         super.init(id: id)
         image = "Person2.png" //Placeholder
